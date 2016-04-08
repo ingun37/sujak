@@ -28,8 +28,6 @@
 		1682CBFA1C2BDEDD0090C084 /* jvideomemorymapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1682CBF81C2BDEDD0090C084 /* jvideomemorymapper.cpp */; };
 		1682CBFB1C2BDEDD0090C084 /* jvideomemorymapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1682CBF91C2BDEDD0090C084 /* jvideomemorymapper.hpp */; };
 		168D336B1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */; };
-		1696E52B1CA0FB52008CD418 /* janimcurvekey.h in Headers */ = {isa = PBXBuildFile; fileRef = 1696E52A1CA0FB52008CD418 /* janimcurvekey.h */; };
-		1696E52D1CA0FC4F008CD418 /* janimcurve.h in Headers */ = {isa = PBXBuildFile; fileRef = 1696E52C1CA0FC4F008CD418 /* janimcurve.h */; };
 		16CFCA421C06EB00009E29C2 /* jjoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 16CFCA411C06EB00009E29C2 /* jjoint.h */; };
 		16E1C5C81C15B3420055B8F5 /* jnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16E1C5C61C15B3420055B8F5 /* jnode.cpp */; };
 		16E1C5C91C15B3420055B8F5 /* jnode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16E1C5C71C15B3420055B8F5 /* jnode.hpp */; };
@@ -60,6 +58,9 @@
 		626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FE819329E72007A3E00 /* Metal.framework */; };
 		626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FEA19329E78007A3E00 /* QuartzCore.framework */; };
 		62F8146919AFBD9E00C9BDD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */; };
+		6BDD27941CB754F2005190B4 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BDD27921CB754F2005190B4 /* jcurve.cpp */; };
+		6BDD27951CB754F2005190B4 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BDD27921CB754F2005190B4 /* jcurve.cpp */; };
+		6BDD27961CB754F2005190B4 /* jcurve.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BDD27931CB754F2005190B4 /* jcurve.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -100,8 +101,6 @@
 		1682CBF81C2BDEDD0090C084 /* jvideomemorymapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jvideomemorymapper.cpp; path = jsources/jvideomemorymapper.cpp; sourceTree = "<group>"; };
 		1682CBF91C2BDEDD0090C084 /* jvideomemorymapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jvideomemorymapper.hpp; path = jsources/jvideomemorymapper.hpp; sourceTree = "<group>"; };
 		168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvideomemoryaligninfo.h; sourceTree = "<group>"; };
-		1696E52A1CA0FB52008CD418 /* janimcurvekey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = janimcurvekey.h; path = jsources/janimcurvekey.h; sourceTree = "<group>"; };
-		1696E52C1CA0FC4F008CD418 /* janimcurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = janimcurve.h; path = jsources/janimcurve.h; sourceTree = "<group>"; };
 		16CFCA411C06EB00009E29C2 /* jjoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjoint.h; sourceTree = "<group>"; };
 		16E1C5C61C15B3420055B8F5 /* jnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jnode.cpp; path = jsources/jnode.cpp; sourceTree = "<group>"; };
 		16E1C5C71C15B3420055B8F5 /* jnode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jnode.hpp; path = jsources/jnode.hpp; sourceTree = "<group>"; };
@@ -135,6 +134,8 @@
 		626C5FE819329E72007A3E00 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		626C5FEA19329E78007A3E00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		6BDD27921CB754F2005190B4 /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jcurve.cpp; path = jsources/jcurve.cpp; sourceTree = "<group>"; };
+		6BDD27931CB754F2005190B4 /* jcurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jcurve.hpp; path = jsources/jcurve.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +170,8 @@
 		16EC79E61BE7633B00C1BACA /* jsources */ = {
 			isa = PBXGroup;
 			children = (
+				6BDD27921CB754F2005190B4 /* jcurve.cpp */,
+				6BDD27931CB754F2005190B4 /* jcurve.hpp */,
 				16EC79E51BE756F000C1BACA /* jdefinitions.h */,
 				16EC79E71BE7637000C1BACA /* jmath.cpp */,
 				16EC79E81BE7637000C1BACA /* jmath.hpp */,
@@ -198,8 +201,6 @@
 				162BA9361C30B9FC00EE9D1A /* jbinary.cpp */,
 				162BA9371C30B9FC00EE9D1A /* jbinary.hpp */,
 				168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */,
-				1696E52A1CA0FB52008CD418 /* janimcurvekey.h */,
-				1696E52C1CA0FC4F008CD418 /* janimcurve.h */,
 			);
 			name = jsources;
 			sourceTree = "<group>";
@@ -304,18 +305,17 @@
 				16EC79F61BE8B32D00C1BACA /* jrenderobject.hpp in Headers */,
 				167470821C0713B9008BCAE1 /* jrotation.hpp in Headers */,
 				626C5FD7193298EF007A3E00 /* AAPLAppDelegate.h in Headers */,
+				6BDD27961CB754F2005190B4 /* jcurve.hpp in Headers */,
 				626C5FE41932993E007A3E00 /* AAPLRenderer.h in Headers */,
 				162BA93A1C30B9FC00EE9D1A /* jbinary.hpp in Headers */,
 				16EC7A001BE9A9D800C1BACA /* jrenderstategroup.hpp in Headers */,
 				167470861C083BA6008BCAE1 /* jallocator.hpp in Headers */,
 				16CFCA421C06EB00009E29C2 /* jjoint.h in Headers */,
 				626C5FDB193298EF007A3E00 /* AAPLViewController.h in Headers */,
-				1696E52B1CA0FB52008CD418 /* janimcurvekey.h in Headers */,
 				16EC79EA1BE7637000C1BACA /* jmath.hpp in Headers */,
 				16EC7A291BE9F44600C1BACA /* jcore.hpp in Headers */,
 				1682CBFB1C2BDEDD0090C084 /* jvideomemorymapper.hpp in Headers */,
 				168D336B1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h in Headers */,
-				1696E52D1CA0FC4F008CD418 /* janimcurve.h in Headers */,
 				16EC79EE1BE8AB7F00C1BACA /* jskeleton.hpp in Headers */,
 				163BF8A11C2287500046E0E1 /* jskinner.hpp in Headers */,
 				16E1C5C91C15B3420055B8F5 /* jnode.hpp in Headers */,
@@ -422,6 +422,7 @@
 				165595B81C213E5F00A394D6 /* jtranslation.cpp in Sources */,
 				167470811C0713B9008BCAE1 /* jrotation.cpp in Sources */,
 				1606DB2D1BF9AA0500976579 /* main.cpp in Sources */,
+				6BDD27951CB754F2005190B4 /* jcurve.cpp in Sources */,
 				162BA9391C30B9FC00EE9D1A /* jbinary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16EC79E91BE7637000C1BACA /* jmath.cpp in Sources */,
+				6BDD27941CB754F2005190B4 /* jcurve.cpp in Sources */,
 				167470851C083BA6008BCAE1 /* jallocator.cpp in Sources */,
 				16EC79FF1BE9A9D800C1BACA /* jrenderstategroup.cpp in Sources */,
 				162BA9381C30B9FC00EE9D1A /* jbinary.cpp in Sources */,

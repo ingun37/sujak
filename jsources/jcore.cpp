@@ -17,11 +17,56 @@
 #include "jskinner.hpp"
 #include "jrenderobject.hpp"
 #include "jnode.hpp"
+#include "jcurve.hpp"
 
-typedef jallocator<simd::float4, 256> jallocatorF4;
-typedef jallocator<int, 256> jallocatorInt;
+
+typedef jallocator<simd::float4, 400> jallocatorF4;
+typedef jallocator<int, 400> jallocatorInt;
 
 jrenderstategroup renderstateGroups[JRenderState_number];
+
+void makeRenderObjCurve(simd::float2 p1, simd::float2 p2, simd::float2 t1, simd::float2 t2, unsigned long smooth, jrenderobject& renderobj )
+{
+    simd::float4* poolv = jallocatorF4::getAvailable(smooth+1);
+    simd::float4* poolc = jallocatorF4::getAvailable(smooth+1);
+    int* pooli = jallocatorInt::getAvailable(smooth*2);
+    
+    
+    float times[2] = {p1[0], p2[0]};
+    float values[2] = {p1[1],p2[1]};
+    simd::float2 tangents_l[2] = {{0,0},t2};
+    simd::float2 tangents_r[2] = {t1,{0,0}};
+    jcurve curve;
+    curve.cnt = 2;
+    curve.times = times;
+    curve.values = values;
+    curve.tangents_r = tangents_r;
+    curve.tangents_l = tangents_l;
+    
+    for(int i=0;i<smooth;i++)
+    {
+        float t = i*((times[1]-times[0])/smooth) + times[0];
+        simd::float2 valed = curve.evaluate(t);
+        poolv[i][0] = valed[0];
+        poolv[i][1] = valed[1];
+        poolv[i][2] = 0;
+        poolv[i][3] = 1;
+        
+        poolc[i] = {1,0,0,1};
+        pooli[i*2 + 0] = i;
+        pooli[i*2 + 1] = i+1;
+    }
+    
+    simd::float2 valed = curve.evaluate(times[1]);
+    poolv[smooth][0] = valed[0];
+    poolv[smooth][1] = valed[1];
+    poolv[smooth][2] = 0;
+    poolv[smooth][3] = 1;
+    
+    poolc[smooth] = {1,0,0,1};
+    
+    renderobj.setData(poolv, poolv, poolc, (int)smooth+1, pooli, (int)smooth*2);
+}
 
 void makeRenderObjFromSkeleton( jskeleton& skel, jrenderobject& renderobj )
 {
@@ -195,9 +240,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 {
 	char* file;
 	unsigned long size;
-	
-	
-	
+
 	(*pfunc)(fnameSkel, extJoint, file, size);
 	char* file2;
 	(*pfunc)(fnameSkel, extTable, file2, size);
@@ -224,11 +267,15 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	
 	mesh = jallocatorRenderObjs::getAvailable(1);
 	makeRenderObjFromSkeleton(*sk, *mesh);
-	
 	node = jallocatorJnode::getAvailable(1);
 	node->setData(mesh, sk, NULL);
 	renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
 	
+    mesh = jallocatorRenderObjs::getAvailable(1);
+    makeRenderObjCurve((simd::float2){-50,0}, (simd::float2){50,0}, (simd::float2){0,100}, (simd::float2){0,100}, 10, *mesh);
+    node = jallocatorJnode::getAvailable(1);
+    node->setData(mesh, NULL, NULL);
+    renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
 	
 	jrenderobject* uiquad = jallocatorRenderObjs::getAvailable(1);
 	uiquad->setData(vQuad, nQuad, cQuad, 4, iQuad, 6);
@@ -244,6 +291,7 @@ void jcore::update()
 	float c = cosf(rot);
 	rot += 0.1f;
 
+    /*
 	jnode* mannode = *jallocatorSkinnedMeshes::getAt(0);
 	mannode->getSkeleton()->getjointsArr()[80].rot.euler(c*0.2, s*0.3, 0);
 	mannode->getSkeleton()->getjointsArr()[81].rot.euler(0, 0, s*0.4);
@@ -256,4 +304,5 @@ void jcore::update()
 		jnode* nodeToSkin = *jallocatorSkinnedMeshes::getAt(i);
 		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(mannode->getRenderObject())));
 	}
+     */
 }

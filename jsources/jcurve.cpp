@@ -14,9 +14,14 @@ simd::float4x4 hermite(
                        (simd::float4){-3,3,  -2, -1},
                        (simd::float4){2, -2, 1,  1}
 );
-float jcurve::evaluate(float at)
+simd::float2 jcurve::evaluate(float at)
 {
     //todo optimize
+    
+    if (at > times[cnt-1])
+    {
+        return (simd::float2){times[cnt-1],values[cnt-1]};
+    }
     
     int start=0;
     for(;start<cnt;start++)
@@ -27,17 +32,14 @@ float jcurve::evaluate(float at)
         }
     }
     
-    if (start == cnt-1)
-    {
-        return values[start];
-    }
+    
     
     --start;
     
     float t1 = times[start];
     float t2 = times[start+1];
     
-    float t = (t2-t1)/(at-t1);
+    float t = (at-t1)/(t2-t1);
     
     simd::float4 T = {1,t,t*t,t*t*t};
     
@@ -53,5 +55,5 @@ float jcurve::evaluate(float at)
     
     simd::float2 eval = matrix_multiply(G, matrix_multiply(hermite, T));
     
-    return eval[1];
+    return eval;
 }

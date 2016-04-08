@@ -14,13 +14,13 @@
 
 class jcurve
 {
+public:
     unsigned long cnt;
     float* times;
     float* values;
     simd::float2 *tangents_r;
     simd::float2 *tangents_l;
     
-public:
-    float evaluate(float at);
+    simd::float2 evaluate(float at);
 };
 #endif /* jcurve_hpp */

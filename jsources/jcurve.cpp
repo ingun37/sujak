@@ -14,6 +14,11 @@ simd::float4x4 hermite(
                        (simd::float4){-3,3,  -2, -1},
                        (simd::float4){2, -2, 1,  1}
 );
+
+float jcurve::getTimeInterval(float ratio)
+{
+    return (ratio*times[cnt-1]) + ((1-ratio)*times[0]);
+}
 simd::float2 jcurve::evaluate(float at)
 {
     //todo optimize
@@ -21,6 +26,10 @@ simd::float2 jcurve::evaluate(float at)
     if (at > times[cnt-1])
     {
         return (simd::float2){times[cnt-1],values[cnt-1]};
+    }
+    else if(at < times[0])
+    {
+        return (simd::float2){times[0], values[0]};
     }
     
     int start=0;

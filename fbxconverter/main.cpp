@@ -16,7 +16,9 @@
 #include <list>
 #include "jjoint.h"
 #include "jrotation.hpp"
+#include "jcurve.hpp"
 #include "bitmap_image.hpp"
+
 using namespace std;
 
 typedef struct _vinfo
@@ -238,12 +240,54 @@ void makegraphimg(FbxNode* skel)
         FbxAnimCurve* curve = cnode->GetCurve(i);
         if(curve == NULL)
             continue;
-        FbxTimeSpan span;
-        curve->GetTimeInterval(span);
-        const int smooth = 70;
+        
+        jcurve mycurve;
+        vector<float> mytimes;
+        vector<float> myvalues;
+        vector<simd::float2> mytangents_l;
+        vector<simd::float2> mytangents_r;
+        
+        for(int j=0;j<curve->KeyGetCount();j++)
+        {
+            mytimes.push_back(curve->KeyGetTime(j).GetSecondDouble());
+            myvalues.push_back(curve->KeyGetValue(j));
+            mytangents_l.push_back((simd::float2){-0.01,0});
+            mytangents_r.push_back((simd::float2){ 0.01,0});
+        }
+        
+        mycurve.cnt = curve->KeyGetCount();
+        mycurve.times = &mytimes[0];
+        mycurve.values = &myvalues[0];
+        mycurve.tangents_l = &mytangents_l[0];
+        mycurve.tangents_r = &mytangents_r[0];
         
         int prevx = 0;
-        int prevy = curve->Evaluate(span.GetStart()) + hh;
+        int prevy = mycurve.evaluate(mytimes[0])[1] + hh;
+        
+        const int smooth = 70;
+        
+        //printf("curve keycnt : %d\n", curve->KeyGetCount());
+        for(int j=1;j<=smooth;j++)
+        {
+            float ratio = ((float)j)/smooth;
+            int currx = (float)w * ratio;
+            
+            int curry = (mycurve.evaluate( mycurve.getTimeInterval(ratio) )[1] * 10) + hh;
+            curry = min(max(curry,10),h-10);
+            
+            drawer.pen_color(0, 244, 0);
+            drawer.line_segment(prevx, prevy-4, currx, curry-4);
+            
+            prevx = currx;
+            prevy = curry;
+        }
+        
+        FbxTimeSpan span;
+        curve->GetTimeInterval(span);
+        
+        
+        prevx = 0;
+        prevy = curve->Evaluate(span.GetStart()) + hh;
         //printf("curve keycnt : %d\n", curve->KeyGetCount());
         for(int j=1;j<=smooth;j++)
         {
@@ -303,7 +347,7 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
     
     doanim(scene, idxToNodePointer, fbxname, node->GetName());
     
-    for(int i=0;i<idxToNodePointer.size();i+=6)
+    for(int i=0;i<idxToNodePointer.size();i+=3)
         makegraphimg(idxToNodePointer[i]);
 }
 

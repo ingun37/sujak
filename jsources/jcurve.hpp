@@ -22,5 +22,6 @@ public:
     simd::float2 *tangents_l;
     
     simd::float2 evaluate(float at);
+    float getTimeInterval(float ratio);
 };
 #endif /* jcurve_hpp */

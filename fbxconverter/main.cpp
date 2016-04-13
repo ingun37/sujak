@@ -6,6 +6,7 @@
 //  Copyright © 2015년 Build. All rights reserved.
 //
 
+#include <math.h>
 #include <simd/simd.h>
 #include <iostream>
 #include "fbxsdk.h"
@@ -15,6 +16,7 @@
 #include <list>
 #include "jjoint.h"
 #include "jrotation.hpp"
+#include "bitmap_image.hpp"
 using namespace std;
 
 typedef struct _vinfo
@@ -157,6 +159,8 @@ int makename(const char* szfbxname, const char* sznodename, const char* tail, ch
 
 void skelToArr(FbxNode* node, size_t upperIdx, vector<jjoint> &joints, vector<int> &table, vector<FbxNode*>& idxToSkel, int depth)
 {
+    //if(node->LclTranslation.GetCurveNode() != NULL)
+    //    printf("%s has curvenode\n", node->GetName());
 	jjoint joint;
 	FbxDouble3 euler = node->LclRotation.Get();
 	
@@ -207,9 +211,66 @@ int doanim(FbxScene* scene, vector<FbxNode*>& idxToNodePointer, const char* fbxn
     simd::float2 tangents_l[ckeycnt] = {{0,0},{1,1},{1,1},{1,1}};
     endfile();
      */
+    
+    
     return 0;
 }
-
+void makegraphimg(FbxNode* skel)
+{
+    printf("making graph img : %s\n", skel->GetName());
+    const int w = 512;
+    const int h = 1024;
+    const int hh = h/2;
+    bitmap_image img(w+16,h);
+    img.clear();
+    image_drawer drawer(img);
+    
+    char cr = 244;
+    char cg = 0;
+    char cb = 0;
+    
+    
+    FbxAnimCurveNode* cnode = skel->LclRotation.GetCurveNode();
+    for(int i=0;i<cnode->GetChannelsCount();i++)
+    {
+        
+        printf("channel name : %s\n", (cnode->GetChannelName(i).Buffer()));
+        FbxAnimCurve* curve = cnode->GetCurve(i);
+        if(curve == NULL)
+            continue;
+        FbxTimeSpan span;
+        curve->GetTimeInterval(span);
+        const int smooth = 70;
+        
+        int prevx = 0;
+        int prevy = curve->Evaluate(span.GetStart()) + hh;
+        //printf("curve keycnt : %d\n", curve->KeyGetCount());
+        for(int j=1;j<=smooth;j++)
+        {
+            float ratio = ((float)j)/smooth;
+            int currx = (float)w * ratio;
+            
+            double t_in_double = span.GetStart().GetSecondDouble() + (span.GetDuration().GetSecondDouble() * ratio);
+            FbxTime t;
+            t.SetSecondDouble(t_in_double);
+            float val = curve->Evaluate(t);
+            //printf("%.5f : %f, %f, %f * %f\n", t.GetSecondDouble(), val, span.GetStart().GetSecondDouble(), span.GetDuration().GetSecondDouble(), ratio);
+            int curry = (val * 10) + hh;
+            curry = min(max(curry,10),h-10);
+            
+            cb = ratio * 255;
+            drawer.pen_color(cr, cg, cb);
+            drawer.line_segment(prevx, prevy, currx, curry);
+            
+            prevx = currx;
+            prevy = curry;
+        }
+    }
+    
+    makename("graph", skel->GetName(), ".png", namebuff, sizeof(namebuff));
+    img.save_image(namebuff);
+    
+}
 void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode*>& idxToNodePointer)
 {
 	vector<jjoint> joints;
@@ -241,6 +302,9 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
 	endfile();
     
     doanim(scene, idxToNodePointer, fbxname, node->GetName());
+    
+    for(int i=0;i<idxToNodePointer.size();i+=6)
+        makegraphimg(idxToNodePointer[i]);
 }
 
 /*
@@ -251,11 +315,16 @@ void doSkin( FbxNode* node, vector<FbxNode*> &idxToNode, const char* fbxname, ve
 {
 	
 	FbxMesh* mesh = node->GetMesh();
-	if(mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) != 1)
+	if(mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) > 1)
 	{
 		cout << node->GetName() << " has " << mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) << " skin deformer." << endl;
 		exit(1);
 	}
+    else if(mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) ==0)
+    {
+        cout << node->GetName() << " has " << mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) << " skin deformer. skipping." << endl;
+        return;
+    }
 	
 	cout << "mesh has " << mesh->GetDeformerCount() << " deformers, " << mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) << " skin deformers." << endl;
 	
@@ -525,6 +594,20 @@ void domesh( FbxNode* node, vector<FbxNode *> &idxToNode, const char* fbxname )
 			indicesFinal.push_back( polygonsIndices[3]);
 			indicesFinal.push_back( polygonsIndices[0]);
 		}
+        else if(polysize == 5)
+        {
+            indicesFinal.push_back( polygonsIndices[0]);
+            indicesFinal.push_back( polygonsIndices[1]);
+            indicesFinal.push_back( polygonsIndices[2]);
+            
+            indicesFinal.push_back( polygonsIndices[0]);
+            indicesFinal.push_back( polygonsIndices[2]);
+            indicesFinal.push_back( polygonsIndices[3]);
+            
+            indicesFinal.push_back( polygonsIndices[0]);
+            indicesFinal.push_back( polygonsIndices[3]);
+            indicesFinal.push_back( polygonsIndices[4]);
+        }
 		else
 		{
 			cout << "not ready for " << (*it)->size() << " poly" << endl;
@@ -629,7 +712,7 @@ int main(int argc, const char * argv[])
 	}
 #else
 	cout << "debug mode" << endl;
-	char debugfilename[] = "fbxs/test.fbx\0";
+	char debugfilename[] = "fbxs/soldier.fbx\0";
 	argv[1] = debugfilename;
 #endif
 	

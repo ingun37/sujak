@@ -137,6 +137,7 @@
 		626C5FE819329E72007A3E00 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		626C5FEA19329E78007A3E00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		6B351CC51CBE3BFF00540D7F /* bitmap_image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bitmap_image.hpp; sourceTree = "<group>"; };
 		6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurvenode.cpp; sourceTree = "<group>"; };
 		6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurvenode.hpp; sourceTree = "<group>"; };
 		6BDD27921CB754F2005190B4 /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jcurve.cpp; path = jsources/jcurve.cpp; sourceTree = "<group>"; };
@@ -193,6 +194,7 @@
 				16CFCA411C06EB00009E29C2 /* jjoint.h */,
 				1674707E1C0713B9008BCAE1 /* jrotation.cpp */,
 				1674707F1C0713B9008BCAE1 /* jrotation.hpp */,
+				6B351CC51CBE3BFF00540D7F /* bitmap_image.hpp */,
 				167470831C083BA6008BCAE1 /* jallocator.cpp */,
 				167470841C083BA6008BCAE1 /* jallocator.hpp */,
 				16E1C5C61C15B3420055B8F5 /* jnode.cpp */,

@@ -180,12 +180,42 @@ void skelToArr(FbxNode* node, size_t upperIdx, vector<jjoint> &joints, vector<in
 		skelToArr( node->GetChild(i) , idx, joints, table, idxToSkel, depth + 1);
 	}
 }
-void doskel( FbxNode* node, const char* argv[], vector<FbxNode*>& idxToNodePointer)
+
+int doanim(FbxScene* scene, vector<FbxNode*>& idxToNodePointer, const char* fbxname, const char* skelname)
+{
+    int numStacks = scene->GetSrcObjectCount<FbxAnimStack>();
+    cout << "animation stack cnt : " << numStacks << endl;
+    for(int i=0;i<numStacks;i++)
+    {
+        FbxAnimStack *animstack = scene->GetSrcObject<FbxAnimStack>(i);
+        cout << i << ". stack : " << animstack->GetName() << endl;
+        int numLayers = animstack->GetMemberCount<FbxAnimLayer>();
+        cout << "\tlayer cnt : " << numLayers << endl;
+        for(int j=0;j<numLayers;j++)
+        {
+            FbxAnimLayer* layer = animstack->GetMember<FbxAnimLayer>(j);
+            cout << "\t" << j << ". layer : " << layer->GetName() << endl;
+        }
+    }
+    /*
+    makename(fbxname, skelname, ".janim\0", namebuff, sizeof(namebuff));
+    startfile(namebuff);
+    const int ckeycnt = 4;
+    int keycnt = ckeycnt;
+    float times[ckeycnt] = {0,4,8,12};
+    float values[ckeycnt] = {0,3.14f/2, -3.14f/2, 0};
+    simd::float2 tangents_l[ckeycnt] = {{0,0},{1,1},{1,1},{1,1}};
+    endfile();
+     */
+    return 0;
+}
+
+void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode*>& idxToNodePointer)
 {
 	vector<jjoint> joints;
 	vector<int> table;
 
-	makename(argv[1], node->GetName(), ".log\0", namebuff, sizeof(namebuff));
+	makename(fbxname, node->GetName(), ".log\0", namebuff, sizeof(namebuff));
 	startlog(namebuff);
 	skelToArr(node, -1, joints, table, idxToNodePointer, 0);
 	endlog();
@@ -198,17 +228,19 @@ void doskel( FbxNode* node, const char* argv[], vector<FbxNode*>& idxToNodePoint
 	cout << "joint cnt : " << joints.size() << endl;
 	
 	int tmp;
-	makename(argv[1], node->GetName(),".jtable\0", namebuff, sizeof(namebuff));
+	makename(fbxname, node->GetName(),".jtable\0", namebuff, sizeof(namebuff));
 	startfile(namebuff);
 	tmp = (int)table.size();
 	writefile(&tmp, sizeof(int));
 	writefile(&table[0], sizeof(int)*table.size());
 	endfile();
 	
-	makename(argv[1], node->GetName(), ".jjoints\0", namebuff, sizeof(namebuff));
+	makename(fbxname, node->GetName(), ".jjoints\0", namebuff, sizeof(namebuff));
 	startfile(namebuff);
 	writefile(&joints[0], sizeof(jjoint)*joints.size());
 	endfile();
+    
+    doanim(scene, idxToNodePointer, fbxname, node->GetName());
 }
 
 /*
@@ -537,32 +569,15 @@ FbxNode* getRootSkelNode(FbxScene* scene)
 	return NULL;
 }
 
-int doanim(FbxScene* scene, vector<FbxNode*>& idxToNodePointer)
-{
-	int numStacks = scene->GetSrcObjectCount<FbxAnimStack>();
-	cout << "animation stack cnt : " << numStacks << endl;
-	for(int i=0;i<numStacks;i++)
-	{
-		FbxAnimStack *animstack = scene->GetSrcObject<FbxAnimStack>(i);
-		cout << i << ". stack : " << animstack->GetName() << endl;
-		int numLayers = animstack->GetMemberCount<FbxAnimLayer>();
-		cout << "\tlayer cnt : " << numLayers << endl;
-		for(int j=0;j<numLayers;j++)
-		{
-			FbxAnimLayer* layer = animstack->GetMember<FbxAnimLayer>(j);
-			cout << "\t" << j << ". layer : " << layer->GetName() << endl;
-		}
-	}
-	return 0;
-}
-int doScene(FbxManager* fm, FbxScene* scene, const char* argv[])
+
+int doScene(FbxManager* fm, FbxScene* scene, const char* fbxname)
 {
 	//todo check if skinning also done;
 	//do skeleton (make jjoints, jtable, fbxskel to index table)
 	FbxNode* rootSkelNode = getRootSkelNode(scene);
 	vector<FbxNode*> idxToNodePointer;
-	doskel(rootSkelNode, argv, idxToNodePointer);
-	doanim(scene, idxToNodePointer);
+	doskel(scene, rootSkelNode, fbxname, idxToNodePointer);
+	
 	//do mesh. create jmesh and jskin
 	for(int i=0;i<scene->GetNodeCount();i++)
 	{
@@ -574,7 +589,7 @@ int doScene(FbxManager* fm, FbxScene* scene, const char* argv[])
 		
 		if (type == FbxNodeAttribute::EType::eMesh)
 		{
-			domesh(node, idxToNodePointer, argv[1]);
+			domesh(node, idxToNodePointer, fbxname);
 			
 			
 		}
@@ -643,7 +658,7 @@ int main(int argc, const char * argv[])
 	
 	memset(fname, 0, sizeof(fname));
 	
-	doScene(fm, scene, argv);
+	doScene(fm, scene, argv[1]);
 
 	scene->Destroy();
 	importer->Destroy();

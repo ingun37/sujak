@@ -58,6 +58,9 @@
 		626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FE819329E72007A3E00 /* Metal.framework */; };
 		626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FEA19329E78007A3E00 /* QuartzCore.framework */; };
 		62F8146919AFBD9E00C9BDD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */; };
+		6BC97EDD1CBCE3AC0042EA34 /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */; };
+		6BC97EDE1CBCE3AC0042EA34 /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */; };
+		6BC97EDF1CBCE3AC0042EA34 /* jcurvenode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */; };
 		6BDD27941CB754F2005190B4 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BDD27921CB754F2005190B4 /* jcurve.cpp */; };
 		6BDD27951CB754F2005190B4 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BDD27921CB754F2005190B4 /* jcurve.cpp */; };
 		6BDD27961CB754F2005190B4 /* jcurve.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BDD27931CB754F2005190B4 /* jcurve.hpp */; };
@@ -134,6 +137,8 @@
 		626C5FE819329E72007A3E00 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		626C5FEA19329E78007A3E00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurvenode.cpp; sourceTree = "<group>"; };
+		6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurvenode.hpp; sourceTree = "<group>"; };
 		6BDD27921CB754F2005190B4 /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jcurve.cpp; path = jsources/jcurve.cpp; sourceTree = "<group>"; };
 		6BDD27931CB754F2005190B4 /* jcurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jcurve.hpp; path = jsources/jcurve.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +206,8 @@
 				162BA9361C30B9FC00EE9D1A /* jbinary.cpp */,
 				162BA9371C30B9FC00EE9D1A /* jbinary.hpp */,
 				168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */,
+				6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */,
+				6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */,
 			);
 			name = jsources;
 			sourceTree = "<group>";
@@ -313,6 +320,7 @@
 				16CFCA421C06EB00009E29C2 /* jjoint.h in Headers */,
 				626C5FDB193298EF007A3E00 /* AAPLViewController.h in Headers */,
 				16EC79EA1BE7637000C1BACA /* jmath.hpp in Headers */,
+				6BC97EDF1CBCE3AC0042EA34 /* jcurvenode.hpp in Headers */,
 				16EC7A291BE9F44600C1BACA /* jcore.hpp in Headers */,
 				1682CBFB1C2BDEDD0090C084 /* jvideomemorymapper.hpp in Headers */,
 				168D336B1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h in Headers */,
@@ -423,6 +431,7 @@
 				167470811C0713B9008BCAE1 /* jrotation.cpp in Sources */,
 				1606DB2D1BF9AA0500976579 /* main.cpp in Sources */,
 				6BDD27951CB754F2005190B4 /* jcurve.cpp in Sources */,
+				6BC97EDE1CBCE3AC0042EA34 /* jcurvenode.cpp in Sources */,
 				162BA9391C30B9FC00EE9D1A /* jbinary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +444,7 @@
 				6BDD27941CB754F2005190B4 /* jcurve.cpp in Sources */,
 				167470851C083BA6008BCAE1 /* jallocator.cpp in Sources */,
 				16EC79FF1BE9A9D800C1BACA /* jrenderstategroup.cpp in Sources */,
+				6BC97EDD1CBCE3AC0042EA34 /* jcurvenode.cpp in Sources */,
 				162BA9381C30B9FC00EE9D1A /* jbinary.cpp in Sources */,
 				626C5FDA193298EF007A3E00 /* AAPLView.mm in Sources */,
 				163BF8A01C2287500046E0E1 /* jskinner.cpp in Sources */,

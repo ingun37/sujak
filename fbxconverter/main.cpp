@@ -368,11 +368,8 @@ void writeCurveChannelKeyCnt(FbxNode* skel)
     }
 }
 
-
-
-void writeCurveInfo(FbxNode* skel)
+void diffimage(jcurve& c1, FbxAnimCurve* c2, const char* imgname)
 {
-    //printf("making graph img : %s\n", skel->GetName());
     const int w = 1600;
     const int h = 1600;
     const int hh = h/2;
@@ -384,12 +381,64 @@ void writeCurveInfo(FbxNode* skel)
     char cg = 0;
     char cb = 0;
     
+    int prevx = 0;
+    int prevy = c1.evaluate(c1.times[0]) + hh;
     
+    const int smooth = 140;
+    
+    //printf("curve keycnt : %d\n", curve->KeyGetCount());
+    for(int j=1;j<=smooth;j++)
+    {
+        float ratio = ((float)j)/smooth;
+        int currx = (float)w * ratio;
+        
+        int curry = (c1.evaluate( c1.getTimeInterval(ratio) ) * 10) + hh;
+        curry = min(max(curry,10),h-10);
+        
+        drawer.pen_color(0, 244, 0);
+        drawer.line_segment(prevx, prevy-4, currx, curry-4);
+        
+        prevx = currx;
+        prevy = curry;
+    }
+    
+    FbxTimeSpan span;
+    c2->GetTimeInterval(span);
+    
+    
+    prevx = 0;
+    prevy = c2->Evaluate(span.GetStart()) + hh;
+    //printf("curve keycnt : %d\n", curve->KeyGetCount());
+    for(int j=1;j<=smooth;j++)
+    {
+        float ratio = ((float)j)/smooth;
+        int currx = (float)w * ratio;
+        
+        double t_in_double = span.GetStart().GetSecondDouble() + (span.GetDuration().GetSecondDouble() * ratio);
+        FbxTime t;
+        t.SetSecondDouble(t_in_double);
+        float val = c2->Evaluate(t);
+        //printf("%.5f : %f, %f, %f * %f\n", t.GetSecondDouble(), val, span.GetStart().GetSecondDouble(), span.GetDuration().GetSecondDouble(), ratio);
+        int curry = (val * 10) + hh;
+        curry = min(max(curry,10),h-10);
+        
+        cb = ratio * 255;
+        drawer.pen_color(cr, cg, cb);
+        drawer.line_segment(prevx, prevy, currx, curry);
+        
+        prevx = currx;
+        prevy = curry;
+    }
+
+    makename("graph", imgname, ".png", namebuff, sizeof(namebuff));
+    img.save_image(namebuff);
+}
+
+void writeCurveInfo(FbxNode* skel)
+{
     FbxAnimCurveNode* cnode = skel->LclRotation.GetCurveNode();
     for(int i=0;i<cnode->GetChannelsCount();i++)
     {
-        
-        //printf("channel name : %s\n", (cnode->GetChannelName(i).Buffer()));
         FbxAnimCurve* curve = cnode->GetCurve(i);
         if(curve == NULL)
             continue;
@@ -398,59 +447,12 @@ void writeCurveInfo(FbxNode* skel)
         
         makejcurveFromFbxcurve(mycurve, curve);
         
-        int prevx = 0;
-        int prevy = mycurve.evaluate(mycurve.times[0]) + hh;
-        
-        const int smooth = 140;
-        
-        //printf("curve keycnt : %d\n", curve->KeyGetCount());
-        for(int j=1;j<=smooth;j++)
-        {
-            float ratio = ((float)j)/smooth;
-            int currx = (float)w * ratio;
-            
-            int curry = (mycurve.evaluate( mycurve.getTimeInterval(ratio) ) * 10) + hh;
-            curry = min(max(curry,10),h-10);
-            
-            drawer.pen_color(0, 244, 0);
-            drawer.line_segment(prevx, prevy-4, currx, curry-4);
-            
-            prevx = currx;
-            prevy = curry;
-        }
-        
-        FbxTimeSpan span;
-        curve->GetTimeInterval(span);
-        
-        
-        prevx = 0;
-        prevy = curve->Evaluate(span.GetStart()) + hh;
-        //printf("curve keycnt : %d\n", curve->KeyGetCount());
-        for(int j=1;j<=smooth;j++)
-        {
-            float ratio = ((float)j)/smooth;
-            int currx = (float)w * ratio;
-            
-            double t_in_double = span.GetStart().GetSecondDouble() + (span.GetDuration().GetSecondDouble() * ratio);
-            FbxTime t;
-            t.SetSecondDouble(t_in_double);
-            float val = curve->Evaluate(t);
-            //printf("%.5f : %f, %f, %f * %f\n", t.GetSecondDouble(), val, span.GetStart().GetSecondDouble(), span.GetDuration().GetSecondDouble(), ratio);
-            int curry = (val * 10) + hh;
-            curry = min(max(curry,10),h-10);
-            
-            cb = ratio * 255;
-            drawer.pen_color(cr, cg, cb);
-            drawer.line_segment(prevx, prevy, currx, curry);
-            
-            prevx = currx;
-            prevy = curry;
-        }
+        writefile(mycurve.interpolations, sizeof(mycurve.interpolations[0]) * mycurve.cnt);
+        writefile(mycurve.times, sizeof(mycurve.times[0]) * mycurve.cnt);
+        writefile(mycurve.values, sizeof(mycurve.values[0]) * mycurve.cnt);
+        writefile(mycurve.tangents_l, sizeof(mycurve.tangents_l[0]) * mycurve.cnt);
+        writefile(mycurve.tangents_r, sizeof(mycurve.tangents_r[0]) * mycurve.cnt);
     }
-    
-    makename("graph", skel->GetName(), ".png", namebuff, sizeof(namebuff));
-    img.save_image(namebuff);
-    
 }
 void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode*>& idxToNodePointer)
 {

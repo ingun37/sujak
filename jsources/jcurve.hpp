@@ -12,16 +12,19 @@
 #include <stdio.h>
 #include <simd/simd.h>
 
+enum JCURVEINTERPOLATION { JCURVEINTERPOLATION_CONSTANT, JCURVEINTERPOLATION_LINEAR, JCURVEINTERPOLATION_CUBIC };
 class jcurve
 {
 public:
-    unsigned long cnt;
+    int cnt;
+    
     float* times;
     float* values;
+    JCURVEINTERPOLATION *interpolations;
     simd::float2 *tangents_r;
     simd::float2 *tangents_l;
     
-    simd::float2 evaluate(float at);
+    float evaluate(float at);
     float getTimeInterval(float ratio);
 };
 #endif /* jcurve_hpp */

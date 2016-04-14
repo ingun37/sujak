@@ -218,12 +218,133 @@ int doanim(FbxScene* scene, vector<FbxNode*>& idxToNodePointer, const char* fbxn
     return 0;
 }
 
+template <typename T>
+void copyVectorTo(vector<T>& vec, T* p)
+{
+    memcpy(p, &vec[0], sizeof(T) * vec.size());
+}
+
 void makejcurveFromFbxcurve(jcurve& dst, FbxAnimCurve* src)
 {
-    for(int i=0;i<src->KeyGetCount();i++)
+    dst.cnt = src->KeyGetCount();
+    
+    vector<JCURVEINTERPOLATION> myinterpolations;
+    vector<float> mytimes;
+    vector<float> myvalues;
+    
+    for(int j=0;j<dst.cnt;j++)
     {
-        
+        mytimes.push_back(src->KeyGetTime(j).GetSecondDouble());
+        myvalues.push_back(src->KeyGetValue(j));
     }
+    
+    for(int j=0;j<dst.cnt-1;j++)
+    {
+        if(mytimes[j] == mytimes[j+1])
+        {
+            printf(" at %d time aliasing fail\n", j);
+            exit(1);
+        }
+    }
+    
+    vector<simd::float2> mytangents_l;
+    vector<simd::float2> mytangents_r;
+    
+    for(int j=0;j<dst.cnt;j++)
+    {
+        simd::float2 tin = {0,0};
+        simd::float2 tout = {0,0};
+        
+        FbxAnimCurveKey key = src->KeyGet(j);
+        
+        if(key.GetInterpolation() == FbxAnimCurveDef::EInterpolationType::eInterpolationCubic)
+        {
+            myinterpolations.push_back(JCURVEINTERPOLATION_CUBIC);
+            
+            float tension = key.GetDataFloat(FbxAnimCurveDef::EDataIndex::eTCBTension);
+            float continuity = key.GetDataFloat(FbxAnimCurveDef::EDataIndex::eTCBContinuity);
+            float bias = key.GetDataFloat(FbxAnimCurveDef::EDataIndex::eTCBBias);
+            
+            auto relpos = [&](int idx)
+            {
+                int relidx = j + idx;
+                if (0 > relidx || relidx >= src->KeyGetCount())
+                {
+                    return (simd::float2){0,0};
+                }
+                return (simd::float2){static_cast<float>(mytimes[relidx]), myvalues[relidx]};
+            };
+            
+            simd::float2 prevp = relpos(-1);
+            simd::float2 currp = relpos(0);
+            simd::float2 nextp = relpos(1);
+            
+            float tcb1;
+            float tcb2;
+            
+            if(j==0)
+            {
+                tout = nextp - currp;
+            }
+            else if(j==dst.cnt-1)
+            {
+                tin = currp - prevp;
+            }
+            else
+            {
+                tcb1 = (1-tension)*(1+continuity)*(1-bias)/2;
+                tcb2 = (1-tension)*(1-continuity)*(1+bias)/2;
+                
+                tin = (tcb1*(nextp-currp))+(tcb2*(currp-prevp));
+                
+                tcb1 = (1-tension)*(1-continuity)*(1-bias)/2;
+                tcb2 = (1-tension)*(1+continuity)*(1+bias)/2;
+                
+                tout = (tcb1*(nextp-currp))+(tcb2*(currp-prevp));
+            }
+            
+            if(tin[0] < 0 || tout[0] < 0)
+            {
+                puts("negative x in tout and tin\n");
+                exit(1);
+            }
+        }
+        else if(key.GetInterpolation() == FbxAnimCurveDef::eInterpolationLinear)
+        {
+            myinterpolations.push_back(JCURVEINTERPOLATION_LINEAR);
+        }
+        else if(key.GetInterpolation() == FbxAnimCurveDef::eInterpolationConstant)
+        {
+            myinterpolations.push_back(JCURVEINTERPOLATION_CONSTANT);
+        }
+        mytangents_l.push_back(tin);
+        mytangents_r.push_back(tout);
+    }
+    
+    if( dst.cnt != myinterpolations.size() ||
+       myinterpolations.size() != mytimes.size() ||
+       mytimes.size() != myvalues.size() ||
+       myvalues.size() != mytangents_l.size() ||
+       mytangents_l.size() != mytangents_r.size() )
+    {
+        printf("len err\n");
+        exit(1);
+    }
+
+    dst.interpolations = new JCURVEINTERPOLATION[dst.cnt];
+    copyVectorTo(myinterpolations, dst.interpolations);
+    
+    dst.times = new float[dst.cnt];
+    copyVectorTo(mytimes, dst.times);
+
+    dst.values = new float[dst.cnt];
+    copyVectorTo(myvalues, dst.values);
+
+    dst.tangents_l = new simd::float2[dst.cnt];
+    copyVectorTo(mytangents_l, dst.tangents_l);
+    
+    dst.tangents_r = new simd::float2[dst.cnt];
+    copyVectorTo(mytangents_r, dst.tangents_r);
 }
 
 void writeCurveChannelCnt(FbxNode* skel)
@@ -247,11 +368,13 @@ void writeCurveChannelKeyCnt(FbxNode* skel)
     }
 }
 
+
+
 void writeCurveInfo(FbxNode* skel)
 {
-    printf("making graph img : %s\n", skel->GetName());
+    //printf("making graph img : %s\n", skel->GetName());
     const int w = 1600;
-    const int h = 1024;
+    const int h = 1600;
     const int hh = h/2;
     bitmap_image img(w+16,h);
     img.clear();
@@ -266,128 +389,17 @@ void writeCurveInfo(FbxNode* skel)
     for(int i=0;i<cnode->GetChannelsCount();i++)
     {
         
-        printf("channel name : %s\n", (cnode->GetChannelName(i).Buffer()));
+        //printf("channel name : %s\n", (cnode->GetChannelName(i).Buffer()));
         FbxAnimCurve* curve = cnode->GetCurve(i);
         if(curve == NULL)
             continue;
         
         jcurve mycurve;
-        vector<JCURVEINTERPOLATION> myinterpolations;
-        vector<float> mytimes;
-        vector<float> myvalues;
         
-        for(int j=0;j<curve->KeyGetCount();j++)
-        {
-            mytimes.push_back(curve->KeyGetTime(j).GetSecondDouble());
-            myvalues.push_back(curve->KeyGetValue(j));
-        }
-        
-        for(int j=0;j<curve->KeyGetCount()-1;j++)
-        {
-            if(mytimes[j] == mytimes[j+1])
-            {
-                printf(" at %d time aliasing fail\n", j);
-                exit(1);
-            }
-        }
-        vector<simd::float2> mytangents_l;
-        vector<simd::float2> mytangents_r;
-        
-        for(int j=0;j<curve->KeyGetCount();j++)
-        {
-            simd::float2 tin = {0,0};
-            simd::float2 tout = {0,0};
-            
-            FbxAnimCurveKey key = curve->KeyGet(j);
-            
-            if(key.GetInterpolation() == FbxAnimCurveDef::EInterpolationType::eInterpolationCubic)
-            {
-                myinterpolations.push_back(JCURVEINTERPOLATION_CUBIC);
-                float tension = key.GetDataFloat(FbxAnimCurveDef::EDataIndex::eTCBTension);
-                float continuity = key.GetDataFloat(FbxAnimCurveDef::EDataIndex::eTCBContinuity);
-                float bias = key.GetDataFloat(FbxAnimCurveDef::EDataIndex::eTCBBias);
-                
-                auto relpos = [&](int idx)
-                {
-                    int relidx = j + idx;
-                    if (0 > relidx || relidx >= curve->KeyGetCount())
-                    {
-                        return (simd::float2){0,0};
-                    }
-                    return (simd::float2){static_cast<float>(mytimes[relidx]), myvalues[relidx]};
-                };
-                
-                simd::float2 prevp = relpos(-1);
-                simd::float2 currp = relpos(0);
-                simd::float2 nextp = relpos(1);
-                
-                float tcb1;
-                float tcb2;
-                
-                if(j==0)
-                {
-                    tout = nextp - currp;
-                }
-                else if(j==curve->KeyGetCount()-1)
-                {
-                    tin = currp - prevp;
-                }
-                else
-                {
-                    tcb1 = (1-tension)*(1+continuity)*(1-bias)/2;
-                    tcb2 = (1-tension)*(1-continuity)*(1+bias)/2;
-                
-                    tin = (tcb1*(nextp-currp))+(tcb2*(currp-prevp));
-                
-                    tcb1 = (1-tension)*(1-continuity)*(1-bias)/2;
-                    tcb2 = (1-tension)*(1+continuity)*(1+bias)/2;
-                
-                    tout = (tcb1*(nextp-currp))+(tcb2*(currp-prevp));
-                }
-                
-                if(tin[0] < 0 || tout[0] < 0)
-                {
-                    puts("negative x in tout and tin\n");
-                    exit(1);
-                }
-            }
-            else if(key.GetInterpolation() == FbxAnimCurveDef::eInterpolationLinear)
-            {
-                myinterpolations.push_back(JCURVEINTERPOLATION_LINEAR);
-            }
-            else if(key.GetInterpolation() == FbxAnimCurveDef::eInterpolationConstant)
-            {
-                myinterpolations.push_back(JCURVEINTERPOLATION_CONSTANT);
-            }
-            mytangents_l.push_back(tin);
-            mytangents_r.push_back(tout);
-        }
-        
-        if( curve->KeyGetCount() != myinterpolations.size() ||
-           myinterpolations.size() != mytimes.size() ||
-           mytimes.size() != myvalues.size() ||
-           myvalues.size() != mytangents_l.size() ||
-           mytangents_l.size() != mytangents_r.size() )
-        {
-            printf("len err\n");
-            exit(1);
-        }
-        
-        writefile(&myinterpolations[0], sizeof(myinterpolations[0]) * myinterpolations.size());
-        writefile(&mytimes[0], sizeof(mytimes[0]) * mytimes.size());
-        writefile(&myvalues[0], sizeof(myvalues[0]) * myvalues.size());
-        writefile(&mytangents_l[0], sizeof(mytangents_l[0]) * mytangents_l.size());
-        writefile(&mytangents_r[0], sizeof(mytangents_r[0]) * mytangents_r.size());
-        
-        mycurve.cnt = curve->KeyGetCount();
-        mycurve.interpolations = &myinterpolations[0];
-        mycurve.times = &mytimes[0];
-        mycurve.values = &myvalues[0];
-        mycurve.tangents_l = &mytangents_l[0];
-        mycurve.tangents_r = &mytangents_r[0];
+        makejcurveFromFbxcurve(mycurve, curve);
         
         int prevx = 0;
-        int prevy = mycurve.evaluate(mytimes[0]) + hh;
+        int prevy = mycurve.evaluate(mycurve.times[0]) + hh;
         
         const int smooth = 140;
         

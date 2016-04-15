@@ -280,15 +280,16 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 
 void jcore::update()
 {
+    /*
 	static float rot = 0;
 	float s = sinf(rot);
 	float c = cosf(rot);
 	rot += 0.1f;
 
-    /*
+    
 	jnode* mannode = *jallocatorSkinnedMeshes::getAt(0);
-	mannode->getSkeleton()->getjointsArr()[80].rot.euler(c*0.2, s*0.3, 0);
-	mannode->getSkeleton()->getjointsArr()[81].rot.euler(0, 0, s*0.4);
+	mannode->getSkeleton()->getjointsArr()[10].rot.euler(c*0.2, s*0.3, 0);
+	mannode->getSkeleton()->getjointsArr()[20].rot.euler(0, 0, s*0.4);
 	mannode->getSkeleton()->getjointsArr()[1].rot.euler(0, 0, c*0.2);
 	mannode->getSkeleton()->getjointsArr()[2].rot.euler(0, 0, s*0.14);
 	mannode->getSkeleton()->getjointsArr()[3].rot.euler(0, 0, c*0.22);
@@ -299,4 +300,5 @@ void jcore::update()
 		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(mannode->getRenderObject())));
 	}
      */
+    
 }

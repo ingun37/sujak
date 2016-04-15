@@ -41,6 +41,13 @@ public:
 			xyzw[3]*r.xyzw[3] - xyzw[0]*r.xyzw[0] - xyzw[1]*r.xyzw[1] - xyzw[2]*r.xyzw[2],
 		});
 	}
+    
+    inline void euler_degree(float _x, float _y, float _z)
+    {
+        const float convert = 3.141592 / 180;
+        euler(_x * convert, _y * convert, _z * convert);
+    }
+    
 	inline void euler(float _x, float _y, float _z)
 	{
 		//TODO : faster

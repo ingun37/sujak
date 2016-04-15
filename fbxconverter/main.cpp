@@ -471,7 +471,7 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
 	}
 
 	cout << "joint cnt : " << joints.size() << endl;
-    printf("spine1 : %f %f %f\n", idxToNodePointer[1]->LclTranslation.Get()[0], idxToNodePointer[1]->LclTranslation.Get()[1], idxToNodePointer[1]->LclTranslation.Get()[2]);
+    //printf("spine1 : %f %f %f\n", idxToNodePointer[1]->LclTranslation.Get()[0], idxToNodePointer[1]->LclTranslation.Get()[1], idxToNodePointer[1]->LclTranslation.Get()[2]);
     for(int i=0;i<joints.size();i++)
     {
         simd::float4 v = {0,0,0,1};
@@ -481,12 +481,12 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
             v = matrix_multiply(joints[i].getTransMat(), v);
             tmp = table[tmp];
         }
-        printf("%d. %f %f %f\n", i, v[0], v[1], v[2]);
+        //printf("%d. %f %f %f\n", i, v[0], v[1], v[2]);
         
         FbxAMatrix mat = idxToNodePointer[i]->EvaluateGlobalTransform();
         FbxVector4 mt = mat.GetT();
         
-        printf("%d. %f %f %f\n",i, mt.mData[0], mt.mData[1], mt.mData[2]);
+        //printf("%d. %f %f %f\n",i, mt.mData[0], mt.mData[1], mt.mData[2]);
     }
     
 	int tmp;
@@ -672,7 +672,7 @@ void domesh( FbxNode* node, vector<FbxNode *> &idxToNode, const char* fbxname )
 		cout << "mesh is null" << endl;
 		exit(1);
 	}
-	FbxGeometryElementNormal *normalelement = mesh->GetElementNormal();
+    FbxGeometryElementNormal *normalelement = mesh->GetElementNormal();
 	
 	if(!normalelement)
 	{
@@ -779,7 +779,7 @@ void domesh( FbxNode* node, vector<FbxNode *> &idxToNode, const char* fbxname )
 			exit(1);
 		}
 	}
-
+    
 	doSkin(node, idxToNode, fbxname, vertexMap, (int)positions.size());
 	
 	for (vector<vector<int>*>::iterator it = indices.begin(); it!=indices.end(); it++)
@@ -823,12 +823,25 @@ void domesh( FbxNode* node, vector<FbxNode *> &idxToNode, const char* fbxname )
 		}
 	}
 	
+    jtranslation t;
+    t.setPos(node->LclTranslation.Get()[0], node->LclTranslation.Get()[1], node->LclTranslation.Get()[2]);
+    jrotation rpre, r, rpost;
+    
+    rpre.euler_degree(node->PreRotation.Get()[0], node->PreRotation.Get()[1], node->PreRotation.Get()[2]);
+    r.euler_degree(node->LclRotation.Get()[0], node->LclRotation.Get()[1], node->LclRotation.Get()[2]);
+    rpost.euler_degree(node->PostRotation.Get()[0], node->PostRotation.Get()[1], node->PostRotation.Get()[2]);
+    
+    //printf("%s rot : %f %f %f\n",node->GetName(), node->PreRotation.Get()[0], node->PreRotation.Get()[1], node->PreRotation.Get()[2]);
+    for(int i=0;i<positions.size();i++)
+    {
+        simd::float4 roted = matrix_multiply(rpost.toMat(), matrix_multiply(r.toMat(), matrix_multiply(rpre.toMat(), positions[i])));
+        positions[i] = matrix_multiply(t.getMat(), roted);
+    }
+    
 	makename(fbxname, node->GetName(),".jmesh\0", namebuff, sizeof(namebuff));
 	startfile(namebuff);
 	writefile_copy<int>((int)positions.size());
 	writefile_copy<int>((int)indicesFinal.size());
-
-
 	writefile(&positions[0], sizeof(simd::float4)*positions.size());
 	writefile(&normals[0], sizeof(simd::float4)*normals.size());
 	writefile(&indicesFinal[0], sizeof(int) * indicesFinal.size());

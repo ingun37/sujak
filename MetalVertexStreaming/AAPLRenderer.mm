@@ -197,7 +197,7 @@ void withMetalDrawIndex(int offset, int cnt)
 	
 	JUniformBlock b;
 
-	matrix_float4x4 mv = jmath::GetViewMatrix({0,50,150}, {0,1,0}, {0,50,0});
+	matrix_float4x4 mv = jmath::GetViewMatrix({60,50,150}, {0,1,0}, {0,50,0});
 	matrix_float4x4 mp = jmath::GetProjectionMatrixPerspective(1, 1, 1, 400);
 	b.projview = matrix_multiply(mp, mv);
 	b.orthoview = matrix_multiply(jmath::GetProjectionMatrixOrthogonal(1, 1, 1, 200), jmath::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1}));

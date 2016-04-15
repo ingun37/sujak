@@ -297,5 +297,5 @@ void jcore::update()
 		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
 	}
     
-    t+=0.001;
+    t+=0.005;
 }

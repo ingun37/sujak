@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "makeRenderObjFromSkeleton(jskeleton&amp;, jrenderobject&amp;):jcore.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "pooli[1]">
+            </PersistentString>
+            <PersistentString
+               value = "poolv[i]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "jcore::loadAll(void (*)(char const*, char const*, char*&amp;, unsigned long&amp;)):jcore.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "jskeleton::setFromFile(char*, char*):jskeleton.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "table[3]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -228,10 +228,10 @@ void jcore::layout()
 	}
 }
 
-const char* fnameMesh = "girl_BodyGeo\0";
+const char* fnameMesh = "soldier_soldier_Military_Male_Lod_1\0";
 const char* extMesh = ".jmesh\0";
 const char* extSkin = ".jskin\0";
-const char* fnameSkel = "girl_Mia_Hips\0";
+const char* fnameSkel = "soldier_soldier_Hips\0";
 const char* extJoint = ".jjoints\0";
 const char* extTable = ".jtable\0";
 
@@ -270,12 +270,6 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	node = jallocatorJnode::getAvailable(1);
 	node->setData(mesh, sk, NULL);
 	renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
-	
-    mesh = jallocatorRenderObjs::getAvailable(1);
-    makeRenderObjCurve((simd::float2){-50,0}, (simd::float2){50,0}, (simd::float2){0,100}, (simd::float2){0,100}, 10, *mesh);
-    node = jallocatorJnode::getAvailable(1);
-    node->setData(mesh, NULL, NULL);
-    renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
 	
 	jrenderobject* uiquad = jallocatorRenderObjs::getAvailable(1);
 	uiquad->setData(vQuad, nQuad, cQuad, 4, iQuad, 6);

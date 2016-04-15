@@ -161,12 +161,13 @@ int makename(const char* szfbxname, const char* sznodename, const char* tail, ch
 
 void skelToArr(FbxNode* node, size_t upperIdx, vector<jjoint> &joints, vector<int> &table, vector<FbxNode*>& idxToSkel, int depth)
 {
+    //printf("%f  %f  %f\n", node->LclRotation.Get()[0], node->LclRotation.Get()[1], node->LclRotation.Get()[2]);
     //if(node->LclTranslation.GetCurveNode() != NULL)
     //    printf("%s has curvenode\n", node->GetName());
 	jjoint joint;
 	FbxDouble3 euler = node->LclRotation.Get();
 	
-	joint.rot.euler( static_cast<float>(euler[0]), static_cast<float>(euler[1]), static_cast<float>(euler[2]) );
+	joint.rot.euler( static_cast<float>(euler[0]*(3.141592/180)), static_cast<float>(euler[1]*(3.141592/180)), static_cast<float>(euler[2]*(3.141592/180)) );
 	joint.pos.setPos( static_cast<float>(node->LclTranslation.Get()[0]), static_cast<float>(node->LclTranslation.Get()[1]), static_cast<float>(node->LclTranslation.Get()[2]) );
 	
 	//for(int i=0;i<depth;i++)
@@ -470,7 +471,24 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
 	}
 
 	cout << "joint cnt : " << joints.size() << endl;
-	
+    printf("spine1 : %f %f %f\n", idxToNodePointer[1]->LclTranslation.Get()[0], idxToNodePointer[1]->LclTranslation.Get()[1], idxToNodePointer[1]->LclTranslation.Get()[2]);
+    for(int i=0;i<joints.size();i++)
+    {
+        simd::float4 v = {0,0,0,1};
+        int tmp=i;
+        while(tmp != -1)
+        {
+            v = matrix_multiply(joints[i].getTransMat(), v);
+            tmp = table[tmp];
+        }
+        printf("%d. %f %f %f\n", i, v[0], v[1], v[2]);
+        
+        FbxAMatrix mat = idxToNodePointer[i]->EvaluateGlobalTransform();
+        FbxVector4 mt = mat.GetT();
+        
+        printf("%d. %f %f %f\n",i, mt.mData[0], mt.mData[1], mt.mData[2]);
+    }
+    
 	int tmp;
 	makename(fbxname, node->GetName(),".jtable\0", namebuff, sizeof(namebuff));
 	startfile(namebuff);

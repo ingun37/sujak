@@ -47,7 +47,7 @@ public:
         const float convert = 3.141592 / 180;
         euler(_x * convert, _y * convert, _z * convert);
     }
-    
+
 	inline void euler(float _x, float _y, float _z)
 	{
 		//TODO : faster
@@ -84,6 +84,16 @@ public:
 
 		return mat;
 	}
+    
+    inline simd::float3 toEuler() const
+    {
+        return (simd::float3)
+        {
+            static_cast<float>(atan2(  2*(xyzw[3]*xyzw[0] + xyzw[1]*xyzw[2]),  1-2*(xyzw[0]*xyzw[0] + xyzw[1]*xyzw[1]) )),
+            static_cast<float>(asin(   2*(xyzw[3]*xyzw[1] - xyzw[2]*xyzw[0])                   )),
+            static_cast<float>(atan2(  2*(xyzw[3]*xyzw[2] + xyzw[0]*xyzw[1]),  1-2*(xyzw[1]*xyzw[1] + xyzw[2]*xyzw[2]) ))
+        };
+    }
 };
 
 #endif /* jrotation_hpp */

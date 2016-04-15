@@ -241,20 +241,16 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 {
 	char* file;
 	unsigned long size;
-
 	(*pfunc)(fnameSkel, extJoint, file, size);
+    
 	char* file2;
 	(*pfunc)(fnameSkel, extTable, file2, size);
     
-    
-	jskeleton* sk = jallocatorSkeleton::getAvailable(1);
-	sk->setFromFile(file2, file);
-	
     char* file3;
     (*pfunc)(fnameSkel, extAnim, file3, size);
     
-    jcurvenode* curvenodes;
-    jbinary_janim::getInfo(file3, curvenodes, sk->getJointCnt());
+	jskeleton* sk = jallocatorSkeleton::getAvailable(1);
+	sk->setFromFile(file2, file, file3);
     
 	(*pfunc)(fnameMesh, extMesh, file, size);
 	int vcnt, icnt;
@@ -291,25 +287,15 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 
 void jcore::update()
 {
-    /*
-	static float rot = 0;
-	float s = sinf(rot);
-	float c = cosf(rot);
-	rot += 0.1f;
-
     
-	jnode* mannode = *jallocatorSkinnedMeshes::getAt(0);
-	mannode->getSkeleton()->getjointsArr()[10].rot.euler(c*0.2, s*0.3, 0);
-	mannode->getSkeleton()->getjointsArr()[20].rot.euler(0, 0, s*0.4);
-	mannode->getSkeleton()->getjointsArr()[1].rot.euler(0, 0, c*0.2);
-	mannode->getSkeleton()->getjointsArr()[2].rot.euler(0, 0, s*0.14);
-	mannode->getSkeleton()->getjointsArr()[3].rot.euler(0, 0, c*0.22);
-
+	static float t = 0;
+	
 	for(int i=0;i<jallocatorSkinnedMeshes::getCnt();i++)
 	{
 		jnode* nodeToSkin = *jallocatorSkinnedMeshes::getAt(i);
-		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(mannode->getRenderObject())));
+        nodeToSkin->getSkeleton()->animate(t);
+		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
 	}
-     */
     
+    t+=0.001;
 }

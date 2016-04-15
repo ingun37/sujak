@@ -161,7 +161,7 @@ int makename(const char* szfbxname, const char* sznodename, const char* tail, ch
 
 void skelToArr(FbxNode* node, size_t upperIdx, vector<jjoint> &joints, vector<int> &table, vector<FbxNode*>& idxToSkel, int depth)
 {
-    //printf("%f  %f  %f\n", node->LclRotation.Get()[0], node->LclRotation.Get()[1], node->LclRotation.Get()[2]);
+    //printf("rot : %f  %f  %f\n", node->LclRotation.Get()[0], node->LclRotation.Get()[1], node->LclRotation.Get()[2]);
     //if(node->LclTranslation.GetCurveNode() != NULL)
     //    printf("%s has curvenode\n", node->GetName());
 	jjoint joint;
@@ -391,7 +391,7 @@ void writeCurveChannelKeyCnt(FbxNode* skel)
         }
     }
     writefile(keycnts, sizeof(unsigned char) * 3);
-    printf("keycnt : %d %d %d\n", keycnts[0], keycnts[1], keycnts[2]);
+    //printf("keycnt : %d %d %d\n", keycnts[0], keycnts[1], keycnts[2]);
 }
 
 void diffimage(jcurve& c1, FbxAnimCurve* c2, const char* imgname)

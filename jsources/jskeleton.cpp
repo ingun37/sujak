@@ -8,9 +8,9 @@
 
 #include "jskeleton.hpp"
 #include "jallocator.hpp"
-
-
-
+#include "jbinary.hpp"
+#include "jcurvenode.hpp"
+#include "jcurve.hpp"
 jskeleton::jskeleton()
 {
 	jointnum = 0;
@@ -20,19 +20,44 @@ jskeleton::jskeleton()
 }
 
 typedef jallocator<matrix_float4x4, 128> jallocatorMat44;
-
-void jskeleton::setFromFile(char *tableBytes, char *jointBytes)
+typedef jallocator<simd::float3, 128> jallocatorf3;
+void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 {
 	jointnum = *(int*)tableBytes;
 	table = (int*)(tableBytes + sizeof(int));
 	joints = (jjoint*)jointBytes;
-	
+    initeulers = jallocatorf3::getAvailable(jointnum);
+    for(int i=0;i<jointnum;i++)
+    {
+        initeulers[i] = joints[i].rot.toEuler();
+        //printf("rot : %f %f %f\n", initeulers[i][0]*(180/3.141592), initeulers[i][1]*(180/3.141592), initeulers[i][2]*(180/3.141592));
+    }
+    
 	inverseTable = jallocatorMat44::getAvailable(jointnum);
 	for(int i=0;i<jointnum;i++)
 	{
 		matrix_float4x4 m = transOfJointAt(i);
 		inverseTable[i] = matrix_invert(m);
 	}
+    
+    jbinary_janim::getInfo(animbytes, curvenodes, jointnum);
+}
+
+void jskeleton::animate(float t) const
+{
+    for(int i=0;i<jointnum;i++)
+    {
+        simd::float3 initeuler = initeulers[i];
+        
+        for(int j=0;j<3;j++)
+        {
+            if(curvenodes[i].curves[j]==NULL)
+                continue;
+            initeuler[j] = curvenodes[i].curves[j]->evaluate(t) * (3.141592/180);
+        }
+        
+        joints[i].rot.euler(initeuler[0], initeuler[1], initeuler[2]);
+    }
 }
 
 matrix_float4x4 jskeleton::transOfJointAt(int i)

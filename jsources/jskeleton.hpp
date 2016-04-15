@@ -16,6 +16,7 @@ typedef struct _jcurvenode jcurvenode;
 class jskeleton
 {
 	jjoint *joints;
+    simd::float3 *initeulers;
 	int* table;
 	matrix_float4x4 *inverseTable;
 	int jointnum;
@@ -26,7 +27,8 @@ public:
 	inline int* getTableArr() const {return table;}
 	matrix_float4x4 transOfJointAt(int i);
 	matrix_float4x4 inverseOfJointAt(int i);
-	void setFromFile(char* tableBytes, char* jointBytes);
+	void setFromFile(char* tableBytes, char* jointBytes, char* animbytes);
+    void animate(float t) const;
 	jskeleton();
 };
 #endif /* jskeleton_hpp */

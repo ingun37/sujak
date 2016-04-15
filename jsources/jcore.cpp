@@ -234,6 +234,7 @@ const char* extSkin = ".jskin\0";
 const char* fnameSkel = "soldier_soldier_Hips\0";
 const char* extJoint = ".jjoints\0";
 const char* extTable = ".jtable\0";
+const char* extAnim = ".janim\0";
 
 
 void jcore::loadAll(platformSpecificGetFile pfunc)
@@ -244,9 +245,17 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	(*pfunc)(fnameSkel, extJoint, file, size);
 	char* file2;
 	(*pfunc)(fnameSkel, extTable, file2, size);
+    
+    
 	jskeleton* sk = jallocatorSkeleton::getAvailable(1);
 	sk->setFromFile(file2, file);
 	
+    char* file3;
+    (*pfunc)(fnameSkel, extAnim, file3, size);
+    
+    jcurvenode* curvenodes;
+    jbinary_janim::getInfo(file3, curvenodes, sk->getJointCnt());
+    
 	(*pfunc)(fnameMesh, extMesh, file, size);
 	int vcnt, icnt;
 	simd::float4 *poolP, *poolN;
@@ -256,6 +265,8 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	jrenderobject* mesh = jallocatorRenderObjs::getAvailable(1);
 	mesh->setData(poolP, poolN, poolN, vcnt, poolI, icnt);
 	
+    
+    
 	jnode* node = jallocatorJnode::getAvailable(1);
 	(*pfunc)(fnameMesh, extSkin, file, size);
 	jskinner* skinner = jallocatorSkinner::getAvailable(1);

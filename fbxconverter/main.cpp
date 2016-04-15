@@ -348,25 +348,50 @@ void makejcurveFromFbxcurve(jcurve& dst, FbxAnimCurve* src)
     copyVectorTo(mytangents_r, dst.tangents_r);
 }
 
-void writeCurveChannelCnt(FbxNode* skel)
-{
-    FbxAnimCurveNode* cnode = skel->LclRotation.GetCurveNode();
-    writefile_copy((int) cnode->GetChannelsCount());
-}
-
 void writeCurveChannelKeyCnt(FbxNode* skel)
 {
+    char flag = 0;
     FbxAnimCurveNode* cnode = skel->LclRotation.GetCurveNode();
+    FbxStringCompare comparer;
+    const FbxString x("X"), y("Y"), z("Z");
+    
     for(int i=0;i<cnode->GetChannelsCount();i++)
     {
-        FbxAnimCurve* curve = cnode->GetCurve(i);
-        if(curve == NULL)
+        if (comparer( cnode->GetChannelName(i), x ) == 0)
+            flag |= 1;
+        else if(comparer( cnode->GetChannelName(i), y ) == 0)
+            flag |= 2;
+        else if(comparer( cnode->GetChannelName(i), z ) == 0)
+            flag |= 4;
+        else
         {
-            writefile_copy((int)0);
-            continue;
+            printf("not ready for channel name : %s\n", cnode->GetChannelName(i).Buffer());
+            exit(1);
         }
-        writefile_copy((int)curve->KeyGetCount());
     }
+
+    unsigned char keycnts[3] = {0,0,0};
+    
+    int channelid = 0;
+    for(int i=0;i<3;i++)
+    {
+        if (flag & 1 << i)
+        {
+            FbxAnimCurve* curve = cnode->GetCurve(channelid++);
+            if(curve == NULL)
+                continue;
+            
+            if(curve->KeyGetCount() > 255)
+            {
+                puts("not ready for key over 255");
+                exit(1);
+            }
+            
+            keycnts[i] = (unsigned char)curve->KeyGetCount();
+        }
+    }
+    writefile(keycnts, sizeof(unsigned char) * 3);
+    printf("keycnt : %d %d %d\n", keycnts[0], keycnts[1], keycnts[2]);
 }
 
 void diffimage(jcurve& c1, FbxAnimCurve* c2, const char* imgname)
@@ -506,8 +531,7 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
     
     makename(fbxname, node->GetName(), ".janim", namebuff, sizeof(namebuff));
     startfile(namebuff);
-    for(int i=0;i<idxToNodePointer.size();i++)
-        writeCurveChannelCnt(idxToNodePointer[i]);
+    
     for(int i=0;i<idxToNodePointer.size();i++)
         writeCurveChannelKeyCnt(idxToNodePointer[i]);
     for(int i=0;i<idxToNodePointer.size();i++)

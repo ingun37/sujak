@@ -12,11 +12,13 @@
 #include <stdio.h>
 
 class jcurve;
-class jcurvenode
+
+typedef struct _jcurvenode
 {
-public:
-    jcurve* curve;
+    jcurve *curves[3];
+    unsigned char keycnt[3];
+    char padding1;
     
-};
+} jcurvenode;
 
 #endif /* jcurvenode_hpp */

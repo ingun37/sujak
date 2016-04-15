@@ -12,13 +12,14 @@
 #include <simd/simd.h>
 #include <stdio.h>
 #include "jjoint.h"
-
+typedef struct _jcurvenode jcurvenode;
 class jskeleton
 {
 	jjoint *joints;
 	int* table;
 	matrix_float4x4 *inverseTable;
 	int jointnum;
+    jcurvenode *curvenodes;
 public:
 	inline int getJointCnt() const {return jointnum;}
 	inline jjoint* getjointsArr() const { return joints; }

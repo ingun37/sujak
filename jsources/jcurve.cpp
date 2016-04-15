@@ -84,7 +84,10 @@ float jcurve::evaluate(float at)
             eval[1] = values[start];
             break;
         case JCURVEINTERPOLATION_LINEAR:
-            
+            t = ((float)(at-t1))/(t2-t1);
+            v1 = values[start];
+            v2 = values[start+1];
+            eval[1] = (v2*t) + (v1*(1-t));
             break;
     }
     

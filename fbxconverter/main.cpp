@@ -823,6 +823,12 @@ void domesh( FbxNode* node, vector<FbxNode *> &idxToNode, const char* fbxname )
 		}
 	}
 	
+    
+    if(positions.size() != normals.size())
+    {
+        printf("len not same postio norm\n");
+        exit(1);
+    }
     jtranslation t;
     t.setPos(node->LclTranslation.Get()[0], node->LclTranslation.Get()[1], node->LclTranslation.Get()[2]);
     jrotation rpre, r, rpost;
@@ -832,10 +838,15 @@ void domesh( FbxNode* node, vector<FbxNode *> &idxToNode, const char* fbxname )
     rpost.euler_degree(node->PostRotation.Get()[0], node->PostRotation.Get()[1], node->PostRotation.Get()[2]);
     
     //printf("%s rot : %f %f %f\n",node->GetName(), node->PreRotation.Get()[0], node->PreRotation.Get()[1], node->PreRotation.Get()[2]);
+    
+    
     for(int i=0;i<positions.size();i++)
     {
-        simd::float4 roted = matrix_multiply(rpost.toMat(), matrix_multiply(r.toMat(), matrix_multiply(rpre.toMat(), positions[i])));
+        matrix_float4x4 rotmat = matrix_multiply(rpost.toMat(), matrix_multiply(r.toMat(), rpre.toMat()));
+        simd::float4 roted = matrix_multiply(rotmat, positions[i]);
         positions[i] = matrix_multiply(t.getMat(), roted);
+        
+        normals[i] = matrix_multiply(rotmat, normals[i]);
     }
     
 	makename(fbxname, node->GetName(),".jmesh\0", namebuff, sizeof(namebuff));

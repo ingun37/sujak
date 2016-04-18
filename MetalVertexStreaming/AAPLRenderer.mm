@@ -276,10 +276,11 @@ void withMetalDrawIndex(int offset, int cnt)
 		NSLog(@"line program gen fail");
 		exit(1);
 	}
-
+    
 	pipelineStateDescriptor.vertexFunction = vertLine;
 	pipelineStateDescriptor.fragmentFunction = fragLine;
-	
+    depthStencilStateDesc.depthCompareFunction = MTLCompareFunctionAlways;
+    
 	renderContextPairs[JRenderState::JRenderState_info].setPair(
 		[_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:nil],
 		[_device newDepthStencilStateWithDescriptor:depthStencilStateDesc]);

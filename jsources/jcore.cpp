@@ -266,7 +266,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	jnode* node = jallocatorJnode::getAvailable(1);
 	(*pfunc)(fnameMesh, extSkin, file, size);
 	jskinner* skinner = jallocatorSkinner::getAvailable(1);
-	jbinary_jskinner::getInfo(file, skinner->clusterCnt, skinner->jointIdxs, skinner->linkCounts, skinner->linkIdxs, skinner->linkWeights, skinner->accuTable);
+	jbinary_jskinner::getInfo(file, skinner->clusterCnt, skinner->inverses, skinner->jointIdxs, skinner->linkCounts, skinner->linkIdxs, skinner->linkWeights, skinner->accuTable);
 	node->setData(mesh, sk, skinner);
 	renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(node);
 	

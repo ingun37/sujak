@@ -571,6 +571,7 @@ void doSkin( FbxNode* node, vector<FbxNode*> &idxToNode, const char* fbxname, ve
 	
 	vector<int> xClusterCount_jointIdxs;
 	vector<int> xClusterCount_cpCnt;
+    vector<matrix_float4x4> xClusterCount_inverses;
 	vector<int> xCpCount_cpIdx;
 	vector<float> xCpCount_weights;
 	for(int i=0;i<skin->GetClusterCount();i++)
@@ -590,7 +591,30 @@ void doSkin( FbxNode* node, vector<FbxNode*> &idxToNode, const char* fbxname, ve
 			cout << "link not found " << endl;
 			exit(1);
 		}
-		
+        FbxAMatrix linktrans;
+        cluster->GetTransformLinkMatrix(linktrans);
+        
+        FbxVector4 bindt = linktrans.GetT();
+        FbxVector4 bindr = linktrans.GetR();
+        FbxVector4 binds = linktrans.GetS();
+        if (binds[0] > 1.0001f || binds[1] > 1.0001f || binds[2] > 1.0001f ||
+            binds[0] < 0.9999f || binds[1] < 0.9999f || binds[2] < 0.9999f)
+        {
+            puts("not ready for scale");
+            exit(1);
+        }
+            
+        jtranslation jt;
+        jt.setPos(bindt[0], bindt[1], bindt[2]);
+        jrotation jr;
+        jr.euler(bindr[0], bindr[1], bindr[2]);
+        //TODO : scale
+        
+        matrix_float4x4 bindx = matrix_multiply(jt.getMat(), jr.toMat());
+        bindx = matrix_invert(bindx);
+        
+        xClusterCount_inverses.push_back(bindx);
+        
 		int cpicnt = cluster->GetControlPointIndicesCount();
 		
 		//TODO : skip meaningless cluster
@@ -681,6 +705,7 @@ void doSkin( FbxNode* node, vector<FbxNode*> &idxToNode, const char* fbxname, ve
 	startfile(namebuff);
 	//cluster count, joint index of each cluster, cp count of each cluster, cp indexs, weights.
 	writefile_copy<int>(skin->GetClusterCount());
+    writefile(&xClusterCount_inverses[0], sizeof(xClusterCount_inverses[0]) * xClusterCount_inverses.size());
 	writefile(&xClusterCount_jointIdxs[0], sizeof(int) * xClusterCount_jointIdxs.size());
 	writefile(&xClusterCount_cpCnt[0], sizeof(int) * xClusterCount_cpCnt.size());
 	writefile(&xCpCount_cpIdx[0], sizeof(int) * xCpCount_cpIdx.size());

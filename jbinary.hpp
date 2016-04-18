@@ -21,7 +21,7 @@ public:
 class jbinary_jskinner
 {
 public:
-	static void getInfo(char* data, int& clustercnt, int* &jointidxs, int* &cpcounts, int* &cpIdxs, float* &weights, int* &accuTable);
+	static void getInfo(char* data, int& clustercnt, matrix_float4x4* &inverses, int* &jointidxs, int* &cpcounts, int* &cpIdxs, float* &weights, int* &accuTable);
 };
 
 typedef struct _jcurvenode jcurvenode;

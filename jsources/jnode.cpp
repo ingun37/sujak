@@ -28,14 +28,15 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
 	{
 		int jointidx = skinner->jointIdxs[i];
 
-		matrix_float4x4 inverse = skeleton->inverseOfJointAt( jointidx );
+		//matrix_float4x4 inverse = skeleton->inverseOfJointAt( jointidx );
+        matrix_float4x4 inverse = skinner->inverses[i];
 		matrix_float4x4 trans = skeleton->transOfJointAt( jointidx );
 		for(int j=0;j<skinner->linkCounts[i];j++)
 		{
 			int vidx = skinner->linkIdxs[ skinner->accuTable[i] + j];
 			float weight = skinner->linkWeights[ skinner->accuTable[i] + j];
 
-			simd::float4 pos_bind = renderobj->getPositionAt(vidx);
+			//simd::float4 pos_bind = renderobj->getPositionAt(vidx);
 
 			dest[vidx] += matrix_multiply(trans, matrix_multiply(inverse, renderobj->getPositionAt(vidx)) ) * weight;
 		}

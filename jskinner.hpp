@@ -10,11 +10,12 @@
 #define jskinner_hpp
 
 #include <stdio.h>
-
+#include <simd/simd.h>
 class jskinner
 {
 public:
 	int clusterCnt;
+    matrix_float4x4 *inverses;
 	int* jointIdxs;
 	int* linkCounts;
 	int* accuTable;

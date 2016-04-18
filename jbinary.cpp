@@ -45,7 +45,7 @@ void jbinary_jmesh::saveInfo(int &vcnt, int &icnt, simd::float4 *poolPos, simd::
 	
 }
 typedef jallocator<int, 5000> pooli;
-void jbinary_jskinner::getInfo(char *data, int &clustercnt, int *&jointidxs, int *&cpcounts, int *&cpIdxs, float *&weights, int *&accuTable)
+void jbinary_jskinner::getInfo(char *data, int &clustercnt, matrix_float4x4* &inverses, int *&jointidxs, int *&cpcounts, int *&cpIdxs, float *&weights, int *&accuTable)
 {
 	if(data == NULL)
 	{
@@ -55,6 +55,8 @@ void jbinary_jskinner::getInfo(char *data, int &clustercnt, int *&jointidxs, int
 	char* fp = data;
 	clustercnt = *((int*)fp);
 	fp += sizeof(int);
+    inverses = (matrix_float4x4*)fp;
+    fp += sizeof(matrix_float4x4) * clustercnt;
 	jointidxs = (int*)fp;
 	fp += sizeof(int) * clustercnt;
 	cpcounts = (int*)fp;

@@ -165,10 +165,12 @@ void skelToArr(FbxNode* node, size_t upperIdx, vector<jjoint> &joints, vector<in
     //if(node->LclTranslation.GetCurveNode() != NULL)
     //    printf("%s has curvenode\n", node->GetName());
 	jjoint joint;
-	FbxDouble3 euler = node->LclRotation.Get();
-	
+	//FbxDouble3 euler = node->LclRotation.Get();
+    FbxAMatrix localtrans = node->EvaluateLocalTransform();
+    FbxVector4 euler = localtrans.GetR();
+    FbxVector4 trans = localtrans.GetT();
 	joint.rot.euler( static_cast<float>(euler[0]*(3.141592/180)), static_cast<float>(euler[1]*(3.141592/180)), static_cast<float>(euler[2]*(3.141592/180)) );
-	joint.pos.setPos( static_cast<float>(node->LclTranslation.Get()[0]), static_cast<float>(node->LclTranslation.Get()[1]), static_cast<float>(node->LclTranslation.Get()[2]) );
+	joint.pos.setPos( static_cast<float>(trans[0]), static_cast<float>(trans[1]), static_cast<float>(trans[2]) );
 	
 	//for(int i=0;i<depth;i++)
 	//	cout << "  ";
@@ -503,15 +505,15 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
         int tmp=i;
         while(tmp != -1)
         {
-            v = matrix_multiply(joints[i].getTransMat(), v);
+            v = matrix_multiply(joints[tmp].getTransMat(), v);
             tmp = table[tmp];
         }
-        //printf("%d. %f %f %f\n", i, v[0], v[1], v[2]);
+        printf("%d. %f %f %f\n", i, v[0], v[1], v[2]);
         
         FbxAMatrix mat = idxToNodePointer[i]->EvaluateGlobalTransform();
         FbxVector4 mt = mat.GetT();
         
-        //printf("%d. %f %f %f\n",i, mt.mData[0], mt.mData[1], mt.mData[2]);
+        printf("%d. %f %f %f\n",i, mt.mData[0], mt.mData[1], mt.mData[2]);
     }
     
 	int tmp;

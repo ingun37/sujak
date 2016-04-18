@@ -159,6 +159,66 @@ int makename(const char* szfbxname, const char* sznodename, const char* tail, ch
 	return 0;
 }
 
+FbxAMatrix CalculateLocalTransform(FbxNode* pNode)
+{
+    FbxAMatrix lTranlationM, lScalingM, lScalingPivotM, lScalingOffsetM, lRotationOffsetM, lRotationPivotM, \
+    lPreRotationM, lRotationM, lPostRotationM, lTransform;
+    
+    FbxAMatrix lLocalT, lLocalRS;
+    
+    if(!pNode)
+    {
+        lTransform.SetIdentity();
+        return lTransform;
+    }
+    
+    // Construct translation matrix
+    FbxVector4 lTranslation = pNode->LclTranslation.Get();
+    lTranlationM.SetT(lTranslation);
+    
+    // Construct rotation matrices
+    FbxVector4 lRotation = pNode->LclRotation.Get();
+    FbxVector4 lPreRotation = pNode->PreRotation.Get();
+    FbxVector4 lPostRotation = pNode->PostRotation.Get();
+    lRotationM.SetR(lRotation);
+    lPreRotationM.SetR(lPreRotation);
+    lPostRotationM.SetR(lPostRotation);
+    
+    // Construct scaling matrix
+    FbxVector4 lScaling = pNode->LclScaling.Get();
+    lScalingM.SetS(lScaling);
+    
+    // Construct offset and pivot matrices
+    FbxVector4 lScalingOffset = pNode->ScalingOffset.Get();
+    FbxVector4 lScalingPivot = pNode->ScalingPivot.Get();
+    FbxVector4 lRotationOffset = pNode->RotationOffset.Get();
+    FbxVector4 lRotationPivot = pNode->RotationPivot.Get();
+    lScalingOffsetM.SetT(lScalingOffset);
+    lScalingPivotM.SetT(lScalingPivot);
+    lRotationOffsetM.SetT(lRotationOffset);
+    lRotationPivotM.SetT(lRotationPivot);
+    
+    FbxAMatrix lLRM;
+    lLRM = lPreRotationM * lRotationM * lPostRotationM;
+    
+    FbxAMatrix lLSM;
+    lLSM = lScalingM;
+    
+    lLocalRS = lLRM * lLSM;
+    
+    // Construct translation matrix
+    // Calculate the local transform matrix
+    lTransform = lTranlationM * lRotationOffsetM * lRotationPivotM * lPreRotationM * lRotationM * lPostRotationM * lRotationPivotM.Inverse()\
+    * lScalingOffsetM * lScalingPivotM * lScalingM * lScalingPivotM.Inverse();
+    FbxVector4 lLocalTWithAllPivotAndOffsetInfo = lTransform.GetT();
+    
+    lLocalT.SetT(lLocalTWithAllPivotAndOffsetInfo);
+    
+    //Construct the whole global transform
+    lTransform = lLocalT * lLocalRS;
+    
+    return lTransform;
+}
 void skelToArr(FbxNode* node, size_t upperIdx, vector<jjoint> &joints, vector<int> &table, vector<FbxNode*>& idxToSkel, int depth)
 {
     //printf("rot : %f  %f  %f\n", node->LclRotation.Get()[0], node->LclRotation.Get()[1], node->LclRotation.Get()[2]);
@@ -166,16 +226,28 @@ void skelToArr(FbxNode* node, size_t upperIdx, vector<jjoint> &joints, vector<in
     //    printf("%s has curvenode\n", node->GetName());
 	jjoint joint;
 	//FbxDouble3 euler = node->LclRotation.Get();
-    FbxAMatrix localtrans = node->EvaluateLocalTransform();
+
+    FbxAMatrix localtrans = CalculateLocalTransform(node);
+    /*
+    FbxTime t;
+    t.SetSecondDouble(1);
+    FbxAMatrix localtrans = node->EvaluateLocalTransform(t);
+     */
     FbxVector4 euler = localtrans.GetR();
     FbxVector4 trans = localtrans.GetT();
+    FbxVector4 scale = localtrans.GetS();
+    
+    //todo scale
+    if( 1.0001f < scale[0] || 1.0001f < scale[1] || 1.0001f < scale[2] ||
+       0.9999f > scale[0] || 0.9999f > scale[1] || 0.9999f > scale[2] )
+    {
+        puts("not ready for... scale");
+        exit(1);
+    }
+    
 	joint.rot.euler( static_cast<float>(euler[0]*(3.141592/180)), static_cast<float>(euler[1]*(3.141592/180)), static_cast<float>(euler[2]*(3.141592/180)) );
 	joint.pos.setPos( static_cast<float>(trans[0]), static_cast<float>(trans[1]), static_cast<float>(trans[2]) );
 	
-	//for(int i=0;i<depth;i++)
-	//	cout << "  ";
-	//printf("%-20s pos : %.2f, %.2f, %.2f,  rot : %.2f, %.2f, %.2f, %.2f\n", node->GetName(), joint.pos.getPos()[0], joint.pos.getPos()[1], joint.pos.getPos()[2], joint.rot.xyzw[0], joint.rot.xyzw[1], joint.rot.xyzw[2], joint.rot.xyzw[3]);
-
 	size_t idx = joints.size();
 	joints.push_back(joint);
 	table.push_back( static_cast<int>( upperIdx ));
@@ -393,7 +465,7 @@ void writeCurveChannelKeyCnt(FbxNode* skel)
         }
     }
     writefile(keycnts, sizeof(unsigned char) * 3);
-    //printf("keycnt : %d %d %d\n", keycnts[0], keycnts[1], keycnts[2]);
+    //printf("%s : keycnt : %d %d %d\n", skel->GetName(), keycnts[0], keycnts[1], keycnts[2]);
 }
 
 void diffimage(jcurve& c1, FbxAnimCurve* c2, const char* imgname)
@@ -498,23 +570,6 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
 	}
 
 	cout << "joint cnt : " << joints.size() << endl;
-    //printf("spine1 : %f %f %f\n", idxToNodePointer[1]->LclTranslation.Get()[0], idxToNodePointer[1]->LclTranslation.Get()[1], idxToNodePointer[1]->LclTranslation.Get()[2]);
-    for(int i=0;i<joints.size();i++)
-    {
-        simd::float4 v = {0,0,0,1};
-        int tmp=i;
-        while(tmp != -1)
-        {
-            v = matrix_multiply(joints[tmp].getTransMat(), v);
-            tmp = table[tmp];
-        }
-        printf("%d. %f %f %f\n", i, v[0], v[1], v[2]);
-        
-        FbxAMatrix mat = idxToNodePointer[i]->EvaluateGlobalTransform();
-        FbxVector4 mt = mat.GetT();
-        
-        printf("%d. %f %f %f\n",i, mt.mData[0], mt.mData[1], mt.mData[2]);
-    }
     
 	int tmp;
 	makename(fbxname, node->GetName(),".jtable\0", namebuff, sizeof(namebuff));
@@ -595,7 +650,11 @@ void doSkin( FbxNode* node, vector<FbxNode*> &idxToNode, const char* fbxname, ve
 		}
         FbxAMatrix linktrans;
         cluster->GetTransformLinkMatrix(linktrans);
-        
+        FbxAMatrix meshtrans;
+        cluster->GetTransformMatrix(meshtrans);
+        //printf("%s link transform : %f %f %f\n",cluster->GetLink()->GetName(), linktrans.GetT()[0], linktrans.GetT()[1], linktrans.GetT()[2]);
+        //printf("mesh trlation : %f %f %f : %s \n", meshtrans.GetT()[0], meshtrans.GetT()[1], meshtrans.GetT()[2],cluster->GetLink()->GetName());
+        //printf("mesh rotation : %f %f %f : %s\n", meshtrans.GetR()[0], meshtrans.GetR()[1], meshtrans.GetR()[2],cluster->GetLink()->GetName());
         FbxVector4 bindt = linktrans.GetT();
         FbxVector4 bindr = linktrans.GetR();
         FbxVector4 binds = linktrans.GetS();
@@ -881,7 +940,7 @@ void domesh( FbxNode* node, vector<FbxNode *> &idxToNode, const char* fbxname )
         exit(1);
     }
     
-    FbxAMatrix localtrans = node->EvaluateLocalTransform();
+    FbxAMatrix localtrans = CalculateLocalTransform(node);
     
     for(int i=0;i<positions.size();i++)
     {

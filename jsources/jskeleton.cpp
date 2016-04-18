@@ -47,8 +47,7 @@ void jskeleton::animate(float t) const
 {
     for(int i=0;i<jointnum;i++)
     {
-        simd::float3 initeuler = initeulers[i];
-        
+        simd::float3 initeuler = simd::float3{0,0,0};
         for(int j=0;j<3;j++)
         {
             if(curvenodes[i].curves[j]==NULL)
@@ -57,6 +56,7 @@ void jskeleton::animate(float t) const
         }
         
         joints[i].rot.euler(initeuler[0], initeuler[1], initeuler[2]);
+        //joints[i].rot.euler(0, 0, 0);
     }
 }
 

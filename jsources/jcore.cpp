@@ -68,6 +68,52 @@ void makeRenderObjCurve(simd::float2 p1, simd::float2 p2, simd::float2 t1, simd:
     renderobj.setData(poolv, poolv, poolc, (int)smooth+1, pooli, (int)smooth*2);
 }
 
+void makeRenderObjFromSkinner( jskinner& skinner, jskeleton& skel, jrenderobject& renderobj )
+{
+    simd::float4* poolv = jallocatorF4::getAvailable(skinner.clusterCnt);
+    simd::float4* poolc = jallocatorF4::getAvailable(skinner.clusterCnt);
+    int* pooli = jallocatorInt::getAvailable(skinner.clusterCnt * 2 + 5);
+    
+    int cnt = 0;
+    
+    simd::float4 origin = {0,0,0,1};
+    for(int i=0;i<skinner.clusterCnt;i++)
+    {
+        poolc[i] = { 0,1,0,1};
+        
+        poolv[i] = matrix_multiply(matrix_invert( skinner.inverses[i]), origin);
+        int skelidx = skinner.jointIdxs[i];
+        int upperskelidx = skel.getTableArr()[skelidx];
+        if(upperskelidx == -1)
+            continue;
+        
+        int clusteridxWithUpperSkel = -1;
+        for(int j=0;j<skinner.clusterCnt;j++)
+            if(skinner.jointIdxs[j] == upperskelidx)
+                clusteridxWithUpperSkel = j;
+        if(clusteridxWithUpperSkel == -1)
+        {
+            puts("sdfsasdf1233123");
+            exit(1);
+        }
+        
+        pooli[cnt++] = i;
+        pooli[cnt++] = clusteridxWithUpperSkel;
+    }
+    renderobj.setData(poolv, poolv, poolc, skinner.clusterCnt, pooli, cnt);
+}
+void mapSkeletonVertices(jskeleton& skel, simd::float4* dst)
+{
+    int jointcnt = skel.getJointCnt();
+    simd::float4 origin = {0,0,0,1};
+    for(int i=0;i<jointcnt;i++)
+    {
+        dst[i] = matrix_multiply(skel.transOfJointAt(i), origin);
+        
+        if(skel.getTableArr()[i] == -1)
+            continue;
+    }
+}
 void makeRenderObjFromSkeleton( jskeleton& skel, jrenderobject& renderobj )
 {
 	simd::float4* poolv = jallocatorF4::getAvailable(skel.getJointCnt());
@@ -79,7 +125,7 @@ void makeRenderObjFromSkeleton( jskeleton& skel, jrenderobject& renderobj )
 	simd::float4 origin = {0,0,0,1};
 	for(int i=0;i<jointcnt;i++)
 	{
-		poolc[i] = { ((float)(rand()%255))/255,((float)(rand()%255))/255,((float)(rand()%255))/255,1};
+		poolc[i] = { 1,0,0,1};
 
 		poolv[i] = matrix_multiply(skel.transOfJointAt(i), origin);
 		
@@ -236,7 +282,7 @@ const char* extJoint = ".jjoints\0";
 const char* extTable = ".jtable\0";
 const char* extAnim = ".janim\0";
 
-
+jrenderobject* g_skelmesh = NULL;
 void jcore::loadAll(platformSpecificGetFile pfunc)
 {
 	char* file;
@@ -272,8 +318,15 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	
 	jallocatorSkinnedMeshes::getAvailable(1)[0] = node;
 	
+    mesh = jallocatorRenderObjs::getAvailable(1);
+    makeRenderObjFromSkinner(*skinner, *sk, *mesh);
+    node = jallocatorJnode::getAvailable(1);
+    node->setData(mesh, NULL, NULL);
+    renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
+    
 	mesh = jallocatorRenderObjs::getAvailable(1);
 	makeRenderObjFromSkeleton(*sk, *mesh);
+    g_skelmesh = mesh;
 	node = jallocatorJnode::getAvailable(1);
 	node->setData(mesh, sk, NULL);
 	renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
@@ -287,14 +340,14 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 
 void jcore::update()
 {
-    
 	static float t = 0;
-	
+    
 	for(int i=0;i<jallocatorSkinnedMeshes::getCnt();i++)
 	{
 		jnode* nodeToSkin = *jallocatorSkinnedMeshes::getAt(i);
         nodeToSkin->getSkeleton()->animate(t);
 		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
+        mapSkeletonVertices(*nodeToSkin->getSkeleton(), mmapper.getPositionMemoryOf(*(g_skelmesh)));
 	}
     
     t+=0.005;

@@ -219,46 +219,22 @@ FbxAMatrix CalculateLocalTransform(FbxNode* pNode)
     
     return lTransform;
 }
-void skelToArr(FbxNode* node, size_t upperIdx, vector<jjoint> &joints, vector<int> &table, vector<FbxNode*>& idxToSkel, int depth)
+void skelToArr(FbxNode* node, int upperIdx, vector<int> &table, vector<FbxNode*>& idxToSkel, int depth)
 {
     //printf("rot : %f  %f  %f\n", node->LclRotation.Get()[0], node->LclRotation.Get()[1], node->LclRotation.Get()[2]);
     //if(node->LclTranslation.GetCurveNode() != NULL)
     //    printf("%s has curvenode\n", node->GetName());
-	jjoint joint;
-	//FbxDouble3 euler = node->LclRotation.Get();
-
-    FbxAMatrix localtrans = CalculateLocalTransform(node);
-    /*
-    FbxTime t;
-    t.SetSecondDouble(1);
-    FbxAMatrix localtrans = node->EvaluateLocalTransform(t);
-     */
-    FbxVector4 euler = localtrans.GetR();
-    FbxVector4 trans = localtrans.GetT();
-    FbxVector4 scale = localtrans.GetS();
-    
-    //todo scale
-    if( 1.0001f < scale[0] || 1.0001f < scale[1] || 1.0001f < scale[2] ||
-       0.9999f > scale[0] || 0.9999f > scale[1] || 0.9999f > scale[2] )
-    {
-        puts("not ready for... scale");
-        exit(1);
-    }
-    
-	joint.rot.euler( static_cast<float>(euler[0]*(3.141592/180)), static_cast<float>(euler[1]*(3.141592/180)), static_cast<float>(euler[2]*(3.141592/180)) );
-	joint.pos.setPos( static_cast<float>(trans[0]), static_cast<float>(trans[1]), static_cast<float>(trans[2]) );
-	
-	size_t idx = joints.size();
-	joints.push_back(joint);
-	table.push_back( static_cast<int>( upperIdx ));
+		
+	table.push_back( upperIdx );
 	idxToSkel.push_back(node);
 	
+    int curridx = (int)idxToSkel.size() - 1;
 	char jointinfo[128];
-	sprintf(jointinfo, "%ld. %s", idx, node->GetName());
+    sprintf(jointinfo, "%d. %s\n", curridx, node->GetName());
 	writelog(jointinfo);
 	for(int i=0;i<node->GetChildCount();i++)
 	{
-		skelToArr( node->GetChild(i) , idx, joints, table, idxToSkel, depth + 1);
+		skelToArr( node->GetChild(i) , curridx, table, idxToSkel, depth + 1);
 	}
 }
 
@@ -561,8 +537,34 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
 
 	makename(fbxname, node->GetName(), ".log\0", namebuff, sizeof(namebuff));
 	startlog(namebuff);
-	skelToArr(node, -1, joints, table, idxToNodePointer, 0);
-	endlog();
+	skelToArr(node, -1, table, idxToNodePointer, 0);
+    endlog();
+    
+    for(int i=0;i<idxToNodePointer.size();i++)
+    {
+        jjoint joint;
+        //FbxDouble3 euler = node->LclRotation.Get();
+        
+        FbxAMatrix localtrans = CalculateLocalTransform(idxToNodePointer[i]);
+        
+        FbxVector4 euler = localtrans.GetR();
+        FbxVector4 trans = localtrans.GetT();
+        FbxVector4 scale = localtrans.GetS();
+        
+        //todo scale
+        if( 1.0001f < scale[0] || 1.0001f < scale[1] || 1.0001f < scale[2] ||
+           0.9999f > scale[0] || 0.9999f > scale[1] || 0.9999f > scale[2] )
+        {
+            puts("not ready for... scale");
+            exit(1);
+        }
+        
+        joint.rot.euler( static_cast<float>(euler[0]*(3.141592/180)), static_cast<float>(euler[1]*(3.141592/180)), static_cast<float>(euler[2]*(3.141592/180)) );
+        joint.pos.setPos( static_cast<float>(trans[0]), static_cast<float>(trans[1]), static_cast<float>(trans[2]) );
+        
+        joints.push_back(joint);
+    }
+	
 	if(joints.size() != table.size() || table.size() != idxToNodePointer.size())
 	{
 		cout << "joints and table not match " << joints.size() << " " << table.size() << " " << idxToNodePointer.size() << endl;

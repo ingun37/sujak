@@ -221,9 +221,10 @@ FbxAMatrix CalculateLocalTransform(FbxNode* pNode)
 }
 void skelToArr(FbxNode* node, int upperIdx, vector<int> &table, vector<FbxNode*>& idxToSkel, int depth)
 {
-    //printf("rot : %f  %f  %f\n", node->LclRotation.Get()[0], node->LclRotation.Get()[1], node->LclRotation.Get()[2]);
-    //if(node->LclTranslation.GetCurveNode() != NULL)
-    //    printf("%s has curvenode\n", node->GetName());
+    if(node->GetNodeAttribute() == NULL)
+        return;
+    if(node->GetNodeAttribute()->GetAttributeType() != FbxNodeAttribute::eSkeleton)
+        return;
 		
 	table.push_back( upperIdx );
 	idxToSkel.push_back(node);
@@ -546,7 +547,19 @@ void writeCurveInfo(FbxNode* skel)
         writefile(mycurve.tangents_r, sizeof(mycurve.tangents_r[0]) * mycurve.cnt);
     }
 }
-
+void setrotationorder(jjoint& joint, FbxNode* node)
+{
+    switch(node->RotationOrder.Get())
+    {
+        case FbxEuler::eOrderXYZ: joint.order = JROTATION_ORDER::XYZ; break;
+        case FbxEuler::eOrderXZY: joint.order = JROTATION_ORDER::XZY; break;
+        case FbxEuler::eOrderYXZ: joint.order = JROTATION_ORDER::YXZ; break;
+        case FbxEuler::eOrderYZX: joint.order = JROTATION_ORDER::YZX; break;
+        case FbxEuler::eOrderZXY: joint.order = JROTATION_ORDER::ZXY; break;
+        case FbxEuler::eOrderZYX: joint.order = JROTATION_ORDER::ZYX; break;
+        default: puts("unexpected order"); exit(1); break;
+    }
+}
 void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode*>& idxToNodePointer)
 {
 	vector<jjoint> joints;
@@ -560,18 +573,7 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
     for(int i=0;i<idxToNodePointer.size();i++)
     {
         jjoint joint;
-        //FbxDouble3 euler = node->LclRotation.Get();
-        FbxAMatrix realrotm = idxToNodePointer[i]->EvaluateLocalTransform(0);
-        FbxVector4 realrotv = realrotm.GetR();
-        FbxAMatrix rotm;
-        rotm.SetR(idxToNodePointer[i]->LclRotation.EvaluateValue(0));
-        FbxAMatrix scalm;
-        scalm.SetS(idxToNodePointer[i]->GeometricScaling.EvaluateValue(0));
         
-        FbxVector4 rotv = (rotm * scalm).GetR();
-        printf("%d. %f %f %f -> %s\n", i, rotv[0] - realrotv[0], rotv[1] - realrotv[1], rotv[2] - realrotv[2], idxToNodePointer[i]->GetName());
-        FbxVector4 grot = idxToNodePointer[i]->GeometricRotation.EvaluateValue(0);
-        //printf("geo %f %f %f\n", grot[0],grot[1],grot[2]);
         FbxAMatrix localtrans = CalculateLocalTransform(idxToNodePointer[i]);
         
         FbxVector4 euler = localtrans.GetR();
@@ -586,8 +588,31 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
             exit(1);
         }
         
-        joint.rot.euler( static_cast<float>(euler[0]*(3.141592/180)), static_cast<float>(euler[1]*(3.141592/180)), static_cast<float>(euler[2]*(3.141592/180)) );
+        setrotationorder(joint, idxToNodePointer[i]);
+        
+        joint.rot.euler( static_cast<float>(euler[0]*(3.141592/180)), static_cast<float>(euler[1]*(3.141592/180)), static_cast<float>(euler[2]*(3.141592/180)), joint.order );
         joint.pos.setPos( static_cast<float>(trans[0]), static_cast<float>(trans[1]), static_cast<float>(trans[2]) );
+        
+        matrix_float4x4 m1 = joint.getTransMat();
+        FbxAMatrix m2 = idxToNodePointer[i]->EvaluateLocalTransform();
+        
+        simd::float3 recaled = joint.rot.toEuler() * (180.f/3.141592);
+        //printf("recal diff : %f %f %f\n", recaled[0]-m2.GetR()[0], recaled[1]-m2.GetR()[1], recaled[2]-m2.GetR()[2]);
+        
+        
+        for(int j=0;j<4;j++)
+        {
+            
+            for(int k=0;k<4;k++)
+            {
+                if(abs(m1.columns[j][k] - m2.GetRow(j)[k]) > 0.0001)
+                {
+                    puts("caluclation went wrong");
+                    exit(1);
+                }
+            }
+            
+        }
         
         joints.push_back(joint);
     }
@@ -697,7 +722,8 @@ void doSkin( FbxNode* node, vector<FbxNode*> &idxToNode, const char* fbxname, ve
         jtranslation jt;
         jt.setPos(bindt[0], bindt[1], bindt[2]);
         jrotation jr;
-        jr.euler(bindr[0], bindr[1], bindr[2]);
+        
+        jr.euler(bindr[0], bindr[1], bindr[2], JROTATION_ORDER::XYZ);
         //TODO : scale
         
         matrix_float4x4 bindx = matrix_multiply(jt.getMat(), jr.toMat());

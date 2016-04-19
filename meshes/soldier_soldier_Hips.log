@@ -1,38 +1,62 @@
 0. soldier:Hips
+
 1. soldier:Spine
+
 2. soldier:Spine1
+
 3. soldier:Spine2
+
 4. soldier:Neck
+
 5. soldier:Neck1
+
 6. soldier:Head
-7. soldier:HeadTop_End
-8. soldier:LeftShoulder
-9. soldier:LeftArm
-10. soldier:LeftForeArm
-11. soldier:LeftHand
-12. soldier:LeftInHandThumb
-13. soldier:LeftHandThumb1
-14. soldier:LeftHandThumb2_End
-15. soldier:LeftHandIndex1
-16. soldier:LeftHandIndex2
-17. soldier:LeftHandIndex3_End
-18. soldier:RightShoulder
-19. soldier:RightArm
-20. soldier:RightForeArm
-21. soldier:RightHand
-22. soldier:RightInHandThumb
-23. soldier:RightHandThumb1
-24. soldier:RightHandThumb2_End
-25. soldier:RightHandIndex1
-26. soldier:RightHandIndex2
-27. soldier:RightHandIndex3_End
-28. soldier:LeftUpLeg
-29. soldier:LeftLeg
-30. soldier:LeftFoot
-31. soldier:LeftToeBase
-32. soldier:LeftFootToeBase_End
-33. soldier:RightUpLeg
-34. soldier:RightLeg
-35. soldier:RightFoot
-36. soldier:RightToeBase
-37. soldier:RightFootToeBase_End
+
+7. soldier:LeftShoulder
+
+8. soldier:LeftArm
+
+9. soldier:LeftForeArm
+
+10. soldier:LeftHand
+
+11. soldier:LeftInHandThumb
+
+12. soldier:LeftHandThumb1
+
+13. soldier:LeftHandIndex1
+
+14. soldier:LeftHandIndex2
+
+15. soldier:RightShoulder
+
+16. soldier:RightArm
+
+17. soldier:RightForeArm
+
+18. soldier:RightHand
+
+19. soldier:RightInHandThumb
+
+20. soldier:RightHandThumb1
+
+21. soldier:RightHandIndex1
+
+22. soldier:RightHandIndex2
+
+23. soldier:LeftUpLeg
+
+24. soldier:LeftLeg
+
+25. soldier:LeftFoot
+
+26. soldier:LeftToeBase
+
+27. soldier:RightUpLeg
+
+28. soldier:RightLeg
+
+29. soldier:RightFoot
+
+30. soldier:RightToeBase
+

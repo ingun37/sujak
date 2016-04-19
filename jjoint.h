@@ -16,7 +16,7 @@ class jjoint
 public:
 	jtranslation pos;
 	jrotation rot;
-	
+    JROTATION_ORDER order;
 	inline matrix_float4x4 getTransMat() const
 	{
 		return matrix_multiply(pos.getMat(), rot.toMat());

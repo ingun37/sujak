@@ -12,6 +12,10 @@
 #include <stdio.h>
 #include <simd/simd.h>
 #include <math.h>
+enum JROTATION_ORDER
+{
+    XYZ, XZY, YXZ, YZX, ZXY, ZYX
+};
 class jrotation
 {
 public:
@@ -42,32 +46,118 @@ public:
 		});
 	}
     
-    inline void euler_degree(float _x, float _y, float _z)
+    inline void euler_degree(float _x, float _y, float _z, JROTATION_ORDER order)
     {
         const float convert = 3.141592 / 180;
-        euler(_x * convert, _y * convert, _z * convert);
+        euler(_x * convert, _y * convert, _z * convert, order);
     }
 
-	inline void euler(float _x, float _y, float _z)
+    inline void genMatX(float rad, matrix_float3x3 &mat)
+    {
+        float c = cosf(rad);
+        float s = sinf(rad);
+        mat.columns[0] = {c,s,0};
+        mat.columns[1] = {-s,c,0};
+        mat.columns[2] = {0,0,1};
+    }
+    
+    inline void genMatY(float rad, matrix_float3x3 &mat)
+    {
+        float c = cosf(rad);
+        float s = sinf(rad);
+        mat.columns[0] = {c,0,-s};
+        mat.columns[1] = {0,1,0};
+        mat.columns[2] = {s,0,c};
+    }
+    
+    inline void genMatZ(float rad, matrix_float3x3 &mat)
+    {
+        float c = cosf(rad);
+        float s = sinf(rad);
+        mat.columns[0] = {1,0,0};
+        mat.columns[1] = {0,c,s};
+        mat.columns[2] = {0,-s,c};
+    }
+    
+    inline void onlyx(float rad)
+    {
+        //TODO : faster
+        float h = rad/2;
+        float cosh = cosf(h);
+        float sinh = sinf(h);
+        
+        xyzw =
+        {
+            sinh,
+            0,
+            0,
+            cosh
+        };
+    }
+    
+    inline void onlyy(float rad)
+    {
+        //TODO : faster
+        float h = rad/2;
+        float cosh = cosf(h);
+        float sinh = sinf(h);
+        
+        xyzw =
+        {
+            0,
+            sinh,
+            0,
+            cosh
+        };
+    }
+    
+    inline void onlyz(float rad)
+    {
+        //TODO : faster
+        float h = rad/2;
+        float cosh = cosf(h);
+        float sinh = sinf(h);
+        
+        xyzw =
+        {
+            0,
+            0,
+            sinh,
+            cosh
+        };
+    }
+    
+	inline void euler(float _x, float _y, float _z, JROTATION_ORDER order)
 	{
-		//TODO : faster
-		float hx = _x/2;
-		float hy = _y/2;
-		float hz = _z/2;
-		float coshx = cosf(hx);
-		float coshy = cosf(hy);
-		float coshz = cosf(hz);
-		float sinhx = sinf(hx);
-		float sinhy = sinf(hy);
-		float sinhz = sinf(hz);
-
-		xyzw =
-		{
-			sinhx*coshy*coshz - coshx*sinhy*sinhz,
-			coshx*sinhy*coshz + sinhx*coshy*sinhz,
-			coshx*coshy*sinhz - sinhx*sinhy*coshz,
-			coshx*coshy*coshz + sinhx*sinhy*sinhz
-		};
+        jrotation rx, ry, rz;
+        rx.onlyx(_x);
+        ry.onlyy(_y);
+        rz.onlyz(_z);
+        
+        switch(order)
+        {
+            case JROTATION_ORDER::XYZ:
+                *this = (rz * (ry * rx));
+                break;
+            case JROTATION_ORDER::XZY:
+                *this = (ry * (rz * rx));
+                break;
+            case JROTATION_ORDER::YXZ:
+                *this = (rz * (rx * ry));
+                break;
+            case JROTATION_ORDER::YZX:
+                *this = (rx * (rz * ry));
+                break;
+            case JROTATION_ORDER::ZXY:
+                *this = (ry * (rx * rz));
+                break;
+            case JROTATION_ORDER::ZYX:
+                *this = (rx * (ry * rz));
+                break;
+            default:
+                puts("unexplected rotaiton order.");
+                break;
+        }
 	}
 #define DBL(x) ((x)*(x))
 #define EQ1(a,b) (1-2*DBL(xyzw[a])-2*DBL(xyzw[b]))

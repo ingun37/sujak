@@ -252,6 +252,22 @@ int doanim(FbxScene* scene, vector<FbxNode*>& idxToNodePointer, const char* fbxn
         {
             FbxAnimLayer* layer = animstack->GetMember<FbxAnimLayer>(j);
             cout << "\t" << j << ". layer : " << layer->GetName() << endl;
+            int nodecnt = layer->GetMemberCount<FbxAnimCurveNode>();
+            for(int inode =0;inode<nodecnt;inode++)
+            {
+                FbxAnimCurveNode* node = layer->GetMember<FbxAnimCurveNode>(inode);
+                FbxProperty prop = node->GetDstProperty();
+                FbxAnimCurve* curve = prop.GetCurve(layer);
+                if(curve)
+                {
+                    if(curve->KeyGetCount() > 0)
+                    {
+                        FbxString propname = prop.GetName();
+                        FbxObject* obj = prop.GetFbxObject();
+                        //printf("%s %s\n",propname.Buffer(), obj->GetName());
+                    }
+                }
+            }
         }
     }
     /*
@@ -530,6 +546,7 @@ void writeCurveInfo(FbxNode* skel)
         writefile(mycurve.tangents_r, sizeof(mycurve.tangents_r[0]) * mycurve.cnt);
     }
 }
+
 void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode*>& idxToNodePointer)
 {
 	vector<jjoint> joints;
@@ -544,7 +561,17 @@ void doskel( FbxScene* scene, FbxNode* node, const char* fbxname, vector<FbxNode
     {
         jjoint joint;
         //FbxDouble3 euler = node->LclRotation.Get();
+        FbxAMatrix realrotm = idxToNodePointer[i]->EvaluateLocalTransform(0);
+        FbxVector4 realrotv = realrotm.GetR();
+        FbxAMatrix rotm;
+        rotm.SetR(idxToNodePointer[i]->LclRotation.EvaluateValue(0));
+        FbxAMatrix scalm;
+        scalm.SetS(idxToNodePointer[i]->GeometricScaling.EvaluateValue(0));
         
+        FbxVector4 rotv = (rotm * scalm).GetR();
+        printf("%d. %f %f %f -> %s\n", i, rotv[0] - realrotv[0], rotv[1] - realrotv[1], rotv[2] - realrotv[2], idxToNodePointer[i]->GetName());
+        FbxVector4 grot = idxToNodePointer[i]->GeometricRotation.EvaluateValue(0);
+        //printf("geo %f %f %f\n", grot[0],grot[1],grot[2]);
         FbxAMatrix localtrans = CalculateLocalTransform(idxToNodePointer[i]);
         
         FbxVector4 euler = localtrans.GetR();

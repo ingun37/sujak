@@ -9,7 +9,23 @@
 #include "jfbxcustomizer_skin.hpp"
 #include <iostream>
 #include "jjoint.h"
-
+#include <math.h>
+matrix_float4x4 getjtransform(FbxVector4 m, FbxVector4 r, FbxVector4 s)
+{
+    if(abs(s[0]-1) > 0.0001 ||
+       abs(s[1]-1) > 0.0001 ||
+       abs(s[2]-1) > 0.0001 )
+    {
+        puts("not ready for s");
+        exit(1);
+    }
+    jtranslation jt;
+    jt.setPos(m[0], m[1], m[2]);
+    jrotation jr;
+    jr.euler_degree(r[0], r[1], r[2], JROTATION_ORDER::XYZ);
+    
+    return matrix_multiply(jt.getMat(), jr.toMat());
+}
 void jfbxcustomizer_skin::genjointinfos()
 {
     for(int i=0;i<skin->GetClusterCount();i++)
@@ -40,30 +56,24 @@ void jfbxcustomizer_skin::genjointinfos()
         FbxVector4 bindt = linktrans.GetT();
         FbxVector4 bindr = linktrans.GetR();
         FbxVector4 binds = linktrans.GetS();
-        if (binds[0] > 1.0001f || binds[1] > 1.0001f || binds[2] > 1.0001f ||
-            binds[0] < 0.9999f || binds[1] < 0.9999f || binds[2] < 0.9999f)
-        {
-            puts("not ready for scale");
-            exit(1);
-        }
         
-        jtranslation jt;
-        jt.setPos(bindt[0], bindt[1], bindt[2]);
-        jrotation jr;
+        matrix_float4x4 bindinverse = matrix_invert( getjtransform(bindt, bindr, binds) );
         
-        jr.euler(bindr[0], bindr[1], bindr[2], JROTATION_ORDER::XYZ);
-        //TODO : scale
+        FbxAMatrix meshtrans;
+        cluster->GetTransformMatrix(meshtrans);
         
-        matrix_float4x4 bindx = matrix_multiply(jt.getMat(), jr.toMat());
-        bindx = matrix_invert(bindx);
+        bindt = meshtrans.GetT();
+        bindr = meshtrans.GetR();
+        binds = meshtrans.GetS();
+        
+        matrix_float4x4 bindmesh = getjtransform(bindt, bindr, binds);
         
         vector<jvertex>& vertices = getvertices();
-        
         vector<jskincpinfo> newcpinfos;
         
-        for(int i=0;i<cluster->GetControlPointIndicesCount();i++)
+        for(int icpi=0;icpi<cluster->GetControlPointIndicesCount();icpi++)
         {
-            int cpi = cluster->GetControlPointIndices()[i];
+            int cpi = cluster->GetControlPointIndices()[icpi];
             FbxVector4 originalcp = mesh->GetControlPointAt(cpi);
             
             int newcpi = -1;
@@ -83,11 +93,12 @@ void jfbxcustomizer_skin::genjointinfos()
             
             jskincpinfo newcpinfo;
             newcpinfo.idx = newcpi;
-            newcpinfo.weight = cluster->GetControlPointWeights()[i];
+            newcpinfo.weight = cluster->GetControlPointWeights()[icpi];
             newcpinfos.push_back(newcpinfo);
         }
         
-        jinfo.inverse = bindx;
+        jinfo.inverse = bindinverse;
+        jinfo.bindmesh = bindmesh;
         jinfo.jointidx = joint;
         jinfo.cpinfos = newcpinfos;
         

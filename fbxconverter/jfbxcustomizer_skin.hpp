@@ -26,6 +26,7 @@ typedef struct _jskinjointinfo
 {
     int jointidx;
     matrix_float4x4 inverse;
+    matrix_float4x4 bindmesh;
     vector<jskincpinfo> cpinfos;
 } jskinjointinfo;
 

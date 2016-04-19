@@ -16,6 +16,7 @@ class jskinner
 public:
 	int clusterCnt;
     matrix_float4x4 *inverses;
+    matrix_float4x4 *bindmeshes;
 	int* jointIdxs;
 	int* linkCounts;
 	int* accuTable;

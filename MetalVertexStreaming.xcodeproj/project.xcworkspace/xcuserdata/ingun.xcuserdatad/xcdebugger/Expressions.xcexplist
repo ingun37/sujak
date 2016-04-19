@@ -3,15 +3,27 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "jbinary_janim::getInfo(char*, _jcurvenode*&amp;, int):jbinary.cpp">
+         contextName = "jfbxcustomizer_vertex::getvertices():jfbxcustomizer_vertex.cpp">
       </ContextState>
       <ContextState
-         contextName = "jskeleton::setFromFile(char*, char*):jskeleton.cpp">
+         contextName = "jcore::loadAll(void (*)(char const*, char const*, char*&amp;, unsigned long&amp;)):jcore.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "jbinary_jskinner::getInfo(char*, int&amp;, matrix_float4x4*&amp;, matrix_float4x4*&amp;, int*&amp;, int*&amp;, int*&amp;, float*&amp;, int*&amp;):jbinary.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "table[3]">
+               value = "accuTable[30]">
+            </PersistentString>
+            <PersistentString
+               value = "weights[60]">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "jfbxcustomizer_vertex::genVerticesAndIndices():jfbxcustomizer_vertex.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "domesh(fbxsdk_2015_1::FbxNode*, std::__1::vector&lt;fbxsdk_2015_1::FbxNode*, std::__1::allocator&lt;fbxsdk_2015_1::FbxNode*&gt; &gt;&amp;, char const*):main.cpp">
       </ContextState>
       <ContextState
          contextName = "makeRenderObjFromSkeleton(jskeleton&amp;, jrenderobject&amp;):jcore.cpp">
@@ -25,10 +37,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "jcore::loadAll(void (*)(char const*, char const*, char*&amp;, unsigned long&amp;)):jcore.cpp">
+         contextName = "jbinary_janim::getInfo(char*, _jcurvenode*&amp;, int):jbinary.cpp">
       </ContextState>
       <ContextState
-         contextName = "domesh(fbxsdk_2015_1::FbxNode*, std::__1::vector&lt;fbxsdk_2015_1::FbxNode*, std::__1::allocator&lt;fbxsdk_2015_1::FbxNode*&gt; &gt;&amp;, char const*):main.cpp">
+         contextName = "jskeleton::setFromFile(char*, char*):jskeleton.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "table[3]">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

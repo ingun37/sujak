@@ -286,20 +286,41 @@ int main(int argc, const char * argv[])
 	
 	memset(fname, 0, sizeof(fname));
     FbxNode* rootskel = NULL;
+    FbxNode* skinnedmesh = NULL;
     for(int i=0;i<scene->GetNodeCount();i++)
     {
         FbxNode* node = scene->GetNode(i);
         if(node->GetNodeAttribute() == NULL)
             continue;
-        if(node->GetNodeAttribute()->GetAttributeType() != FbxNodeAttribute::eSkeleton )
-            continue;
-        if(!node->GetSkeleton()->IsSkeletonRoot())
-            continue;
-        rootskel = node;
-        break;
+        if(node->GetNodeAttribute()->GetAttributeType() == FbxNodeAttribute::eSkeleton )
+        {
+            if(!node->GetSkeleton()->IsSkeletonRoot())
+                continue;
+            if(rootskel != NULL)
+            {
+                puts("jsiofjilsejlfsef");
+                exit(1);
+            }
+            rootskel = node;
+        }
+        else if(node->GetNodeAttribute()->GetAttributeType() == FbxNodeAttribute::eMesh)
+        {
+            if(node->GetMesh()->GetDeformerCount() > 0)
+            {
+                if(skinnedmesh != NULL)
+                {
+                    puts("jaiosrghisgssss");
+                    exit(1);
+                }
+                skinnedmesh = node;
+                
+            }
+        }
     }
     
-    if(rootskel)
+    
+    
+    if(rootskel && skinnedmesh)
     {
         jfbxcustomizer_curve curve_customizer(rootskel);
         
@@ -344,6 +365,67 @@ int main(int argc, const char * argv[])
         startfile(namebuff);
         writefile(&joints[0], sizeof(joints[0]) * joints.size());
         endfile();
+        
+        jfbxcustomizer_skin skin_customizer(rootskel, skinnedmesh->GetMesh());
+        
+        vector<jvertex> vertices = skin_customizer.getvertices();
+        vector<int> indices = skin_customizer.getindices();
+        
+        vector<simd::float4> positions;
+        vector<simd::float4> normals;
+        
+        for(int i=0;i<vertices.size();i++)
+        {
+            positions.push_back( simd::float4 { static_cast<float>(vertices[i].pos[0]),static_cast<float>(vertices[i].pos[1]),static_cast<float>(vertices[i].pos[2]),1 } );
+            simd::float3 normal_before = simd::float3{ static_cast<float>(vertices[i].nor[0]), static_cast<float>(vertices[i].nor[1]), static_cast<float>(vertices[i].nor[2]) };
+            normal_before = vector_normalize(normal_before);
+            normals.push_back( simd::float4{ normal_before[0], normal_before[1], normal_before[2], 0 } );
+        }
+        
+        makename("test\0", skinnedmesh->GetName(), ".jmesh\0", namebuff, sizeof(namebuff));
+        startfile(namebuff);
+        writefile_copy((int)vertices.size());
+        writefile_copy((int)indices.size());
+        writefile(&positions[0], sizeof(positions[0]) * positions.size());
+        writefile(&normals[0], sizeof(normals[0]) * normals.size());
+        writefile(&indices[0], sizeof(indices[0]) * indices.size());
+        endfile();
+        
+        vector<jskinjointinfo>skinjointinfos = skin_customizer.getjointinfos();
+        
+        vector<int> jointidxs;
+        vector<matrix_float4x4> inverses;
+        vector<matrix_float4x4> bindmeshes;
+        vector<int> cpcnts;
+        
+        vector<int> cpindices;
+        vector<float> weights;
+        for(int i=0;i<skinjointinfos.size();i++)
+        {
+            jskinjointinfo& info = skinjointinfos[i];
+            jointidxs.push_back(info.jointidx);
+            inverses.push_back(info.inverse);
+            bindmeshes.push_back(info.bindmesh);
+            cpcnts.push_back((int)info.cpinfos.size());
+            
+            for(int j=0;j<info.cpinfos.size();j++)
+            {
+                cpindices.push_back(info.cpinfos[j].idx);
+                weights.push_back(info.cpinfos[j].weight);
+            }
+        }
+        
+        makename("test\0", skinnedmesh->GetName(), ".jskin\0", namebuff, sizeof(namebuff));
+        startfile(namebuff);
+        writefile_copy((int)jointidxs.size());
+        writefile(&jointidxs[0], sizeof(jointidxs[0]) * jointidxs.size());
+        writefile(&inverses[0], sizeof(inverses[0]) * inverses.size());
+        writefile(&bindmeshes[0], sizeof(bindmeshes[0]) * bindmeshes.size());
+        writefile(&cpcnts[0], sizeof(cpcnts[0]) * cpcnts.size());
+        writefile(&cpindices[0], sizeof(cpindices[0]) * cpindices.size());
+        writefile(&weights[0], sizeof(weights[0]) * weights.size());
+        endfile();
+        
     }
 
 	scene->Destroy();

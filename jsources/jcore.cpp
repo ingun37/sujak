@@ -274,7 +274,7 @@ void jcore::layout()
 	}
 }
 
-const char* fnameMesh = "soldier_soldier_Military_Male_Lod_1\0";
+const char* fnameMesh = "_soldier_Military_Male_Lod_1\0";
 const char* extMesh = ".jmesh\0";
 const char* extSkin = ".jskin\0";
 const char* fnameSkel = "soldier_soldier_Hips\0";
@@ -312,7 +312,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	jnode* node = jallocatorJnode::getAvailable(1);
 	(*pfunc)(fnameMesh, extSkin, file, size);
 	jskinner* skinner = jallocatorSkinner::getAvailable(1);
-	jbinary_jskinner::getInfo(file, skinner->clusterCnt, skinner->inverses, skinner->jointIdxs, skinner->linkCounts, skinner->linkIdxs, skinner->linkWeights, skinner->accuTable);
+	jbinary_jskinner::getInfo(file, skinner->clusterCnt, skinner->inverses, skinner->bindmeshes, skinner->jointIdxs, skinner->linkCounts, skinner->linkIdxs, skinner->linkWeights, skinner->accuTable);
 	node->setData(mesh, sk, skinner);
 	renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(node);
 	

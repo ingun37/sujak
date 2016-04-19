@@ -29,13 +29,13 @@ class jfbxcustomizer_vertex : public jfbxcustomizer
     vector<int> indices;
     
 protected:
-    vector<jvertex>& getvertices();
-    vector<int>& getindices();
+    
     FbxMesh* mesh;
     bool issimilarvector(double* v1, double* v2);
     bool issimilarvertex(jvertex v1, jvertex v2);
 public:
-    
+    vector<jvertex>& getvertices();
+    vector<int>& getindices();
     jfbxcustomizer_vertex(FbxNode* rootskel, FbxMesh* _mesh) : jfbxcustomizer(rootskel)
     {
         mesh = _mesh;

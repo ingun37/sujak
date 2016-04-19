@@ -24,7 +24,7 @@ bool jfbxcustomizer_vertex::issimilarvertex(jvertex v1, jvertex v2)
 
 void jfbxcustomizer_vertex::genVerticesAndIndices()
 {
-    puts("gen vert and indices...");
+    printf("gen vert and indices... cp point : %d\n",mesh->GetControlPointsCount());
     vector<vector<jvertex>> extended;
     for(int pi = 0 ; pi < mesh->GetPolygonCount() ; pi++)
     {
@@ -63,7 +63,7 @@ void jfbxcustomizer_vertex::genVerticesAndIndices()
             jvertex& current = extended[pi][vi];
             
             int isame = 0;
-            for(int isame = 0; isame<vertices.size();isame++)
+            for(isame = 0; isame<vertices.size();isame++)
             {
                 jvertex& cmp = vertices[isame];
                 if(issimilarvertex(current, cmp))
@@ -101,6 +101,8 @@ void jfbxcustomizer_vertex::genVerticesAndIndices()
             exit(1);
         }
     }
+    
+    printf("cp after : %d\n", vertices.size());
 }
 
 vector<jvertex>& jfbxcustomizer_vertex::getvertices()

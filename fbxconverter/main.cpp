@@ -18,7 +18,7 @@
 #include "jrotation.hpp"
 #include "jcurve.hpp"
 #include "bitmap_image.hpp"
-
+#include "jfbxcustomizer.hpp"
 using namespace std;
 
 typedef struct _vinfo
@@ -1143,5 +1143,6 @@ int main(int argc, const char * argv[])
 	importer->Destroy();
 	iosetting->Destroy();
 	fm->Destroy();
+    jfbxcustomizer cus;
 	return 0;
 }

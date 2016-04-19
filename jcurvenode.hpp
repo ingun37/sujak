@@ -16,8 +16,8 @@ class jcurve;
 typedef struct _jcurvenode
 {
     jcurve *curves[3];
-    unsigned char keycnt[3];
-    char padding1;
+    
+    
     
 } jcurvenode;
 

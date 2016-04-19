@@ -278,7 +278,7 @@ const char* fnameMesh = "soldier_soldier_Military_Male_Lod_1\0";
 const char* extMesh = ".jmesh\0";
 const char* extSkin = ".jskin\0";
 const char* fnameSkel = "soldier_soldier_Hips\0";
-const char* extJoint = ".jjoints\0";
+const char* extJoint = ".jjoin\0";
 const char* extTable = ".jtable\0";
 const char* extAnim = ".janim\0";
 
@@ -287,7 +287,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 {
 	char* file;
 	unsigned long size;
-	(*pfunc)(fnameSkel, extJoint, file, size);
+	(*pfunc)("_soldier_Hips", extJoint, file, size);
     
 	char* file2;
 	(*pfunc)("_soldier_Hips", extTable, file2, size);

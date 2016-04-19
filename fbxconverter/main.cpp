@@ -338,7 +338,12 @@ int main(int argc, const char * argv[])
         writefile_copy((int)table.size());
         writefile(&table[0], sizeof(table[0])*table.size());
         endfile();
-        curve_customizer.getJoints();
+        
+        vector<jjoint>& joints = curve_customizer.getJoints();
+        makename("test\0", rootskel->GetName(), ".jjoin\0", namebuff, sizeof(namebuff));
+        startfile(namebuff);
+        writefile(&joints[0], sizeof(joints[0]) * joints.size());
+        endfile();
     }
 
 	scene->Destroy();

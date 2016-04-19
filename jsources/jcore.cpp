@@ -290,7 +290,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	(*pfunc)(fnameSkel, extJoint, file, size);
     
 	char* file2;
-	(*pfunc)(fnameSkel, extTable, file2, size);
+	(*pfunc)("_soldier_Hips", extTable, file2, size);
     
     char* file3;
     (*pfunc)("_soldier_Hips", extAnim, file3, size);

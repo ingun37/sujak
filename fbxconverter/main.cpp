@@ -302,7 +302,9 @@ int main(int argc, const char * argv[])
     if(rootskel)
     {
         jfbxcustomizer_curve curve_customizer(rootskel);
+        
         vector<jcurvenode*> curvenodes = curve_customizer.getCurvenodes();
+        
         makename("test\0", rootskel->GetName(), ".janim", namebuff, sizeof(namebuff));
         startfile(namebuff);
         for(int i=0;i<curvenodes.size();i++)
@@ -328,7 +330,14 @@ int main(int argc, const char * argv[])
             }
         }
         endfile();
-        curve_customizer.getUpperTable();
+        
+        vector<int>& table = curve_customizer.getUpperTable();
+        
+        makename("test\0", rootskel->GetName(), ".jtable\0", namebuff, sizeof(namebuff));
+        startfile(namebuff);
+        writefile_copy((int)table.size());
+        writefile(&table[0], sizeof(table[0])*table.size());
+        endfile();
         curve_customizer.getJoints();
     }
 

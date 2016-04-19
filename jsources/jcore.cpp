@@ -293,7 +293,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	(*pfunc)(fnameSkel, extTable, file2, size);
     
     char* file3;
-    (*pfunc)(fnameSkel, extAnim, file3, size);
+    (*pfunc)("_soldier_Hips", extAnim, file3, size);
     
 	jskeleton* sk = jallocatorSkeleton::getAvailable(1);
 	sk->setFromFile(file2, file, file3);

@@ -14,7 +14,7 @@
 #include "jjoint.h"
 #include <vector>
 using namespace std;
-class jfbxcustomizer_joint : jfbxcustomizer
+class jfbxcustomizer_joint : public jfbxcustomizer
 {
     vector<jjoint> joints;
 public:

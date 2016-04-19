@@ -16,9 +16,6 @@ class jcurve;
 typedef struct _jcurvenode
 {
     jcurve *curves[3];
-    
-    
-    
 } jcurvenode;
 
 #endif /* jcurvenode_hpp */

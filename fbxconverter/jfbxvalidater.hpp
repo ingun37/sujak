@@ -19,5 +19,6 @@ class jfbxvalidater
 public:
     static void uppertable(const vector<int>& arr);
     static void keycnts(vector<vector<unsigned char>>& arr, int skelcnt);
+    
 };
 #endif /* jfbxvalidater_hpp */

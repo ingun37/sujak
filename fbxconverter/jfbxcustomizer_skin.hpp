@@ -15,24 +15,29 @@
 #include "jfbxcustomizer_vertex.hpp"
 
 using namespace std;
-typedef struct _jskinjointinfo
-{
-    int jointidx;
-    int cpcnt;
-    matrix_float4x4 inverse;
-} jskinjointinfo;
 
 typedef struct _jskincpinfo
 {
     int idx;
     float weight;
 } jskincpinfo;
-class jfbxcustomizer_skin : jfbxcustomizer_vertex
+
+typedef struct _jskinjointinfo
+{
+    int jointidx;
+    matrix_float4x4 inverse;
+    vector<jskincpinfo> cpinfos;
+} jskinjointinfo;
+
+
+class jfbxcustomizer_skin : public jfbxcustomizer_vertex
 {
     vector<jskinjointinfo> jointinfos;
-    vector<jskincpinfo> cpinfos;
+    void genjointinfos();
+    FbxSkin* skin;
 public:
-    jfbxcustomizer_skin(FbxNode* rootskel, FbxMesh* _mesh) : jfbxcustomizer_skin(rootskel, _mesh)
+    vector<jskinjointinfo>& getjointinfos();
+    jfbxcustomizer_skin(FbxNode* rootskel, FbxMesh* _mesh) : jfbxcustomizer_vertex(rootskel, _mesh)
     {
     }
 };

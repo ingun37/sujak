@@ -19,17 +19,20 @@ typedef struct _jvertex
     double pos[3];
     double nor[3];
 } jvertex;
-class jfbxcustomizer_vertex : jfbxcustomizer
+class jfbxcustomizer_vertex : public jfbxcustomizer
 {
-    FbxMesh* mesh;
     void genVerticesAndIndices();
     
     vector<jvertex> vertices;
-    vector<jvertex>& getvertices();
+    
     
     vector<int> indices;
-    vector<int>& getindices();
+    
 protected:
+    vector<jvertex>& getvertices();
+    vector<int>& getindices();
+    FbxMesh* mesh;
+    bool issimilarvector(double* v1, double* v2);
     bool issimilarvertex(jvertex v1, jvertex v2);
 public:
     

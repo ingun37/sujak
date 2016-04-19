@@ -161,6 +161,8 @@ void jfbxcustomizer_curve::iteritemcurves(FbxAnimCurve *c1, FbxAnimCurve *c2, Fb
     curvenode->curves[0] = j1;
     curvenode->curves[1] = j2;
     curvenode->curves[2] = j3;
+    
+    curvenodes.push_back(curvenode);
 }
 
 vector<jcurvenode*>& jfbxcustomizer_curve::getCurvenodes()

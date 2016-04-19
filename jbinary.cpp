@@ -80,22 +80,17 @@ typedef jallocator<jcurve, 2000> poolcurve;
 void jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelcnt)
 {
     char* fp = data;
-    unsigned char* keycnts = (unsigned char*)fp;
-    fp += 3*sizeof(unsigned char)*skelcnt;
-    
+
     curvenodes = poolcurvenode::getAvailable(skelcnt);
-    
-    for(int i=0;i<skelcnt;i++)
-    {
-        memcpy(curvenodes[i].keycnt, &keycnts[i*3], sizeof(unsigned char)*3);
-        //printf("keycnt : %d %d %d\n", curvenodes[i].keycnt[0], curvenodes[i].keycnt[1], curvenodes[i].keycnt[2]);
-    }
     
     for(int i=0;i<skelcnt;i++)
     {
         for(int j=0;j<3;j++)
         {
-            if (curvenodes[i].keycnt[j]==0)
+            int cnt = *((int*)fp);
+            fp += sizeof(int);
+            
+            if(cnt ==0)
             {
                 curvenodes[i].curves[j] = NULL;
                 continue;
@@ -103,69 +98,24 @@ void jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelc
             
             jcurve *curve = poolcurve::getAvailable(1);
             
-            curve->cnt = curvenodes[i].keycnt[j];
+            curve->cnt = cnt;
             
             curve->interpolations = (JCURVEINTERPOLATION*)fp;
-            fp += sizeof(JCURVEINTERPOLATION) * curvenodes[i].keycnt[j];
-            
-            curve->times = (float*)fp;
-            fp += sizeof(float) * curvenodes[i].keycnt[j];
-            
-            curve->values = (float*)fp;
-            fp += sizeof(float) * curvenodes[i].keycnt[j];
+            fp += sizeof(JCURVEINTERPOLATION) * cnt;
             
             curve->tangents_l = (simd::float2*)fp;
-            fp += sizeof(simd::float2) * curvenodes[i].keycnt[j];
+            fp += sizeof(simd::float2) * cnt;
             
             curve->tangents_r = (simd::float2*)fp;
-            fp += sizeof(simd::float2) * curvenodes[i].keycnt[j];
+            fp += sizeof(simd::float2) * cnt;
             
+            curve->times = (float*)fp;
+            fp += sizeof(float) * cnt;
             
+            curve->values = (float*)fp;
+            fp += sizeof(float) * cnt;
             
             curvenodes[i].curves[j] = curve;
-            
         }
     }
-    /*
-    for(int i=0;i<skelcnt;i++)
-    {
-        for(int j=0;j<3;j++)
-        {
-            jcurve* curve = curvenodes[i].curves[j];
-            if(curve == NULL)
-            {
-                if (keycnts[i*3 + j]!= 0)
-                {
-                    printf("curve err\n");
-                    exit(1);
-                }
-                continue;
-            }
-            else
-            {
-                if(keycnts[i*3 + j] == 0)
-                {
-                    printf("curve err..\n");
-                    exit(1);
-                }
-            }
-            
-            if(curve->cnt==0)
-            {
-                puts("zero keycnt");
-                exit(1);
-            }
-            float first_right = curve->tangents_r[0][0];
-            float last_left = curve->tangents_l[curve->cnt-1][0];
-            
-            if(first_right < 0 || last_left < 0)
-            {
-                puts("curve err2");
-                exit(1);
-            }
-            
-            //printf("%f %f\n", first_right, last_left);
-        }
-    }
-     */
 }

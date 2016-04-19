@@ -31,7 +31,10 @@ void jfbxcustomizer::iterskel(FbxNode *node)
 vector<FbxNode*>& jfbxcustomizer::getSkels()
 {
     if(_skels.size() == 0)
+    {
+        puts("start itering skel");
         iterskel(_rootskel);
+    }
 
     return _skels;
 }
@@ -55,12 +58,4 @@ vector<int>& jfbxcustomizer::getUpperTable()
     }
     jfbxvalidater::uppertable(uppertable);
     return uppertable;
-}
-jfbxcustomizer::jfbxcustomizer()
-{
-    
-}
-jfbxcustomizer::jfbxcustomizer(FbxNode* rootskel)
-{
-    _rootskel = rootskel;
 }

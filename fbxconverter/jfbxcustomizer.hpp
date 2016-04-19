@@ -16,18 +16,19 @@ using namespace std;
 
 class jfbxcustomizer
 {
-    vector<FbxNode*> _skels;
-    vector<int> uppertable;
-    
+protected:
     bool isskel(FbxNode* node);
     void iterskel(FbxNode* node);
-    jfbxcustomizer();
-protected:
-    FbxNode* _rootskel;
-public:
-    jfbxcustomizer(FbxNode* rootskel);
-    vector<int>& getUpperTable();
+
+    vector<int> uppertable;
+    vector<FbxNode*> _skels;
     vector<FbxNode*>& getSkels();
+    FbxNode* _rootskel;
+    jfbxcustomizer(){};
+public:
+    jfbxcustomizer(FbxNode* rootskel) : _rootskel(rootskel){};
+    vector<int>& getUpperTable();
+    
 };
 
 #endif /* jfbxcustomizer_hpp */

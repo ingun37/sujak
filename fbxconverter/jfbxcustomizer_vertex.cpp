@@ -9,7 +9,7 @@
 #include "jfbxcustomizer_vertex.hpp"
 #include <math.h>
 
-bool issimilarvector(double* v1, double* v2)
+bool jfbxcustomizer_vertex::issimilarvector(double* v1, double* v2)
 {
     if( abs(v1[0] - v2[0]) < 0.0001 && abs(v1[1] - v2[1]) < 0.0001 && abs(v1[2] - v2[2]) < 0.0001 )
         return true;
@@ -24,6 +24,7 @@ bool jfbxcustomizer_vertex::issimilarvertex(jvertex v1, jvertex v2)
 
 void jfbxcustomizer_vertex::genVerticesAndIndices()
 {
+    puts("gen vert and indices...");
     vector<vector<jvertex>> extended;
     for(int pi = 0 ; pi < mesh->GetPolygonCount() ; pi++)
     {

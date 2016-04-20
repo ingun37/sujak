@@ -380,7 +380,7 @@ int main(int argc, const char * argv[])
             simd::float3 normal_before = simd::float3{ static_cast<float>(vertices[i].nor[0]), static_cast<float>(vertices[i].nor[1]), static_cast<float>(vertices[i].nor[2]) };
             normal_before = vector_normalize(normal_before);
             normals.push_back( simd::float4{ normal_before[0], normal_before[1], normal_before[2], 0 } );
-            uvs.push_back(simd::float2 { static_cast<float>(vertices[i].uv[0]), static_cast<float>(vertices[i].uv[1]) } );
+            uvs.push_back(simd::float2 { static_cast<float>(vertices[i].uv[0]), 1 - static_cast<float>(vertices[i].uv[1]) } );
         }
         
         makename("test\0", skinnedmesh->GetName(), ".jmesh\0", namebuff, sizeof(namebuff));

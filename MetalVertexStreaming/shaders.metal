@@ -46,7 +46,6 @@ fragment half4 passThroughFragment(VertexInOut inFrag [[stage_in]], texture2d<ha
 	
     constexpr sampler quad_sampler;
     
-    inFrag.uv.y = 1-inFrag.uv.y;
     half4 color = tex2D.sample(quad_sampler, inFrag.uv);
     
     color.xyz = color.xyz * el;

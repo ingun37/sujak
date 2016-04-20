@@ -18,6 +18,7 @@ typedef struct _jvertex
 {
     double pos[3];
     double nor[3];
+    double uv[2];
 } jvertex;
 class jfbxcustomizer_vertex : public jfbxcustomizer
 {
@@ -31,7 +32,7 @@ class jfbxcustomizer_vertex : public jfbxcustomizer
 protected:
     
     FbxMesh* mesh;
-    bool issimilarvector(double* v1, double* v2);
+    bool issimilarvector(double* v1, double* v2, int len);
     bool issimilarvertex(jvertex v1, jvertex v2);
 public:
     vector<jvertex>& getvertices();

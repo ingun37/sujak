@@ -9,15 +9,23 @@
 #include "jfbxcustomizer_vertex.hpp"
 #include <math.h>
 
-bool jfbxcustomizer_vertex::issimilarvector(double* v1, double* v2)
+bool jfbxcustomizer_vertex::issimilarvector(double* v1, double* v2, int len)
 {
-    if( abs(v1[0] - v2[0]) < 0.0001 && abs(v1[1] - v2[1]) < 0.0001 && abs(v1[2] - v2[2]) < 0.0001 )
-        return true;
-    return false;
+    for(int i=0;i<len;i++)
+        if(abs(v1[i] - v2[i]) >= 0.0001)
+            return false;
+
+    return true;
 }
 bool jfbxcustomizer_vertex::issimilarvertex(jvertex v1, jvertex v2)
 {
-    if( issimilarvector(v1.pos, v2.pos) && issimilarvector(v1.nor, v2.nor) )
+    //lame safety
+    if( sizeof(jvertex) != sizeof(double) * 8)
+    {
+        puts("lame...");
+        exit(1);
+    }
+    if( issimilarvector(v1.pos, v2.pos, 3) && issimilarvector(v1.nor, v2.nor, 3) && issimilarvector(v1.uv, v2.uv, 2) )
         return true;
     return false;
 }
@@ -26,6 +34,19 @@ void jfbxcustomizer_vertex::genVerticesAndIndices()
 {
     printf("gen vert and indices... cp point : %d\n",mesh->GetControlPointsCount());
     vector<vector<jvertex>> extended;
+    printf("uv element cnt : %d\n", mesh->GetElementUVCount());
+    
+    FbxStringList uvsetnamelist;
+    mesh->GetUVSetNames(uvsetnamelist);
+    
+    if(uvsetnamelist.GetCount() != 1)
+    {
+        puts("uv name list is not 1");
+        exit(1);
+    }
+    
+    char* uvsetname = uvsetnamelist.GetStringAt(0);
+    
     for(int pi = 0 ; pi < mesh->GetPolygonCount() ; pi++)
     {
         vector<jvertex> newpolygonvertices;
@@ -35,11 +56,22 @@ void jfbxcustomizer_vertex::genVerticesAndIndices()
             FbxVector4 position = mesh->GetControlPointAt(cpi);
             FbxVector4 normal;
             bool success = mesh->GetPolygonVertexNormal(pi, vi, normal);
+            
             if(!success)
             {
                 puts("normal err");
                 exit(1);
             }
+            
+            FbxVector2 uv;
+            bool unmaped;
+            success = mesh->GetPolygonVertexUV(pi, vi, uvsetname, uv, unmaped);
+            if(unmaped || !success)
+            {
+                puts("uv err");
+                exit(1);
+            }
+            
             jvertex newvertex;
             newvertex.nor[0] = normal[0];
             newvertex.nor[1] = normal[1];
@@ -48,6 +80,9 @@ void jfbxcustomizer_vertex::genVerticesAndIndices()
             newvertex.pos[0] = position[0];
             newvertex.pos[1] = position[1];
             newvertex.pos[2] = position[2];
+            
+            newvertex.uv[0] = uv[0];
+            newvertex.uv[1] = uv[1];
             
             newpolygonvertices.push_back(newvertex);
         }

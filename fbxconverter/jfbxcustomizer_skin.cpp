@@ -76,25 +76,27 @@ void jfbxcustomizer_skin::genjointinfos()
             int cpi = cluster->GetControlPointIndices()[icpi];
             FbxVector4 originalcp = mesh->GetControlPointAt(cpi);
             
-            int newcpi = -1;
+            vector<int> newcpis;
             for(int j=0;j<vertices.size();j++)
             {
-                if(issimilarvector(originalcp.mData, vertices[j].pos))
+                if(issimilarvector(originalcp.mData, vertices[j].pos, 3))
                 {
-                    newcpi = j;
-                    break;
+                    newcpis.push_back(j);
                 }
             }
-            if(newcpi == -1)
+            if(newcpis.size() == 0)
             {
                 puts("can't find new cpi");
                 exit(1);
             }
             
-            jskincpinfo newcpinfo;
-            newcpinfo.idx = newcpi;
-            newcpinfo.weight = cluster->GetControlPointWeights()[icpi];
-            newcpinfos.push_back(newcpinfo);
+            for(int inew=0;inew<newcpis.size();inew++)
+            {
+                jskincpinfo newcpinfo;
+                newcpinfo.idx = newcpis[inew];
+                newcpinfo.weight = cluster->GetControlPointWeights()[icpi];
+                newcpinfos.push_back(newcpinfo);
+            }
         }
         
         jinfo.inverse = bindinverse;

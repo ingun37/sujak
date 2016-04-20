@@ -19,11 +19,7 @@
 static const long kMaxBufferBytesPerFrame = 30000*4;
 static const long kInFlightCommandBuffers = 3;
 
-
-id <MTLBuffer> _vertexPositionBuffer = nil;
-id <MTLBuffer> _vertexNormalBuffer = nil;
-id <MTLBuffer> _vertexColorBuffer = nil;
-id <MTLBuffer> _vertexuvbuffer = nil;
+id <MTLBuffer> _vertexbuffers[JVertexAttribute_number];
 id <MTLBuffer> _indexBuffer = nil;
 id <MTLRenderCommandEncoder> _renderEncoder = nil;
 MTLPrimitiveType _primitiveTypeCurrent = MTLPrimitiveTypeTriangle;
@@ -186,15 +182,19 @@ void withMetalDrawIndex(int offset, int cnt)
     // set the vertex shader and buffers defined in the shader source, in this case we have 2 inputs. A position buffer and a color buffer
     // Allocate a buffer to store vertex position data (we'll quad buffer this one)
 
-    _vertexPositionBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
-	_vertexNormalBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
-	_vertexColorBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
-    _vertexuvbuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
+    for(int ib=0;ib<JVertexAttribute_number;ib++)
+        _vertexbuffers[ib] = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
+    
 	_indexBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
 	
 	core.loadAll(withMetalLoadFile);
 	
-    core.initVideoMemoryMapper((simd::float4*)[_vertexPositionBuffer contents], (simd::float4*)[_vertexColorBuffer contents], (simd::float4*)[_vertexNormalBuffer contents], (simd::float2*)[_vertexuvbuffer contents], (int*)[_indexBuffer contents]);
+    void* tmpbuffers[JVertexAttribute_number];
+    for(int ib = 0;ib<JVertexAttribute_number;ib++)
+    {
+        tmpbuffers[ib] = [_vertexbuffers[ib] contents];
+    }
+    core.initVideoMemoryMapper(tmpbuffers, (int*)[_indexBuffer contents]);
 	core.layout();
 	
 	JUniformBlock b;
@@ -213,37 +213,32 @@ void withMetalDrawIndex(int offset, int cnt)
 	
 	MTLVertexDescriptor *mtlVertexDescriptor = [[MTLVertexDescriptor alloc] init];
 	
-	mtlVertexDescriptor.attributes[JVertexAttribute_position].format = MTLVertexFormatFloat4;
-	mtlVertexDescriptor.attributes[JVertexAttribute_position].offset = 0;
-	mtlVertexDescriptor.attributes[JVertexAttribute_position].bufferIndex = JBufferIndex_vertex_position;
-	
-	mtlVertexDescriptor.attributes[JVertexAttribute_normal].format = MTLVertexFormatFloat4;
-	mtlVertexDescriptor.attributes[JVertexAttribute_normal].offset = 0;
-	mtlVertexDescriptor.attributes[JVertexAttribute_normal].bufferIndex = JBufferIndex_vertex_normal;
-	
-	mtlVertexDescriptor.attributes[JVertexAttribute_color].format = MTLVertexFormatFloat4;
-	mtlVertexDescriptor.attributes[JVertexAttribute_color].offset = 0;
-	mtlVertexDescriptor.attributes[JVertexAttribute_color].bufferIndex = JBufferIndex_vertex_color;
-	
-    mtlVertexDescriptor.attributes[JVertexAttribute_uv].format = MTLVertexFormatFloat2;
-    mtlVertexDescriptor.attributes[JVertexAttribute_uv].offset = 0;
-    mtlVertexDescriptor.attributes[JVertexAttribute_uv].bufferIndex = JBufferIndex_vertex_uv;
-    
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_position].stride = sizeof(simd::float4);
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_position].stepFunction = MTLVertexStepFunctionPerVertex;
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_position].stepRate = 1;
-
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_normal].stride = sizeof(simd::float4);
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_normal].stepFunction = MTLVertexStepFunctionPerVertex;
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_normal].stepRate = 1;
-	
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_color].stride = sizeof(simd::float4);
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_color].stepFunction = MTLVertexStepFunctionPerVertex;
-	mtlVertexDescriptor.layouts[JBufferIndex_vertex_color].stepRate = 1;
-	
-    mtlVertexDescriptor.layouts[JBufferIndex_vertex_uv].stride = sizeof(simd::float2);
-    mtlVertexDescriptor.layouts[JBufferIndex_vertex_uv].stepFunction = MTLVertexStepFunctionPerVertex;
-    mtlVertexDescriptor.layouts[JBufferIndex_vertex_uv].stepRate = 1;
+    for(int ia = 0;ia<JVertexAttribute_number;ia++)
+    {
+        const int vbuffidx = jvertexbufferindices[ia];
+        
+        switch(jvertexattribtypes[ia])
+        {
+            case JVertexType_f2:
+                mtlVertexDescriptor.attributes[ia].format = MTLVertexFormatFloat2;
+                mtlVertexDescriptor.layouts[vbuffidx].stride = sizeof(simd::float2);
+                break;
+            case JVertexType_f4:
+                mtlVertexDescriptor.attributes[ia].format = MTLVertexFormatFloat4;
+                mtlVertexDescriptor.layouts[vbuffidx].stride = sizeof(simd::float4);
+                break;
+            default:
+                puts("unknown jvertextype");
+                exit(1);
+                break;
+        }
+        
+        mtlVertexDescriptor.attributes[ia].offset = 0;
+        mtlVertexDescriptor.attributes[ia].bufferIndex = jvertexbufferindices[ia];
+        
+        mtlVertexDescriptor.layouts[vbuffidx].stepFunction = MTLVertexStepFunctionPerVertex;
+        mtlVertexDescriptor.layouts[vbuffidx].stepRate = 1;
+    }
     
     //  create a reusable pipeline state
     MTLRenderPipelineDescriptor *pipelineStateDescriptor = [MTLRenderPipelineDescriptor new];
@@ -349,21 +344,12 @@ void withMetalDrawIndex(int offset, int cnt)
         id <MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
 		_renderEncoder = renderEncoder;
 		
-		[_renderEncoder setVertexBuffer:_vertexPositionBuffer
-								 offset:0
-								atIndex:JBufferIndex_vertex_position ];
-		
-		[_renderEncoder setVertexBuffer:_vertexNormalBuffer
-								 offset:0
-								atIndex:JBufferIndex_vertex_normal ];
-		
-		[_renderEncoder setVertexBuffer:_vertexColorBuffer
-								 offset:0
-								atIndex:JBufferIndex_vertex_color ];
-		
-        [_renderEncoder setVertexBuffer:_vertexuvbuffer
-                                 offset:0
-                                atIndex:JBufferIndex_vertex_uv];
+        for(int ivb=0;ivb<JVertexAttribute_number;ivb++)
+        {
+            [_renderEncoder setVertexBuffer:_vertexbuffers[ivb]
+                                     offset:0
+                                    atIndex:jvertexbufferindices[ivb] ];
+        }
         
 		[_renderEncoder setVertexBuffer:_uniformBuffer offset:0 atIndex:JBufferIndex_uniform];
 

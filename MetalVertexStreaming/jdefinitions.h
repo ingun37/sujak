@@ -9,14 +9,13 @@
 #ifndef jdefinitions_h
 #define jdefinitions_h
 #include <simd/simd.h>
-enum JBufferIndex
+
+
+enum JVertexType
 {
-	JBufferIndex_vertex_position,
-	JBufferIndex_vertex_normal,
-	JBufferIndex_vertex_color,
-    JBufferIndex_vertex_uv,
-	JBufferIndex_uniform,
-	JBufferIndex_number,
+    JVertexType_f4,
+    JVertexType_f2,
+    JVertexType_number,
 };
 
 enum JVertexAttribute
@@ -27,6 +26,20 @@ enum JVertexAttribute
     JVertexAttribute_uv,
 	JVertexAttribute_number,
 };
+
+extern JVertexType jvertexattribtypes[JVertexAttribute_number];
+
+enum JBufferIndex
+{
+    JBufferIndex_vertex_position,
+    JBufferIndex_vertex_normal,
+    JBufferIndex_vertex_color,
+    JBufferIndex_vertex_uv,
+    JBufferIndex_uniform,
+    JBufferIndex_number,
+};
+
+extern JBufferIndex jvertexbufferindices[JVertexAttribute_number];
 
 typedef struct _JUniformBlock
 {

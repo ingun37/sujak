@@ -36,7 +36,7 @@ public:
 	
 	void render( platformSpecificSetRenderState, platformSpecificSetPrimitive, platformSpecificRenderIndexed);
 
-    void initVideoMemoryMapper(simd::float4 *_buffPosition, simd::float4 *_buffColor, simd::float4 *_buffNormal, simd::float2 *_buffuv, int *_buffIndex);
+    void initVideoMemoryMapper(void* buffers[], int *_buffIndex);
 	void layout();
 	
 

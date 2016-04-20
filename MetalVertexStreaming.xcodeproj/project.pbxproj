@@ -58,6 +58,8 @@
 		626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FE819329E72007A3E00 /* Metal.framework */; };
 		626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FEA19329E78007A3E00 /* QuartzCore.framework */; };
 		62F8146919AFBD9E00C9BDD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */; };
+		6B691F7B1CC750E800BADF27 /* jdefinitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B691F7A1CC750E800BADF27 /* jdefinitions.cpp */; };
+		6B691F7C1CC750E800BADF27 /* jdefinitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B691F7A1CC750E800BADF27 /* jdefinitions.cpp */; };
 		6B6B5D641CC5D49400B6533B /* jfbxexporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D621CC5D49400B6533B /* jfbxexporter.cpp */; };
 		6B6B5D671CC5D67200B6533B /* jfbxcustomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D651CC5D67200B6533B /* jfbxcustomizer.cpp */; };
 		6B6B5D6A1CC5E97100B6533B /* jfbxvalidater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D681CC5E97100B6533B /* jfbxvalidater.cpp */; };
@@ -145,6 +147,7 @@
 		626C5FEA19329E78007A3E00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		6B351CC51CBE3BFF00540D7F /* bitmap_image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bitmap_image.hpp; sourceTree = "<group>"; };
+		6B691F7A1CC750E800BADF27 /* jdefinitions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jdefinitions.cpp; sourceTree = "<group>"; };
 		6B6B5D621CC5D49400B6533B /* jfbxexporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxexporter.cpp; sourceTree = "<group>"; };
 		6B6B5D631CC5D49400B6533B /* jfbxexporter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxexporter.hpp; sourceTree = "<group>"; };
 		6B6B5D651CC5D67200B6533B /* jfbxcustomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer.cpp; sourceTree = "<group>"; };
@@ -245,6 +248,7 @@
 				168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */,
 				6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */,
 				6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */,
+				6B691F7A1CC750E800BADF27 /* jdefinitions.cpp */,
 			);
 			name = jsources;
 			sourceTree = "<group>";
@@ -465,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B6B5D771CC63A5A00B6533B /* jcurve.cpp in Sources */,
+				6B691F7C1CC750E800BADF27 /* jdefinitions.cpp in Sources */,
 				6B6B5D781CC63A5A00B6533B /* jcurvenode.cpp in Sources */,
 				6B6B5D761CC62AB800B6533B /* jfbxcustomizer_skin.cpp in Sources */,
 				165595B81C213E5F00A394D6 /* jtranslation.cpp in Sources */,
@@ -485,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16EC79E91BE7637000C1BACA /* jmath.cpp in Sources */,
+				6B691F7B1CC750E800BADF27 /* jdefinitions.cpp in Sources */,
 				6BDD27941CB754F2005190B4 /* jcurve.cpp in Sources */,
 				167470851C083BA6008BCAE1 /* jallocator.cpp in Sources */,
 				16EC79FF1BE9A9D800C1BACA /* jrenderstategroup.cpp in Sources */,

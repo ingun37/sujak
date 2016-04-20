@@ -249,9 +249,9 @@ void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpec
 typedef jallocator<jnode*, 6> jallocatorSkinnedMeshes;
 
 jvideomemorymapper mmapper;
-void jcore::initVideoMemoryMapper(simd::float4 *_buffPosition, simd::float4 *_buffColor, simd::float4 *_buffNormal, simd::float2 *_buffuv, int *_buffIndex)
+void jcore::initVideoMemoryMapper(void* buffers[], int *_buffIndex)
 {
-	mmapper.init(_buffPosition, _buffColor, _buffNormal, _buffuv, _buffIndex);
+	mmapper.init(buffers, _buffIndex);
 }
 void jcore::layout()
 {

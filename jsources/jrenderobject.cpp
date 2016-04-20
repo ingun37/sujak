@@ -29,23 +29,23 @@ void jrenderobject::setData(simd::float4 *p, simd::float4 *n, simd::float4 *c, s
         puts("no positions");
         exit(1);
     }
-    positions = p;
+    attributeDatas[JVertexAttribute_position] = p;
     if(n==NULL)
     {
         n = jallocf4::getAvailable(vc);
     }
-    normals = n;
+    attributeDatas[JVertexAttribute_normal] = n;
     if(c==NULL)
     {
         c = jallocf4::getAvailable(vc);
     }
-    colors = c;
+    attributeDatas[JVertexAttribute_color] = c;
     
     if(u==NULL)
     {
         u = jallocf2::getAvailable(vc);
     }
-    uvs = u;
+    attributeDatas[JVertexAttribute_uv] = u;
     
     if(i==NULL)
     {

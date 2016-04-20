@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <simd/simd.h>
-
+#include "jdefinitions.h"
 #include "jvideomemoryaligninfo.h"
 
 class jrenderobject;
@@ -21,10 +21,8 @@ class jvideomemorymapper
 	int offsetIndex;
 	
 	bool inited;
-	simd::float4* buffPosition;
-	simd::float4* buffColor;
-	simd::float4* buffNormal;
-    simd::float2* buffuv;
+    void* buffers[JVertexAttribute_number];
+
 	int* buffIndex;
 public:
 	jvideomemorymapper()
@@ -32,26 +30,23 @@ public:
 		offsetVertex = 0;
 		offsetIndex = 0;
 		inited = false;
-		buffPosition = buffColor = buffNormal = NULL;
-        buffuv = NULL;
+		
+        buffIndex = NULL;
 	}
 	
-    void init(simd::float4* _buffPosition, simd::float4* _buffColor, simd::float4* _buffNormal, simd::float2* _buffuv, int* _buffIndex)
+    void init(void* _buffers[], int* _buffIndex)
 	{
-        if(_buffPosition == NULL ||
-           _buffColor == NULL ||
-           _buffNormal == NULL ||
-           _buffuv == NULL ||
-           _buffIndex == NULL)
+        for(int i=0;i<JVertexAttribute_number;i++)
         {
-            puts("video mem err");
-            exit(1);
+            if(_buffers[i] == NULL)
+            {
+                puts("video mem err");
+                exit(1);
+            }
+            buffers[i] = _buffers[i];
         }
-		buffPosition = _buffPosition;
-		buffColor = _buffColor;
-		buffNormal = _buffNormal;
+        
 		buffIndex = _buffIndex;
-        buffuv = _buffuv;
 		inited = true;
 	}
 	

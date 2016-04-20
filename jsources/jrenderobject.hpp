@@ -23,10 +23,7 @@ class jrenderobject
 	bool layedout;
 	bool dataset;
 	
-	simd::float4* positions;
-	simd::float4* normals;
-	simd::float4* colors;
-    simd::float2* uvs;
+    void* attributeDatas[JVertexAttribute_number];
     
 	int vertexCnt;
 	int* indices;
@@ -40,7 +37,7 @@ public:
 	inline int getVertexCnt() const {return vertexCnt;}
 	inline int getVcBufferOffset() const {return aligninfo.vBufferOffset;}
 	inline int getIBufferOffset() const {return aligninfo.iBufferOffset;}
-	inline simd::float4 getPositionAt(int i) const {return positions[i];}
+    inline simd::float4 getPositionAt(int i) const {return ((simd::float4*)attributeDatas[JVertexAttribute_position])[i];}
 
     void setData(simd::float4* p, simd::float4* n, simd::float4* c, simd::float2* u, int vc, int* i, int ic);
 	

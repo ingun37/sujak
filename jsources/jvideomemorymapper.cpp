@@ -22,11 +22,22 @@ void jvideomemorymapper::mapToVideoMemory(jrenderobject *obj, jvideomemoryaligni
 		exit(1);
 	}
 	
-	memcpy(buffPosition + offsetVertex, obj->positions, sizeof(simd::float4) * obj->vertexCnt);
-	memcpy(buffNormal + offsetVertex, obj->normals, sizeof(simd::float4) * obj->vertexCnt);
-	memcpy(buffColor + offsetVertex, obj->colors, sizeof(simd::float4) * obj->vertexCnt);
-    memcpy(buffuv + offsetVertex, obj->uvs, sizeof(simd::float2) * obj->vertexCnt);
-	
+    for(int i=0;i<JVertexAttribute_number;i++)
+    {
+        int leapterm = 0;
+        switch (jvertexattribtypes[i])
+        {
+            case JVertexType_f2:
+                leapterm = sizeof(simd::float2);
+                break;
+            case JVertexType_f4:
+                leapterm = sizeof(simd::float4);
+            default:
+                break;
+        }
+        memcpy((char*)buffers[i] + (leapterm*offsetVertex), obj->attributeDatas[i], leapterm * obj->vertexCnt);
+    }
+    
 	for(int i=0;i<obj->indexCnt;i++)
 	{
 		ipool[i] = obj->indices[i] + offsetVertex;
@@ -43,5 +54,5 @@ void jvideomemorymapper::mapToVideoMemory(jrenderobject *obj, jvideomemoryaligni
 
 simd::float4* jvideomemorymapper::getPositionMemoryOf(const jrenderobject &obj)
 {
-	return &buffPosition[obj.getVcBufferOffset()];
+    return &(((simd::float4*)buffers[JVertexAttribute_position])[obj.getVcBufferOffset()]);
 }

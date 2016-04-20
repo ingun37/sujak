@@ -14,6 +14,7 @@ enum JBufferIndex
 	JBufferIndex_vertex_position,
 	JBufferIndex_vertex_normal,
 	JBufferIndex_vertex_color,
+    JBufferIndex_vertex_uv,
 	JBufferIndex_uniform,
 	JBufferIndex_number,
 };
@@ -23,6 +24,7 @@ enum JVertexAttribute
 	JVertexAttribute_position,
 	JVertexAttribute_normal,
 	JVertexAttribute_color,
+    JVertexAttribute_uv,
 	JVertexAttribute_number,
 };
 

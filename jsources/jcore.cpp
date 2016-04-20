@@ -249,9 +249,9 @@ void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpec
 typedef jallocator<jnode*, 6> jallocatorSkinnedMeshes;
 
 jvideomemorymapper mmapper;
-void jcore::initVideoMemoryMapper(simd::float4 *_buffPosition, simd::float4 *_buffColor, simd::float4 *_buffNormal, int *_buffIndex)
+void jcore::initVideoMemoryMapper(simd::float4 *_buffPosition, simd::float4 *_buffColor, simd::float4 *_buffNormal, simd::float2 *_buffuv, int *_buffIndex)
 {
-	mmapper.init(_buffPosition, _buffColor, _buffNormal, _buffIndex);
+	mmapper.init(_buffPosition, _buffColor, _buffNormal, _buffuv, _buffIndex);
 }
 void jcore::layout()
 {
@@ -306,7 +306,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	jbinary_jmesh::getInfo(file, vcnt, icnt, poolP, poolN, poolU, poolI);
 	
 	jrenderobject* mesh = jallocatorRenderObjs::getAvailable(1);
-	mesh->setData(poolP, poolN, NULL, NULL, vcnt, poolI, icnt);
+	mesh->setData(poolP, poolN, NULL, poolU, vcnt, poolI, icnt);
 	
     
     

@@ -25,6 +25,7 @@ void jvideomemorymapper::mapToVideoMemory(jrenderobject *obj, jvideomemoryaligni
 	memcpy(buffPosition + offsetVertex, obj->positions, sizeof(simd::float4) * obj->vertexCnt);
 	memcpy(buffNormal + offsetVertex, obj->normals, sizeof(simd::float4) * obj->vertexCnt);
 	memcpy(buffColor + offsetVertex, obj->colors, sizeof(simd::float4) * obj->vertexCnt);
+    memcpy(buffuv + offsetVertex, obj->uvs, sizeof(simd::float2) * obj->vertexCnt);
 	
 	for(int i=0;i<obj->indexCnt;i++)
 	{

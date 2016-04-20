@@ -15,6 +15,7 @@ struct vertexinput
 	float4 position [[attribute(0)]];
 	float4 normal [[attribute(1)]];
 	float4 color   [[attribute(2)]];
+    float2 uv   [[attribute(3)]];
 };
 
 struct VertexInOut
@@ -22,6 +23,7 @@ struct VertexInOut
     float4  position [[position]];
 	float3  normal;
     float4  color;
+    float2  uv;
 };
 
 vertex VertexInOut passThroughVertex(vertexinput in [[stage_in]], constant JUniformBlock& uniformblock[[buffer(JBufferIndex_uniform)]])
@@ -31,7 +33,7 @@ vertex VertexInOut passThroughVertex(vertexinput in [[stage_in]], constant JUnif
     outVertex.position = (uniformblock.projview) * in.position;
 	outVertex.normal = in.normal.xyz;
     outVertex.color    = in.color;
-
+    outVertex.uv = in.uv;
     
     return outVertex;
 };
@@ -43,7 +45,7 @@ fragment half4 passThroughFragment(VertexInOut inFrag [[stage_in]])
 	inFrag.normal = normalize(inFrag.normal);
 	
 	float el = max((float)dot(lightdir, inFrag.normal),0.f);
-	float3 col3 = float3(1,1,1) * el;
+	float3 col3 = float3(inFrag.uv.x,inFrag.uv.y,1) * el;
     return half4(col3.r, col3.g, col3.b, 1);
 };
 

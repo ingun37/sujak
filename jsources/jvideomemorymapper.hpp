@@ -24,6 +24,7 @@ class jvideomemorymapper
 	simd::float4* buffPosition;
 	simd::float4* buffColor;
 	simd::float4* buffNormal;
+    simd::float2* buffuv;
 	int* buffIndex;
 public:
 	jvideomemorymapper()
@@ -32,14 +33,25 @@ public:
 		offsetIndex = 0;
 		inited = false;
 		buffPosition = buffColor = buffNormal = NULL;
+        buffuv = NULL;
 	}
 	
-	void init(simd::float4* _buffPosition, simd::float4* _buffColor, simd::float4* _buffNormal, int* _buffIndex)
+    void init(simd::float4* _buffPosition, simd::float4* _buffColor, simd::float4* _buffNormal, simd::float2* _buffuv, int* _buffIndex)
 	{
+        if(_buffPosition == NULL ||
+           _buffColor == NULL ||
+           _buffNormal == NULL ||
+           _buffuv == NULL ||
+           _buffIndex == NULL)
+        {
+            puts("video mem err");
+            exit(1);
+        }
 		buffPosition = _buffPosition;
 		buffColor = _buffColor;
 		buffNormal = _buffNormal;
 		buffIndex = _buffIndex;
+        buffuv = _buffuv;
 		inited = true;
 	}
 	

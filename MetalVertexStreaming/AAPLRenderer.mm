@@ -23,6 +23,7 @@ static const long kInFlightCommandBuffers = 3;
 id <MTLBuffer> _vertexPositionBuffer = nil;
 id <MTLBuffer> _vertexNormalBuffer = nil;
 id <MTLBuffer> _vertexColorBuffer = nil;
+id <MTLBuffer> _vertexuvbuffer = nil;
 id <MTLBuffer> _indexBuffer = nil;
 id <MTLRenderCommandEncoder> _renderEncoder = nil;
 MTLPrimitiveType _primitiveTypeCurrent = MTLPrimitiveTypeTriangle;
@@ -188,11 +189,12 @@ void withMetalDrawIndex(int offset, int cnt)
     _vertexPositionBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
 	_vertexNormalBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
 	_vertexColorBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
+    _vertexuvbuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
 	_indexBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
 	
 	core.loadAll(withMetalLoadFile);
 	
-	core.initVideoMemoryMapper((simd::float4*)[_vertexPositionBuffer contents], (simd::float4*)[_vertexColorBuffer contents], (simd::float4*)[_vertexNormalBuffer contents], (int*)[_indexBuffer contents]);
+    core.initVideoMemoryMapper((simd::float4*)[_vertexPositionBuffer contents], (simd::float4*)[_vertexColorBuffer contents], (simd::float4*)[_vertexNormalBuffer contents], (simd::float2*)[_vertexuvbuffer contents], (int*)[_indexBuffer contents]);
 	core.layout();
 	
 	JUniformBlock b;
@@ -223,6 +225,10 @@ void withMetalDrawIndex(int offset, int cnt)
 	mtlVertexDescriptor.attributes[JVertexAttribute_color].offset = 0;
 	mtlVertexDescriptor.attributes[JVertexAttribute_color].bufferIndex = JBufferIndex_vertex_color;
 	
+    mtlVertexDescriptor.attributes[JVertexAttribute_uv].format = MTLVertexFormatFloat2;
+    mtlVertexDescriptor.attributes[JVertexAttribute_uv].offset = 0;
+    mtlVertexDescriptor.attributes[JVertexAttribute_uv].bufferIndex = JBufferIndex_vertex_uv;
+    
 	mtlVertexDescriptor.layouts[JBufferIndex_vertex_position].stride = sizeof(simd::float4);
 	mtlVertexDescriptor.layouts[JBufferIndex_vertex_position].stepFunction = MTLVertexStepFunctionPerVertex;
 	mtlVertexDescriptor.layouts[JBufferIndex_vertex_position].stepRate = 1;
@@ -235,6 +241,10 @@ void withMetalDrawIndex(int offset, int cnt)
 	mtlVertexDescriptor.layouts[JBufferIndex_vertex_color].stepFunction = MTLVertexStepFunctionPerVertex;
 	mtlVertexDescriptor.layouts[JBufferIndex_vertex_color].stepRate = 1;
 	
+    mtlVertexDescriptor.layouts[JBufferIndex_vertex_uv].stride = sizeof(simd::float2);
+    mtlVertexDescriptor.layouts[JBufferIndex_vertex_uv].stepFunction = MTLVertexStepFunctionPerVertex;
+    mtlVertexDescriptor.layouts[JBufferIndex_vertex_uv].stepRate = 1;
+    
     //  create a reusable pipeline state
     MTLRenderPipelineDescriptor *pipelineStateDescriptor = [MTLRenderPipelineDescriptor new];
 	MTLDepthStencilDescriptor *depthStencilStateDesc = [[MTLDepthStencilDescriptor alloc]init];
@@ -351,6 +361,10 @@ void withMetalDrawIndex(int offset, int cnt)
 								 offset:0
 								atIndex:JBufferIndex_vertex_color ];
 		
+        [_renderEncoder setVertexBuffer:_vertexuvbuffer
+                                 offset:0
+                                atIndex:JBufferIndex_vertex_uv];
+        
 		[_renderEncoder setVertexBuffer:_uniformBuffer offset:0 atIndex:JBufferIndex_uniform];
 
 		core.render( withMetalSetRenderState, withMetalSetPrimitive, withMetalDrawIndex );

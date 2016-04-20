@@ -43,6 +43,7 @@ enum JBufferIndex
 
 typedef struct _JUniformBlock
 {
+    simd::float4x4 world;
 	simd::float4x4 projview;
 	simd::float4x4 orthoview;
 } JUniformBlock;

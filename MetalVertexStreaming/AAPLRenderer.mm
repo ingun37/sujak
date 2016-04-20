@@ -198,13 +198,14 @@ void withMetalDrawIndex(int offset, int cnt)
     core.initVideoMemoryMapper(tmpbuffers, (int*)[_indexBuffer contents]);
 	core.layout();
 	
-	JUniformBlock b;
+	JUniformBlock uniformb;
 
 	matrix_float4x4 mv = jmath::GetViewMatrix({60,50,150}, {0,1,0}, {0,50,0});
 	matrix_float4x4 mp = jmath::GetProjectionMatrixPerspective(1, 1, 1, 400);
-	b.projview = matrix_multiply(mp, mv);
-	b.orthoview = matrix_multiply(jmath::GetProjectionMatrixOrthogonal(1, 1, 1, 200), jmath::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1}));
-	_uniformBuffer = [_device newBufferWithBytes:&b length:sizeof(JUniformBlock) options:0];
+    uniformb.world = matrix_identity_float4x4;
+	uniformb.projview = matrix_multiply(mp, mv);
+	uniformb.orthoview = matrix_multiply(jmath::GetProjectionMatrixOrthogonal(1, 1, 1, 200), jmath::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1}));
+	_uniformBuffer = [_device newBufferWithBytes:&uniformb length:sizeof(JUniformBlock) options:0];
     
     
     //////hardcode texture

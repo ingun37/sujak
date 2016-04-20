@@ -38,15 +38,20 @@ vertex VertexInOut passThroughVertex(vertexinput in [[stage_in]], constant JUnif
     return outVertex;
 };
 
-fragment half4 passThroughFragment(VertexInOut inFrag [[stage_in]])
+fragment half4 passThroughFragment(VertexInOut inFrag [[stage_in]], texture2d<half> tex2D [[ texture(0) ]])
 {
-	float3 lightdir = normalize(float3(0.5,1,0.3));
-	
-	inFrag.normal = normalize(inFrag.normal);
+	float3 lightdir = normalize(float3(0.5,-1,0.3));
 	
 	float el = max((float)dot(lightdir, inFrag.normal),0.f);
-	float3 col3 = float3(inFrag.uv.x,inFrag.uv.y,1) * el;
-    return half4(col3.r, col3.g, col3.b, 1);
+	
+    constexpr sampler quad_sampler;
+    
+    inFrag.uv.y = 1-inFrag.uv.y;
+    half4 color = tex2D.sample(quad_sampler, inFrag.uv);
+    
+    color.xyz = color.xyz * el;
+    
+    return color;
 };
 
 vertex VertexInOut vertLine(vertexinput in [[stage_in]], constant JUniformBlock& uniformblock[[buffer(JBufferIndex_uniform)]])

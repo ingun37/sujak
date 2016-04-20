@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <simd/simd.h>
-#include "jdefinitions.h"
+#include "jconstants.h"
 #include "jvideomemoryaligninfo.h"
 
 class jrenderobject;

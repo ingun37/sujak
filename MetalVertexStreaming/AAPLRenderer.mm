@@ -19,6 +19,7 @@
 static const long kMaxBufferBytesPerFrame = 4 * 10000;
 static const long kInFlightCommandBuffers = 3;
 
+id <MTLTexture> _texture;
 id <MTLBuffer> _vertexbuffers[JVertexAttribute_number];
 id <MTLBuffer> _indexBuffer = nil;
 id <MTLRenderCommandEncoder> _renderEncoder = nil;
@@ -204,6 +205,47 @@ void withMetalDrawIndex(int offset, int cnt)
 	b.projview = matrix_multiply(mp, mv);
 	b.orthoview = matrix_multiply(jmath::GetProjectionMatrixOrthogonal(1, 1, 1, 200), jmath::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1}));
 	_uniformBuffer = [_device newBufferWithBytes:&b length:sizeof(JUniformBlock) options:0];
+    
+    
+    //////hardcode texture
+    NSURL* imgurl = [[NSBundle mainBundle] URLForResource:@"Soldier_D_1024_alt" withExtension:@".jpg" subdirectory:@"meshes"];
+    UIImage *pImage = [UIImage imageWithContentsOfFile:[imgurl path]];
+    CGColorSpaceRef pColorSpace = CGColorSpaceCreateDeviceRGB();
+    uint32_t width  = uint32_t(CGImageGetWidth(pImage.CGImage));
+    uint32_t height = uint32_t(CGImageGetHeight(pImage.CGImage));
+    uint32_t rowBytes = width * 4;
+    CGContextRef pContext = CGBitmapContextCreate(NULL,
+                                                  width,
+                                                  height,
+                                                  8,
+                                                  rowBytes,
+                                                  pColorSpace,
+                                                  CGBitmapInfo(kCGImageAlphaPremultipliedLast));
+    
+    CGColorSpaceRelease(pColorSpace);
+    CGRect bounds = CGRectMake(0.0f, 0.0f, width, height);
+    CGContextClearRect(pContext, bounds);
+    CGContextDrawImage(pContext, bounds, pImage.CGImage);
+    MTLTextureDescriptor *pTexDesc = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatRGBA8Unorm
+                                                                                        width:width
+                                                                                       height:height
+                                                                                    mipmapped:NO];
+    
+    
+    _texture = [_device newTextureWithDescriptor:pTexDesc];
+    const void *pPixels = CGBitmapContextGetData(pContext);
+    
+    MTLRegion region = MTLRegionMake2D(0, 0, width, height);
+        
+    [_texture replaceRegion:region
+                    mipmapLevel:0
+                      withBytes:pPixels
+                    bytesPerRow:rowBytes];
+    
+    
+    CGContextRelease(pContext);
+    
+    
 }
 
 - (BOOL)preparePipelineState:(AAPLView*)view
@@ -344,6 +386,8 @@ void withMetalDrawIndex(int offset, int cnt)
         id <MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
 		_renderEncoder = renderEncoder;
 		
+        [_renderEncoder setFragmentTexture:_texture atIndex:0];
+        
         for(int ivb=0;ivb<JVertexAttribute_number;ivb++)
         {
             [_renderEncoder setVertexBuffer:_vertexbuffers[ivb]

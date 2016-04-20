@@ -27,7 +27,7 @@ enum JVertexAttribute
 	JVertexAttribute_number,
 };
 
-extern JVertexType jvertexattribtypes[JVertexAttribute_number];
+
 
 enum JBufferIndex
 {
@@ -39,7 +39,7 @@ enum JBufferIndex
     JBufferIndex_number,
 };
 
-extern JBufferIndex jvertexbufferindices[JVertexAttribute_number];
+
 
 typedef struct _JUniformBlock
 {
@@ -61,4 +61,6 @@ enum JRenderState
 	JRenderState_info,
 	JRenderState_number
 };
+
+
 #endif /* jdefinitions_h */

@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 
-#include "jdefinitions.h"
+#include "jconstants.h"
 #include "jallocator.hpp"
 
 class jskeleton;

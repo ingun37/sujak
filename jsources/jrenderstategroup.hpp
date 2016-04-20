@@ -10,7 +10,7 @@
 #define jrendercontext_hpp
 
 #include <stdio.h>
-#include "jdefinitions.h"
+#include "jconstants.h"
 #include "jrenderprimitivegroup.hpp"
 class jrenderstategroup
 {

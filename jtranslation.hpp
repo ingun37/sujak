@@ -28,6 +28,12 @@ public:
 	{
 		pos = _pos;
 	}
+    
+    inline void sety(float v)
+    {
+        pos[1] = v;
+    }
+    
 	inline void setPos(simd::float4 v)
 	{
 		pos = v;

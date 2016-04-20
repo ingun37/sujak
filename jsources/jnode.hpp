@@ -11,6 +11,9 @@
 
 #include <stdio.h>
 #include <simd/simd.h>
+#include "jrotation.hpp"
+#include "jtranslation.hpp"
+
 class jrenderobject;
 class jskeleton;
 class jskinner;
@@ -19,7 +22,11 @@ class jnode
 	jrenderobject* renderobj;
 	jskeleton* skeleton;
 	jskinner* skinner;
-	
+    
+    jrotation lrot;
+    jtranslation ltran;
+    matrix_float4x4 local;
+    
 public:
 	bool shouldRemap;//todo : bitfield
 	
@@ -29,6 +36,7 @@ public:
 		skeleton = NULL;
 		skinner = NULL;
 		shouldRemap = false;
+        local = matrix_identity_float4x4;
 	}
 	
 	inline void setData( jrenderobject* r, jskeleton* s, jskinner* k )
@@ -37,6 +45,14 @@ public:
 		skeleton = s;
 		skinner = k;
 	}
+    
+    inline void testtrans(float my, float ry)
+    {
+        ltran.sety(my);
+        lrot.onlyy(ry);
+        local = matrix_multiply(ltran.getMat(),lrot.toMat());
+    }
+    
 	inline jrenderobject* getRenderObject() const {return renderobj;}
 	inline jskeleton* getSkeleton() const {return skeleton;}
 	inline jskinner* getSkinner() const {return skinner;}

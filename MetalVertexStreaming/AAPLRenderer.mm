@@ -19,6 +19,7 @@
 static const long kMaxBufferBytesPerFrame = 4 * 10000;
 static const long kInFlightCommandBuffers = 3;
 
+JUniformBlock _uniformb;
 id <MTLTexture> _texture;
 id <MTLBuffer> _vertexbuffers[JVertexAttribute_number];
 id <MTLBuffer> _indexBuffer = nil;
@@ -198,14 +199,14 @@ void withMetalDrawIndex(int offset, int cnt)
     core.initVideoMemoryMapper(tmpbuffers, (int*)[_indexBuffer contents]);
 	core.layout();
 	
-	JUniformBlock uniformb;
+	
 
 	matrix_float4x4 mv = jmath::GetViewMatrix({60,50,150}, {0,1,0}, {0,50,0});
 	matrix_float4x4 mp = jmath::GetProjectionMatrixPerspective(1, 1, 1, 400);
-    uniformb.world = matrix_identity_float4x4;
-	uniformb.projview = matrix_multiply(mp, mv);
-	uniformb.orthoview = matrix_multiply(jmath::GetProjectionMatrixOrthogonal(1, 1, 1, 200), jmath::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1}));
-	_uniformBuffer = [_device newBufferWithBytes:&uniformb length:sizeof(JUniformBlock) options:0];
+    
+	_uniformb.projview = matrix_multiply(mp, mv);
+	_uniformb.orthoview = matrix_multiply(jmath::GetProjectionMatrixOrthogonal(1, 1, 1, 200), jmath::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1}));
+	_uniformBuffer = [_device newBufferWithBytes:&_uniformb length:sizeof(JUniformBlock) options:0];
     
     
     //////hardcode texture

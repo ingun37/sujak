@@ -23,6 +23,7 @@ public:
 
 	jrotation()
 	{
+        xyzw = {0,0,0,1};
 	}
 	jrotation(simd::float4 _xyzw)
 	{

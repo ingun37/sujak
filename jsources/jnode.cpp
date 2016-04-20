@@ -21,8 +21,8 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
 		puts("no skinner or skeleton");
 		exit(1);
 	}
-	
-	memset(dest, 0, sizeof(simd::float4) * renderobj->getVertexCnt());
+    int vcnt = renderobj->getVertexCnt();
+	memset(dest, 0, sizeof(simd::float4) * vcnt);
 	
 	for(int i=0;i<skinner->clusterCnt;i++)
 	{
@@ -38,11 +38,12 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
 			int vidx = skinner->linkIdxs[ skinner->accuTable[i] + j];
 			float weight = skinner->linkWeights[ skinner->accuTable[i] + j];
 
-			//simd::float4 pos_bind = renderobj->getPositionAt(vidx);
-
 			dest[vidx] += matrix_multiply(trans, matrix_multiply(combine, renderobj->getPositionAt(vidx)) ) * weight;
-            //dest[vidx] = matrix_multiply(trans, matrix_multiply(inverse, renderobj->getPositionAt(vidx)) ) ;
-            //dest[vidx] = matrix_multiply(bindmesh, renderobj->getPositionAt(vidx));
 		}
 	}
+    
+    for(int iv = 0;iv<vcnt;iv++)
+    {
+        dest[iv] = matrix_multiply(local, dest[iv]);
+    }
 }

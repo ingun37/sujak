@@ -65,7 +65,7 @@ void makeRenderObjCurve(simd::float2 p1, simd::float2 p2, simd::float2 t1, simd:
     
     poolc[smooth] = {1,0,0,1};
     
-    renderobj.setData(poolv, poolv, poolc, (int)smooth+1, pooli, (int)smooth*2);
+    renderobj.setData(poolv, poolv, poolc, NULL, (int)smooth+1, pooli, (int)smooth*2);
 }
 
 void makeRenderObjFromSkinner( jskinner& skinner, jskeleton& skel, jrenderobject& renderobj )
@@ -100,7 +100,7 @@ void makeRenderObjFromSkinner( jskinner& skinner, jskeleton& skel, jrenderobject
         pooli[cnt++] = i;
         pooli[cnt++] = clusteridxWithUpperSkel;
     }
-    renderobj.setData(poolv, poolv, poolc, skinner.clusterCnt, pooli, cnt);
+    renderobj.setData(poolv, NULL, poolc, NULL, skinner.clusterCnt, pooli, cnt);
 }
 void mapSkeletonVertices(jskeleton& skel, simd::float4* dst)
 {
@@ -136,7 +136,7 @@ void makeRenderObjFromSkeleton( jskeleton& skel, jrenderobject& renderobj )
 		pooli[++cnt] = skel.getTableArr()[i];
 		++cnt;
 	}
-	renderobj.setData(poolv, poolv, poolc, skel.getJointCnt(), pooli, cnt);
+	renderobj.setData(poolv, poolv, poolc, NULL, skel.getJointCnt(), pooli, cnt);
 }
 
 bool inited = false;
@@ -300,12 +300,13 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
     
 	(*pfunc)(fnameMesh, extMesh, file, size);
 	int vcnt, icnt;
-	simd::float4 *poolP, *poolN;
+    simd::float4 *poolP, *poolN;
+    simd::float2 *poolU;
 	int* poolI;
-	jbinary_jmesh::getInfo(file, vcnt, icnt, poolP, poolN, poolI);
+	jbinary_jmesh::getInfo(file, vcnt, icnt, poolP, poolN, poolU, poolI);
 	
 	jrenderobject* mesh = jallocatorRenderObjs::getAvailable(1);
-	mesh->setData(poolP, poolN, poolN, vcnt, poolI, icnt);
+	mesh->setData(poolP, poolN, NULL, NULL, vcnt, poolI, icnt);
 	
     
     
@@ -332,7 +333,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 	renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
 	
 	jrenderobject* uiquad = jallocatorRenderObjs::getAvailable(1);
-	uiquad->setData(vQuad, nQuad, cQuad, 4, iQuad, 6);
+	uiquad->setData(vQuad, nQuad, cQuad, NULL, 4, iQuad, 6);
 	jnode* uinode = jallocatorJnode::getAvailable(1);
 	uinode->setData(uiquad, NULL, NULL);
 	renderstateGroups[JRenderState_ui].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(uinode);

@@ -23,9 +23,11 @@ class jrenderobject
 	bool layedout;
 	bool dataset;
 	
-	simd::float4* vertices;
+	simd::float4* positions;
 	simd::float4* normals;
 	simd::float4* colors;
+    simd::float2* uvs;
+    
 	int vertexCnt;
 	int* indices;
 	int indexCnt;
@@ -33,30 +35,15 @@ class jrenderobject
 public:
 
 	jvideomemoryaligninfo aligninfo;
-	
+	//todo nocopy
 	inline int getIndexCnt() const {return indexCnt;}
 	inline int getVertexCnt() const {return vertexCnt;}
 	inline int getVcBufferOffset() const {return aligninfo.vBufferOffset;}
 	inline int getIBufferOffset() const {return aligninfo.iBufferOffset;}
-	inline simd::float4 getPositionAt(int i) const {return vertices[i];}
+	inline simd::float4 getPositionAt(int i) const {return positions[i];}
 
-	void setData(simd::float4* p, simd::float4* n, simd::float4* c, int vc, int* i, int ic)
-	{
-		dataset = true;
-		
-		vertices = p;
-		normals = n;
-		colors = c;
-		indices = i;
-		
-		if(vc == 0 || ic == 0)
-		{
-			puts("wrong data data ddd");
-			
-		}
-		vertexCnt = vc;
-		indexCnt = ic;
-	}
+    void setData(simd::float4* p, simd::float4* n, simd::float4* c, simd::float2* u, int vc, int* i, int ic);
+	
 	jrenderobject();
 	
 };

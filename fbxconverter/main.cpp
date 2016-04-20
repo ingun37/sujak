@@ -373,13 +373,14 @@ int main(int argc, const char * argv[])
         
         vector<simd::float4> positions;
         vector<simd::float4> normals;
-        
+        vector<simd::float2> uvs;
         for(int i=0;i<vertices.size();i++)
         {
             positions.push_back( simd::float4 { static_cast<float>(vertices[i].pos[0]),static_cast<float>(vertices[i].pos[1]),static_cast<float>(vertices[i].pos[2]),1 } );
             simd::float3 normal_before = simd::float3{ static_cast<float>(vertices[i].nor[0]), static_cast<float>(vertices[i].nor[1]), static_cast<float>(vertices[i].nor[2]) };
             normal_before = vector_normalize(normal_before);
             normals.push_back( simd::float4{ normal_before[0], normal_before[1], normal_before[2], 0 } );
+            uvs.push_back(simd::float2 { static_cast<float>(vertices[i].uv[0]), static_cast<float>(vertices[i].uv[1]) } );
         }
         
         makename("test\0", skinnedmesh->GetName(), ".jmesh\0", namebuff, sizeof(namebuff));
@@ -388,6 +389,7 @@ int main(int argc, const char * argv[])
         writefile_copy((int)indices.size());
         writefile(&positions[0], sizeof(positions[0]) * positions.size());
         writefile(&normals[0], sizeof(normals[0]) * normals.size());
+        writefile(&uvs[0], sizeof(uvs[0]) * uvs.size());
         writefile(&indices[0], sizeof(indices[0]) * indices.size());
         endfile();
         

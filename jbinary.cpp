@@ -15,7 +15,7 @@
 typedef jallocator<simd::float4, 12000> poolf4;
 
 using namespace std;
-void jbinary_jmesh::getInfo(char* data, int &vcnt, int &icnt, simd::float4* &poolPos, simd::float4* &poolNormal, int* &poolIdx)
+void jbinary_jmesh::getInfo(char* data, int &vcnt, int &icnt, simd::float4* &poolPos, simd::float4* &poolNormal, simd::float2* &pooluv, int* &poolIdx)
 {
 	if(data == NULL)
 	{
@@ -37,6 +37,9 @@ void jbinary_jmesh::getInfo(char* data, int &vcnt, int &icnt, simd::float4* &poo
 	poolNormal = (simd::float4*)fp;
 	fp += sizeof(simd::float4) * vcnt;
 	
+    pooluv = (simd::float2*)fp;
+    fp += sizeof(simd::float2) * vcnt;
+    
 	poolIdx = (int*)fp;
 }
 

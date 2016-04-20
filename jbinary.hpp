@@ -14,7 +14,7 @@
 class jbinary_jmesh
 {
 public:
-	static void getInfo(char* data, int& vcnt, int& icnt, simd::float4* &poolPos, simd::float4* &poolNormal, int* &poolIdx );
+    static void getInfo(char* data, int& vcnt, int& icnt, simd::float4* &poolPos, simd::float4* &poolNormal, simd::float2* &pooluv, int* &poolIdx );
 	static void saveInfo(int& vcnt, int& icnt, simd::float4* poolPos, simd::float4* poolNormal, int* poolIdx );
 };
 

@@ -26,11 +26,6 @@ void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 	table = (int*)(tableBytes + sizeof(int));
 	joints = (jjoint*)jointBytes;
     
-	for(int i=0;i<jointnum;i++)
-	{
-		matrix_float4x4 m = transOfJointAt(i);
-	}
-    
     jbinary_janim::getInfo(animbytes, curvenodes, jointnum);
 }
 

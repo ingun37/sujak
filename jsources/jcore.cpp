@@ -239,6 +239,7 @@ void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpec
 			(*pfuncPrim)((JRenderPrimitive)j);
 			for(int k=0;k<renderstateGroups[i].subPrimitiveGroups[j].objCnt;k++)
 			{
+                //todo draw batch
 				jrenderobject *obj = renderstateGroups[i].subPrimitiveGroups[j].objs[k]->getRenderObject();
 				(*pfuncRender)( obj->getIBufferOffset(), obj->getIndexCnt() );
 			}

@@ -16,7 +16,7 @@
 #import <simd/simd.h>
 
 
-static const long kMaxBufferBytesPerFrame = 30000*4;
+static const long kMaxBufferBytesPerFrame = 4 * 10000;
 static const long kInFlightCommandBuffers = 3;
 
 id <MTLBuffer> _vertexbuffers[JVertexAttribute_number];

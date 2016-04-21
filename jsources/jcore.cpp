@@ -247,7 +247,7 @@ void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpec
 	}
 }
 
-typedef jallocator<jnode*, 6> jallocskinnedmeshes;
+typedef jallocator<jnode*, 12> jallocskinnedmeshes;
 
 jvideomemorymapper mmapper;
 void jcore::initVideoMemoryMapper(void* buffers[], int *_buffIndex)
@@ -314,24 +314,23 @@ void loadobj(const char* objname, jnode& node, platformSpecificGetFile pgetfile,
 //jrenderobject* g_skelmesh = NULL;
 void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pgetobjinfo)
 {
-	jnode* objnode = jallocatorJnode::getAvailable(1), *node;
+	jnode* objnode = jallocatorJnode::getAvailable(1);
     loadobj("soldier", *objnode, pfunc, pgetobjinfo);
 	
-    jnode* clones = jallocatorJnode::getAvailable(2);
+    const float term = 60;
+    const int clonenum = 10;
+    for(int ic=0;ic<clonenum;ic++)
+    {
+        jnode* clone = jallocatorJnode::getAvailable(1);
+        objnode->clone(*clone);
+        clone->testtrans(ic*term - (term*(clonenum-1))/2, 0);
+        jallocskinnedmeshes::getAvailable(1)[0] = clone;
+    }
     
-    
-    objnode->clone(clones[0]);
-    objnode->clone(clones[1]);
-    
-    clones[0].testtrans(-30, 0);
-    clones[1].testtrans(30, 0);
-    
-    jnode** skinnedmeshes = jallocskinnedmeshes::getAvailable(2);
-    
-    skinnedmeshes[0] = &clones[0];
-    skinnedmeshes[1] = &clones[1];
     for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
-        renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(skinnedmeshes[i]);
+        renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj( *jallocskinnedmeshes::getAt(i) );
+    
+    
     
 	//renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(objnode);
 	//jallocatorSkinnedMeshes::getAvailable(1)[0] = objnode;
@@ -364,7 +363,7 @@ void jcore::update()
 	for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
 	{
 		jnode* nodeToSkin = *jallocskinnedmeshes::getAt(i);
-        nodeToSkin->getSkeleton()->animate(t + i);
+        nodeToSkin->getSkeleton()->animate(t + (0.14*i));
 		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
         //mapSkeletonVertices(*nodeToSkin->getSkeleton(), mmapper.getPositionMemoryOf(*(g_skelmesh)));
 	}

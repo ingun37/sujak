@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#define jrenderprimitivegroup_maxcap 8
+#define jrenderprimitivegroup_maxcap 12
 
 class jnode;
 class jrenderprimitivegroup

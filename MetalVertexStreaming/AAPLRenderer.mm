@@ -200,9 +200,9 @@ void withMetalDrawIndex(int offset, int cnt)
     // Allocate a buffer to store vertex position data (we'll quad buffer this one)
 
     for(int ib=0;ib<JVertexAttribute_number;ib++)
-        _vertexbuffers[ib] = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
+        _vertexbuffers[ib] = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:MTLResourceCPUCacheModeWriteCombined];
     
-	_indexBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
+	_indexBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:MTLResourceCPUCacheModeWriteCombined];
 	
 	core.loadAll(withMetalLoadFile, withMetalGetObjInfo);
 	
@@ -221,7 +221,7 @@ void withMetalDrawIndex(int offset, int cnt)
     
 	_uniformb.projview = matrix_multiply(mp, mv);
 	_uniformb.orthoview = matrix_multiply(jmath::GetProjectionMatrixOrthogonal(1, 1, 1, 200), jmath::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1}));
-	_uniformBuffer = [_device newBufferWithBytes:&_uniformb length:sizeof(JUniformBlock) options:0];
+	_uniformBuffer = [_device newBufferWithBytes:&_uniformb length:sizeof(JUniformBlock) options:MTLResourceCPUCacheModeWriteCombined];
     
     
     //////hardcode texture

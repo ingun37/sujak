@@ -56,14 +56,6 @@ public:
 
 jrendercontextpair renderContextPairs[JRenderState::JRenderState_number];
 
-// render stage
-//id <MTLRenderPipelineState> _pipelineStateTriangle;
-//id <MTLRenderPipelineState> _pipelineStateLine;
-//id <MTLRenderPipelineState> _pipelineStateUI;
-
-//id <MTLDepthStencilState> _depthStencilStateTriangle;
-//id <MTLDepthStencilState> _depthStencilStateLine;
-//id <MTLDepthStencilState> _depthStencilStateUI;
 
 jcore core;
 

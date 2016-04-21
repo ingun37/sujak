@@ -163,6 +163,7 @@
 		6B6B5D751CC62AB800B6533B /* jfbxcustomizer_skin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_skin.hpp; sourceTree = "<group>"; };
 		6BAC12151CC77B5500783713 /* jconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jconstants.h; sourceTree = "<group>"; };
 		6BAC12171CC77B7300783713 /* jconstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jconstants.cpp; sourceTree = "<group>"; };
+		6BAC12191CC8927500783713 /* jvector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvector.h; sourceTree = "<group>"; };
 		6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurvenode.cpp; sourceTree = "<group>"; };
 		6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurvenode.hpp; sourceTree = "<group>"; };
 		6BDD27921CB754F2005190B4 /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jcurve.cpp; path = jsources/jcurve.cpp; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 				6B6B5D6F1CC60A6100B6533B /* jfbxcustomizer_joint.hpp */,
 				6B6B5D741CC62AB800B6533B /* jfbxcustomizer_skin.cpp */,
 				6B6B5D751CC62AB800B6533B /* jfbxcustomizer_skin.hpp */,
+				6BAC12191CC8927500783713 /* jvector.h */,
 			);
 			path = fbxconverter;
 			sourceTree = "<group>";

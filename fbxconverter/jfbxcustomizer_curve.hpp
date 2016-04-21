@@ -21,7 +21,8 @@ using namespace std;
 class jfbxcustomizer_curve : public jfbxcustomizer_joint
 {
     void iterEachProperty();
-    void iteritemcurves(FbxAnimCurve* c1,FbxAnimCurve* c2,FbxAnimCurve* c3);
+    void iteritemcurves( FbxAnimCurve* crx,FbxAnimCurve* cry,FbxAnimCurve* crz, FbxAnimCurve* ctx,FbxAnimCurve* cty,FbxAnimCurve* ctz);
+    
     
     vector<jcurvenode*> curvenodes;
     

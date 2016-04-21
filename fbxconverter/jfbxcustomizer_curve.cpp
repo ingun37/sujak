@@ -18,7 +18,10 @@ void copyVectorTo(vector<T>& vec, T* p)
 
 void makejcurveFromFbxcurve(jcurve& dst, FbxAnimCurve* src)
 {
-    dst.cnt = src->KeyGetCount();
+    if(src == NULL)
+        dst.cnt = 0;
+    else
+        dst.cnt = src->KeyGetCount();
     
     vector<JCURVEINTERPOLATION> myinterpolations;
     vector<float> mytimes;
@@ -136,31 +139,47 @@ void jfbxcustomizer_curve::iterEachProperty()
     
     for(int i=0;i<skels.size();i++)
     {
-        FbxAnimCurve *c1=NULL, *c2=NULL, *c3=NULL;
+        FbxAnimCurve *crx=NULL, *cry=NULL, *crz=NULL, *ctx=NULL, *cty=NULL, *ctz=NULL;
         FbxNode* skel = skels[i];
         FbxAnimCurveNode* curvenode = skel->LclRotation.GetCurveNode();
         if(curvenode)
         {
-            c1 = curvenode->GetCurve(0);
-            c2 = curvenode->GetCurve(1);
-            c3 = curvenode->GetCurve(2);
+            crx = curvenode->GetCurve(0);
+            cry = curvenode->GetCurve(1);
+            crz = curvenode->GetCurve(2);
         }
         
-        iteritemcurves(c1, c2, c3);
+        curvenode = skel->LclTranslation.GetCurveNode();
+        if(curvenode)
+        {
+            ctx = curvenode->GetCurve(0);
+            cty = curvenode->GetCurve(1);
+            ctz = curvenode->GetCurve(2);
+        }
+        
+        iteritemcurves( crx, cry, crz, ctx, cty, ctz);
     }
 
 }
-void jfbxcustomizer_curve::iteritemcurves(FbxAnimCurve *c1, FbxAnimCurve *c2, FbxAnimCurve *c3)
+void jfbxcustomizer_curve::iteritemcurves(FbxAnimCurve* crx,FbxAnimCurve* cry,FbxAnimCurve* crz, FbxAnimCurve* ctx,FbxAnimCurve* cty,FbxAnimCurve* ctz)
 {
-    jcurve *j1 = new jcurve(), *j2 = new jcurve(), *j3 = new jcurve();
-    makejcurveFromFbxcurve(*j1, c1);
-    makejcurveFromFbxcurve(*j2, c2);
-    makejcurveFromFbxcurve(*j3, c3);
+    jcurve *jrx = new jcurve(), *jry = new jcurve(), *jrz = new jcurve(), *jtx = new jcurve(), *jty = new jcurve(), *jtz = new jcurve();
+    makejcurveFromFbxcurve(*jrx, crx);
+    makejcurveFromFbxcurve(*jry, cry);
+    makejcurveFromFbxcurve(*jrz, crz);
+    makejcurveFromFbxcurve(*jtx, ctx);
+    makejcurveFromFbxcurve(*jty, cty);
+    makejcurveFromFbxcurve(*jtz, ctz);
  
     jcurvenode* curvenode = new jcurvenode();
-    curvenode->curves[0] = j1;
-    curvenode->curves[1] = j2;
-    curvenode->curves[2] = j3;
+    
+    curvenode->getcurveofproperty(JCURVENODE_PROPERTY_ROTATION)[0] = jrx;
+    curvenode->getcurveofproperty(JCURVENODE_PROPERTY_ROTATION)[1] = jry;
+    curvenode->getcurveofproperty(JCURVENODE_PROPERTY_ROTATION)[2] = jrz;
+    
+    curvenode->getcurveofproperty(JCURVENODE_PROPERTY_TRANSLATION)[0] = jtx;
+    curvenode->getcurveofproperty(JCURVENODE_PROPERTY_TRANSLATION)[1] = jty;
+    curvenode->getcurveofproperty(JCURVENODE_PROPERTY_TRANSLATION)[2] = jtz;
     
     curvenodes.push_back(curvenode);
 }

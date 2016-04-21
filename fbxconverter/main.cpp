@@ -16,6 +16,7 @@
 #include "bitmap_image.hpp"
 #include "jfbxcustomizer_skin.hpp"
 #include "jfbxcustomizer_curve.hpp"
+
 using namespace std;
 
 typedef struct _vinfo
@@ -331,24 +332,29 @@ int main(int argc, const char * argv[])
         for(int i=0;i<curvenodes.size();i++)
         {
             jcurvenode* cnode = curvenodes[i];
-            for(int j=0;j<3;j++)
-            {
-                jcurve* curve = cnode->curves[j];
-                if(curve == NULL)
+            for(int ip = 0;ip<JCURVENODE_PROPERTY_NUMBER;ip++)
+                for(int j=0;j<3;j++)
                 {
-                    writefile_copy(0);
-                }
-                else
-                {
-                    writefile_copy(curve->cnt);
-                }
+                    jcurve* curve = cnode->getcurveofproperty((JCURVENODE_PROPERTY)ip)[j];
+                    if(curve == NULL)
+                    {
+                        writefile_copy(0);
+                        continue;
+                    }
+                    else
+                    {
+                        writefile_copy(curve->cnt);
+                    }
                 
-                writefile(curve->interpolations, sizeof(curve->interpolations[0]) * curve->cnt);
-                writefile(curve->tangents_l, sizeof(curve->tangents_l[0]) * curve->cnt);
-                writefile(curve->tangents_r, sizeof(curve->tangents_r[0]) * curve->cnt);
-                writefile(curve->times, sizeof(curve->times[0]) * curve->cnt);
-                writefile(curve->values, sizeof(curve->values[0]) * curve->cnt);
-            }
+                    if(curve->cnt > 0)
+                    {
+                        writefile(curve->interpolations, sizeof(curve->interpolations[0]) * curve->cnt);
+                        writefile(curve->tangents_l, sizeof(curve->tangents_l[0]) * curve->cnt);
+                        writefile(curve->tangents_r, sizeof(curve->tangents_r[0]) * curve->cnt);
+                        writefile(curve->times, sizeof(curve->times[0]) * curve->cnt);
+                        writefile(curve->values, sizeof(curve->values[0]) * curve->cnt);
+                    }
+                }
         }
         endfile();
         

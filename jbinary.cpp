@@ -119,37 +119,39 @@ void jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelc
     
     for(int i=0;i<skelcnt;i++)
     {
-        for(int j=0;j<3;j++)
-        {
-            int cnt = *((int*)fp);
-            fp += sizeof(int);
-            
-            if(cnt ==0)
+        for(int ip=0;ip<JCURVENODE_PROPERTY_NUMBER;ip++)
+            for(int j=0;j<3;j++)
             {
-                curvenodes[i].getcurveofproperty(JCURVENODE_PROPERTY_ROTATION)[j] = NULL;
-                continue;
+                int cnt = *((int*)fp);
+                fp += sizeof(int);
+            
+                if(cnt ==0)
+                {
+                    curvenodes[i].getcurveofproperty((JCURVENODE_PROPERTY)ip)[j] = NULL;
+                    continue;
+                }
+            
+                jcurve *curve = poolcurve::getAvailable(1);
+            
+                curve->cnt = cnt;
+            
+                curve->interpolations = (JCURVEINTERPOLATION*)fp;
+                fp += sizeof(JCURVEINTERPOLATION) * cnt;
+            
+                curve->tangents_l = (simd::float2*)fp;
+                fp += sizeof(simd::float2) * cnt;
+            
+                curve->tangents_r = (simd::float2*)fp;
+                fp += sizeof(simd::float2) * cnt;
+            
+                curve->times = (float*)fp;
+                fp += sizeof(float) * cnt;
+            
+                curve->values = (float*)fp;
+                fp += sizeof(float) * cnt;
+            
+                curvenodes[i].getcurveofproperty((JCURVENODE_PROPERTY)ip)[j] = curve;
             }
-            
-            jcurve *curve = poolcurve::getAvailable(1);
-            
-            curve->cnt = cnt;
-            
-            curve->interpolations = (JCURVEINTERPOLATION*)fp;
-            fp += sizeof(JCURVEINTERPOLATION) * cnt;
-            
-            curve->tangents_l = (simd::float2*)fp;
-            fp += sizeof(simd::float2) * cnt;
-            
-            curve->tangents_r = (simd::float2*)fp;
-            fp += sizeof(simd::float2) * cnt;
-            
-            curve->times = (float*)fp;
-            fp += sizeof(float) * cnt;
-            
-            curve->values = (float*)fp;
-            fp += sizeof(float) * cnt;
-            
-            curvenodes[i].getcurveofproperty(JCURVENODE_PROPERTY_ROTATION)[j] = curve;
-        }
+        
     }
 }

@@ -28,6 +28,9 @@ class jnode
     jtranslation ltran;
     matrix_float4x4 local;
     
+    bool localsPrecomputed;
+    simd::float4 *precomputelocalposes;
+    
 public:
 	bool shouldRemap;//todo : bitfield
 	
@@ -60,5 +63,7 @@ public:
 
     void clone(jnode& node);
 	void computeAndStoreSkinnedPositionTo(simd::float4* dest);
+    
+    void precomputeLocals();
 };
 #endif /* jnode_hpp */

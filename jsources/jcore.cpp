@@ -309,6 +309,7 @@ void loadobj(const char* objname, jnode& node, platformSpecificGetFile pgetfile,
     jbinary_jskinner::getInfo(fileSkin, skinner->clusterCnt, skinner->inverses, skinner->bindmeshes, skinner->jointIdxs, skinner->linkCounts, skinner->linkIdxs, skinner->linkWeights, skinner->accuTable);
     
     node.setData(mesh, sk, skinner);
+    node.precomputeLocals();
 }
 
 //jrenderobject* g_skelmesh = NULL;

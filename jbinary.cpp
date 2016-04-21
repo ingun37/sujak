@@ -48,6 +48,7 @@ void jbinary_jmesh::saveInfo(int &vcnt, int &icnt, simd::float4 *poolPos, simd::
 	
 }
 typedef jallocator<int, 5000> pooli;
+
 void jbinary_jskinner::getInfo(char *data, int &clustercnt, matrix_float4x4* &inverses, matrix_float4x4* &bindmeshes, int *&jointidxs, int *&cpcounts, int *&cpIdxs, float *&weights, int *&accuTable)
 {
 	if(data == NULL)
@@ -78,35 +79,13 @@ void jbinary_jskinner::getInfo(char *data, int &clustercnt, matrix_float4x4* &in
 		accuTable[i] = accu;
 		accu += cpcounts[i];
 	}
+    
+    printf("accu : %d\n", accu);
 	
 	cpIdxs = (int*)fp;
 	fp += sizeof(int) * (accuTable[clustercnt-1] + cpcounts[clustercnt-1]);
 	weights = (float*)fp;
-    /*
-    float* test = new float[2000];
-    memset(test,0,sizeof(float)*2000);
-    int testmax = 0;
-    for(int i=0;i<clustercnt;i++)
-    {
-        int testcnt = cpcounts[i];
-        for(int j=0;j<testcnt;j++)
-        {
-            int testidx = cpIdxs[accuTable[i] + j];
-            test[testidx] += weights[accuTable[i] + j];
-            printf("testing....%f\n",test[testidx]);
-            if(testidx > testmax)
-                testmax = testidx;
-        }
-    }
-    printf("test max : %d\n", testmax);
-    for(int i=0;i<=testmax;i++)
-    {
-        if(abs(test[i] - 1) > 0.0000005)
-        {
-            printf("fuck %f ", test[i]);
-        }
-    }
-     */
+    
 }
 
 typedef jallocator<jcurvenode, 1024> poolcurvenode;

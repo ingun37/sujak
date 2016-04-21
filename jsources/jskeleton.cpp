@@ -31,6 +31,7 @@ void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 
 void jskeleton::animate(float t) const
 {
+    //return;
     for(int i=0;i<jointnum;i++)
     {
         simd::float3 initeuler = simd::float3{0,0,0};

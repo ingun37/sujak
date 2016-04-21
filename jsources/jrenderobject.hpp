@@ -18,7 +18,7 @@
 class jrenderobject
 {
 	friend class jvideomemorymapper;
-
+    friend class jnode;
 	//TODO : bitfield
 	bool layedout;
 	bool dataset;

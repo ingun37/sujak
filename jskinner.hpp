@@ -23,10 +23,12 @@ public:
 	int* linkIdxs;
 	float* linkWeights;
     
+    
     void clone(jskinner& skinner);
     
 	jskinner()
 	{
+        
 		clusterCnt = 0;
 		jointIdxs = NULL;
 		linkCounts = NULL;

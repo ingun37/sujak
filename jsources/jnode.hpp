@@ -50,9 +50,10 @@ public:
 		skinner = k;
 	}
     
-    inline void testtrans(float mx, float ry)
+    inline void testtrans(float mx, float my, float ry)
     {
         ltran.setx(mx);
+        ltran.sety(my);
         lrot.onlyy(ry);
         local = matrix_multiply(ltran.getMat(),lrot.toMat());
     }

@@ -16,7 +16,7 @@
 #import <simd/simd.h>
 
 
-static const long kMaxBufferBytesPerFrame = 10 * 32000;
+static const long kMaxBufferBytesPerFrame = 15 * 32000;
 static const long kInFlightCommandBuffers = 1;
 
 JUniformBlock _uniformb;

@@ -19,7 +19,7 @@ jskeleton::jskeleton()
     globals = NULL;
 }
 
-typedef jallocator<matrix_float4x4, 400> poolmat;
+typedef jallocator<matrix_float4x4, 600> poolmat;
 typedef jallocator<simd::float3, 128> jallocatorf3;
 void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 {
@@ -59,7 +59,7 @@ void jskeleton::animate(float t) const
     }
 }
 
-typedef jallocator<jjoint, 400> jallocjoint;
+typedef jallocator<jjoint, 600> jallocjoint;
 void jskeleton::clone(jskeleton &skeleton)
 {
     jjoint* newjoints = jallocjoint::getAvailable(jointnum);

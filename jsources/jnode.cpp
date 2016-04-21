@@ -28,10 +28,6 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
 	{
 		int jointidx = skinner->jointIdxs[i];
 
-		//matrix_float4x4 inverse = skeleton->inverseOfJointAt( jointidx );
-        //matrix_float4x4 inverse = skinner->inverses[i];
-        //matrix_float4x4 bindmesh = skinner->bindmeshes[i];
-        //matrix_float4x4 combine = matrix_multiply(inverse, bindmesh);
 		matrix_float4x4 trans = skeleton->transOfJointAt( jointidx );
 		for(int j=0;j<skinner->linkCounts[i];j++)
 		{

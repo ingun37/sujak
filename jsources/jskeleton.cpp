@@ -42,7 +42,15 @@ void jskeleton::animate(float t) const
         }
         
         joints[i].rot.euler(initeuler[0], initeuler[1], initeuler[2], joints[i].order);
-        //joints[i].rot.euler(0, 0, 0);
+        
+        simd::float4 initpos = joints[i].pos.getPos();
+        for(int j=0;j<3;j++)
+        {
+            if(curvenodes[i].getcurveofproperty( JCURVENODE_PROPERTY_TRANSLATION )[j]==NULL)
+                continue;
+            initpos[j] = curvenodes[i].getcurveofproperty(JCURVENODE_PROPERTY_ROTATION)[j]->evaluate(t) * (3.141592/180);
+        }
+        joints[i].pos.setPos(initpos);
     }
 }
 

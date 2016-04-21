@@ -1,10 +1,3 @@
-//
-//  jcurve.hpp
-//  MetalVertexStreaming
-//
-//  Created by ingun on 4/8/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
-//
 
 #ifndef jcurve_hpp
 #define jcurve_hpp

@@ -275,70 +275,69 @@ void jcore::layout()
 	}
 }
 
-const char* fnameMesh = "_soldier_Military_Male_Lod_1\0";
-const char* extMesh = ".jmesh\0";
-const char* extSkin = ".jskin\0";
-const char* fnameSkel = "soldier_soldier_Hips\0";
-const char* extJoint = ".jjoin\0";
-const char* extTable = ".jtable\0";
-const char* extAnim = ".janim\0";
+void loadobj(const char* objname, jnode& node, platformSpecificGetFile pgetfile, platformSpecificGetObjInfo pgetobj)
+{
+    char namemesh[32];
+    char nameskel[32];
+    const char* extMesh = ".jmesh";
+    const char* extJoin = ".jjoin";
+    const char* extAnim = ".janim";
+    const char* extTable = ".jtable";
+    const char* extSkin = ".jskin";
+    (*pgetobj)(objname, nameskel, namemesh, 32);
+    
+    unsigned long size;
+    
+    char* fileMesh;
+    (*pgetfile)(namemesh, extMesh, fileMesh, size);
+    char* fileSkin;
+    (*pgetfile)(namemesh, extSkin, fileSkin, size);
+    
+    int vcnt, icnt, *pooli;
+    simd::float4 *poolp, *pooln;
+    simd::float2 *poolu;
+    
+    jbinary_jmesh::getInfo(fileMesh, vcnt, icnt, poolp, pooln, poolu, pooli);
+    jrenderobject *mesh = jallocatorRenderObjs::getAvailable(1);
+    mesh->setData(poolp, pooln, NULL, poolu, vcnt, pooli, icnt);
+    
+    char* fileJoin;
+    (*pgetfile)(nameskel, extJoin, fileJoin, size);
+    char* fileAnim;
+    (*pgetfile)(nameskel, extAnim, fileAnim, size);
+    char* fileTable;
+    (*pgetfile)(nameskel, extTable, fileTable, size);
+    
+    jskeleton* sk = jallocatorSkeleton::getAvailable(1);
+    sk->setFromFile(fileTable, fileJoin, fileAnim);
+    
+    jskinner* skinner = jallocatorSkinner::getAvailable(1);
+    jbinary_jskinner::getInfo(fileSkin, skinner->clusterCnt, skinner->inverses, skinner->bindmeshes, skinner->jointIdxs, skinner->linkCounts, skinner->linkIdxs, skinner->linkWeights, skinner->accuTable);
+    
+    node.setData(mesh, sk, skinner);
+}
 
 jrenderobject* g_skelmesh = NULL;
 void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pgetobjinfo)
 {
-    char names1[64];
-    char names2[64];
-    char names3[64];
-    char names4[64];
-    char names5[64];
-    const char* objname="soldier";
-    (*pgetobjinfo)("soldier",names1, names2, names3, names4, names5);
-    
-	char* file;
-	unsigned long size;
-	(*pfunc)("_soldier_Hips", extJoint, file, size);
-    
-	char* file2;
-	(*pfunc)("_soldier_Hips", extTable, file2, size);
-    
-    char* file3;
-    (*pfunc)("_soldier_Hips", extAnim, file3, size);
-    
-	jskeleton* sk = jallocatorSkeleton::getAvailable(1);
-	sk->setFromFile(file2, file, file3);
-    
-	(*pfunc)(fnameMesh, extMesh, file, size);
-	int vcnt, icnt;
-    simd::float4 *poolP, *poolN;
-    simd::float2 *poolU;
-	int* poolI;
-	jbinary_jmesh::getInfo(file, vcnt, icnt, poolP, poolN, poolU, poolI);
+	jnode* objnode = jallocatorJnode::getAvailable(1), *node;
+    loadobj("soldier", *objnode, pfunc, pgetobjinfo);
 	
-	jrenderobject* mesh = jallocatorRenderObjs::getAvailable(1);
-	mesh->setData(poolP, poolN, NULL, poolU, vcnt, poolI, icnt);
+	renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(objnode);
 	
-    
-    
-	jnode* node = jallocatorJnode::getAvailable(1);
-	(*pfunc)(fnameMesh, extSkin, file, size);
-	jskinner* skinner = jallocatorSkinner::getAvailable(1);
-	jbinary_jskinner::getInfo(file, skinner->clusterCnt, skinner->inverses, skinner->bindmeshes, skinner->jointIdxs, skinner->linkCounts, skinner->linkIdxs, skinner->linkWeights, skinner->accuTable);
-	node->setData(mesh, sk, skinner);
-	renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(node);
+	jallocatorSkinnedMeshes::getAvailable(1)[0] = objnode;
 	
-	jallocatorSkinnedMeshes::getAvailable(1)[0] = node;
-	
-    mesh = jallocatorRenderObjs::getAvailable(1);
-    makeRenderObjFromSkinner(*skinner, *sk, *mesh);
+    jrenderobject* mesh = jallocatorRenderObjs::getAvailable(1);
+    makeRenderObjFromSkinner(*(objnode->getSkinner()), *(objnode->getSkeleton()), *mesh);
     node = jallocatorJnode::getAvailable(1);
     node->setData(mesh, NULL, NULL);
     renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
     
 	mesh = jallocatorRenderObjs::getAvailable(1);
-	makeRenderObjFromSkeleton(*sk, *mesh);
+	makeRenderObjFromSkeleton(*(objnode->getSkeleton()), *mesh);
     g_skelmesh = mesh;
 	node = jallocatorJnode::getAvailable(1);
-	node->setData(mesh, sk, NULL);
+	node->setData(mesh, NULL, NULL);
 	renderstateGroups[JRenderState_info].subPrimitiveGroups[JRenderPrimitive_line].addObj(node);
 	
 	jrenderobject* uiquad = jallocatorRenderObjs::getAvailable(1);

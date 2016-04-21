@@ -67,7 +67,7 @@ jrendercontextpair renderContextPairs[JRenderState::JRenderState_number];
 
 jcore core;
 
-void withMetalGetObjInfo(const char* jobjname, char* namejoint, char* nametable, char* nameanim, char* namemesh, char* nameskin)
+void withMetalGetObjInfo(const char* jobjname, char* nameskel, char* namemesh, size_t namesize)
 {
     NSURL* url = [[NSBundle mainBundle] URLForResource:[NSString stringWithUTF8String:jobjname] withExtension:@".jobj" subdirectory:@"meshes"];
     NSData* data = [NSData dataWithContentsOfURL:url];
@@ -76,15 +76,10 @@ void withMetalGetObjInfo(const char* jobjname, char* namejoint, char* nametable,
     
     NSString *mesh = [dic objectForKey:@"mesh"];
     NSString *skel = [dic objectForKey:@"skeleton"];
-    
-    sprintf(namejoint, "%s.jjoin", [skel UTF8String]);
-    sprintf(nametable, "%s.jtable", [skel UTF8String]);
-    sprintf(nameanim, "%s.janim", [skel UTF8String]);
-    
-    sprintf(namemesh, "%s.jmesh", [mesh UTF8String]);
-    sprintf(nameskin, "%s.jskin", [mesh UTF8String]);
-    
-    printf("data names : \n%s\n%s\n%s\n%s\n%s\n", namejoint, nametable, nameanim, namemesh, nameskin);
+    memset(nameskel, 0, namesize);
+    memset(namemesh, 0, namesize);
+    strncpy(nameskel, [skel UTF8String], strlen([skel UTF8String]));
+    strncpy(namemesh, [mesh UTF8String], strlen([mesh UTF8String]));
 }
 
 void withMetalLoadFile(const char* szFileName, const char* szExt, char* &file, unsigned long& size)

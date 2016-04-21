@@ -17,7 +17,7 @@
 
 
 static const long kMaxBufferBytesPerFrame = 10 * 32000;
-static const long kInFlightCommandBuffers = 3;
+static const long kInFlightCommandBuffers = 1;
 
 JUniformBlock _uniformb;
 id <MTLTexture> _texture;
@@ -386,12 +386,13 @@ void withMetalDrawIndex(int offset, int cnt)
 
 - (void)render:(AAPLView *)view
 {
-	core.update();
+	
     // Allow the renderer to preflight 3 frames on the CPU (using a semapore as a guard) and commit them to the GPU.
     // This semaphore will get signaled once the GPU completes a frame's work via addCompletedHandler callback below,
     // signifying the CPU can go ahead and prepare another frame.
     dispatch_semaphore_wait(_inflight_semaphore, DISPATCH_TIME_FOREVER);
-	
+	core.update();
+    
 	//core.remapPos(remapPosWithMetal);
     // create a new command buffer for each renderpass to the current drawable
     id <MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];

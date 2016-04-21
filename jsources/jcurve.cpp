@@ -33,16 +33,19 @@ float jcurve::evaluate(float at)
     }
     
     //todo : make it to O(1)
-    int start=0;
-    for(;start<cnt;start++)
+    int start;
+    int begin = 0;
+    int end = cnt-1;
+    start = begin + (end-begin)/2;
+    while( !(times[start] <= at && at < times[start+1]) )
     {
-        if(times[start] > at)
-        {
-            break;
-        }
+        if(times[start] < at)
+            begin = start+1;
+        else
+            end = start-1;
+        start = begin + (end-begin)/2;
     }
     
-    --start;
     
     simd::float2 eval;
     float t1 = times[start];

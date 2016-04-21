@@ -24,18 +24,18 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
     int vcnt = renderobj->getVertexCnt();
 	memset(dest, 0, sizeof(simd::float4) * vcnt);
 	
+    matrix_float4x4* jointglobals = skeleton->computeglobals();
 	for(int i=0;i<skinner->clusterCnt;i++)
 	{
 		int jointidx = skinner->jointIdxs[i];
 
-		matrix_float4x4 trans = skeleton->transOfJointAt( jointidx );
 		for(int j=0;j<skinner->linkCounts[i];j++)
 		{
             int lidx = skinner->accuTable[i] + j;
 			int vidx = skinner->linkIdxs[ lidx ];
 			float weight = skinner->linkWeights[ lidx ];
 
-			dest[vidx] += matrix_multiply(trans, precomputelocalposes[lidx] ) * weight;
+			dest[vidx] += matrix_multiply( jointglobals[jointidx] , precomputelocalposes[lidx] ) * weight;
 		}
 	}
     

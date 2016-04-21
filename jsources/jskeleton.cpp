@@ -16,9 +16,10 @@ jskeleton::jskeleton()
 	jointnum = 0;
 	joints = NULL;
 	table = NULL;
+    globals = NULL;
 }
 
-typedef jallocator<matrix_float4x4, 128> jallocatorMat44;
+typedef jallocator<matrix_float4x4, 400> poolmat;
 typedef jallocator<simd::float3, 128> jallocatorf3;
 void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 {
@@ -27,6 +28,8 @@ void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 	joints = (jjoint*)jointBytes;
     
     jbinary_janim::getInfo(animbytes, curvenodes, jointnum);
+    
+    globals = poolmat::getAvailable(jointnum);
 }
 
 void jskeleton::animate(float t) const
@@ -56,22 +59,6 @@ void jskeleton::animate(float t) const
     }
 }
 
-matrix_float4x4 jskeleton::transOfJointAt(int i)
-{
-	int tmp = i;
-	//TODO : optimize like start from getTransMat
-	matrix_float4x4 identity = matrix_identity_float4x4;
-	
-	while(tmp != -1)
-	{
-		jjoint& j = joints[tmp];
-		identity = matrix_multiply(j.getTransMat(), identity);
-		tmp = table[tmp];
-	}
-	
-	return identity;
-}
-
 typedef jallocator<jjoint, 400> jallocjoint;
 void jskeleton::clone(jskeleton &skeleton)
 {
@@ -84,4 +71,18 @@ void jskeleton::clone(jskeleton &skeleton)
     
     skeleton = *this;
     skeleton.joints = newjoints;
+    skeleton.globals = poolmat::getAvailable(jointnum);
+}
+
+matrix_float4x4* jskeleton::computeglobals()
+{
+    //important : up->down ordered array must be guaranteed!!!!!!!!!!!!
+    for(int i=0;i<jointnum;i++)
+    {
+        globals[i] = joints[i].getTransMat();
+        if(table[i] == -1)
+            continue;
+        globals[i] = matrix_multiply( globals[ table[i] ] , globals[i]);
+    }
+    return globals;
 }

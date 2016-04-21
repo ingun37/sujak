@@ -22,14 +22,16 @@ class jskeleton
 	
 	int jointnum;
     jcurvenode *curvenodes;
+    matrix_float4x4* globals;
 public:
     void clone(jskeleton& skeleton);
     
 	inline int getJointCnt() const {return jointnum;}
 	inline jjoint* getjointsArr() const { return joints; }
 	inline int* getTableArr() const {return table;}
-	matrix_float4x4 transOfJointAt(int i);
 	
+    matrix_float4x4* computeglobals();
+    
 	void setFromFile(char* tableBytes, char* jointBytes, char* animbytes);
     void animate(float t) const;
 	jskeleton();

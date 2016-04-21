@@ -106,9 +106,10 @@ void mapSkeletonVertices(jskeleton& skel, simd::float4* dst)
 {
     int jointcnt = skel.getJointCnt();
     simd::float4 origin = {0,0,0,1};
+    matrix_float4x4* jointglobals = skel.computeglobals();
     for(int i=0;i<jointcnt;i++)
     {
-        dst[i] = matrix_multiply(skel.transOfJointAt(i), origin);
+        dst[i] = matrix_multiply(jointglobals[i], origin);
         
         if(skel.getTableArr()[i] == -1)
             continue;
@@ -123,11 +124,12 @@ void makeRenderObjFromSkeleton( jskeleton& skel, jrenderobject& renderobj )
 	int cnt = 0;
 	int jointcnt = skel.getJointCnt();
 	simd::float4 origin = {0,0,0,1};
+    matrix_float4x4* jointglobals = skel.computeglobals();
 	for(int i=0;i<jointcnt;i++)
 	{
 		poolc[i] = { 1,0,0,1};
 
-		poolv[i] = matrix_multiply(skel.transOfJointAt(i), origin);
+		poolv[i] = matrix_multiply(jointglobals[i], origin);
 		
 		if(skel.getTableArr()[i] == -1)
 			continue;

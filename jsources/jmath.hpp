@@ -1,10 +1,3 @@
-//
-//  jmath.hpp
-//  MetalVertexStreaming
-//
-//  Created by Build on 2015. 11. 2..
-//  Copyright © 2015년 Apple Inc. All rights reserved.
-//
 
 #ifndef jmath_hpp
 #define jmath_hpp

@@ -71,3 +71,16 @@ matrix_float4x4 jskeleton::transOfJointAt(int i)
 	return identity;
 }
 
+typedef jallocator<jjoint, 256> jallocjoint;
+void jskeleton::clone(jskeleton &skeleton)
+{
+    jjoint* newjoints = jallocjoint::getAvailable(jointnum);
+    
+    for(int i=0;i<jointnum;i++)
+    {
+        newjoints[i] = joints[i];
+    }
+    
+    skeleton = *this;
+    skeleton.joints = newjoints;
+}

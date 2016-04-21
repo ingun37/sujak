@@ -42,7 +42,7 @@ public:
     void setData(simd::float4* p, simd::float4* n, simd::float4* c, simd::float2* u, int vc, int* i, int ic);
 	
 	jrenderobject();
-	
+    void clone(jrenderobject& robj);
 };
 
 #endif /* jrenderobject_hpp */

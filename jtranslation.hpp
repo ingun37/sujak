@@ -34,6 +34,11 @@ public:
         pos[1] = v;
     }
     
+    inline void setx(float v)
+    {
+        pos[0] = v;
+    }
+
 	inline void setPos(simd::float4 v)
 	{
 		pos = v;

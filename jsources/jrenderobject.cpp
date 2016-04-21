@@ -63,3 +63,9 @@ void jrenderobject::setData(simd::float4 *p, simd::float4 *n, simd::float4 *c, s
     vertexCnt = vc;
     indexCnt = ic;
 }
+
+void jrenderobject::clone(jrenderobject &robj)
+{
+    robj = *this;
+    robj.layedout = false;
+}

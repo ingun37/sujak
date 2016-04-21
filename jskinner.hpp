@@ -22,6 +22,9 @@ public:
 	int* accuTable;
 	int* linkIdxs;
 	float* linkWeights;
+    
+    void clone(jskinner& skinner);
+    
 	jskinner()
 	{
 		clusterCnt = 0;

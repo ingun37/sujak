@@ -14,7 +14,7 @@
 
 #define ipoolmax 30000
 int ipool[ipoolmax];
-void jvideomemorymapper::mapToVideoMemory(jrenderobject *obj, jvideomemoryaligninfo& aligninfo)
+void jvideomemorymapper::mapToVideoMemory(jrenderobject *obj)
 {
 	if(!inited )
 	{
@@ -45,8 +45,8 @@ void jvideomemorymapper::mapToVideoMemory(jrenderobject *obj, jvideomemoryaligni
 	
 	memcpy(buffIndex + offsetIndex, ipool, sizeof(int) * obj->indexCnt);
 	
-	aligninfo.vBufferOffset = offsetVertex;
-	aligninfo.iBufferOffset = offsetIndex;
+	obj->aligninfo.vBufferOffset = offsetVertex;
+	obj->aligninfo.iBufferOffset = offsetIndex;
 	offsetVertex += obj->vertexCnt;
 	offsetIndex += obj->indexCnt;
 	obj->layedout = true;

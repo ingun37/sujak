@@ -11,7 +11,7 @@
 #include "jskeleton.hpp"
 #include "jskinner.hpp"
 #include "jnode.hpp"
-
+#include "jallocator.hpp"
 
 
 void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
@@ -46,4 +46,21 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
     {
         dest[iv] = matrix_multiply(local, dest[iv]);
     }
+}
+typedef jallocator<jskeleton, 32> jallocskel;
+typedef jallocator<jrenderobject, 32> jallocrobj;
+typedef jallocator<jskinner, 32> jallocskin;
+void jnode::clone(jnode &node)
+{
+    jskeleton* newskel = jallocskel::getAvailable(1);
+    jskinner* newskin = jallocskin::getAvailable(1);
+    jrenderobject* newrobj = jallocrobj::getAvailable(1);
+    
+    skeleton->clone(*newskel);
+    skinner->clone(*newskin);
+    renderobj->clone(*newrobj);
+    
+    node.renderobj = newrobj;
+    node.skinner = newskin;
+    node.skeleton = newskel;
 }

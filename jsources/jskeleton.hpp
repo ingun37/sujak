@@ -15,6 +15,7 @@
 class jcurvenode;
 class jskeleton
 {
+    friend jskeleton;
 	jjoint *joints;
     
 	int* table;
@@ -22,6 +23,8 @@ class jskeleton
 	int jointnum;
     jcurvenode *curvenodes;
 public:
+    void clone(jskeleton& skeleton);
+    
 	inline int getJointCnt() const {return jointnum;}
 	inline jjoint* getjointsArr() const { return joints; }
 	inline int* getTableArr() const {return table;}

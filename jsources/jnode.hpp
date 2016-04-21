@@ -19,6 +19,7 @@ class jskeleton;
 class jskinner;
 class jnode
 {
+    friend jnode;
 	jrenderobject* renderobj;
 	jskeleton* skeleton;
 	jskinner* skinner;
@@ -46,9 +47,9 @@ public:
 		skinner = k;
 	}
     
-    inline void testtrans(float my, float ry)
+    inline void testtrans(float mx, float ry)
     {
-        ltran.sety(my);
+        ltran.setx(mx);
         lrot.onlyy(ry);
         local = matrix_multiply(ltran.getMat(),lrot.toMat());
     }
@@ -57,6 +58,7 @@ public:
 	inline jskeleton* getSkeleton() const {return skeleton;}
 	inline jskinner* getSkinner() const {return skinner;}
 
+    void clone(jnode& node);
 	void computeAndStoreSkinnedPositionTo(simd::float4* dest);
 };
 #endif /* jnode_hpp */

@@ -50,7 +50,7 @@ public:
 		inited = true;
 	}
 	
-	void mapToVideoMemory(jrenderobject *obj, jvideomemoryaligninfo& info);
+	void mapToVideoMemory(jrenderobject *obj);
 
 	simd::float4* getPositionMemoryOf(const jrenderobject &obj);
 };

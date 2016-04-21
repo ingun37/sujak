@@ -24,7 +24,7 @@ public:
 	static void getInfo(char* data, int& clustercnt, matrix_float4x4* &inverses, matrix_float4x4* &bindmeshes, int* &jointidxs, int* &cpcounts, int* &cpIdxs, float* &weights, int* &accuTable);
 };
 
-typedef struct _jcurvenode jcurvenode;
+class jcurvenode;
 class jbinary_janim
 {
 public:

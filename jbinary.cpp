@@ -126,7 +126,7 @@ void jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelc
             
             if(cnt ==0)
             {
-                curvenodes[i].curves_r[j] = NULL;
+                curvenodes[i].getcurveofproperty(JCURVENODE_PROPERTY_ROTATION)[j] = NULL;
                 continue;
             }
             
@@ -149,7 +149,7 @@ void jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelc
             curve->values = (float*)fp;
             fp += sizeof(float) * cnt;
             
-            curvenodes[i].curves_r[j] = curve;
+            curvenodes[i].getcurveofproperty(JCURVENODE_PROPERTY_ROTATION)[j] = curve;
         }
     }
 }

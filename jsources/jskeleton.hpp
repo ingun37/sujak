@@ -12,7 +12,7 @@
 #include <simd/simd.h>
 #include <stdio.h>
 #include "jjoint.h"
-typedef struct _jcurvenode jcurvenode;
+class jcurvenode;
 class jskeleton
 {
 	jjoint *joints;

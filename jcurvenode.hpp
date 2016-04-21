@@ -13,10 +13,15 @@
 
 class jcurve;
 
-typedef struct _jcurvenode
+enum JCURVENODE_PROPERTY{JCURVENODE_PROPERTY_ROTATION, JCURVENODE_PROPERTY_TRANSLATION};
+class jcurvenode
 {
-    jcurve *curves_r[3];
-    jcurve *curves_t[3];
-} jcurvenode;
+    jcurve *curves[2][3];
+public:
+    inline jcurve **getcurveofproperty(JCURVENODE_PROPERTY property)
+    {
+        return curves[property];
+    }
+};
 
 #endif /* jcurvenode_hpp */

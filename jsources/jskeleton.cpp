@@ -36,9 +36,9 @@ void jskeleton::animate(float t) const
         simd::float3 initeuler = simd::float3{0,0,0};
         for(int j=0;j<3;j++)
         {
-            if(curvenodes[i].curves[j]==NULL)
+            if(curvenodes[i].curves_r[j]==NULL)
                 continue;
-            initeuler[j] = curvenodes[i].curves[j]->evaluate(t) * (3.141592/180);
+            initeuler[j] = curvenodes[i].curves_r[j]->evaluate(t) * (3.141592/180);
         }
         
         joints[i].rot.euler(initeuler[0], initeuler[1], initeuler[2], joints[i].order);

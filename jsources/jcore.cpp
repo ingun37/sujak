@@ -343,15 +343,10 @@ void jcore::loadAll(platformSpecificGetFile pfunc)
 void jcore::update()
 {
 	static float t = 0;
-    //static float my = 0;
-    //static float ry = 0;
-    
-    //my = sinf(t) * 40;
-    //ry += 0.01;
+
 	for(int i=0;i<jallocatorSkinnedMeshes::getCnt();i++)
 	{
 		jnode* nodeToSkin = *jallocatorSkinnedMeshes::getAt(i);
-        //nodeToSkin->testtrans(my, ry);
         nodeToSkin->getSkeleton()->animate(t);
 		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
         mapSkeletonVertices(*nodeToSkin->getSkeleton(), mmapper.getPositionMemoryOf(*(g_skelmesh)));

@@ -126,7 +126,7 @@ void jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelc
             
             if(cnt ==0)
             {
-                curvenodes[i].curves[j] = NULL;
+                curvenodes[i].curves_r[j] = NULL;
                 continue;
             }
             
@@ -149,7 +149,7 @@ void jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelc
             curve->values = (float*)fp;
             fp += sizeof(float) * cnt;
             
-            curvenodes[i].curves[j] = curve;
+            curvenodes[i].curves_r[j] = curve;
         }
     }
 }

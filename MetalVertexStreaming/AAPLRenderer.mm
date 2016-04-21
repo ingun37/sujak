@@ -67,6 +67,26 @@ jrendercontextpair renderContextPairs[JRenderState::JRenderState_number];
 
 jcore core;
 
+void withMetalGetObjInfo(const char* jobjname, char* namejoint, char* nametable, char* nameanim, char* namemesh, char* nameskin)
+{
+    NSURL* url = [[NSBundle mainBundle] URLForResource:[NSString stringWithUTF8String:jobjname] withExtension:@".jobj" subdirectory:@"meshes"];
+    NSData* data = [NSData dataWithContentsOfURL:url];
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    
+    NSString *mesh = [dic objectForKey:@"mesh"];
+    NSString *skel = [dic objectForKey:@"skeleton"];
+    
+    sprintf(namejoint, "%s.jjoin", [skel UTF8String]);
+    sprintf(nametable, "%s.jtable", [skel UTF8String]);
+    sprintf(nameanim, "%s.janim", [skel UTF8String]);
+    
+    sprintf(namemesh, "%s.jmesh", [mesh UTF8String]);
+    sprintf(nameskin, "%s.jskin", [mesh UTF8String]);
+    
+    printf("data names : \n%s\n%s\n%s\n%s\n%s\n", namejoint, nametable, nameanim, namemesh, nameskin);
+}
+
 void withMetalLoadFile(const char* szFileName, const char* szExt, char* &file, unsigned long& size)
 {
 	NSURL* url = [[NSBundle mainBundle] URLForResource:[NSString stringWithUTF8String:szFileName] withExtension:[NSString stringWithUTF8String:szExt] subdirectory:@"meshes"];
@@ -189,7 +209,7 @@ void withMetalDrawIndex(int offset, int cnt)
     
 	_indexBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:0];
 	
-	core.loadAll(withMetalLoadFile);
+	core.loadAll(withMetalLoadFile, withMetalGetObjInfo);
 	
     void* tmpbuffers[JVertexAttribute_number];
     for(int ib = 0;ib<JVertexAttribute_number;ib++)

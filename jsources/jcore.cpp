@@ -284,8 +284,16 @@ const char* extTable = ".jtable\0";
 const char* extAnim = ".janim\0";
 
 jrenderobject* g_skelmesh = NULL;
-void jcore::loadAll(platformSpecificGetFile pfunc)
+void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pgetobjinfo)
 {
+    char names1[64];
+    char names2[64];
+    char names3[64];
+    char names4[64];
+    char names5[64];
+    const char* objname="soldier";
+    (*pgetobjinfo)("soldier",names1, names2, names3, names4, names5);
+    
 	char* file;
 	unsigned long size;
 	(*pfunc)("_soldier_Hips", extJoint, file, size);

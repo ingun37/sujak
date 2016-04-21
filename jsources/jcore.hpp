@@ -21,6 +21,7 @@ typedef void(*platformSpecificSetRenderState)(JRenderState state);
 typedef void(*platformSpecificSetPrimitive)(JRenderPrimitive prim);
 typedef void(*platformSpecificRenderIndexed)(int offset, int cnt);
 typedef void(*platformSpecificGetFile)(const char* szFileName, const char* szExt, char* &file, unsigned long& size);
+typedef void(*platformSpecificGetObjInfo)(const char* jobjname, char* namejoint, char* nametable, char* nameanim, char* namemesh, char* nameskin);
 typedef void(*loadSkeletonsPlatformSpecific)(jskeleton* objs, const int len, int &cap);
 
 
@@ -40,7 +41,7 @@ public:
 	void layout();
 	
 
-	void loadAll( platformSpecificGetFile pfunc );
+	void loadAll( platformSpecificGetFile pfunc, platformSpecificGetObjInfo pgetobjinfo );
 	
 	filepool& getFilePool() {return fpool;}
 };

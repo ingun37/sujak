@@ -59,7 +59,7 @@ public:
     }
     
 	inline jrenderobject* getRenderObject() const {return renderobj;}
-	inline jskeleton* getSkeleton() const {return skeleton;}
+	inline jskeleton* getSkeleton() {return skeleton;}
 	inline jskinner* getSkinner() const {return skinner;}
 
     void clone(jnode& node);

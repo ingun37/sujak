@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <simd/simd.h>
 
+
+extern simd::float4x4 hermite;
 enum JCURVEINTERPOLATION { JCURVEINTERPOLATION_CONSTANT, JCURVEINTERPOLATION_LINEAR, JCURVEINTERPOLATION_CUBIC };
 class jcurve
 {

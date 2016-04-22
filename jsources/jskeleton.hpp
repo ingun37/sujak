@@ -23,6 +23,9 @@ class jskeleton
 	int jointnum;
     jcurvenode *curvenodes;
     matrix_float4x4* globals;
+    
+    int *currentkeys;
+    float currentt;
 public:
     void clone(jskeleton& skeleton);
     
@@ -33,7 +36,8 @@ public:
     matrix_float4x4* computeglobals();
     
 	void setFromFile(char* tableBytes, char* jointBytes, char* animbytes);
-    void animate(float t) const;
+    void animateto(float at);
+    void advance(float dt);
 	jskeleton();
 };
 #endif /* jskeleton_hpp */

@@ -327,6 +327,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
     {
         jnode* clone = jallocatorJnode::getAvailable(1);
         objnode->clone(*clone);
+        clone->getSkeleton()->animateto((ir*clonenum_c + ic) * 0.1);
         clone->testtrans( ir*term_h - (term_h*(clonenum_r-1))/2, ic*term_v - (term_v*(clonenum_c-1))/2, 0);
         jallocskinnedmeshes::getAvailable(1)[0] = clone;
     }
@@ -362,15 +363,11 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
 
 void jcore::update()
 {
-	static float t = 0;
-
 	for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
 	{
 		jnode* nodeToSkin = *jallocskinnedmeshes::getAt(i);
-        nodeToSkin->getSkeleton()->animate(t + (0.14*i));
+        nodeToSkin->getSkeleton()->advance(0.005);
 		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
         //mapSkeletonVertices(*nodeToSkin->getSkeleton(), mmapper.getPositionMemoryOf(*(g_skelmesh)));
 	}
-    
-    t+=0.005;
 }

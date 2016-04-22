@@ -10,6 +10,7 @@
 #define jrotation_hpp
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <simd/simd.h>
 #include <math.h>
 enum JROTATION_ORDER
@@ -19,115 +20,70 @@ enum JROTATION_ORDER
 class jrotation
 {
 public:
-	simd::float4 xyzw;
+	simd::float3 xyz;
 
 	jrotation()
 	{
-        xyzw = {0,0,0,1};
+        xyz = {0,0,0};
 	}
-	jrotation(simd::float4 _xyzw)
+	jrotation(simd::float3 _xyz)
 	{
-		xyzw = _xyzw;
-	}
-	jrotation(simd::float4 axis, float radian)
-	{
-		axis = (simd::float4){1,1,1,0} * axis;
-		xyzw = simd::normalize(axis) * sinf(radian/2);
-		xyzw = (simd::float4){0,0,0,cosf(radian/2)} + xyzw;
-	}
-	inline jrotation operator*(const jrotation& r )
-	{
-		//TODO : faster
-		return jrotation( (simd::float4)
-		{
-			xyzw[3]*r.xyzw[0] + xyzw[0]*r.xyzw[3] + xyzw[1]*r.xyzw[2] - xyzw[2]*r.xyzw[1],
-			xyzw[3]*r.xyzw[1] - xyzw[0]*r.xyzw[2] + xyzw[1]*r.xyzw[3] + xyzw[2]*r.xyzw[0],
-			xyzw[3]*r.xyzw[2] + xyzw[0]*r.xyzw[1] - xyzw[1]*r.xyzw[0] + xyzw[2]*r.xyzw[3],
-			xyzw[3]*r.xyzw[3] - xyzw[0]*r.xyzw[0] - xyzw[1]*r.xyzw[1] - xyzw[2]*r.xyzw[2],
-		});
+		xyz = _xyz;
 	}
     
-    inline void euler_degree(float _x, float _y, float _z, JROTATION_ORDER order)
+    inline void degree(float _x, float _y, float _z)
     {
         const float convert = 3.141592 / 180;
-        euler(_x * convert, _y * convert, _z * convert, order);
+        xyz = {_x*convert, _y*convert, _z*convert};
     }
 
-    inline void genMatX(float rad, matrix_float3x3 &mat)
+    inline void genMatX(float rad, matrix_float4x4 &mat)
     {
         float c = cosf(rad);
         float s = sinf(rad);
-        mat.columns[0] = {c,s,0};
-        mat.columns[1] = {-s,c,0};
-        mat.columns[2] = {0,0,1};
+        mat.columns[0] = {1,0,0,0};
+        mat.columns[1] = {0,c,s,0};
+        mat.columns[2] = {0,-s,c,0};
+        mat.columns[3] = {0,0,0,1};
+        
+        
     }
     
-    inline void genMatY(float rad, matrix_float3x3 &mat)
+    inline void genMatY(float rad, matrix_float4x4 &mat)
     {
         float c = cosf(rad);
         float s = sinf(rad);
-        mat.columns[0] = {c,0,-s};
-        mat.columns[1] = {0,1,0};
-        mat.columns[2] = {s,0,c};
+        mat.columns[0] = {c,0,-s, 0};
+        mat.columns[1] = {0,1,0, 0};
+        mat.columns[2] = {s,0,c,0};
+        mat.columns[3] = {0,0,0,1};
     }
     
-    inline void genMatZ(float rad, matrix_float3x3 &mat)
+    inline void genMatZ(float rad, matrix_float4x4 &mat)
     {
         float c = cosf(rad);
         float s = sinf(rad);
-        mat.columns[0] = {1,0,0};
-        mat.columns[1] = {0,c,s};
-        mat.columns[2] = {0,-s,c};
+        mat.columns[0] = {c,s,0,0};
+        mat.columns[1] = {-s,c,0,0};
+        mat.columns[2] = {0,0,1,0};
+        mat.columns[3] = {0,0,0,1};
     }
     
     inline void onlyx(float rad)
     {
-        //TODO : faster
-        float h = rad/2;
-        float cosh = cosf(h);
-        float sinh = sinf(h);
-        
-        xyzw =
-        {
-            sinh,
-            0,
-            0,
-            cosh
-        };
+        xyz = {rad,0,0};
     }
     
     inline void onlyy(float rad)
     {
-        //TODO : faster
-        float h = rad/2;
-        float cosh = cosf(h);
-        float sinh = sinf(h);
-        
-        xyzw =
-        {
-            0,
-            sinh,
-            0,
-            cosh
-        };
+        xyz = { 0,    rad,   0   };
     }
     
     inline void onlyz(float rad)
     {
-        //TODO : faster
-        float h = rad/2;
-        float cosh = cosf(h);
-        float sinh = sinf(h);
-        
-        xyzw =
-        {
-            0,
-            0,
-            sinh,
-            cosh
-        };
+        xyz ={0,0,rad};
     }
-    
+    /*
 	inline void euler(float _x, float _y, float _z, JROTATION_ORDER order)
 	{
         jrotation rx, ry, rz;
@@ -160,6 +116,32 @@ public:
                 break;
         }
 	}
+     */
+#define jmulrotmat(A,B,C) matrix_multiply(A, matrix_multiply(B, C))
+    inline matrix_float4x4 toMat(JROTATION_ORDER order)
+    {
+        matrix_float4x4 X, Y, Z;
+        genMatX(xyz[0], X);
+        genMatY(xyz[1], Y);
+        genMatZ(xyz[2], Z);
+        
+        switch(order)
+        {
+            case XYZ: return jmulrotmat(Z,Y,X); break;
+            case XZY: return jmulrotmat(Y,Z,X); break;
+            case YXZ: return jmulrotmat(Z,X,Y); break;
+            case YZX: return jmulrotmat(X,Z,Y); break;
+            case ZXY: return jmulrotmat(Y,X,Z); break;
+            case ZYX: return jmulrotmat(X,Y,Z); break;
+            default:
+                puts("wtfsdfadsfs");
+                exit(1);
+                return matrix_identity_float4x4;
+                break;
+        }
+    }
+#undef jmulrotmat
+    /*
 #define DBL(x) ((x)*(x))
 #define EQ1(a,b) (1-2*DBL(xyzw[a])-2*DBL(xyzw[b]))
 #define EQM(a,b,c,d) (2*(xyzw[a]*xyzw[b] - xyzw[c]*xyzw[d]))
@@ -174,17 +156,7 @@ public:
 		mat.columns[3] = {0, 0, 0, 1};
 
 		return mat;
-	}
-    
-    inline simd::float3 toEuler() const
-    {
-        return (simd::float3)
-        {
-            static_cast<float>(atan2(  2*(xyzw[3]*xyzw[0] + xyzw[1]*xyzw[2]),  1-2*(xyzw[0]*xyzw[0] + xyzw[1]*xyzw[1]) )),
-            static_cast<float>(asin(   2*(xyzw[3]*xyzw[1] - xyzw[2]*xyzw[0])                   )),
-            static_cast<float>(atan2(  2*(xyzw[3]*xyzw[2] + xyzw[0]*xyzw[1]),  1-2*(xyzw[1]*xyzw[1] + xyzw[2]*xyzw[2]) ))
-        };
-    }
+	}*/
 };
 
 #endif /* jrotation_hpp */

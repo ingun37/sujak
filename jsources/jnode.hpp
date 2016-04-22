@@ -55,7 +55,7 @@ public:
         ltran.setx(mx);
         ltran.sety(my);
         lrot.onlyy(ry);
-        local = matrix_multiply(ltran.getMat(),lrot.toMat());
+        local = matrix_multiply(ltran.getMat(),lrot.toMat(XYZ));
     }
     
 	inline jrenderobject* getRenderObject() const {return renderobj;}

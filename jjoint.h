@@ -17,13 +17,13 @@ public:
 	jtranslation pos;
 	jrotation rot;
     JROTATION_ORDER order;
-	inline matrix_float4x4 getTransMat() const
+	inline matrix_float4x4 getTransMat()
 	{
-		return matrix_multiply(pos.getMat(), rot.toMat());
+		return matrix_multiply(pos.getMat(), rot.toMat(order));
 	}
-	inline matrix_float4x4 getOnlyRotation() const
+	inline matrix_float4x4 getOnlyRotation()
 	{
-		return rot.toMat();
+		return rot.toMat(order);
 	}
 };
 

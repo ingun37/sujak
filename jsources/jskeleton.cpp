@@ -118,7 +118,7 @@ void jskeleton::advance(float dt)
             switch((JCURVENODE_PROPERTY)ip)
             {
                 case JCURVENODE_PROPERTY_ROTATION:
-                    initialval = {0,0,0,0};//todo : initial value must be current joint's local rotation
+                    initialval = { joints[ij].rot.xyz[0]  ,joints[ij].rot.xyz[1], joints[ij].rot.xyz[2], 0};//todo : initial value must be current joint's local rotation
                     break;
                 case JCURVENODE_PROPERTY_TRANSLATION:
                     initialval = joints[ij].pos.pos;
@@ -191,7 +191,7 @@ void jskeleton::advance(float dt)
             switch ((JCURVENODE_PROPERTY)ip)
             {
                 case JCURVENODE_PROPERTY_ROTATION:
-                    joints[ij].rot.euler_degree(initialval[0], initialval[1], initialval[2], joints[ij].order);
+                    joints[ij].rot.degree(initialval[0], initialval[1], initialval[2]);
                     break;
                 case JCURVENODE_PROPERTY_TRANSLATION:
                     joints[ij].pos = initialval;

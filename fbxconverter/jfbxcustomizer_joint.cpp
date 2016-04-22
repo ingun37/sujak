@@ -112,8 +112,8 @@ vector<jjoint>& jfbxcustomizer_joint::getJoints()
             
             setrotationorder(joint, skel);
             
-            joint.rot.euler( static_cast<float>(euler[0]*(3.141592/180)), static_cast<float>(euler[1]*(3.141592/180)), static_cast<float>(euler[2]*(3.141592/180)), joint.order );
-            joint.pos.setPos( static_cast<float>(trans[0]), static_cast<float>(trans[1]), static_cast<float>(trans[2]) );
+            joint.rot.degree( euler[0], euler[1], euler[2] );
+            joint.pos.setPos( trans[0], trans[1], trans[2] );
             
             matrix_float4x4 m1 = joint.getTransMat();
             FbxAMatrix m2 = skel->EvaluateLocalTransform();

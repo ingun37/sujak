@@ -22,9 +22,9 @@ matrix_float4x4 getjtransform(FbxVector4 m, FbxVector4 r, FbxVector4 s)
     jtranslation jt;
     jt.setPos(m[0], m[1], m[2]);
     jrotation jr;
-    jr.euler_degree(r[0], r[1], r[2], JROTATION_ORDER::XYZ);
+    jr.degree(r[0], r[1], r[2]);
     
-    return matrix_multiply(jt.getMat(), jr.toMat());
+    return matrix_multiply(jt.getMat(), jr.toMat(XYZ));
 }
 void jfbxcustomizer_skin::genjointinfos()
 {

@@ -109,6 +109,8 @@ void jskeleton::animateto(float at)
 
 void jskeleton::advance(float dt)
 {
+    const float radtodeg = 180.f/3.141592;
+    const float degtorad = 3.141592/180.f;
     currentt += dt;
     for(int ij=0;ij<jointnum;ij++)
     {
@@ -118,7 +120,8 @@ void jskeleton::advance(float dt)
             switch((JCURVENODE_PROPERTY)ip)
             {
                 case JCURVENODE_PROPERTY_ROTATION:
-                    initialval = { joints[ij].rot.xyz[0]  ,joints[ij].rot.xyz[1], joints[ij].rot.xyz[2], 0};//todo : initial value must be current joint's local rotation
+                    
+                    initialval = { joints[ij].rot.xyz[0] * radtodeg  ,joints[ij].rot.xyz[1] * radtodeg, joints[ij].rot.xyz[2] * radtodeg, 0};//todo : initial value must be current joint's local rotation
                     break;
                 case JCURVENODE_PROPERTY_TRANSLATION:
                     initialval = joints[ij].pos.pos;
@@ -145,6 +148,8 @@ void jskeleton::advance(float dt)
                 {
                     ++currentkeys[idx];
                 }
+                
+                if ( currentkeys[idx] == curve->cnt-1) continue;
                 
                 int ckey = currentkeys[idx];
                 
@@ -191,10 +196,10 @@ void jskeleton::advance(float dt)
             switch ((JCURVENODE_PROPERTY)ip)
             {
                 case JCURVENODE_PROPERTY_ROTATION:
-                    joints[ij].rot.degree(initialval[0], initialval[1], initialval[2]);
+                    joints[ij].rot.xyz = {initialval[0] * degtorad, initialval[1] * degtorad, initialval[2] * degtorad};
                     break;
                 case JCURVENODE_PROPERTY_TRANSLATION:
-                    joints[ij].pos = initialval;
+                    joints[ij].pos.pos = initialval;
                     break;
                 default:
                     exit(1);

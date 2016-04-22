@@ -20,12 +20,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "jfbxcustomizer_vertex::genVerticesAndIndices():jfbxcustomizer_vertex.cpp">
-      </ContextState>
-      <ContextState
-         contextName = "domesh(fbxsdk_2015_1::FbxNode*, std::__1::vector&lt;fbxsdk_2015_1::FbxNode*, std::__1::allocator&lt;fbxsdk_2015_1::FbxNode*&gt; &gt;&amp;, char const*):main.cpp">
-      </ContextState>
-      <ContextState
          contextName = "makeRenderObjFromSkeleton(jskeleton&amp;, jrenderobject&amp;):jcore.cpp">
          <PersistentStrings>
             <PersistentString
@@ -37,6 +31,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "domesh(fbxsdk_2015_1::FbxNode*, std::__1::vector&lt;fbxsdk_2015_1::FbxNode*, std::__1::allocator&lt;fbxsdk_2015_1::FbxNode*&gt; &gt;&amp;, char const*):main.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "jfbxcustomizer_vertex::genVerticesAndIndices():jfbxcustomizer_vertex.cpp">
+      </ContextState>
+      <ContextState
          contextName = "jbinary_janim::getInfo(char*, _jcurvenode*&amp;, int):jbinary.cpp">
       </ContextState>
       <ContextState
@@ -44,6 +44,14 @@
          <PersistentStrings>
             <PersistentString
                value = "table[3]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "jcore::layout():jcore.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "renderstateGroups[i].subPrimitiveGroups[j]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

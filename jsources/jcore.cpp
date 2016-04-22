@@ -239,12 +239,9 @@ void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpec
 		for(int j=0;j<JRenderPrimitive_number;j++)
 		{
 			(*pfuncPrim)((JRenderPrimitive)j);
-			for(int k=0;k<renderstateGroups[i].subPrimitiveGroups[j].objCnt;k++)
-			{
-                //todo draw batch
-				jrenderobject *obj = renderstateGroups[i].subPrimitiveGroups[j].objs[k]->getRenderObject();
-				(*pfuncRender)( obj->getIBufferOffset(), obj->getIndexCnt() );
-			}
+            if(renderstateGroups[i].subPrimitiveGroups[j].total > 0)
+                (*pfuncRender)( renderstateGroups[i].subPrimitiveGroups[j].min, renderstateGroups[i].subPrimitiveGroups[j].total );
+			
 		}
 	}
 }
@@ -266,9 +263,9 @@ void jcore::layout()
 			{
 				mmapper.mapToVideoMemory(renderstateGroups[i].subPrimitiveGroups[j].objs[k]->getRenderObject());
 			}
+            renderstateGroups[i].subPrimitiveGroups[j].calculateMinMax();
 		}
 	}
-
 }
 
 void loadobj(const char* objname, jnode& node, platformSpecificGetFile pgetfile, platformSpecificGetObjInfo pgetobj)

@@ -130,7 +130,7 @@ void withMetalSetPrimitive(JRenderPrimitive prim)
 	}
 }
 
-void withMetalDrawIndex(int offset, int cnt)
+void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
 {
 	if(_renderEncoder == nil)
 	{

@@ -228,25 +228,6 @@ void diffimage(jcurve& c1, FbxAnimCurve* c2, const char* imgname)
 
 int main(int argc, const char * argv[])
 {
-	/*
-	jrotation rotx((simd::float4){1,0,0,0},0.4f);
-	jrotation roty((simd::float4){0,1,0,0},0.1f);
-	jrotation rotz((simd::float4){0,0,1,0},0.9f);
-	
-	jrotation eulx, euly, eulz, eulxyz;
-	eulx.euler(0.4f, 0, 0);
-	euly.euler(0, 0.1f, 0);
-	eulz.euler(0, 0, 0.9f);
-	
-	eulxyz.euler(0.4f, 0.1f, 0.9f);
-	jrotation qmul1 = rotx * roty * rotz;
-	jrotation qmul2 = rotz * (roty * rotx);
-	
-	jrotation drotx((simd::float4){1,0,0,0},0.2f);
-	drotx = drotx * drotx;
-	
-	cout << sizeof(jrotation) << ", " << sizeof(simd::float4) << endl;
-	*/
 	cout << sizeof(jrotation) << endl << sizeof(jjoint) << endl;
 
 #ifndef DEBUG

@@ -12,6 +12,7 @@ jskeleton::jskeleton()
     globals = NULL;
     currentkeys = NULL;
     currentt = 0;
+    animating = false;
 }
 
 typedef jallocator<matrix_float4x4, 2000> poolmat;
@@ -109,6 +110,7 @@ void jskeleton::animateto(float at)
 
 void jskeleton::advance(float dt)
 {
+    animating = false;
     const float radtodeg = 180.f/3.141592;
     const float degtorad = 3.141592/180.f;
     currentt += dt;
@@ -150,6 +152,8 @@ void jskeleton::advance(float dt)
                 }
                 
                 if ( currentkeys[idx] == curve->cnt-1) continue;
+                
+                animating = true;
                 
                 int ckey = currentkeys[idx];
                 

@@ -369,11 +369,10 @@ void jcore::update()
         jnode* nodeToSkin = *jallocskinnedmeshes::getAt(i);
         if(t >= i*0.2 )
         {
-            
             nodeToSkin->getSkeleton()->advance(0.006);
-            
         }
-        nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
+        if(nodeToSkin->getSkeleton()->isanimating())
+            nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
         //mapSkeletonVertices(*nodeToSkin->getSkeleton(), mmapper.getPositionMemoryOf(*(g_skelmesh)));
 	}
     t+=0.1;

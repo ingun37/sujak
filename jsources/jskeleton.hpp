@@ -26,13 +26,14 @@ class jskeleton
     
     int *currentkeys;
     float currentt;
+    bool animating;
 public:
     void clone(jskeleton& skeleton);
     
 	inline int getJointCnt() const {return jointnum;}
 	inline jjoint* getjointsArr() const { return joints; }
 	inline int* getTableArr() const {return table;}
-	
+    inline bool isanimating() { return animating; }
     matrix_float4x4* computeglobals();
     
 	void setFromFile(char* tableBytes, char* jointBytes, char* animbytes);

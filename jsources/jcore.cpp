@@ -257,6 +257,12 @@ void jcore::layout()
             renderstateGroups[i].subPrimitiveGroups[j].calculateMinMax();
 		}
 	}
+    
+    for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
+    {
+        jnode* nodeToSkin = *jallocskinnedmeshes::getAt(i);
+        nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
+    }
 }
 
 void loadobj(const char* objname, jnode& node, platformSpecificGetFile pgetfile, platformSpecificGetObjInfo pgetobj)

@@ -216,7 +216,7 @@ static int iQuad[] =
 typedef jallocator<jrenderobject, 8> jallocatorRenderObjs;
 typedef jallocator<jskeleton, 4> jallocatorSkeleton;
 typedef jallocator<jskinner, 2> jallocatorSkinner;
-typedef jallocator<jnode, 32> jallocatorJnode;
+typedef jallocator<jnode, 64> jallocatorJnode;
 
 typedef jallocator<int, 6000> jallocatorInt6000;
 typedef jallocator<float, 6000> jallocatorFloat6000;
@@ -246,7 +246,7 @@ void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpec
 	}
 }
 
-typedef jallocator<jnode*, 20> jallocskinnedmeshes;
+typedef jallocator<jnode*, 64> jallocskinnedmeshes;
 
 jvideomemorymapper mmapper;
 void jcore::initVideoMemoryMapper(void* buffers[], int *_buffIndex)
@@ -318,19 +318,19 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
     loadobj("soldier", *objnode, pfunc, pgetobjinfo);
 	
     const float term_h = 60;
-    const float term_v = 120;
-    const int clonenum_r = 5;
+    const float term_v = 140;
+    const int clonenum_r = 8;
     const int clonenum_c = 4;
     for(int ir=0;ir<clonenum_r;ir++)
     {
-    for(int ic=0;ic<clonenum_c;ic++)
-    {
-        jnode* clone = jallocatorJnode::getAvailable(1);
-        objnode->clone(*clone);
-        clone->getSkeleton()->animateto((ir*clonenum_c + ic) * 0.1);
-        clone->testtrans( ir*term_h - (term_h*(clonenum_r-1))/2, ic*term_v - (term_v*(clonenum_c-1))/2, 0);
-        jallocskinnedmeshes::getAvailable(1)[0] = clone;
-    }
+        for(int ic=0;ic<clonenum_c;ic++)
+        {
+            jnode* clone = jallocatorJnode::getAvailable(1);
+            objnode->clone(*clone);
+            clone->getSkeleton()->animateto((ir*clonenum_c + ic) * 0.06);
+            clone->testtrans( ir*term_h - (term_h*(clonenum_r-1))/2, ic*term_v - (term_v*(clonenum_c-1))/2, 0);
+            jallocskinnedmeshes::getAvailable(1)[0] = clone;
+        }
     }
     for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
         renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj( *jallocskinnedmeshes::getAt(i) );
@@ -366,7 +366,7 @@ void jcore::update()
 	for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
 	{
 		jnode* nodeToSkin = *jallocskinnedmeshes::getAt(i);
-        nodeToSkin->getSkeleton()->advance(0.005);
+        nodeToSkin->getSkeleton()->advance(0.006);
 		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
         //mapSkeletonVertices(*nodeToSkin->getSkeleton(), mmapper.getPositionMemoryOf(*(g_skelmesh)));
 	}

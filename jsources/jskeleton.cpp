@@ -14,7 +14,7 @@ jskeleton::jskeleton()
     currentt = 0;
 }
 
-typedef jallocator<matrix_float4x4, 1000> poolmat;
+typedef jallocator<matrix_float4x4, 1500> poolmat;
 typedef jallocator<simd::float3, 128> jallocatorf3;
 
 typedef jallocator<int, 20000> poolkey;

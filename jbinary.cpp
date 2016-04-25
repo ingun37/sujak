@@ -1,11 +1,3 @@
-//
-//  jbinary.cpp
-//  MetalVertexStreaming
-//
-//  Created by Build on 12/28/15.
-//  Copyright © 2015 Apple Inc. All rights reserved.
-//
-
 #include <stdlib.h>
 #include <iostream>
 #include "jbinary.hpp"

@@ -1,11 +1,3 @@
-//
-//  jconstants.h
-//  MetalVertexStreaming
-//
-//  Created by ingun on 4/20/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
-//
-
 #ifndef jconstants_h
 #define jconstants_h
 

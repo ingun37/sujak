@@ -1,11 +1,3 @@
-//
-//  jrendercontext.hpp
-//  MetalVertexStreaming
-//
-//  Created by Build on 2015. 11. 4..
-//  Copyright © 2015년 Apple Inc. All rights reserved.
-//
-
 #ifndef jrendercontext_hpp
 #define jrendercontext_hpp
 

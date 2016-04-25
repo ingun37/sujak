@@ -319,7 +319,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
 	
     const float term_h = 60;
     const float term_v = 140;
-    const int clonenum_r = 8;
+    const int clonenum_r = 12;
     const int clonenum_c = 4;
     for(int ir=0;ir<clonenum_r;ir++)
     {
@@ -327,7 +327,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
         {
             jnode* clone = jallocatorJnode::getAvailable(1);
             objnode->clone(*clone);
-            clone->getSkeleton()->animateto((ir*clonenum_c + ic) * 0.06);
+            //clone->getSkeleton()->animateto((ir*clonenum_c + ic) * 0.06);
             clone->testtrans( ir*term_h - (term_h*(clonenum_r-1))/2, ic*term_v - (term_v*(clonenum_c-1))/2, 0);
             jallocskinnedmeshes::getAvailable(1)[0] = clone;
         }
@@ -363,11 +363,18 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
 
 void jcore::update()
 {
+    static float t = 0;
 	for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
 	{
-		jnode* nodeToSkin = *jallocskinnedmeshes::getAt(i);
-        nodeToSkin->getSkeleton()->advance(0.006);
-		nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
+        jnode* nodeToSkin = *jallocskinnedmeshes::getAt(i);
+        if(t >= i*0.2 )
+        {
+            
+            nodeToSkin->getSkeleton()->advance(0.006);
+            
+        }
+        nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
         //mapSkeletonVertices(*nodeToSkin->getSkeleton(), mmapper.getPositionMemoryOf(*(g_skelmesh)));
 	}
+    t+=0.1;
 }

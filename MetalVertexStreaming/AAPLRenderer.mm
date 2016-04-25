@@ -396,6 +396,7 @@ void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
         id <MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
 		_renderEncoder = renderEncoder;
 		
+        [_renderEncoder setCullMode:MTLCullModeFront];
         [_renderEncoder setFragmentTexture:_texture atIndex:0];
         
         for(int ivb=0;ivb<JVertexAttribute_number;ivb++)

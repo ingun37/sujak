@@ -14,7 +14,7 @@ jskeleton::jskeleton()
     currentt = 0;
 }
 
-typedef jallocator<matrix_float4x4, 600> poolmat;
+typedef jallocator<matrix_float4x4, 1000> poolmat;
 typedef jallocator<simd::float3, 128> jallocatorf3;
 
 typedef jallocator<int, 20000> poolkey;
@@ -32,7 +32,7 @@ void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
     currentkeys = poolkey::getAvailable(jointnum * JCURVENODE_PROPERTY_NUMBER * 3);
 }
 
-typedef jallocator<jjoint, 600> jallocjoint;
+typedef jallocator<jjoint, 1000> jallocjoint;
 void jskeleton::clone(jskeleton &skeleton)
 {
     jjoint* newjoints = jallocjoint::getAvailable(jointnum);

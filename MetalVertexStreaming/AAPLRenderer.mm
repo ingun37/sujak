@@ -16,7 +16,7 @@
 #import <simd/simd.h>
 
 
-static const long kMaxBufferBytesPerFrame = 15 * 32000;
+
 static const long kInFlightCommandBuffers = 1;
 
 JUniformBlock _uniformb;
@@ -192,9 +192,9 @@ void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
     // Allocate a buffer to store vertex position data (we'll quad buffer this one)
 
     for(int ib=0;ib<JVertexAttribute_number;ib++)
-        _vertexbuffers[ib] = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:MTLResourceCPUCacheModeWriteCombined];
+        _vertexbuffers[ib] = [_device newBufferWithLength:jvertexbuffersizes[ib] options:MTLResourceCPUCacheModeWriteCombined];
     
-	_indexBuffer = [_device newBufferWithLength:kMaxBufferBytesPerFrame options:MTLResourceCPUCacheModeWriteCombined];
+	_indexBuffer = [_device newBufferWithLength:jindexbuffersize options:MTLResourceCPUCacheModeWriteCombined];
 	
 	core.loadAll(withMetalLoadFile, withMetalGetObjInfo);
 	
@@ -209,7 +209,7 @@ void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
 	
 
 	matrix_float4x4 mv = jmath::GetViewMatrix({60,70,250}, {0,1,0}, {0,70,0});
-	matrix_float4x4 mp = jmath::GetProjectionMatrixPerspective(1, 1, 1, 400);
+	matrix_float4x4 mp = jmath::GetProjectionMatrixPerspective(1.4, 1, 1, 400);
     
 	_uniformb.projview = matrix_multiply(mp, mv);
 	_uniformb.orthoview = matrix_multiply(jmath::GetProjectionMatrixOrthogonal(1, 1, 1, 200), jmath::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1}));

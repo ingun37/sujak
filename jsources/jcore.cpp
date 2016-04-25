@@ -216,7 +216,7 @@ static int iQuad[] =
 typedef jallocator<jrenderobject, 8> jallocatorRenderObjs;
 typedef jallocator<jskeleton, 4> jallocatorSkeleton;
 typedef jallocator<jskinner, 2> jallocatorSkinner;
-typedef jallocator<jnode, 20> jallocatorJnode;
+typedef jallocator<jnode, 32> jallocatorJnode;
 
 typedef jallocator<int, 6000> jallocatorInt6000;
 typedef jallocator<float, 6000> jallocatorFloat6000;
@@ -246,7 +246,7 @@ void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpec
 	}
 }
 
-typedef jallocator<jnode*, 15> jallocskinnedmeshes;
+typedef jallocator<jnode*, 20> jallocskinnedmeshes;
 
 jvideomemorymapper mmapper;
 void jcore::initVideoMemoryMapper(void* buffers[], int *_buffIndex)
@@ -318,9 +318,9 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
     loadobj("soldier", *objnode, pfunc, pgetobjinfo);
 	
     const float term_h = 60;
-    const float term_v = 150;
+    const float term_v = 120;
     const int clonenum_r = 5;
-    const int clonenum_c = 3;
+    const int clonenum_c = 4;
     for(int ir=0;ir<clonenum_r;ir++)
     {
     for(int ic=0;ic<clonenum_c;ic++)

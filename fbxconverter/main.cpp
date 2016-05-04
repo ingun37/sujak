@@ -358,6 +358,8 @@ int main(int argc, const char * argv[])
         vector<jvertex> vertices = skin_customizer.getvertices();
         vector<int> indices = skin_customizer.getindices();
         
+        
+        
         vector<simd::float4> positions;
         vector<simd::float4> normals;
         vector<simd::float2> uvs;

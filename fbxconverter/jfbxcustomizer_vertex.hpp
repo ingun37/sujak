@@ -13,13 +13,27 @@
 #include <vector>
 #include "fbxsdk.h"
 #include "jfbxcustomizer.hpp"
+#include <simd/simd.h>
 using namespace std;
-typedef struct _jvertex
+class jvertex
 {
-    double pos[3];
-    double nor[3];
-    double uv[2];
-} jvertex;
+public:
+    simd::double3 pos;
+    simd::double3 nor;
+    simd::double2 uv;
+    jvertex operator + (const jvertex& v);
+    jvertex operator * (float f);
+    bool issimilarto(const jvertex& v)
+    {
+        if( vector_length(pos - v.pos) > 0.0001)
+            return false;
+        if( vector_length(uv - v.uv) > 0.0001)
+            return false;
+        if( vector_length(nor - v.nor) > 0.0001)
+            return false;
+        return true;
+    }
+};
 class jfbxcustomizer_vertex : public jfbxcustomizer
 {
     void genVerticesAndIndices();
@@ -32,8 +46,9 @@ class jfbxcustomizer_vertex : public jfbxcustomizer
 protected:
     
     FbxMesh* mesh;
-    bool issimilarvector(double* v1, double* v2, int len);
-    bool issimilarvertex(jvertex v1, jvertex v2);
+    
+    
+    
 public:
     vector<jvertex>& getvertices();
     vector<int>& getindices();

@@ -79,10 +79,14 @@ void jfbxcustomizer_skin::genjointinfos()
             vector<int> newcpis;
             for(int j=0;j<vertices.size();j++)
             {
-                if(issimilarvector(originalcp.mData, vertices[j].pos, 3))
-                {
-                    newcpis.push_back(j);
-                }
+                if(abs(originalcp.mData[0] - vertices[j].pos[0]) > 0.0001)
+                    continue;
+                if(abs(originalcp.mData[1] - vertices[j].pos[1]) > 0.0001)
+                    continue;
+                if(abs(originalcp.mData[2] - vertices[j].pos[2]) > 0.0001)
+                    continue;
+                
+                newcpis.push_back(j);
             }
             if(newcpis.size() == 0)
             {

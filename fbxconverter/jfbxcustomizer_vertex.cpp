@@ -9,25 +9,22 @@
 #include "jfbxcustomizer_vertex.hpp"
 #include <math.h>
 
-bool jfbxcustomizer_vertex::issimilarvector(double* v1, double* v2, int len)
+jvertex jvertex::operator+(const jvertex &v)
 {
-    for(int i=0;i<len;i++)
-        if(abs(v1[i] - v2[i]) >= 0.0001)
-            return false;
-
-    return true;
+    jvertex r;
+    r.pos = pos + v.pos;
+    r.nor = vector_normalize( nor + v.nor );
+    r.uv = uv + v.uv;
+    return r;
 }
-bool jfbxcustomizer_vertex::issimilarvertex(jvertex v1, jvertex v2)
+
+jvertex jvertex::operator*(float f)
 {
-    //lame safety
-    if( sizeof(jvertex) != sizeof(double) * 8)
-    {
-        puts("lame...");
-        exit(1);
-    }
-    if( issimilarvector(v1.pos, v2.pos, 3) && issimilarvector(v1.nor, v2.nor, 3) && issimilarvector(v1.uv, v2.uv, 2) )
-        return true;
-    return false;
+    jvertex v;
+    v.pos = v.pos * f;
+    v.nor = vector_normalize( v.nor );
+    v.uv = v.uv * f;
+    return v;
 }
 
 void jfbxcustomizer_vertex::genVerticesAndIndices()
@@ -101,7 +98,7 @@ void jfbxcustomizer_vertex::genVerticesAndIndices()
             for(isame = 0; isame<vertices.size();isame++)
             {
                 jvertex& cmp = vertices[isame];
-                if(issimilarvertex(current, cmp))
+                if(current.issimilarto(cmp))
                     break;
             }
             
@@ -137,7 +134,7 @@ void jfbxcustomizer_vertex::genVerticesAndIndices()
         }
     }
     
-    printf("cp after : %d\n", vertices.size());
+    printf("cp after : %ld\n", vertices.size());
 }
 
 vector<jvertex>& jfbxcustomizer_vertex::getvertices()

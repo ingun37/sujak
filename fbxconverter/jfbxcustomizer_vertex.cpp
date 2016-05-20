@@ -21,9 +21,9 @@ jvertex jvertex::operator+(const jvertex &v)
 jvertex jvertex::operator*(float f)
 {
     jvertex v;
-    v.pos = v.pos * f;
-    v.nor = vector_normalize( v.nor );
-    v.uv = v.uv * f;
+    v.pos = pos * f;
+    v.nor = vector_normalize( nor );
+    v.uv = uv * f;
     return v;
 }
 

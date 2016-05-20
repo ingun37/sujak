@@ -14,7 +14,7 @@
 #include <fstream>
 
 #include "bitmap_image.hpp"
-#include "jfbxcustomizer_skin.hpp"
+#include "jfbxcustomizer_lod.hpp"
 #include "jfbxcustomizer_curve.hpp"
 
 using namespace std;
@@ -353,8 +353,8 @@ int main(int argc, const char * argv[])
         writefile(&joints[0], sizeof(joints[0]) * joints.size());
         endfile();
         
-        jfbxcustomizer_skin skin_customizer(rootskel, skinnedmesh->GetMesh());
-        
+        jfbxcustomizer_lod skin_customizer(rootskel, skinnedmesh->GetMesh());
+        skin_customizer.getlods();
         vector<jvertex> vertices = skin_customizer.getvertices();
         vector<int> indices = skin_customizer.getindices();
         

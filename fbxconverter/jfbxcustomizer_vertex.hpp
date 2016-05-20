@@ -23,6 +23,12 @@ public:
     simd::double2 uv;
     jvertex operator + (const jvertex& v);
     jvertex operator * (float f);
+    
+    simd::double4 pos4()
+    {
+        simd::double4 v = (simd::double4){pos[0], pos[1], pos[2], 1};
+        return v;
+    }
     bool issimilarto(const jvertex& v)
     {
         if( vector_length(pos - v.pos) > 0.0001)

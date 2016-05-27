@@ -9,7 +9,7 @@
 #include "jfbxcustomizer_vertex.hpp"
 #include <math.h>
 
-jvertex jvertex::operator+(const jvertex &v)
+jvertex jvertex::operator+(const jvertex &v) const
 {
     jvertex r;
     r.pos = pos + v.pos;
@@ -18,7 +18,7 @@ jvertex jvertex::operator+(const jvertex &v)
     return r;
 }
 
-jvertex jvertex::operator*(float f)
+jvertex jvertex::operator*(float f) const
 {
     jvertex v;
     v.pos = pos * f;

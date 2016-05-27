@@ -21,8 +21,8 @@ public:
     simd::double3 pos;
     simd::double3 nor;
     simd::double2 uv;
-    jvertex operator + (const jvertex& v);
-    jvertex operator * (float f);
+    jvertex operator + (const jvertex& v) const;
+    jvertex operator * (float f) const;
     
     simd::double4 pos4()
     {

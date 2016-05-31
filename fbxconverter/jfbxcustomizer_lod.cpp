@@ -153,7 +153,7 @@ jvertex leastCostNewV(const jlvertex& v1, const jlvertex& v2)
     matrix_double4x4 M = matrix_add( v1.Q, v2.Q );
     double det = matrix_determinant(M);
     if(-0.0001 < det && det < 0.0001)
-    {
+    {//TODO : leastcost
         solution = interpolateVertex(v1.v, v2.v, 0.5);
     }
     else
@@ -185,59 +185,69 @@ matrix_double4x4 makeK(simd::double3 polyv1, simd::double3 polyv2, simd::double3
     return K;
 }
 
-void jfbxcustomizer_lod::lodlast()
-{
-    const jlod &orig = lods[lods.size()-1];
-    
-    const simd::double4 empty4 = simd::double4{0,0,0,0};
-    const matrix_double4x4 mEmpty{empty4, empty4, empty4, empty4};
-    vector<jlvertex> V;
-    for(int i=0;i<orig.vertices.size();i++)
-    {
-        jlvertex v;
-        v.Q = mEmpty;
-        v.v = orig.vertices[i];
-        V.push_back(v);
-    }
-    
-    if(orig.indices.size()%3 != 0)
-    {
-        puts("indices mod 3 not 0");
-        exit(1);
-    }
+const simd::double4 empty4 = simd::double4{0,0,0,0};
+const matrix_double4x4 mEmpty{empty4, empty4, empty4, empty4};
 
-    list<jlpoly> P;
-    for(int i=0;i<orig.indices.size();i+=3)
+
+typedef list<jlpoly> listP;
+void makeP(listP& P, const vector<int>& indices, const vector<jvertex>& vertices)
+{
+    for(int i=0;i<indices.size();i+=3)
     {
         jlpoly p;
-        p.i1 = orig.indices[i+0];
-        p.i2 = orig.indices[i+1];
-        p.i3 = orig.indices[i+2];
-        p.K = makeK(V[p.i1].v.pos, V[p.i2].v.pos, V[p.i3].v.pos);
-        
-        V[p.i1].Q = matrix_add(V[p.i1].Q, p.K);
-        V[p.i2].Q = matrix_add(V[p.i2].Q, p.K);
-        V[p.i3].Q = matrix_add(V[p.i3].Q, p.K);
+        p.i1 = indices[i+0];
+        p.i2 = indices[i+1];
+        p.i3 = indices[i+2];
+        p.K = makeK(vertices[p.i1].pos, vertices[p.i2].pos, vertices[p.i3].pos);
         
         P.push_back(p);
     }
+}
+typedef vector<jlvertex> vecV;
+void makeV(vecV& V, const vector<jvertex>& vertices, const listP& P)
+{
+    if(V.size() != 0)
+    {
+        cout << "gimme empty V" << endl;
+        exit(1);
+    }
+    for(int i=0;i<vertices.size();i++)
+    {
+        jlvertex v;
+        v.Q = mEmpty;
+        v.v = vertices[i];
+        V.push_back(v);
+    }
+    if(V.size()%3 != 0)
+    {
+        cout << "V size must be multi of 3. " << V.size() << endl;
+    }
     
+    for(listP::const_iterator it = P.begin() ; it!= P.end() ; it++)
+    {
+        V[it->i1].Q = matrix_add(V[it->i1].Q, it->K);
+        V[it->i2].Q = matrix_add(V[it->i2].Q, it->K);
+        V[it->i3].Q = matrix_add(V[it->i3].Q, it->K);
+    }
+}
+typedef list<jledge> listE;
+void makeE(listE &E, const listP &P, const vecV& V)
+{
     set<jledge_unique> Es;
     set<jledge_unique> Edup;
     
-    for(list<jlpoly>::iterator it = P.begin() ; it != P.end() ; it++)
+    for(listP::const_iterator p = P.begin() ; p != P.end() ; p++)
     {
         jledge_unique edges[3];
-        jlpoly& p = *it;
         
-        edges[0].i1 = p.i1;
-        edges[0].i2 = p.i2;
+        edges[0].i1 = p->i1;
+        edges[0].i2 = p->i2;
         
-        edges[1].i1 = p.i2;
-        edges[1].i2 = p.i3;
+        edges[1].i1 = p->i2;
+        edges[1].i2 = p->i3;
         
-        edges[2].i1 = p.i3;
-        edges[2].i2 = p.i1;
+        edges[2].i1 = p->i3;
+        edges[2].i2 = p->i1;
         
         for(int j=0;j<3;j++)
         {
@@ -250,15 +260,13 @@ void jfbxcustomizer_lod::lodlast()
     }
     
     set<jledge_unique> Eedge;
-    
     set_difference(Es.begin(), Es.end(), Edup.begin(), Edup.end(), inserter(Eedge, Eedge.begin()));
-    
     set<int> Ve;
     
-    for(set<jledge_unique>::iterator it = Eedge.begin();it!=Eedge.end();it++)
+    for(set<jledge_unique>::iterator e = Eedge.begin();e!=Eedge.end();e++)
     {
-        Ve.insert(it->i1);
-        Ve.insert(it->i2);
+        Ve.insert(e->i1);
+        Ve.insert(e->i2);
     }
     
     cout << "edge vertices : " << Ve.size() << endl;
@@ -279,34 +287,46 @@ void jfbxcustomizer_lod::lodlast()
     
     cout << "Es after : " << Es.size() << endl;
     
-    list<jledge> El;
-    
-    for(set<jledge_unique>::iterator it = Es.begin();it!=Es.end();it++)
+    for(set<jledge_unique>::iterator u = Es.begin();u!=Es.end();u++)
     {
         jledge e;
-        e.unique = *it;
+        e.unique = *u;
         
         const jlvertex &v1 = V[e.unique.i1];
         const jlvertex &v2 = V[e.unique.i2];
         matrix_double4x4 Q = matrix_add( v1.Q, v2.Q );
         e.v = leastCostNewV(v1, v2);
         e.cost = vector_dot(e.v.pos4(), matrix_multiply(Q, e.v.pos4()));
-        El.push_back(e);
+        E.push_back(e);
     }
+}
+
+void jfbxcustomizer_lod::lodlast()
+{
+    const jlod &orig = lods[lods.size()-1];
+
+    listP P;
+    makeP(P, orig.indices, orig.vertices);
+    
+    vecV V;
+    makeV(V, orig.vertices, P);
+    
+    listE E;
+    makeE(E, P, V);
     
     while(1)
     {
-        El.sort();
+        E.sort();
         
         int n = static_cast<int>( V.size() );
         V.push_back(jlvertex());
         vector<jlvertex>::iterator itv = V.end()-1;
         
-        itv->v = El.front().v;
-        int i1 = El.front().unique.i1;
-        int i2 = El.front().unique.i2;
+        itv->v = E.front().v;
+        int i1 = E.front().unique.i1;
+        int i2 = E.front().unique.i2;
         
-        El.pop_front();
+        E.pop_front();
         
         list<jlpoly>::iterator itp = P.begin();
         
@@ -338,6 +358,9 @@ void jfbxcustomizer_lod::lodlast()
             }
             itp++;
         }
+        
+        
+        
         //P done
         matrix_double4x4 test = mEmpty;
         
@@ -356,13 +379,13 @@ void jfbxcustomizer_lod::lodlast()
         
         {//test area
             matrix_double4x4 test1 = V[n].Q;
-            matrix_sub(test1, test);
-            
+            matrix_double4x4 test2 = matrix_sub(test1, test);
+            matrix_double4x4 test3 = test2;
         }
         //V done
         for(set<int>::iterator ita = adjV.begin();ita!=adjV.end();ita++)
         {
-            for(list<jledge>::iterator ite = El.begin();ite!=El.end();ite++)
+            for(list<jledge>::iterator ite = E.begin();ite!=E.end();ite++)
             {
                 if(ite->unique.hasit(i1) && ite->unique.hasit(i2))
                 {

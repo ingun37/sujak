@@ -294,9 +294,6 @@ void jfbxcustomizer_lod::lodlast()
         El.push_back(e);
     }
     
-    
-    
-    
     while(1)
     {
         El.sort();

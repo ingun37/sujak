@@ -9,6 +9,8 @@
 #include "jfbxcustomizer_lod.hpp"
 #include <set>
 #include <list>
+#include <algorithm>
+#include <iterator>
 #include <iostream>
 void jfbxcustomizer_lod::makebaselod()
 {
@@ -221,7 +223,8 @@ void jfbxcustomizer_lod::lodlast()
     }
     
     set<jledge_unique> Es;
-    unsigned int repeatance=0;
+    set<jledge_unique> Edup;
+    
     for(list<jlpoly>::iterator it = P.begin() ; it != P.end() ; it++)
     {
         jledge_unique edges[3];
@@ -240,11 +243,41 @@ void jfbxcustomizer_lod::lodlast()
         {
             auto pair = Es.insert(edges[j]);
             if(!pair.second)
-                repeatance++;
+            {
+                Edup.insert(edges[j]);
+            }
         }
     }
     
-    cout << "edge repeat : " << repeatance << endl;
+    set<jledge_unique> Eedge;
+    
+    set_difference(Es.begin(), Es.end(), Edup.begin(), Edup.end(), inserter(Eedge, Eedge.begin()));
+    
+    set<int> Ve;
+    
+    for(set<jledge_unique>::iterator it = Eedge.begin();it!=Eedge.end();it++)
+    {
+        Ve.insert(it->i1);
+        Ve.insert(it->i2);
+    }
+    
+    cout << "edge vertices : " << Ve.size() << endl;
+    cout << "Es before : " << Es.size() << endl;
+    
+    {
+        set<jledge_unique>::iterator it = Es.begin();
+        while(it != Es.end())
+        {
+            if( Ve.find(it->i1) != Ve.end() || Ve.find(it->i2) != Ve.end())
+            {
+                it = Es.erase(it);
+                continue;
+            }
+            it++;
+        }
+    }
+    
+    cout << "Es after : " << Es.size() << endl;
     
     list<jledge> El;
     

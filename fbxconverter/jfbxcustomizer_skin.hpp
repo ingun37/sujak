@@ -16,11 +16,13 @@
 
 using namespace std;
 
-typedef struct _jskincpinfo
+class jskincpinfo
 {
+public:
     int idx;
     float weight;
-} jskincpinfo;
+    bool operator < ( const jskincpinfo& o ) const;
+} ;
 
 typedef struct _jskinjointinfo
 {

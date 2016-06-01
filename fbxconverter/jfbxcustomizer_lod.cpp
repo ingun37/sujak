@@ -12,6 +12,8 @@
 #include <algorithm>
 #include <iterator>
 #include <iostream>
+#include <string>
+#include <map>
 void jfbxcustomizer_lod::makebaselod()
 {
     jlod lod;
@@ -21,7 +23,6 @@ void jfbxcustomizer_lod::makebaselod()
     lods.push_back(lod);
     lodlast();
 }
-
 
 typedef struct _jlvertex
 {
@@ -105,6 +106,13 @@ public:
         return false;
     }
     
+    void CWtoCCWorViceVersa()
+    {
+        int tmp = i2;
+        i2 = i3;
+        i3 = tmp;
+    }
+    
     bool hasboth(int a, int b)
     {
         if(hasit(a) && hasit(b))
@@ -128,7 +136,22 @@ public:
     }
 };
 
-
+class jllink
+{
+public:
+    int jointidx;
+    float weight;
+    jllink(int a, float b)
+    {
+        jointidx = a;
+        weight = b;
+    }
+};
+class jlcluster
+{
+public:
+    vector<jllink> links;
+};
 
 simd::double4 solveLinearSystem(matrix_double4x4 aug, simd::double4 c)
 {
@@ -299,7 +322,160 @@ void makeE(listE &E, const listP &P, const vecV& V)
         e.cost = vector_dot(e.v.pos4(), matrix_multiply(Q, e.v.pos4()));
         E.push_back(e);
     }
+    
 }
+
+typedef vector<jlcluster> vecJ;
+void makeJ(vecJ& J, const vector<jskinjointinfo>& src, const size_t vlen )
+{
+    if(J.size() != 0)
+        throw "Johnson size";
+    for(int i=0;i<vlen;i++)
+        J.push_back( jlcluster() );
+    for(int i=0;i<src.size();i++)
+        for(int j=0;j<src[i].cpinfos.size();j++)
+            J[ src[i].cpinfos[j].idx ].links.push_back( jllink( i, src[i].cpinfos[j].weight ));
+    
+    for(int i=0;i<J.size();i++)
+        if(J[i].links.size() == 0)
+            throw "jiqiwerhisehfisefsef";
+}
+
+float totalPerJoint( const vector<jllink>& links, map<int, float> &wmap )
+{
+    float total = 0;
+    for(int i=0;i<links.size();i++)
+    {
+        int ji = links[i].jointidx;
+        float w = links[i].weight;
+        
+        if(wmap.find(ji) == wmap.end())
+            wmap[ji] = 0;
+        
+        wmap[ji] = wmap[ji] + w;
+        
+        total += w;
+    }
+    return total;
+}
+
+void addNthTojlcluster(vecJ& J, int v1, int v2 )
+{
+    float total = 0;
+    map<int, float> wmap;
+    total += totalPerJoint(J[v1].links, wmap);
+    total += totalPerJoint(J[v2].links, wmap);
+    
+    J.push_back(jlcluster());
+    
+    jlcluster &nth = J[ J.size() - 1 ];
+    
+    float test = 0;
+    for( map<int, float>::iterator it = wmap.begin();it!=wmap.end();it++)
+    {
+        test += it->second;
+        jllink l(it->first, it->second/total);
+        nth.links.push_back(l);
+    }
+    
+    if(abs(test - total) > 0.00001)
+        throw "bro bro bro bro ssup ssup ssup";
+}
+
+void filterUnusedVertices(vector<jskinjointinfo>& joints, vector<jvertex>& vertices, vector<int>& indices, const vector<jskinjointinfo>& skins, const vecJ &J, const vecV &V, const listP& P)
+{
+    set<int> usage;
+    vector<int> table;
+    
+    if(vertices.size() != 0)
+        throw "ssup bro watup";
+    
+    for(int i=0;i<V.size();i++)
+    {
+        table.push_back(-1);
+    }
+    
+    for(listP::const_iterator p = P.begin();p!=P.end();p++)
+    {
+        usage.insert(p->i1);
+        usage.insert(p->i2);
+        usage.insert(p->i3);
+        
+        if(p->i1 >= V.size() || p->i2 >= V.size() || p->i3 >= V.size())
+            throw "chill man";
+    }
+    
+    for(int i=0;i<skins.size();i++)
+    {
+        joints.push_back(jskinjointinfo());
+        
+        joints[i].bindmesh = skins[i].bindmesh;
+        joints[i].inverse = skins[i].inverse;
+        joints[i].jointidx = skins[i].jointidx;
+    }
+    
+    int cnt=0;
+    int testidx=-1;
+    for(set<int>::iterator it = usage.begin();it!=usage.end();it++)
+    {
+        if(cnt==1820)
+        {
+            testidx = *it;
+            cout << endl <<"testidx original : " << testidx << endl;
+        }
+        table[*it] = cnt++;
+        vertices.push_back( V[*it].v );
+        if(vertices.size() != cnt)
+            throw "na bro";
+        
+        for(int i=0;i<J[*it].links.size();i++)
+        {
+            const jllink& l = J[*it].links[i];
+            jskincpinfo cp;
+            cp.idx = table[*it];
+            cp.weight = l.weight;
+            joints[ l.jointidx ].cpinfos.push_back(cp);
+        }
+    }
+    
+    if(table[ V.size()-1 ] == -1)
+        throw "impossible!! iashefi";
+    
+    for(listP::const_iterator it = P.begin();it!=P.end();it++)
+    {
+        if(table[it->i1] == -1 || table[it->i2] == -1 || table[it->i3] == -1)
+            throw "watup man u broke ass nigga";
+        indices.push_back( table[it->i1] );
+        indices.push_back( table[it->i2] );
+        indices.push_back( table[it->i3] );
+    }
+    
+    
+    
+    //test
+    if(joints.size() != skins.size())
+        throw "sqqqqsqqq";
+    for(int i=0;i<joints.size();i++)
+        cout << "joint " << i << " cp diff : " << skins[i].cpinfos.size() - joints[i].cpinfos.size() << endl;
+    
+
+
+    vector<float> testvec;
+    for(int i=0;i<vertices.size();i++)
+        testvec.push_back(0);
+    for(int i=0;i<joints.size();i++)
+        for(int j=0;j<joints[i].cpinfos.size();j++)
+            testvec[ joints[i].cpinfos[j].idx ] += joints[i].cpinfos[j].weight;
+    
+    for(int i=0;i<vertices.size();i++)
+        if(abs(testvec[i] - 1) > 0.001)
+            throw "no good no good nog oood no gooood";
+    
+    
+    //end
+}
+
+
 
 void jfbxcustomizer_lod::lodlast()
 {
@@ -314,7 +490,11 @@ void jfbxcustomizer_lod::lodlast()
     listE E;
     makeE(E, P, V);
     
-    while(1)
+    vecJ J;
+    makeJ(J, orig.joints, V.size());
+    
+    int cnt = 3;
+    while(cnt-- != 0)
     {
         E.sort();
         
@@ -328,6 +508,8 @@ void jfbxcustomizer_lod::lodlast()
         
         E.pop_front();
         
+        addNthTojlcluster(J, i1, i2);
+        
         list<jlpoly>::iterator itp = P.begin();
         
         vector<matrix_double4x4> adjK;
@@ -339,13 +521,24 @@ void jfbxcustomizer_lod::lodlast()
                 itp = P.erase(itp);
                 continue;
             }
-            else if(itp->hasit(i1))
+            
+            simd::double3 before = vector_cross( V[itp->i2].v.pos - V[itp->i1].v.pos, V[itp->i3].v.pos - V[itp->i1].v.pos);
+            
+            if(itp->hasit(i1))
             {
                 itp->changeto(i1, n);
             }
             else if(itp->hasit(i2))
             {
                 itp->changeto(i2, n);
+            }
+            
+            simd::double3 after1 = vector_cross( V[itp->i2].v.pos - V[itp->i1].v.pos, V[itp->i3].v.pos - V[itp->i1].v.pos);
+            simd::double3 after2 = vector_cross( V[itp->i3].v.pos - V[itp->i1].v.pos, V[itp->i2].v.pos - V[itp->i1].v.pos);
+            if (vector_dot(before, after1) < vector_dot(before, after2))
+            {
+                cout << "clock wise correction" << endl;
+                itp->CWtoCCWorViceVersa();
             }
             
             if(itp->hasit(n))
@@ -359,7 +552,7 @@ void jfbxcustomizer_lod::lodlast()
             itp++;
         }
         
-        
+        cout << adjK.size() << ":" << adjV.size() << ", ";
         
         //P done
         matrix_double4x4 test = mEmpty;
@@ -380,7 +573,11 @@ void jfbxcustomizer_lod::lodlast()
         {//test area
             matrix_double4x4 test1 = V[n].Q;
             matrix_double4x4 test2 = matrix_sub(test1, test);
-            matrix_double4x4 test3 = test2;
+            
+            for(int ri = 0;ri<4;ri++)
+                for(int ci=0;ci<4;ci++)
+                    if(abs(test2.columns[ci][ri]) > 0.0001)
+                        throw "man u fucked up. getur headoutofurass";
         }
         //V done
         for(set<int>::iterator ita = adjV.begin();ita!=adjV.end();ita++)
@@ -388,10 +585,8 @@ void jfbxcustomizer_lod::lodlast()
             for(list<jledge>::iterator ite = E.begin();ite!=E.end();ite++)
             {
                 if(ite->unique.hasit(i1) && ite->unique.hasit(i2))
-                {
-                    cout << "what?" << endl;
-                    exit(1);
-                }
+                    throw "u mad bro";
+                
                 if(ite->unique.hasit(i1))
                     ite->unique.changeto(i1, n);
                 else if(ite->unique.hasit(i2))
@@ -407,6 +602,13 @@ void jfbxcustomizer_lod::lodlast()
             }
         }
     }
+    
+    lods.push_back(jlod());
+    jlod& nextlod =  lods[ lods.size() - 1 ];
+    const jlod& prevlod = lods[lods.size()-2];
+    
+    filterUnusedVertices(nextlod.joints, nextlod.vertices, nextlod.indices, prevlod.joints, J, V, P);
+    
 }
 
 vector<jlod>& jfbxcustomizer_lod::getlods()
@@ -421,7 +623,6 @@ vector<jlod>& jfbxcustomizer_lod::getlods()
     if(lods.size()==0)
     {
         makebaselod();
-        
     }
     return lods;
 }

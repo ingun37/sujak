@@ -10,15 +10,23 @@
 #include <iostream>
 #include "jjoint.h"
 #include <math.h>
+
+bool jskincpinfo::operator < (const jskincpinfo& o) const
+{
+    if(idx == o.idx)
+        if(abs(weight - o.weight) > 0.0001)
+            throw "ur mom is so fat";
+    return idx < o.idx;
+}
+
+
 matrix_float4x4 getjtransform(FbxVector4 m, FbxVector4 r, FbxVector4 s)
 {
     if(abs(s[0]-1) > 0.0001 ||
        abs(s[1]-1) > 0.0001 ||
        abs(s[2]-1) > 0.0001 )
-    {
-        puts("not ready for s");
-        exit(1);
-    }
+        throw "not ready for s";
+
     jtranslation jt;
     jt.setPos(m[0], m[1], m[2]);
     jrotation jr;
@@ -28,6 +36,9 @@ matrix_float4x4 getjtransform(FbxVector4 m, FbxVector4 r, FbxVector4 s)
 }
 void jfbxcustomizer_skin::genjointinfos()
 {
+    vector<float> test;
+    for(int i=0;i<mesh->GetControlPointsCount();i++)
+        test.push_back(0);
     for(int i=0;i<skin->GetClusterCount();i++)
     {
         jskinjointinfo jinfo;
@@ -74,6 +85,7 @@ void jfbxcustomizer_skin::genjointinfos()
         for(int icpi=0;icpi<cluster->GetControlPointIndicesCount();icpi++)
         {
             int cpi = cluster->GetControlPointIndices()[icpi];
+            test[cpi] += cluster->GetControlPointWeights()[icpi];
             FbxVector4 originalcp = mesh->GetControlPointAt(cpi);
             
             vector<int> newcpis;
@@ -89,10 +101,7 @@ void jfbxcustomizer_skin::genjointinfos()
                 newcpis.push_back(j);
             }
             if(newcpis.size() == 0)
-            {
-                puts("can't find new cpi");
-                exit(1);
-            }
+                throw "can't find new cpi";
             
             for(int inew=0;inew<newcpis.size();inew++)
             {
@@ -111,6 +120,10 @@ void jfbxcustomizer_skin::genjointinfos()
         jointinfos.push_back(jinfo);
     }
     
+    for(int i=0;i<test.size();i++)
+        if(abs(1-test[i]) > 0.001)
+            throw "fbxsdk you mthfckr";
+    
     float *weightvalidate = new float[getvertices().size()];
     
     memset(weightvalidate, 0, sizeof(float) * getvertices().size());
@@ -127,10 +140,7 @@ void jfbxcustomizer_skin::genjointinfos()
     for(int i=0;i<getvertices().size();i++)
     {
         if(abs(weightvalidate[i] - 1) > 0.0006)
-        {
-            puts("cp weight not pro");
-            exit(1);
-        }
+            throw "ma nigga ma nigga";
     }
 }
 vector<jskinjointinfo>& jfbxcustomizer_skin::getjointinfos()
@@ -140,7 +150,7 @@ vector<jskinjointinfo>& jfbxcustomizer_skin::getjointinfos()
         if(mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) > 1)
         {
             cout << "mesh has " << mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) << " skin deformer." << endl;
-            exit(1);
+            throw "watup";
         }
         else if(mesh->GetDeformerCount(FbxDeformer::EDeformerType::eSkin) ==0)
         {

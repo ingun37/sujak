@@ -59,7 +59,7 @@ void endlog()
 	logfile = NULL;
 }
 
-void startfile(char* filename)
+void startfile(const char* filename)
 {
 	if(gFile != NULL)
 	{
@@ -69,7 +69,7 @@ void startfile(char* filename)
 	gFile = new std::ofstream(filename,std::ios::out | std::ios::binary);
 }
 
-void writefile(void* content, unsigned long len)
+void writefile(const void* content, unsigned long len)
 {
 	if(gFile == NULL)
 	{
@@ -354,69 +354,75 @@ int main(int argc, const char * argv[])
         endfile();
         
         jfbxcustomizer_lod skin_customizer(rootskel, skinnedmesh->GetMesh());
-        skin_customizer.getlods();
-        vector<jvertex> vertices = skin_customizer.getvertices();
-        vector<int> indices = skin_customizer.getindices();
-        
-        
-        
-        vector<simd::float4> positions;
-        vector<simd::float4> normals;
-        vector<simd::float2> uvs;
-        for(int i=0;i<vertices.size();i++)
+        const vector<jlod> &lods =skin_customizer.getlods();
+        int cnt = 0;
+        for(vector<jlod>::const_iterator it = lods.begin();it!=lods.end();it++)
         {
-            positions.push_back( simd::float4 { static_cast<float>(vertices[i].pos[0]),static_cast<float>(vertices[i].pos[1]),static_cast<float>(vertices[i].pos[2]),1 } );
-            simd::float3 normal_before = simd::float3{ static_cast<float>(vertices[i].nor[0]), static_cast<float>(vertices[i].nor[1]), static_cast<float>(vertices[i].nor[2]) };
-            normal_before = vector_normalize(normal_before);
-            normals.push_back( simd::float4{ normal_before[0], normal_before[1], normal_before[2], 0 } );
-            uvs.push_back(simd::float2 { static_cast<float>(vertices[i].uv[0]), 1 - static_cast<float>(vertices[i].uv[1]) } );
-        }
-        
-        makename("test\0", skinnedmesh->GetName(), ".jmesh\0", namebuff, sizeof(namebuff));
-        startfile(namebuff);
-        writefile_copy((int)vertices.size());
-        writefile_copy((int)indices.size());
-        writefile(&positions[0], sizeof(positions[0]) * positions.size());
-        writefile(&normals[0], sizeof(normals[0]) * normals.size());
-        writefile(&uvs[0], sizeof(uvs[0]) * uvs.size());
-        writefile(&indices[0], sizeof(indices[0]) * indices.size());
-        endfile();
-        
-        vector<jskinjointinfo>skinjointinfos = skin_customizer.getjointinfos();
-        
-        vector<int> jointidxs;
-        vector<matrix_float4x4> inverses;
-        vector<matrix_float4x4> bindmeshes;
-        vector<int> cpcnts;
-        
-        vector<int> cpindices;
-        vector<float> weights;
-        for(int i=0;i<skinjointinfos.size();i++)
-        {
-            jskinjointinfo& info = skinjointinfos[i];
-            jointidxs.push_back(info.jointidx);
-            inverses.push_back(info.inverse);
-            bindmeshes.push_back(info.bindmesh);
-            cpcnts.push_back((int)info.cpinfos.size());
+            const vector<jvertex> &vertices = it->vertices;
+            const vector<int> &indices = it->indices;
             
-            for(int j=0;j<info.cpinfos.size();j++)
+            vector<simd::float4> positions;
+            vector<simd::float4> normals;
+            vector<simd::float2> uvs;
+            
+            for(int i=0;i<vertices.size();i++)
             {
-                cpindices.push_back(info.cpinfos[j].idx);
-                weights.push_back(info.cpinfos[j].weight);
+                positions.push_back( simd::float4 { static_cast<float>(vertices[i].pos[0]),static_cast<float>(vertices[i].pos[1]),static_cast<float>(vertices[i].pos[2]),1 } );
+                simd::float3 normal_before = simd::float3{ static_cast<float>(vertices[i].nor[0]), static_cast<float>(vertices[i].nor[1]), static_cast<float>(vertices[i].nor[2]) };
+                normal_before = vector_normalize(normal_before);
+                normals.push_back( simd::float4{ normal_before[0], normal_before[1], normal_before[2], 0 } );
+                uvs.push_back(simd::float2 { static_cast<float>(vertices[i].uv[0]), 1 - static_cast<float>(vertices[i].uv[1]) } );
             }
+            
+            string name = "test_";
+            name = name + "lod_" + to_string(cnt) + ".jmesh";
+            
+            startfile(name.c_str());
+            writefile_copy((int)vertices.size());
+            writefile_copy((int)indices.size());
+            writefile(&positions[0], sizeof(positions[0]) * positions.size());
+            writefile(&normals[0], sizeof(normals[0]) * normals.size());
+            writefile(&uvs[0], sizeof(uvs[0]) * uvs.size());
+            writefile(&indices[0], sizeof(indices[0]) * indices.size());
+            endfile();
+
+            const vector<jskinjointinfo> &skinjointinfos = it->joints;
+            vector<int> jointidxs;
+            vector<matrix_float4x4> inverses;
+            vector<matrix_float4x4> bindmeshes;
+            vector<int> cpcnts;
+            
+            vector<int> cpindices;
+            vector<float> weights;
+            
+            for(int i=0;i<skinjointinfos.size();i++)
+            {
+                const jskinjointinfo& info = skinjointinfos[i];
+                jointidxs.push_back(info.jointidx);
+                inverses.push_back(info.inverse);
+                bindmeshes.push_back(info.bindmesh);
+                cpcnts.push_back((int)info.cpinfos.size());
+                
+                for(int j=0;j<info.cpinfos.size();j++)
+                {
+                    cpindices.push_back(info.cpinfos[j].idx);
+                    weights.push_back(info.cpinfos[j].weight);
+                }
+            }
+            
+            name = "test_";
+            name = name + "lod_" + to_string(cnt++) + ".jskin";
+            
+            startfile(name.c_str());
+            writefile_copy((int)jointidxs.size());
+            writefile(&jointidxs[0], sizeof(jointidxs[0]) * jointidxs.size());
+            writefile(&inverses[0], sizeof(inverses[0]) * inverses.size());
+            writefile(&bindmeshes[0], sizeof(bindmeshes[0]) * bindmeshes.size());
+            writefile(&cpcnts[0], sizeof(cpcnts[0]) * cpcnts.size());
+            writefile(&cpindices[0], sizeof(cpindices[0]) * cpindices.size());
+            writefile(&weights[0], sizeof(weights[0]) * weights.size());
+            endfile();
         }
-        
-        makename("test\0", skinnedmesh->GetName(), ".jskin\0", namebuff, sizeof(namebuff));
-        startfile(namebuff);
-        writefile_copy((int)jointidxs.size());
-        writefile(&jointidxs[0], sizeof(jointidxs[0]) * jointidxs.size());
-        writefile(&inverses[0], sizeof(inverses[0]) * inverses.size());
-        writefile(&bindmeshes[0], sizeof(bindmeshes[0]) * bindmeshes.size());
-        writefile(&cpcnts[0], sizeof(cpcnts[0]) * cpcnts.size());
-        writefile(&cpindices[0], sizeof(cpindices[0]) * cpindices.size());
-        writefile(&weights[0], sizeof(weights[0]) * weights.size());
-        endfile();
-        
     }
 
 	scene->Destroy();

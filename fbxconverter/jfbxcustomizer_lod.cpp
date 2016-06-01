@@ -46,9 +46,9 @@ public:
             if(lesser()==e.lesser())
                 return 0;
             else
-                return lesser() < e.lesser() ? -1 : 1;
-            else
-                return greater() < e.greater() ? -1 : 1;
+                return lesser() < e.lesser() ? 1 : -1;
+        else
+            return greater() < e.greater() ? 1 : -1;
         
     }
     
@@ -133,6 +133,17 @@ public:
             cout << "(changeto) " << a << " " << b << " " << i1 << " " << i2 << " " << i3 << endl;
             exit(1);
         }
+    }
+    
+    int other(int a, int b)
+    {
+        if(i1 != a && i1 != b)
+            return i1;
+        if(i2 != a && i2 != b)
+            return i2;
+        if(i3 != a && i3 != b)
+            return i3;
+        throw "aefefefefefefefwww";
     }
 };
 
@@ -314,7 +325,6 @@ void makeE(listE &E, const listP &P, const vecV& V)
     {
         jledge e;
         e.unique = *u;
-        
         const jlvertex &v1 = V[e.unique.i1];
         const jlvertex &v2 = V[e.unique.i2];
         matrix_double4x4 Q = matrix_add( v1.Q, v2.Q );
@@ -322,6 +332,7 @@ void makeE(listE &E, const listP &P, const vecV& V)
         e.cost = vector_dot(e.v.pos4(), matrix_multiply(Q, e.v.pos4()));
         E.push_back(e);
     }
+    
     
 }
 
@@ -493,10 +504,11 @@ void jfbxcustomizer_lod::lodlast()
     vecJ J;
     makeJ(J, orig.joints, V.size());
     
-    int cnt = 3;
+    int cnt = 400;
     while(cnt-- != 0)
     {
         E.sort();
+        
         
         int n = static_cast<int>( V.size() );
         V.push_back(jlvertex());
@@ -506,6 +518,8 @@ void jfbxcustomizer_lod::lodlast()
         int i1 = E.front().unique.i1;
         int i2 = E.front().unique.i2;
         
+        cout << "popping " << i1 << ", " << i2 << endl;
+        
         E.pop_front();
         
         addNthTojlcluster(J, i1, i2);
@@ -514,10 +528,13 @@ void jfbxcustomizer_lod::lodlast()
         
         vector<matrix_double4x4> adjK;
         set<int> adjV;
+        
+        vector<int> lostpoints;
         while(itp != P.end())
         {
             if( itp->hasboth(i1, i2))
             {
+                lostpoints.push_back( itp->other(i1, i2) );
                 itp = P.erase(itp);
                 continue;
             }
@@ -580,12 +597,49 @@ void jfbxcustomizer_lod::lodlast()
                         throw "man u fucked up. getur headoutofurass";
         }
         //V done
+        
+        if(lostpoints.size() != 2)
+            throw "aeijewijofji";
+        
+        int dupedge1=0, dupedge2=0;
+        for(list<jledge>::iterator ite = E.begin();ite!=E.end();)
+        {
+            if(ite->unique.hasit(lostpoints[0]))
+            {
+                if(ite->unique.hasit(i1) || ite->unique.hasit(i2))
+                    if(dupedge1++==0)
+                    {
+                        ite=E.erase(ite);
+                        cout << "erased dup edge" << endl;
+                        continue;
+                    }
+            }
+            else if(ite->unique.hasit(lostpoints[1]))
+            {
+                if(ite->unique.hasit(i1) || ite->unique.hasit(i2))
+                    if(dupedge2++==0)
+                    {
+                        ite = E.erase(ite);
+                        cout << "erased dup edge" << endl;
+                        continue;
+                    }
+            }
+            ite++;
+        }
+        
+        if(dupedge1==1 || dupedge2==1 )
+            throw "jsiqqq";
+        
+        
         for(set<int>::iterator ita = adjV.begin();ita!=adjV.end();ita++)
         {
             for(list<jledge>::iterator ite = E.begin();ite!=E.end();ite++)
             {
                 if(ite->unique.hasit(i1) && ite->unique.hasit(i2))
+                {
+                    cout << endl << "err : " << i1 << ", " << i2 << endl;
                     throw "u mad bro";
+                }
                 
                 if(ite->unique.hasit(i1))
                     ite->unique.changeto(i1, n);
@@ -613,13 +667,6 @@ void jfbxcustomizer_lod::lodlast()
 
 vector<jlod>& jfbxcustomizer_lod::getlods()
 {
-    /*
-    matrix_double4x4 K = makeK(simd::double3{10,0,0}, simd::double3{-93,0,1}, simd::double3{1,0,100} );
-    simd::double4 tmp = simd::double4{0,2,0};
-    double len = vector_dot(tmp, matrix_multiply(K, tmp));
-    cout << "len : " << len << endl;
-    exit(1);
-     */
     if(lods.size()==0)
     {
         makebaselod();

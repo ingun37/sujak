@@ -311,9 +311,18 @@ void loadobj(const char* objname, jnode& node, platformSpecificGetFile pgetfile,
 //jrenderobject* g_skelmesh = NULL;
 void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pgetobjinfo)
 {
-	jnode* objnode = jallocatorJnode::getAvailable(1);
-    loadobj("soldier", *objnode, pfunc, pgetobjinfo);
-	
+	jnode* lod1 = jallocatorJnode::getAvailable(1);
+    loadobj("soldier1", *lod1, pfunc, pgetobjinfo);
+    lod1->testtrans(-30, 0, 0);
+    jnode* lod0 = jallocatorJnode::getAvailable(1);
+	loadobj("soldier0", *lod0, pfunc, pgetobjinfo);
+    lod0->testtrans(30, 0, 0);
+    renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(lod1);
+    renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(lod0);
+    
+    jallocskinnedmeshes::getAvailable(1)[0] = lod1;
+    jallocskinnedmeshes::getAvailable(1)[0] = lod0;
+    /*
     const float term_h = 60;
     const float term_v = 140;
     const int clonenum_r = 12;
@@ -329,9 +338,10 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
             jallocskinnedmeshes::getAvailable(1)[0] = clone;
         }
     }
+    
     for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
         renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj( *jallocskinnedmeshes::getAt(i) );
-    
+    */
     
     
 	//renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(objnode);

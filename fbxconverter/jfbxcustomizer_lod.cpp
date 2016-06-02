@@ -345,7 +345,7 @@ void makeJ(vecJ& J, const vector<jskinjointinfo>& src, const size_t vlen )
         J.push_back( jlcluster() );
     for(int i=0;i<src.size();i++)
         for(int j=0;j<src[i].cpinfos.size();j++)
-            J[ src[i].cpinfos[j].idx ].links.push_back( jllink( i, src[i].cpinfos[j].weight ));
+            J[ src[i].cpinfos[j].idx ].links.push_back( jllink( src[i].jointidx, src[i].cpinfos[j].weight ));
     
     for(int i=0;i<J.size();i++)
         if(J[i].links.size() == 0)
@@ -445,7 +445,17 @@ void filterUnusedVertices(vector<jskinjointinfo>& joints, vector<jvertex>& verti
             jskincpinfo cp;
             cp.idx = table[*it];
             cp.weight = l.weight;
-            joints[ l.jointidx ].cpinfos.push_back(cp);
+            
+            jskinjointinfo* thejoint = NULL;
+            for(int j=0;j<joints.size();j++)
+                if(joints[j].jointidx == l.jointidx)
+                {
+                    if(thejoint != NULL) throw "watup ig";
+                    thejoint = &joints[j];
+                    break;
+                }
+            if(thejoint == NULL) throw "sdsdfsdfsdfsfiii";
+            thejoint->cpinfos.push_back(cp);
         }
     }
     
@@ -517,8 +527,6 @@ void jfbxcustomizer_lod::lodlast()
         itv->v = E.front().v;
         int i1 = E.front().unique.i1;
         int i2 = E.front().unique.i2;
-        
-        cout << "popping " << i1 << ", " << i2 << endl;
         
         E.pop_front();
         

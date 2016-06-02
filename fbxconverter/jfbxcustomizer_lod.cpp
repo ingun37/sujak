@@ -1,11 +1,3 @@
-//
-//  jfbxcustomizer_lod.cpp
-//  MetalVertexStreaming
-//
-//  Created by ingun on 5/3/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
-//
-
 #include "jfbxcustomizer_lod.hpp"
 #include <set>
 #include <list>
@@ -24,10 +16,23 @@ void jfbxcustomizer_lod::makebaselod()
     lodlast();
 }
 
+class jllink
+{
+public:
+    int jointidx;
+    float weight;
+    jllink(int a, float b)
+    {
+        jointidx = a;
+        weight = b;
+    }
+};
+
 typedef struct _jlvertex
 {
     matrix_double4x4 Q;
     jvertex v;
+    vector<jllink> links;
     
 }jlvertex;
 
@@ -147,22 +152,7 @@ public:
     }
 };
 
-class jllink
-{
-public:
-    int jointidx;
-    float weight;
-    jllink(int a, float b)
-    {
-        jointidx = a;
-        weight = b;
-    }
-};
-class jlcluster
-{
-public:
-    vector<jllink> links;
-};
+
 
 simd::double4 solveLinearSystem(matrix_double4x4 aug, simd::double4 c)
 {
@@ -238,7 +228,7 @@ void makeP(listP& P, const vector<int>& indices, const vector<jvertex>& vertices
     }
 }
 typedef vector<jlvertex> vecV;
-void makeV(vecV& V, const vector<jvertex>& vertices, const listP& P)
+void makeV(vecV& V, const vector<jvertex>& vertices, const listP& P, const vector<jskinjointinfo>& src)
 {
     if(V.size() != 0)
     {
@@ -252,6 +242,7 @@ void makeV(vecV& V, const vector<jvertex>& vertices, const listP& P)
         v.v = vertices[i];
         V.push_back(v);
     }
+    
     if(V.size()%3 != 0)
     {
         cout << "V size must be multi of 3. " << V.size() << endl;
@@ -263,7 +254,16 @@ void makeV(vecV& V, const vector<jvertex>& vertices, const listP& P)
         V[it->i2].Q = matrix_add(V[it->i2].Q, it->K);
         V[it->i3].Q = matrix_add(V[it->i3].Q, it->K);
     }
+    
+    for(int i=0;i<src.size();i++)
+        for(int j=0;j<src[i].cpinfos.size();j++)
+            V[ src[i].cpinfos[j].idx ].links.push_back( jllink( src[i].jointidx, src[i].cpinfos[j].weight ));
+    
+    for(int i=0;i<V.size();i++)
+        if(V[i].links.size() == 0)
+            throw "jiqiwerhisehfisefsef";
 }
+
 typedef list<jledge> listE;
 void makeE(listE &E, const listP &P, const vecV& V)
 {
@@ -336,21 +336,7 @@ void makeE(listE &E, const listP &P, const vecV& V)
     
 }
 
-typedef vector<jlcluster> vecJ;
-void makeJ(vecJ& J, const vector<jskinjointinfo>& src, const size_t vlen )
-{
-    if(J.size() != 0)
-        throw "Johnson size";
-    for(int i=0;i<vlen;i++)
-        J.push_back( jlcluster() );
-    for(int i=0;i<src.size();i++)
-        for(int j=0;j<src[i].cpinfos.size();j++)
-            J[ src[i].cpinfos[j].idx ].links.push_back( jllink( src[i].jointidx, src[i].cpinfos[j].weight ));
-    
-    for(int i=0;i<J.size();i++)
-        if(J[i].links.size() == 0)
-            throw "jiqiwerhisehfisefsef";
-}
+
 
 float totalPerJoint( const vector<jllink>& links, map<int, float> &wmap )
 {
@@ -370,30 +356,29 @@ float totalPerJoint( const vector<jllink>& links, map<int, float> &wmap )
     return total;
 }
 
-void addNthTojlcluster(vecJ& J, int v1, int v2 )
+void addNthV(vecV& V, const jvertex& newv, int i1, int i2)
 {
+    vecV::iterator v = V.insert(V.end(), jlvertex());
+    v->v = newv;
+    
     float total = 0;
     map<int, float> wmap;
-    total += totalPerJoint(J[v1].links, wmap);
-    total += totalPerJoint(J[v2].links, wmap);
-    
-    J.push_back(jlcluster());
-    
-    jlcluster &nth = J[ J.size() - 1 ];
+    total += totalPerJoint(V[i1].links, wmap);
+    total += totalPerJoint(V[i2].links, wmap);
     
     float test = 0;
     for( map<int, float>::iterator it = wmap.begin();it!=wmap.end();it++)
     {
         test += it->second;
         jllink l(it->first, it->second/total);
-        nth.links.push_back(l);
+        v->links.push_back(l);
     }
     
     if(abs(test - total) > 0.00001)
         throw "bro bro bro bro ssup ssup ssup";
 }
 
-void filterUnusedVertices(vector<jskinjointinfo>& joints, vector<jvertex>& vertices, vector<int>& indices, const vector<jskinjointinfo>& skins, const vecJ &J, const vecV &V, const listP& P)
+void filterUnusedVertices(vector<jskinjointinfo>& joints, vector<jvertex>& vertices, vector<int>& indices, const vector<jskinjointinfo>& skins, const vecV &V, const listP& P)
 {
     set<int> usage;
     vector<int> table;
@@ -439,9 +424,9 @@ void filterUnusedVertices(vector<jskinjointinfo>& joints, vector<jvertex>& verti
         if(vertices.size() != cnt)
             throw "na bro";
         
-        for(int i=0;i<J[*it].links.size();i++)
+        for(int i=0 ; i<V[*it].links.size();i++)
         {
-            const jllink& l = J[*it].links[i];
+            const jllink& l = V[*it].links[i];
             jskincpinfo cp;
             cp.idx = table[*it];
             cp.weight = l.weight;
@@ -506,31 +491,23 @@ void jfbxcustomizer_lod::lodlast()
     makeP(P, orig.indices, orig.vertices);
     
     vecV V;
-    makeV(V, orig.vertices, P);
+    makeV(V, orig.vertices, P, orig.joints);
     
     listE E;
     makeE(E, P, V);
-    
-    vecJ J;
-    makeJ(J, orig.joints, V.size());
-    
+
     int cnt = 400;
     while(cnt-- != 0)
     {
         E.sort();
-        
-        
+    
         int n = static_cast<int>( V.size() );
-        V.push_back(jlvertex());
-        vector<jlvertex>::iterator itv = V.end()-1;
-        
-        itv->v = E.front().v;
         int i1 = E.front().unique.i1;
         int i2 = E.front().unique.i2;
         
-        E.pop_front();
+        addNthV(V, E.front().v, i1, i2);
         
-        addNthTojlcluster(J, i1, i2);
+        E.pop_front();
         
         vector<matrix_double4x4> adjK;
         set<int> adjV;
@@ -668,7 +645,7 @@ void jfbxcustomizer_lod::lodlast()
     jlod& nextlod =  lods[ lods.size() - 1 ];
     const jlod& prevlod = lods[lods.size()-2];
     
-    filterUnusedVertices(nextlod.joints, nextlod.vertices, nextlod.indices, prevlod.joints, J, V, P);
+    filterUnusedVertices(nextlod.joints, nextlod.vertices, nextlod.indices, prevlod.joints, V, P);
     
 }
 

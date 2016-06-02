@@ -532,12 +532,11 @@ void jfbxcustomizer_lod::lodlast()
         
         addNthTojlcluster(J, i1, i2);
         
-        list<jlpoly>::iterator itp = P.begin();
-        
         vector<matrix_double4x4> adjK;
         set<int> adjV;
         
         vector<int> lostpoints;
+        list<jlpoly>::iterator itp = P.begin();
         while(itp != P.end())
         {
             if( itp->hasboth(i1, i2))
@@ -558,16 +557,16 @@ void jfbxcustomizer_lod::lodlast()
                 itp->changeto(i2, n);
             }
             
-            simd::double3 after1 = vector_cross( V[itp->i2].v.pos - V[itp->i1].v.pos, V[itp->i3].v.pos - V[itp->i1].v.pos);
-            simd::double3 after2 = vector_cross( V[itp->i3].v.pos - V[itp->i1].v.pos, V[itp->i2].v.pos - V[itp->i1].v.pos);
-            if (vector_dot(before, after1) < vector_dot(before, after2))
-            {
-                cout << "clock wise correction" << endl;
-                itp->CWtoCCWorViceVersa();
-            }
-            
             if(itp->hasit(n))
             {
+                simd::double3 after1 = vector_cross( V[itp->i2].v.pos - V[itp->i1].v.pos, V[itp->i3].v.pos - V[itp->i1].v.pos);
+                simd::double3 after2 = vector_cross( V[itp->i3].v.pos - V[itp->i1].v.pos, V[itp->i2].v.pos - V[itp->i1].v.pos);
+                if (vector_dot(before, after1) < vector_dot(before, after2))
+                {
+                    cout << "clock wise correction" << endl;
+                    itp->CWtoCCWorViceVersa();
+                }
+                
                 itp->K = makeK(V[itp->i1].v.pos, V[itp->i2].v.pos, V[itp->i3].v.pos);
                 adjK.push_back(itp->K);
                 adjV.insert(itp->i1);

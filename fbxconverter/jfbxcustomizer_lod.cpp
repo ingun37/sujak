@@ -496,9 +496,51 @@ void jfbxcustomizer_lod::lodlast()
     listE E;
     makeE(E, P, V);
 
-    int cnt = 400;
+    int weirdos = 0;
+    for(listE::iterator it=E.begin();it!=E.end();it++)
+    {
+        vector<jlpoly> mains;
+        vector<jlpoly> others;
+        for(listP::iterator p=P.begin();p!=P.end();p++)
+        {
+            if(p->hasit(it->unique.i2) || p->hasit(it->unique.i1))
+            {
+                if(p->hasit(it->unique.i2) && p->hasit(it->unique.i1))
+                    mains.push_back(*p);
+                else
+                    others.push_back(*p);
+            }
+        }
+        if( mains.size()!=2)
+            throw "22 22 22 22 22 22 22 22";
+        set<int> mainsidxs;
+        for(int i=0;i<mains.size();i++)
+        {
+            mainsidxs.insert( mains[i].i1 );
+            mainsidxs.insert( mains[i].i2 );
+            mainsidxs.insert( mains[i].i3 );
+        }
+        for(int i=0;i<others.size();i++)
+        {
+            int cnt=0;
+            if(mainsidxs.find(others[i].i1) != mainsidxs.end())
+                cnt++;
+            if(mainsidxs.find(others[i].i2) != mainsidxs.end())
+                cnt++;
+            if(mainsidxs.find(others[i].i3) != mainsidxs.end())
+                cnt++;
+            if(cnt == 3)
+                weirdos++;
+        }
+    }
+    if(weirdos > 0)
+        throw "weirdos everywhere";
+    
+    int cnt = 600;
     while(cnt-- != 0)
     {
+        if(E.size() < 40)
+            throw "toomany";
         E.sort();
     
         int n = static_cast<int>( V.size() );
@@ -524,6 +566,7 @@ void jfbxcustomizer_lod::lodlast()
             }
             
             simd::double3 before = vector_cross( V[itp->i2].v.pos - V[itp->i1].v.pos, V[itp->i3].v.pos - V[itp->i1].v.pos);
+            
             
             if(itp->hasit(i1))
             {
@@ -554,6 +597,8 @@ void jfbxcustomizer_lod::lodlast()
         }
         
         cout << adjK.size() << ":" << adjV.size() << ", ";
+        if(adjK.size()+1 != adjV.size())
+            throw "hose";
         
         //P done
         matrix_double4x4 test = mEmpty;
@@ -570,6 +615,7 @@ void jfbxcustomizer_lod::lodlast()
                     V[*ita].Q = matrix_add(V[*ita].Q, itp->K);
             }
         }
+        //V.Q done
         
         {//test area
             matrix_double4x4 test1 = V[n].Q;

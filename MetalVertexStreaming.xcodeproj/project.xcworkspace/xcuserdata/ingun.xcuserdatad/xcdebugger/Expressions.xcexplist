@@ -31,6 +31,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "jskincpinfo::operator&lt;(jskincpinfo const&amp;) const:jfbxcustomizer_skin.cpp">
+      </ContextState>
+      <ContextState
          contextName = "jskeleton::setFromFile(char*, char*):jskeleton.cpp">
          <PersistentStrings>
             <PersistentString
@@ -39,22 +42,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "jskincpinfo::operator&lt;(jskincpinfo const&amp;) const:jfbxcustomizer_skin.cpp">
-      </ContextState>
-      <ContextState
          contextName = "jfbxcustomizer_vertex::getvertices():jfbxcustomizer_vertex.cpp">
       </ContextState>
       <ContextState
          contextName = "jbinary_janim::getInfo(char*, _jcurvenode*&amp;, int):jbinary.cpp">
       </ContextState>
       <ContextState
-         contextName = "jfbxcustomizer_lod::lodlast():jfbxcustomizer_lod.cpp">
-      </ContextState>
-      <ContextState
          contextName = "jfbxcustomizer_skin::genjointinfos():jfbxcustomizer_skin.cpp">
          <PersistentStrings>
             <PersistentString
                value = "weightvalidate[1820]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "jfbxcustomizer_lod::lodlast():jfbxcustomizer_lod.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "n">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

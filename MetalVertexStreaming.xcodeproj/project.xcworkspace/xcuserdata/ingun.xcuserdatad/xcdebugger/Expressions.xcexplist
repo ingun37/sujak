@@ -45,6 +45,20 @@
          contextName = "jfbxcustomizer_vertex::getvertices():jfbxcustomizer_vertex.cpp">
       </ContextState>
       <ContextState
+         contextName = "jfbxcustomizer_lod::lodlast():jfbxcustomizer_lod.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "n">
+            </PersistentString>
+            <PersistentString
+               value = "cnt">
+            </PersistentString>
+            <PersistentString
+               value = "adjK">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "jbinary_janim::getInfo(char*, _jcurvenode*&amp;, int):jbinary.cpp">
       </ContextState>
       <ContextState
@@ -52,14 +66,6 @@
          <PersistentStrings>
             <PersistentString
                value = "weightvalidate[1820]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "jfbxcustomizer_lod::lodlast():jfbxcustomizer_lod.cpp">
-         <PersistentStrings>
-            <PersistentString
-               value = "n">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

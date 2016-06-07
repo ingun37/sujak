@@ -39,6 +39,12 @@ typedef struct _jlvertex
 class jledge_unique
 {
 public:
+    jledge_unique(){}
+    jledge_unique(int a, int b)
+    {
+        i1 = a;
+        i2 = b;
+    }
     int i1;
     int i2;
     
@@ -103,8 +109,14 @@ class jlpoly
 public:
     int i1, i2, i3;
     matrix_double4x4 K;
-    
-    bool hasit(int a)
+
+    bool issame(const jlpoly& p) const
+    {
+        if(hasit(p.i1) && hasit(p.i2) && hasit(p.i3))
+            return true;
+        return false;
+    }
+    bool hasit(int a) const
     {
         if(i1 == a || i2 == a || i3 == a)
             return true;
@@ -118,7 +130,7 @@ public:
         i3 = tmp;
     }
     
-    bool hasboth(int a, int b)
+    bool hasboth(int a, int b) const
     {
         if(hasit(a) && hasit(b))
             return true;
@@ -149,6 +161,14 @@ public:
         if(i3 != a && i3 != b)
             return i3;
         throw "aefefefefefefefwww";
+    }
+    
+    int checkDuplicate() const
+    {
+        if(i1 == i2) return i1;
+        if(i2 == i3) return i2;
+        if(i3 == i1) return i3;
+        return -1;
     }
 };
 
@@ -481,7 +501,121 @@ void filterUnusedVertices(vector<jskinjointinfo>& joints, vector<jvertex>& verti
     //end
 }
 
+void refreshE(listE& E, const vecV& V, const listP& P, const int i1, const int i2, const int n)
+{
+    set<jledge_unique> changedEs;
+    int erasedEdgeCnt = 0;
+    for(listE::iterator e = E.begin();e!=E.end();)
+    {
+        bool has1 = e->unique.hasit(i1);
+        bool has2 = e->unique.hasit(i2);
+        
+        if(has1 && has2)
+            throw "has has has";
+        else if(has1 || has2)
+        {
+                
+            if(has1)
+                e->unique.changeto(i1, n);
+            else
+                e->unique.changeto(i2, n);
+                
+            auto result = changedEs.insert(e->unique);
+            if(!result.second)
+            {
+                e = E.erase(e);
+                erasedEdgeCnt++;
+                continue;
+            }
+            
+            e->v = leastCostNewV( V[e->unique.i1] , V[e->unique.i2]);
+            matrix_double4x4 Q = matrix_add( V[e->unique.i1].Q , V[e->unique.i2].Q );
+            e->cost = vector_dot(e->v.pos4(), matrix_multiply(Q, e->v.pos4()));
+        }
+        e++;
+    }
+    if(erasedEdgeCnt != 2)
+        cout << "erased Edge Cnt : " << erasedEdgeCnt << endl;
+    set<jledge_unique> orphans;
+    
+    for(set<jledge_unique>::iterator e=changedEs.begin();e!=changedEs.end();e++)
+    {
+        bool remove = true;
+        for(listP::const_iterator p=P.begin();p!=P.end();p++)
+        {
+            if(p->hasboth(e->i1, e->i2))
+            {
+                remove = false;
+                break;
+            }
+        }
+        
+        if(remove)
+            orphans.insert(*e);
+    }
+    
+    if(orphans.size() > 0)
+    {
+        cout << "orhans size : " << orphans.size() << endl;
+        for(listE::iterator e=E.begin() ; e!= E.end();)
+        {
+            if(orphans.find(e->unique) != orphans.end())
+            {
+                cout << "orphan removed, ";
+                e = E.erase(e);
+                continue;
+            }
+            e++;
+        }
+    }
+    
+}
 
+bool shouldDeleteP( const jlpoly& p, const vector<jlpoly> &changedPolys, const int n )
+{
+    int dupv = p.checkDuplicate();
+    if(dupv != -1)
+    {
+        if(dupv != n)
+            throw "nn nn nn nn nn ";
+        
+        return true;
+    }
+    
+    for(vector<jlpoly>::const_iterator it = changedPolys.begin();it!=changedPolys.end();it++)
+        if(it->issame(p))
+        {
+            cout << "found a dup poly : " << p.i1 << "," << p.i2 << "," << p.i3 << endl;
+            return true;
+        }
+    
+    return false;
+}
+
+simd::double3 getCross_23_normed(const vecV& V, const jlpoly& p)
+{
+    simd::double3 cross = vector_cross( V[p.i2].v.pos - V[p.i1].v.pos, V[p.i3].v.pos - V[p.i1].v.pos);
+    return vector_normalize(cross);
+}
+
+simd::double3 getCross_32_normed(const vecV& V, const jlpoly& p)
+{
+    simd::double3 cross = vector_cross( V[p.i3].v.pos - V[p.i1].v.pos, V[p.i2].v.pos - V[p.i1].v.pos);
+    return vector_normalize(cross);
+}
+
+bool checkFlipped( const jlpoly& prev, const jlpoly& curr, const vecV &V)
+{
+    simd::double3 before = getCross_23_normed(V, prev);
+    
+    simd::double3 after1 = getCross_23_normed(V, curr);
+    simd::double3 after2 = getCross_32_normed(V, curr);
+    
+    if (vector_dot(before, after1) < vector_dot(before, after2))
+        return true;
+    
+    return false;
+}
 
 void jfbxcustomizer_lod::lodlast()
 {
@@ -496,45 +630,6 @@ void jfbxcustomizer_lod::lodlast()
     listE E;
     makeE(E, P, V);
 
-    int weirdos = 0;
-    for(listE::iterator it=E.begin();it!=E.end();it++)
-    {
-        vector<jlpoly> mains;
-        vector<jlpoly> others;
-        for(listP::iterator p=P.begin();p!=P.end();p++)
-        {
-            if(p->hasit(it->unique.i2) || p->hasit(it->unique.i1))
-            {
-                if(p->hasit(it->unique.i2) && p->hasit(it->unique.i1))
-                    mains.push_back(*p);
-                else
-                    others.push_back(*p);
-            }
-        }
-        if( mains.size()!=2)
-            throw "22 22 22 22 22 22 22 22";
-        set<int> mainsidxs;
-        for(int i=0;i<mains.size();i++)
-        {
-            mainsidxs.insert( mains[i].i1 );
-            mainsidxs.insert( mains[i].i2 );
-            mainsidxs.insert( mains[i].i3 );
-        }
-        for(int i=0;i<others.size();i++)
-        {
-            int cnt=0;
-            if(mainsidxs.find(others[i].i1) != mainsidxs.end())
-                cnt++;
-            if(mainsidxs.find(others[i].i2) != mainsidxs.end())
-                cnt++;
-            if(mainsidxs.find(others[i].i3) != mainsidxs.end())
-                cnt++;
-            if(cnt == 3)
-                weirdos++;
-        }
-    }
-    if(weirdos > 0)
-        throw "weirdos everywhere";
     
     int cnt = 600;
     while(cnt-- != 0)
@@ -554,51 +649,51 @@ void jfbxcustomizer_lod::lodlast()
         vector<matrix_double4x4> adjK;
         set<int> adjV;
         
-        vector<int> lostpoints;
-        list<jlpoly>::iterator itp = P.begin();
-        while(itp != P.end())
+        listP::iterator itp = P.begin();
         {
-            if( itp->hasboth(i1, i2))
+            vector<jlpoly> changedPolys;
+            while(itp != P.end())
             {
-                lostpoints.push_back( itp->other(i1, i2) );
-                itp = P.erase(itp);
-                continue;
-            }
-            
-            simd::double3 before = vector_cross( V[itp->i2].v.pos - V[itp->i1].v.pos, V[itp->i3].v.pos - V[itp->i1].v.pos);
-            
-            
-            if(itp->hasit(i1))
-            {
-                itp->changeto(i1, n);
-            }
-            else if(itp->hasit(i2))
-            {
-                itp->changeto(i2, n);
-            }
-            
-            if(itp->hasit(n))
-            {
-                simd::double3 after1 = vector_cross( V[itp->i2].v.pos - V[itp->i1].v.pos, V[itp->i3].v.pos - V[itp->i1].v.pos);
-                simd::double3 after2 = vector_cross( V[itp->i3].v.pos - V[itp->i1].v.pos, V[itp->i2].v.pos - V[itp->i1].v.pos);
-                if (vector_dot(before, after1) < vector_dot(before, after2))
+                if(itp->hasit(i1) || itp->hasit(i2))
                 {
-                    cout << "clock wise correction" << endl;
-                    itp->CWtoCCWorViceVersa();
+                    jlpoly before = *itp;
+                    
+                    if(itp->hasit(i1))
+                        itp->changeto(i1, n);
+
+                    if(itp->hasit(i2))
+                        itp->changeto(i2, n);
+
+                    if(itp->hasit(n))
+                    {
+                        if(shouldDeleteP(*itp, changedPolys, n))
+                        {
+                            itp = P.erase(itp);
+                            continue;
+                        }
+                        if (checkFlipped(before, *itp, V))
+                        {
+                            cout << "clock wise correction" << endl;
+                            itp->CWtoCCWorViceVersa();
+                        }
+                    
+                        itp->K = makeK(V[itp->i1].v.pos, V[itp->i2].v.pos, V[itp->i3].v.pos);
+                        adjK.push_back(itp->K);
+                        
+                        changedPolys.push_back(*itp);
+                    }
+                    else
+                        throw "wtf mansfjeisijefse";
+                    
+                    adjV.insert(itp->i1);
+                    adjV.insert(itp->i2);
+                    adjV.insert(itp->i3);
                 }
-                
-                itp->K = makeK(V[itp->i1].v.pos, V[itp->i2].v.pos, V[itp->i3].v.pos);
-                adjK.push_back(itp->K);
-                adjV.insert(itp->i1);
-                adjV.insert(itp->i2);
-                adjV.insert(itp->i3);
+                itp++;
             }
-            itp++;
-        }
-        
-        cout << adjK.size() << ":" << adjV.size() << ", ";
+        }//changed Polys end
         if(adjK.size()+1 != adjV.size())
-            throw "hose";
+            cout << "a poly apoly apoly" << endl;
         
         //P done
         matrix_double4x4 test = mEmpty;
@@ -617,74 +712,15 @@ void jfbxcustomizer_lod::lodlast()
         }
         //V.Q done
         
-        {//test area
-            matrix_double4x4 test1 = V[n].Q;
-            matrix_double4x4 test2 = matrix_sub(test1, test);
+        {
+            matrix_double4x4 test2 = matrix_sub(V[n].Q, test);
             
             for(int ri = 0;ri<4;ri++)
                 for(int ci=0;ci<4;ci++)
                     if(abs(test2.columns[ci][ri]) > 0.0001)
-                        throw "man u fucked up. getur headoutofurass";
+                        throw "man u fucked up";
         }
-        //V done
-        
-        if(lostpoints.size() != 2)
-            throw "aeijewijofji";
-        
-        int dupedge1=0, dupedge2=0;
-        for(list<jledge>::iterator ite = E.begin();ite!=E.end();)
-        {
-            if(ite->unique.hasit(lostpoints[0]))
-            {
-                if(ite->unique.hasit(i1) || ite->unique.hasit(i2))
-                    if(dupedge1++==0)
-                    {
-                        ite=E.erase(ite);
-                        cout << "erased dup edge" << endl;
-                        continue;
-                    }
-            }
-            else if(ite->unique.hasit(lostpoints[1]))
-            {
-                if(ite->unique.hasit(i1) || ite->unique.hasit(i2))
-                    if(dupedge2++==0)
-                    {
-                        ite = E.erase(ite);
-                        cout << "erased dup edge" << endl;
-                        continue;
-                    }
-            }
-            ite++;
-        }
-        
-        if(dupedge1==1 || dupedge2==1 )
-            throw "jsiqqq";
-        
-        
-        for(set<int>::iterator ita = adjV.begin();ita!=adjV.end();ita++)
-        {
-            for(list<jledge>::iterator ite = E.begin();ite!=E.end();ite++)
-            {
-                if(ite->unique.hasit(i1) && ite->unique.hasit(i2))
-                {
-                    cout << endl << "err : " << i1 << ", " << i2 << endl;
-                    throw "u mad bro";
-                }
-                
-                if(ite->unique.hasit(i1))
-                    ite->unique.changeto(i1, n);
-                else if(ite->unique.hasit(i2))
-                    ite->unique.changeto(i2, n);
-                //ite's unique done
-                if(ite->unique.hasit(*ita))
-                {
-                    ite->v = leastCostNewV( V[ite->unique.i1] , V[ite->unique.i2]);
-                    matrix_double4x4 Q = matrix_add( V[ite->unique.i1].Q , V[ite->unique.i2].Q );
-                    ite->cost = vector_dot(ite->v.pos4(), matrix_multiply(Q, ite->v.pos4()));
-                }
-                //ite's cost done
-            }
-        }
+        refreshE(E, V, P, i1, i2, n);
     }
     
     lods.push_back(jlod());
@@ -692,7 +728,6 @@ void jfbxcustomizer_lod::lodlast()
     const jlod& prevlod = lods[lods.size()-2];
     
     filterUnusedVertices(nextlod.joints, nextlod.vertices, nextlod.indices, prevlod.joints, V, P);
-    
 }
 
 vector<jlod>& jfbxcustomizer_lod::getlods()

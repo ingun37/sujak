@@ -208,7 +208,7 @@ void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
 	
 	
 
-	matrix_float4x4 mv = jmath::GetViewMatrix({0,70,100}, {0,1,0}, {0,70,0});
+	matrix_float4x4 mv = jmath::GetViewMatrix({0,70,300}, {0,1,0}, {0,70,0});
 	matrix_float4x4 mp = jmath::GetProjectionMatrixPerspective(1.4, 1, 1, 400);
     
 	_uniformb.projview = matrix_multiply(mp, mv);

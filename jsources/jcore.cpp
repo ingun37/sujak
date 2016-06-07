@@ -317,12 +317,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
     jnode* lod0 = jallocatorJnode::getAvailable(1);
 	loadobj("soldier0", *lod0, pfunc, pgetobjinfo);
     lod0->testtrans(30, 0, 0);
-    renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(lod1);
-    renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(lod0);
     
-    jallocskinnedmeshes::getAvailable(1)[0] = lod1;
-    jallocskinnedmeshes::getAvailable(1)[0] = lod0;
-    /*
     const float term_h = 60;
     const float term_v = 140;
     const int clonenum_r = 12;
@@ -332,7 +327,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
         for(int ic=0;ic<clonenum_c;ic++)
         {
             jnode* clone = jallocatorJnode::getAvailable(1);
-            objnode->clone(*clone);
+            lod1->clone(*clone);
             //clone->getSkeleton()->animateto((ir*clonenum_c + ic) * 0.06);
             clone->testtrans( ir*term_h - (term_h*(clonenum_r-1))/2, ic*term_v - (term_v*(clonenum_c-1))/2, 0);
             jallocskinnedmeshes::getAvailable(1)[0] = clone;
@@ -341,7 +336,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
     
     for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
         renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj( *jallocskinnedmeshes::getAt(i) );
-    */
+    
     
     
 	//renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj(objnode);

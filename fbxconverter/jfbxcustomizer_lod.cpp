@@ -631,7 +631,7 @@ void jfbxcustomizer_lod::lodlast()
     makeE(E, P, V);
 
     
-    int cnt = 600;
+    int cnt = 800;
     while(cnt-- != 0)
     {
         if(E.size() < 40)

@@ -44,9 +44,9 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
         dest[iv] = matrix_multiply(local, dest[iv]);
     }
 }
-typedef jallocator<jskeleton, 64> jallocskel;
-typedef jallocator<jrenderobject, 64> jallocrobj;
-typedef jallocator<jskinner, 64> jallocskin;
+typedef jallocator<jskeleton, 80> jallocskel;
+typedef jallocator<jrenderobject, 80> jallocrobj;
+typedef jallocator<jskinner, 80> jallocskin;
 void jnode::clone(jnode &node)
 {
     node = *this;

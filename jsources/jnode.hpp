@@ -29,7 +29,8 @@ class jnode
     matrix_float4x4 local;
     
     bool localsPrecomputed;
-    simd::float4 *precomputelocalposes;
+    matrix_float4x4 *precomputeClusterDependencies;// Inverse * Bind
+    simd::float4 **precomputeLinkDependencies; //Position * weight
     
 public:
 	bool shouldRemap;//todo : bitfield

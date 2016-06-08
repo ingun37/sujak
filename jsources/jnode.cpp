@@ -28,21 +28,15 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
 	for(int i=0;i<skinner->clusterCnt;i++)
 	{
 		int jointidx = skinner->jointIdxs[i];
-
+        matrix_float4x4 header = matrix_multiply(local, matrix_multiply(jointglobals[jointidx], precomputeClusterDependencies[i]));
 		for(int j=0;j<skinner->linkCounts[i];j++)
 		{
             int lidx = skinner->accuTable[i] + j;
 			int vidx = skinner->linkIdxs[ lidx ];
-			float weight = skinner->linkWeights[ lidx ];
-
-			dest[vidx] += matrix_multiply( jointglobals[jointidx] , precomputelocalposes[lidx] ) * weight;
+			
+			dest[vidx] += matrix_multiply( header , precomputeLinkDependencies[i][j] );
 		}
 	}
-    
-    for(int iv = 0;iv<vcnt;iv++)
-    {
-        dest[iv] = matrix_multiply(local, dest[iv]);
-    }
 }
 typedef jallocator<jskeleton, 80> jallocskel;
 typedef jallocator<jrenderobject, 80> jallocrobj;
@@ -62,8 +56,10 @@ void jnode::clone(jnode &node)
     node.skinner = newskin;
     node.skeleton = newskel;
 }
-typedef jallocator<simd::float4, 60000> poolPrecompute;
-void jnode::precomputeLocals()
+typedef jallocator<simd::float4*, 1024> poolpf4;
+typedef jallocator<simd::float4, 60000> poolf4;
+typedef jallocator<matrix_float4x4, 1024> poolM;
+void jnode::precomputeLocals()//todo : share
 {
     if(localsPrecomputed)
     {
@@ -71,15 +67,17 @@ void jnode::precomputeLocals()
         exit(1);
     }
     
-    precomputelocalposes = poolPrecompute::getAvailable( skinner->accuTable[ skinner->clusterCnt-1 ] + skinner->linkCounts[ skinner->clusterCnt-1 ] );
+    precomputeClusterDependencies = poolM::getAvailable( skinner->clusterCnt);
+    precomputeLinkDependencies = poolpf4::getAvailable( skinner->clusterCnt );
+    
     for(int ci=0;ci<skinner->clusterCnt;ci++)
     {
+        precomputeClusterDependencies[ci] = matrix_multiply(skinner->inverses[ci], skinner->bindmeshes[ci]);
+        precomputeLinkDependencies[ci] = poolf4::getAvailable(skinner->linkCounts[ci]);
         for(int vi=0;vi<skinner->linkCounts[ci];vi++)
         {
             int idx = skinner->accuTable[ci] + vi;
-            precomputelocalposes[idx] = matrix_multiply(skinner->inverses[ci], matrix_multiply(skinner->bindmeshes[ci],
-                                                                                                renderobj->getPositionAt( skinner->linkIdxs[idx] )
-                                                                                               ));
+            precomputeLinkDependencies[ci][vi] = renderobj->getPositionAt( skinner->linkIdxs[idx] ) * skinner->linkWeights[idx];
         }
     }
     localsPrecomputed = true;

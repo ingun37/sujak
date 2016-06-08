@@ -318,7 +318,7 @@ void jcore::loadAll(platformSpecificGetFile pfunc, platformSpecificGetObjInfo pg
     
     const float term_h = 60;
     const float term_v = 140;
-    const int clonenum_r = 15;
+    const int clonenum_r = 16;
     const int clonenum_c = 5;
     for(int ir=0;ir<clonenum_r;ir++)
     {

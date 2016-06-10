@@ -26,6 +26,10 @@ public:
         jointidx = a;
         weight = b;
     }
+    bool operator < (const jllink& l) const
+    {
+        return weight < l.weight;
+    }
 };
 
 typedef struct _jlvertex
@@ -624,6 +628,46 @@ bool checkFlipped( const jlpoly& prev, const jlpoly& curr, const vecV &V)
     return false;
 }
 
+void reduceVLinksToMax(vecV& V, const int max)
+{
+    for(vecV::iterator v = V.begin();v!=V.end();v++)
+    {
+        if(v->links.size() > max)
+        {
+            list<jllink> lst;
+            for(vector<jllink>::iterator l = v->links.begin();l!=v->links.end();l++)
+            {
+                lst.push_back(*l);
+            }
+            
+            while(lst.size() > max)
+            {
+                lst.sort();
+                size_t aftercnt = lst.size()-1;
+                float dv = lst.front().weight / aftercnt;
+                lst.pop_front();
+                for( list<jllink>::iterator l = lst.begin();l!=lst.end();l++ )
+                {
+                    l->weight += dv;
+                }
+            }
+            if(lst.size() > max)
+                throw "qaehifsef";
+            
+            v->links.clear();
+            
+            float sum = 0;
+            for( list<jllink>::iterator l = lst.begin();l!=lst.end();l++ )
+            {
+                v->links.push_back(*l);
+                sum += l->weight;
+            }
+            if(abs(1-sum) > 0.0001)
+                throw "iwehhiqqqqqq";
+        }
+    }
+}
+
 void jfbxcustomizer_lod::lodlast()
 {
     const jlod &orig = lods[lods.size()-1];
@@ -733,7 +777,7 @@ void jfbxcustomizer_lod::lodlast()
     lods.push_back(jlod());
     jlod& nextlod =  lods[ lods.size() - 1 ];
     const jlod& prevlod = lods[lods.size()-2];
-    
+    reduceVLinksToMax(V, 2);
     filterUnusedVertices(nextlod.joints, nextlod.vertices, nextlod.indices, prevlod.joints, V, P);
 }
 

@@ -279,9 +279,21 @@ void makeV(vecV& V, const vector<jvertex>& vertices, const listP& P, const vecto
         for(int j=0;j<src[i].cpinfos.size();j++)
             V[ src[i].cpinfos[j].idx ].links.push_back( jllink( src[i].jointidx, src[i].cpinfos[j].weight ));
     
+    const int tmp=10;
+    int cnts[tmp];
+    memset(cnts, 0, sizeof(int) * tmp );
     for(int i=0;i<V.size();i++)
+    {
         if(V[i].links.size() == 0)
             throw "jiqiwerhisehfisefsef";
+        if(V[i].links.size() >= tmp)
+            throw "seseseaa";
+        cnts[V[i].links.size()]++;
+    }
+    cout<< "links : ";
+    for(int i=0;i<tmp;i++)
+        cout << cnts[i] << ", ";
+    cout << endl;
 }
 
 typedef list<jledge> listE;

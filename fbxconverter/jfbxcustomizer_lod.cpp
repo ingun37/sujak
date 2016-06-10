@@ -434,11 +434,6 @@ void filterUnusedVertices(vector<jskinjointinfo>& joints, vector<jvertex>& verti
     int testidx=-1;
     for(set<int>::iterator it = usage.begin();it!=usage.end();it++)
     {
-        if(cnt==1820)
-        {
-            testidx = *it;
-            cout << endl <<"testidx original : " << testidx << endl;
-        }
         table[*it] = cnt++;
         vertices.push_back( V[*it].v );
         if(vertices.size() != cnt)

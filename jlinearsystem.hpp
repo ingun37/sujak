@@ -62,7 +62,7 @@ public:
         for(int i=0;i<C;i++)
         {
             topRow(i, lastEntry + 1);
-            //std::sort(rows.begin() + i, rows.end());
+            
             if(rows[i].isZeroRow())
                 break;
             
@@ -79,9 +79,11 @@ public:
         {
             if(rows[i].isZeroRow())
                 break;
-            rows[i].normalizeToLeadingEntry();
+            
             for(int j=0;j<i;j++)
                 rows[j].reduceBy(rows[i]);
+            
+            rows[i].normalizeToLeadingEntry();
         }
     }
 };

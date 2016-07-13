@@ -8,6 +8,32 @@
 
 #import <XCTest/XCTest.h>
 #include "jlinear.hpp"
+using namespace simd;
+void testPlane(float p1x, float p1y, float p1z,
+               float p2x, float p2y, float p2z,
+               float p3x, float p3y, float p3z,
+               float vx, float vy, float vz)
+{
+    float3 p1{p1x, p1y, p1z};
+    float3 p2{p2x, p2y, p2z};
+    float3 p3{p3x, p3y, p3z};
+    matrix_float4x4 K;
+    try
+    {
+        K = jlinear::makePlaneDistanceK(p1, p2, p3);
+    }
+    catch(const char* msg)
+    {
+        NSLog(@"%s", msg);
+    }
+    
+    
+    
+    float4 v4{vx, vy, vz, 1};
+    
+    float dsqr = vector_dot( v4, (K * v4));
+    NSLog(@"dist : %.2f", dsqr);
+}
 @interface testjlinear : XCTestCase
 
 @end
@@ -42,6 +68,11 @@
                          1, 1, 1, 2,
                          1, -1, 1, 1);
     puts("");
+
+    testPlane(10, 0, 10,
+              33, 0, 345,
+              -566, 0, -3454,
+              0, 10, 0);
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }

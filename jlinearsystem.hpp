@@ -56,6 +56,10 @@ public:
     {
         rows[ri].set(e1, e2, e3, e4);
     }
+    inline void setrow(unsigned int ri, float e1, float e2, float e3, float e4, float e5)
+    {
+        rows[ri].set(e1, e2, e3, e4, e5);
+    }
     void echelonize()
     {
         int lastEntry = -1;
@@ -85,6 +89,41 @@ public:
             
             rows[i].normalizeToLeadingEntry();
         }
+    }
+    
+    bool hasSolution()
+    {
+        for(int i=0;i<rows.size();i++)
+            if(rows[i].coefficientNumber() == 0 && rows[i].last() != 0)
+                return false;
+        return true;
+    }
+    
+    bool has1Solution()
+    {
+        if(!hasSolution())
+            return false;
+        
+        for(int i=0;i<rows.size();i++)
+            if(rows[i].coefficientNumber() > 1)
+                return false;
+        return true;
+    }
+    
+    void getSolution(float* solution)
+    {
+        if(!hasSolution())
+            throw "no solution";
+        if(!has1Solution())
+            throw "more than 1 solution";
+        for(int i=0;i<C;i++)
+            solution[i] = rows[i].getAt(R-1);
+    }
+    
+    void getColumnAt(int idx, float* column)
+    {
+        for(int i=0;i<C;i++)
+            column[i] = rows[i].getAt(idx);
     }
 };
 

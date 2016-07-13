@@ -11,6 +11,7 @@
 #include <vector>
 #include <math.h>
 using namespace std;
+
 template <unsigned int N>
 class jlinearrow {
     friend jlinearrow;
@@ -78,7 +79,10 @@ public:
 
     jlinearrow operator-() const
     {
-        return jlinearrow(-row[0], -row[1], -row[2], -row[3]);
+        jlinearrow inversed;
+        for(int i=0;i<N;i++)
+            inversed.setAt(i, -row[i]);
+        return inversed;
     }
 
     jlinearrow operator-(const jlinearrow& r) const
@@ -145,6 +149,20 @@ public:
         row[i] = v;
     }
     
+    unsigned int coefficientNumber()
+    {
+        unsigned int d = 0;
+        for(int i=0;i<N-1;i++)
+            if(row[i] != 0)
+                d++;
+        return d;
+    }
+    
+    float last()
+    {
+        return row[N-1];
+    }
+    
     jlinearrow()
     {
         for(int i=0;i<N;i++)
@@ -157,6 +175,14 @@ public:
             throw "asefoo23233";
         set(e1, e2, e3, e4);
     }
+    
+    jlinearrow(float e1, float e2, float e3, float e4, float e5)
+    {
+        if(N != 5)
+            throw "jlinearrow e5";
+        set(e1, e2, e3, e4, e5);
+    }
+    
     jlinearrow(float* es)
     {
         for(int i=0;i<N;i++)

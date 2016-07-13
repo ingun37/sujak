@@ -16,6 +16,7 @@
 #include "bitmap_image.hpp"
 #include "jfbxcustomizer_lod.hpp"
 #include "jfbxcustomizer_curve.hpp"
+#include "jlinear.hpp"
 
 using namespace std;
 
@@ -30,6 +31,7 @@ std::ofstream *logfile = NULL;
 
 void startlog(const char* filename)
 {
+    jlinear::foo();
 	if(logfile != NULL)
 	{
 		cout << "log fil enerr not null" << endl;

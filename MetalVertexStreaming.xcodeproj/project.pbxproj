@@ -58,6 +58,15 @@
 		626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FE819329E72007A3E00 /* Metal.framework */; };
 		626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FEA19329E78007A3E00 /* QuartzCore.framework */; };
 		62F8146919AFBD9E00C9BDD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */; };
+		6B41FCBE1D335D0500A3329B /* jlinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B41FCBC1D335D0500A3329B /* jlinear.cpp */; };
+		6B41FCBF1D335D0500A3329B /* jlinear.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B41FCBD1D335D0500A3329B /* jlinear.hpp */; };
+		6B41FCC21D335D7800A3329B /* libjlinear.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */; };
+		6B41FCC51D3491D400A3329B /* jlinearrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B41FCC31D3491D400A3329B /* jlinearrow.cpp */; };
+		6B41FCC61D3491D400A3329B /* jlinearrow.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B41FCC41D3491D400A3329B /* jlinearrow.hpp */; };
+		6B41FCC91D34B33F00A3329B /* jlinearsystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B41FCC71D34B33F00A3329B /* jlinearsystem.cpp */; };
+		6B41FCCA1D34B33F00A3329B /* jlinearsystem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B41FCC81D34B33F00A3329B /* jlinearsystem.hpp */; };
+		6B41FCD21D34F2A000A3329B /* testjlinear.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B41FCD11D34F2A000A3329B /* testjlinear.mm */; };
+		6B41FCD41D34F2A000A3329B /* libjlinear.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */; };
 		6B44C69B1CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B44C6991CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp */; };
 		6B6B5D641CC5D49400B6533B /* jfbxexporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D621CC5D49400B6533B /* jfbxexporter.cpp */; };
 		6B6B5D671CC5D67200B6533B /* jfbxcustomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D651CC5D67200B6533B /* jfbxcustomizer.cpp */; };
@@ -75,6 +84,23 @@
 		6BDD27941CB754F2005190B4 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BDD27921CB754F2005190B4 /* jcurve.cpp */; };
 		6BDD27961CB754F2005190B4 /* jcurve.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BDD27931CB754F2005190B4 /* jcurve.hpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6B41FCC01D335D6E00A3329B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 626C5F9B193298C6007A3E00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B41FCB61D335CD800A3329B;
+			remoteInfo = jlinear;
+		};
+		6B41FCD51D34F2A000A3329B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 626C5F9B193298C6007A3E00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B41FCB61D335CD800A3329B;
+			remoteInfo = jlinear;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1606DB281BF9AA0500976579 /* CopyFiles */ = {
@@ -148,6 +174,16 @@
 		626C5FEA19329E78007A3E00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		6B351CC51CBE3BFF00540D7F /* bitmap_image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bitmap_image.hpp; sourceTree = "<group>"; };
+		6B41FCB71D335CD800A3329B /* libjlinear.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libjlinear.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B41FCBC1D335D0500A3329B /* jlinear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jlinear.cpp; sourceTree = "<group>"; };
+		6B41FCBD1D335D0500A3329B /* jlinear.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jlinear.hpp; sourceTree = "<group>"; };
+		6B41FCC31D3491D400A3329B /* jlinearrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jlinearrow.cpp; sourceTree = "<group>"; };
+		6B41FCC41D3491D400A3329B /* jlinearrow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jlinearrow.hpp; sourceTree = "<group>"; };
+		6B41FCC71D34B33F00A3329B /* jlinearsystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jlinearsystem.cpp; sourceTree = "<group>"; };
+		6B41FCC81D34B33F00A3329B /* jlinearsystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jlinearsystem.hpp; sourceTree = "<group>"; };
+		6B41FCCF1D34F2A000A3329B /* testjlinear.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testjlinear.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B41FCD11D34F2A000A3329B /* testjlinear.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = testjlinear.mm; sourceTree = "<group>"; };
+		6B41FCD31D34F2A000A3329B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B44C6991CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_lod.cpp; sourceTree = "<group>"; };
 		6B44C69A1CD86D9C0055F7B5 /* jfbxcustomizer_lod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_lod.hpp; sourceTree = "<group>"; };
 		6B6B5D621CC5D49400B6533B /* jfbxexporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxexporter.cpp; sourceTree = "<group>"; };
@@ -178,6 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B41FCC21D335D7800A3329B /* libjlinear.dylib in Frameworks */,
 				167D37511C75923600C8F698 /* libfbxsdk.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +225,21 @@
 			files = (
 				626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */,
 				626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B41FCB41D335CD800A3329B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B41FCCC1D34F2A000A3329B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B41FCD41D34F2A000A3329B /* libjlinear.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +337,7 @@
 		626C5F9A193298C6007A3E00 = {
 			isa = PBXGroup;
 			children = (
+				6B41FCBB1D335CED00A3329B /* jlinear */,
 				167D37521C75924800C8F698 /* libfbxsdk.dylib */,
 				167D374D1C758F3C00C8F698 /* libfbxsdk.a */,
 				1606DB401BF9C98900976579 /* meshes */,
@@ -293,6 +346,7 @@
 				16EC79E61BE7633B00C1BACA /* jsources */,
 				626C5FA6193298C6007A3E00 /* MetalVertexStreaming */,
 				1606DB2B1BF9AA0500976579 /* fbxconverter */,
+				6B41FCD01D34F2A000A3329B /* testjlinear */,
 				623F27DD1934144B000FA88C /* Frameworks */,
 				626C5FA5193298C6007A3E00 /* Products */,
 			);
@@ -303,6 +357,8 @@
 			children = (
 				626C5FA4193298C6007A3E00 /* MetalVertexStreaming.app */,
 				1606DB2A1BF9AA0500976579 /* fbxconverter */,
+				6B41FCB71D335CD800A3329B /* libjlinear.dylib */,
+				6B41FCCF1D34F2A000A3329B /* testjlinear.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,6 +408,28 @@
 			name = Renderer;
 			sourceTree = "<group>";
 		};
+		6B41FCBB1D335CED00A3329B /* jlinear */ = {
+			isa = PBXGroup;
+			children = (
+				6B41FCBC1D335D0500A3329B /* jlinear.cpp */,
+				6B41FCBD1D335D0500A3329B /* jlinear.hpp */,
+				6B41FCC31D3491D400A3329B /* jlinearrow.cpp */,
+				6B41FCC41D3491D400A3329B /* jlinearrow.hpp */,
+				6B41FCC71D34B33F00A3329B /* jlinearsystem.cpp */,
+				6B41FCC81D34B33F00A3329B /* jlinearsystem.hpp */,
+			);
+			name = jlinear;
+			sourceTree = "<group>";
+		};
+		6B41FCD01D34F2A000A3329B /* testjlinear */ = {
+			isa = PBXGroup;
+			children = (
+				6B41FCD11D34F2A000A3329B /* testjlinear.mm */,
+				6B41FCD31D34F2A000A3329B /* Info.plist */,
+			);
+			path = testjlinear;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -384,6 +462,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6B41FCB51D335CD800A3329B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B41FCCA1D34B33F00A3329B /* jlinearsystem.hpp in Headers */,
+				6B41FCBF1D335D0500A3329B /* jlinear.hpp in Headers */,
+				6B41FCC61D3491D400A3329B /* jlinearrow.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -398,6 +486,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6B41FCC11D335D6E00A3329B /* PBXTargetDependency */,
 			);
 			name = fbxconverter;
 			productName = fbxconverter;
@@ -422,6 +511,41 @@
 			productReference = 626C5FA4193298C6007A3E00 /* MetalVertexStreaming.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6B41FCB61D335CD800A3329B /* jlinear */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B41FCBA1D335CD800A3329B /* Build configuration list for PBXNativeTarget "jlinear" */;
+			buildPhases = (
+				6B41FCB31D335CD800A3329B /* Sources */,
+				6B41FCB41D335CD800A3329B /* Frameworks */,
+				6B41FCB51D335CD800A3329B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jlinear;
+			productName = jlinear;
+			productReference = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		6B41FCCE1D34F2A000A3329B /* testjlinear */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B41FCD71D34F2A000A3329B /* Build configuration list for PBXNativeTarget "testjlinear" */;
+			buildPhases = (
+				6B41FCCB1D34F2A000A3329B /* Sources */,
+				6B41FCCC1D34F2A000A3329B /* Frameworks */,
+				6B41FCCD1D34F2A000A3329B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B41FCD61D34F2A000A3329B /* PBXTargetDependency */,
+			);
+			name = testjlinear;
+			productName = testjlinear;
+			productReference = 6B41FCCF1D34F2A000A3329B /* testjlinear.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -436,6 +560,12 @@
 					};
 					626C5FA3193298C6007A3E00 = {
 						DevelopmentTeam = L5UTUQP5FK;
+					};
+					6B41FCB61D335CD800A3329B = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					6B41FCCE1D34F2A000A3329B = {
+						CreatedOnToolsVersion = 7.3;
 					};
 				};
 			};
@@ -454,6 +584,8 @@
 			targets = (
 				626C5FA3193298C6007A3E00 /* MetalVertexStreaming */,
 				1606DB291BF9AA0500976579 /* fbxconverter */,
+				6B41FCB61D335CD800A3329B /* jlinear */,
+				6B41FCCE1D34F2A000A3329B /* testjlinear */,
 			);
 		};
 /* End PBXProject section */
@@ -468,6 +600,13 @@
 				623F27DF19341462000FA88C /* shaders.metal in Resources */,
 				626C5FBA193298C6007A3E00 /* Images.xcassets in Resources */,
 				1606DB411BF9C98900976579 /* meshes in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B41FCCD1D34F2A000A3329B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +662,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6B41FCB31D335CD800A3329B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B41FCC91D34B33F00A3329B /* jlinearsystem.cpp in Sources */,
+				6B41FCC51D3491D400A3329B /* jlinearrow.cpp in Sources */,
+				6B41FCBE1D335D0500A3329B /* jlinear.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B41FCCB1D34F2A000A3329B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B41FCD21D34F2A000A3329B /* testjlinear.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6B41FCC11D335D6E00A3329B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B41FCB61D335CD800A3329B /* jlinear */;
+			targetProxy = 6B41FCC01D335D6E00A3329B /* PBXContainerItemProxy */;
+		};
+		6B41FCD61D34F2A000A3329B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B41FCB61D335CD800A3329B /* jlinear */;
+			targetProxy = 6B41FCD51D34F2A000A3329B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1606DB2E1BF9AA0500976579 /* Debug */ = {
@@ -686,6 +856,78 @@
 			};
 			name = Release;
 		};
+		6B41FCB81D335CD800A3329B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6B41FCB91D335CD800A3329B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6B41FCD81D34F2A000A3329B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = testjlinear/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = loadcomplete.testjlinear;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6B41FCD91D34F2A000A3329B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = testjlinear/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = loadcomplete.testjlinear;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -715,6 +957,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6B41FCBA1D335CD800A3329B /* Build configuration list for PBXNativeTarget "jlinear" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B41FCB81D335CD800A3329B /* Debug */,
+				6B41FCB91D335CD800A3329B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6B41FCD71D34F2A000A3329B /* Build configuration list for PBXNativeTarget "testjlinear" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B41FCD81D34F2A000A3329B /* Debug */,
+				6B41FCD91D34F2A000A3329B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

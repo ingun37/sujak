@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6B41FCCE1D34F2A000A3329B"
+               BuildableName = "testjlinear.xctest"
+               BlueprintName = "testjlinear"
+               ReferencedContainer = "container:MetalVertexStreaming.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6B41FCB61D335CD800A3329B"
+            BuildableName = "libjlinear.dylib"
+            BlueprintName = "jlinear"
+            ReferencedContainer = "container:MetalVertexStreaming.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

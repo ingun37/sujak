@@ -965,6 +965,7 @@
 				6B41FCB91D335CD800A3329B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B41FCD71D34F2A000A3329B /* Build configuration list for PBXNativeTarget "testjlinear" */ = {
 			isa = XCConfigurationList;
@@ -973,6 +974,7 @@
 				6B41FCD91D34F2A000A3329B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -12,6 +12,7 @@
 
 using namespace std;
 using namespace simd;
+using namespace jlinear;
 
 template <unsigned int C, unsigned int R>
 void printSystem(const jlinearsystem<C, R> system)
@@ -48,20 +49,39 @@ matrix_float4x4 jlinear::makePlaneDistanceK(float3 p1, float3 p2, float3 p3)
     system.setrow(2, p3[0], p3[1], p3[2], 1, 0);
     
     system.reducedEchelonize();
+    //ax+by+cz+d = 0
+    float fvcs[4];
     
-    float solution[3];
-    if(!system.has1Solution())
-        throw "not 1 solution system";
-    system.getColumnAt(4, solution);
-    float3 solution3{solution[0], solution[1], solution[2]};
     
-    float dsqr = 1.f/vector_dot(solution3, solution3);
+    for(int i=0;i<4;i++)
+    {
+        if(system.isElementFreeVariable(i))
+        {
+            fvcs[i] = 1;
+            continue;
+        }
+        
+        if(system.getNumberFreeVariableDependencyOfElement(i)>1)
+            throw "impossible freevarialbe dependency number";
+        
+        fvcs[i] = system.getSumOfFreeVariableCoefficientOfElement(i);
+    }
     
-    float4 solution4{solution[0], solution[1], solution[2], 1};
+    float3 fvcs3{fvcs[0], fvcs[1], fvcs[2]};
+    float mag = dot(fvcs3, fvcs3);
     
-    matrix_float4x4 m1 = matrix_from_rows(solution4, solution4, solution4, solution4);
-    matrix_float4x4 m2 = matrix_from_columns(solution4, solution4, solution4, solution4);
+    float sqrfv;
     
-    matrix_float4x4 K = (m1 * m2) * dsqr;
+    if(abs(mag) < 0.0001)
+        sqrfv = 1;
+    else
+        sqrfv = 1.f/mag;
+    
+    float4 fvcs4{fvcs[0], fvcs[1], fvcs[2], fvcs[3]};
+    float4 zero4{0,0,0,0};
+    matrix_float4x4 m1 = matrix_from_columns(fvcs4, zero4, zero4, zero4);
+    matrix_float4x4 m2 = matrix_from_rows(fvcs4, zero4, zero4, zero4);
+    
+    matrix_float4x4 K = (m1 * m2) * sqrfv;
     return K;
 }

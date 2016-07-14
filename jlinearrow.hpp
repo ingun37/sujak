@@ -20,6 +20,8 @@ class jlinearrow {
 public:
     bool operator< (const jlinearrow& r) const
     {
+        if(isZeroRow())
+            return false;
         return leadingEntry() < r.leadingEntry();
     }
     float& operator[](unsigned int i)
@@ -107,7 +109,7 @@ public:
         while(row[cnt] == 0)
         {
             if(cnt >= N)
-                throw "idx sfjiesjifsijefsefsefsqqqq[[[[";
+                throw "no leading entry exists";
             cnt++;
         }
         return cnt;
@@ -120,7 +122,7 @@ public:
         (*this)/=row[leadingEntry()];
     }
     
-    bool isZeroRow()
+    bool isZeroRow() const
     {
         for(int i=0;i<N;i++)
             if(row[i] != 0)
@@ -149,16 +151,41 @@ public:
         row[i] = v;
     }
     
-    unsigned int coefficientNumber()
+    bool isValid() const
     {
-        unsigned int d = 0;
-        for(int i=0;i<N-1;i++)
-            if(row[i] != 0)
-                d++;
-        return d;
+        if(leadingEntry()==N-1) return false;
+        return true;
     }
     
-    float last()
+    float getCoefficientAt(const unsigned int at) const
+    {
+        if(at <= leadingEntry())
+            throw "leadingEntry is not coefficient!";
+        if(at == N-1)
+            throw "N-1th value is not coefficient!";
+        
+        
+        return row[at];
+    }
+    
+    float getSumOfFreeVariableCoefficients() const
+    {
+        float sum=0;
+        for(int i=leadingEntry()+1;i<N-1;i++)
+            sum += getCoefficientAt(i);
+        return sum;
+    }
+    
+    unsigned int getNumberFreeVariableDependency() const
+    {
+        unsigned int cnt = 0;
+        for(int i=leadingEntry()+1;i<N-1;i++)
+            if(row[i] != 0)
+                cnt++;
+        return cnt;
+    }
+    
+    float last() const
     {
         return row[N-1];
     }

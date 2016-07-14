@@ -12,119 +12,128 @@
 #include <vector>
 #include <algorithm>
 #include "jlinearrow.hpp"
-
-template <unsigned int C, unsigned int R>
-class jlinearsystem {
-    std::vector<jlinearrow<R>> rows;
-    void swapRow(int i1, int i2)
-    {
-        if(i1==i2)
-            return;
-        jlinearrow<R> tmp = rows[i1];
-        rows[i1] = rows[i2];
-        rows[i2] = tmp;
-    }
-    void topRow(int top, int targetEntry)
-    {
-        int min = top;
-        for(int i=top;i<rows.size();i++)
+namespace jlinear
+{
+    enum JLINEAR_ELEMENTS{A,B,C,D,E,F,G};
+    
+    template <unsigned int C, unsigned int R>
+    class jlinearsystem {
+        std::vector<jlinearrow<R>> rows;
+        void swapRow(int i1, int i2)
         {
-            if( rows[i].getAt(targetEntry) != 0 )
+            if(i1==i2)
+                return;
+            jlinearrow<R> tmp = rows[i1];
+            rows[i1] = rows[i2];
+            rows[i2] = tmp;
+        }
+        void topRow(int top, int targetEntry)
+        {
+            int min = top;
+            for(int i=top;i<rows.size();i++)
             {
-                min = i;
-                break;
+                if( rows[i].getAt(targetEntry) != 0 )
+                {
+                    min = i;
+                    break;
+                }
+                if(rows[i] < rows[min])
+                    min = i;
             }
-            if(rows[i] < rows[min])
-                min = i;
+            swapRow(top, min);
         }
-        swapRow(top, min);
-    }
-public:
-    jlinearsystem()
-    {
-        rows.reserve(C);
-        for(int i=0;i<C;i++)
-            rows.push_back(jlinearrow<R>());
-    }
-    float getAt(unsigned int c, unsigned int r) const
-    {
-        if(c >= C)
-            throw "sefqiqiqiqiooooo";
-        return rows[c].getAt(r);
-    }
-    inline void setrow(unsigned int ri, float e1, float e2, float e3, float e4)
-    {
-        rows[ri].set(e1, e2, e3, e4);
-    }
-    inline void setrow(unsigned int ri, float e1, float e2, float e3, float e4, float e5)
-    {
-        rows[ri].set(e1, e2, e3, e4, e5);
-    }
-    void echelonize()
-    {
-        int lastEntry = -1;
-        for(int i=0;i<C;i++)
+        bool isRowRepresentingElementExist(unsigned int element) const
         {
-            topRow(i, lastEntry + 1);
-            
-            if(rows[i].isZeroRow())
-                break;
-            
-            for(int j=i+1;j<C;j++)
-                rows[j].reduceBy(rows[i]);
-            
-            lastEntry = rows[i].leadingEntry();
-        }
-    }
-    void reducedEchelonize()
-    {
-        echelonize();
-        for(int i=0;i<C;i++)
-        {
-            if(rows[i].isZeroRow())
-                break;
-            
-            for(int j=0;j<i;j++)
-                rows[j].reduceBy(rows[i]);
-            
-            rows[i].normalizeToLeadingEntry();
-        }
-    }
-    
-    bool hasSolution()
-    {
-        for(int i=0;i<rows.size();i++)
-            if(rows[i].coefficientNumber() == 0 && rows[i].last() != 0)
-                return false;
-        return true;
-    }
-    
-    bool has1Solution()
-    {
-        if(!hasSolution())
+            for(int i=0;i<C;i++)
+                if(rows[i].leadingEntry()==element)
+                    return true;
             return false;
+        }
+        const jlinearrow<R>& rowRepresentingElement(unsigned int element) const
+        {
+            for(int i=0;i<C;i++)
+                if(rows[i].leadingEntry()==element)
+                    return rows[i];
+            throw "no row representing nth element";
+        }
+    public:
+        jlinearsystem()
+        {
+            if(C > R)
+                throw "C > R not supported";
+            rows.reserve(C);
+            for(int i=0;i<C;i++)
+                rows.push_back(jlinearrow<R>());
+        }
+        float getAt(unsigned int c, unsigned int r) const
+        {
+            if(c >= C)
+                throw "sefqiqiqiqiooooo";
+            return rows[c].getAt(r);
+        }
+        inline void setrow(unsigned int ri, float e1, float e2, float e3, float e4)
+        {
+            rows[ri].set(e1, e2, e3, e4);
+        }
+        inline void setrow(unsigned int ri, float e1, float e2, float e3, float e4, float e5)
+        {
+            rows[ri].set(e1, e2, e3, e4, e5);
+        }
+        void echelonize()
+        {
+            int lastEntry = -1;
+            for(int i=0;i<C;i++)
+            {
+                topRow(i, lastEntry + 1);
+                
+                if(rows[i].isZeroRow())
+                    break;
+                
+                for(int j=i+1;j<C;j++)
+                    rows[j].reduceBy(rows[i]);
+                
+                lastEntry = rows[i].leadingEntry();
+            }
+        }
+        void reducedEchelonize()
+        {
+            echelonize();
+            for(int i=0;i<C;i++)
+            {
+                if(rows[i].isZeroRow())
+                    break;
+                
+                for(int j=0;j<i;j++)
+                    rows[j].reduceBy(rows[i]);
+                
+                rows[i].normalizeToLeadingEntry();
+            }
+        }
         
-        for(int i=0;i<rows.size();i++)
-            if(rows[i].coefficientNumber() > 1)
-                return false;
-        return true;
-    }
-    
-    void getSolution(float* solution)
-    {
-        if(!hasSolution())
-            throw "no solution";
-        if(!has1Solution())
-            throw "more than 1 solution";
-        for(int i=0;i<C;i++)
-            solution[i] = rows[i].getAt(R-1);
-    }
-    
-    void getColumnAt(int idx, float* column)
-    {
-        for(int i=0;i<C;i++)
-            column[i] = rows[i].getAt(idx);
-    }
-};
-
+        bool hasSolution() const
+        {
+            for(int i=0;i<rows.size();i++)
+                if(!rows[i].isValid())
+                    return false;
+            return true;
+        }
+        bool isElementFreeVariable(unsigned int element) const
+        {
+            return !isRowRepresentingElementExist(element);
+        }
+        
+        float getCoefficientAt(unsigned int element, unsigned int nth)
+        {
+            return rowRepresentingElement(element).getCoefficientAt(nth);
+        }
+        unsigned int getNumberFreeVariableDependencyOfElement(unsigned int element)
+        {
+            return rowRepresentingElement(element).getNumberFreeVariableDependency();
+        }
+        float getSumOfFreeVariableCoefficientOfElement(unsigned int element)
+        {
+            return rowRepresentingElement(element).getSumOfFreeVariableCoefficients();
+        }
+    };
+}
 #endif /* jlinearsystem_hpp */

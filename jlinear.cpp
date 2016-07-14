@@ -73,9 +73,12 @@ matrix_float4x4 jlinear::makePlaneDistanceK(float3 p1, float3 p2, float3 p3)
     float sqrfv;
     
     if(abs(mag) < 0.0001)
-        sqrfv = 1;
-    else
-        sqrfv = 1.f/mag;
+        throw "magnitude a,b,c cant be 0";
+    
+    sqrfv = 1.f/mag;
+    
+    if(abs(1 - (mag * sqrfv)) > 0.0001)
+        throw "mag a,b,c must be 1";
     
     float4 fvcs4{fvcs[0], fvcs[1], fvcs[2], fvcs[3]};
     float4 zero4{0,0,0,0};

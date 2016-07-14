@@ -122,6 +122,15 @@ void testPlane(float p1x, float p1y, float p1z,
                   0, 1, 10,
                   5, 1 + (5*sqrtf(3)), 0, 10);
         
+        testPlane(1, 2, -2,
+                  3, -2, 1,
+                  5, 1, -4,
+                  8, 9, -30, 8.4804466608f);
+        testPlane(-20, 54, 33,
+                  24, 0, 23,
+                  9, -200, 8,
+                  -20, 0, -30, 57.803589084);
+        
     }
     catch(const char* msg)
     {

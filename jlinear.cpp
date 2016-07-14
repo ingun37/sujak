@@ -14,30 +14,19 @@ using namespace std;
 using namespace simd;
 using namespace jlinear;
 
-template <unsigned int C, unsigned int R>
-void printSystem(const jlinearsystem<C, R> system)
-{
-    cout << fixed << setprecision(2);
-    for(int i=0;i<C;i++)
-    {
-        for(int j=0;j<R;j++)
-        {
-            cout << system.getAt(i, j) << " ";
-        }
-        cout << endl;
-    }
-}
 
-void jlinear::jlineartest(float a1, float b1, float c1, float d1, float a2, float b2, float c2, float d2, float a3, float b3, float c3, float d3)
+void jlinear::getReducedEchelonMatrix34(float m[3][4], float4 v1, float4 v2, float4 v3)
 {
     jlinearsystem<3, 4> system;
     
-    system.setrow(0, a1, b1, c1, d1);
-    system.setrow(1, a2, b2, c2, d2);
-    system.setrow(2, a3, b3, c3, d3);
+    system.setrow(0, v1[0], v1[1], v1[2], v1[3]);
+    system.setrow(1, v2[0], v2[1], v2[2], v2[3]);
+    system.setrow(2, v3[0], v3[1], v3[2], v3[3]);
     
     system.reducedEchelonize();
-    printSystem(system);
+    for(int i=0;i<3;i++)
+        for(int j=0;j<4;j++)
+            m[i][j] = system.getAt(i, j);
 }
 
 matrix_float4x4 jlinear::makePlaneDistanceK(float3 p1, float3 p2, float3 p3)
@@ -64,7 +53,7 @@ matrix_float4x4 jlinear::makePlaneDistanceK(float3 p1, float3 p2, float3 p3)
         if(system.getNumberFreeVariableDependencyOfElement(i)>1)
             throw "impossible freevarialbe dependency number";
         
-        fvcs[i] = system.getSumOfFreeVariableCoefficientOfElement(i);
+        fvcs[i] = -system.getSumOfFreeVariableCoefficientOfElement(i);
     }
     
     float3 fvcs3{fvcs[0], fvcs[1], fvcs[2]};
@@ -76,9 +65,6 @@ matrix_float4x4 jlinear::makePlaneDistanceK(float3 p1, float3 p2, float3 p3)
         throw "magnitude a,b,c cant be 0";
     
     sqrfv = 1.f/mag;
-    
-    if(abs(1 - (mag * sqrfv)) > 0.0001)
-        throw "mag a,b,c must be 1";
     
     float4 fvcs4{fvcs[0], fvcs[1], fvcs[2], fvcs[3]};
     float4 zero4{0,0,0,0};

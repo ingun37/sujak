@@ -15,9 +15,7 @@
 
 namespace jlinear
 {
-    extern void jlineartest(float a1, float b1, float c1, float d1,
-                            float a2, float b2, float c2, float d2,
-                            float a3, float b3, float c3, float d3 );
+    extern void getReducedEchelonMatrix34(float m[3][4], simd::float4 v1, simd::float4 v2, simd::float4 v3);
     extern matrix_float4x4 makePlaneDistanceK(simd::float3 p1, simd::float3 p2, simd::float3 p3);
 }
 

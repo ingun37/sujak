@@ -31,7 +31,6 @@ std::ofstream *logfile = NULL;
 
 void startlog(const char* filename)
 {
-    jlinear::foo();
 	if(logfile != NULL)
 	{
 		cout << "log fil enerr not null" << endl;

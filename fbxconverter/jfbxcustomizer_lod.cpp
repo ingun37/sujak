@@ -1,4 +1,3 @@
-#include "jfbxcustomizer_lod.hpp"
 #include <set>
 #include <list>
 #include <algorithm>
@@ -6,6 +5,10 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include "jfbxcustomizer_lod.hpp"
+#include "jlinear.hpp"
+
+
 void jfbxcustomizer_lod::makebaselod()
 {
     jlod lod;
@@ -211,27 +214,6 @@ jvertex leastCostNewV(const jlvertex& v1, const jlvertex& v2)
     return solution;
 }
 
-matrix_double4x4 makeK(simd::double3 polyv1, simd::double3 polyv2, simd::double3 polyv3)
-{
-    matrix_double4x4 K;
-    
-    simd::double3 v1 = polyv2 - polyv1;
-    simd::double3 v2 = polyv3 - polyv1;
-    
-    simd::double3 up = vector_cross(v1, v2);
-    up = vector_normalize(up);
-    
-    double len = -vector_dot(up, polyv1);
-    
-    simd::double4 abcd = simd::double4{ up[0], up[1], up[2], len };
-    
-    K.columns[0] = abcd * abcd[0];
-    K.columns[1] = abcd * abcd[1];
-    K.columns[2] = abcd * abcd[2];
-    K.columns[3] = abcd * abcd[3];
-    
-    return K;
-}
 
 const simd::double4 empty4 = simd::double4{0,0,0,0};
 const matrix_double4x4 mEmpty{empty4, empty4, empty4, empty4};
@@ -246,7 +228,7 @@ void makeP(listP& P, const vector<int>& indices, const vector<jvertex>& vertices
         p.i1 = indices[i+0];
         p.i2 = indices[i+1];
         p.i3 = indices[i+2];
-        p.K = makeK(vertices[p.i1].pos, vertices[p.i2].pos, vertices[p.i3].pos);
+        p.K = jlinear::makePlaneDistanceK(vertices[p.i1].pos, vertices[p.i2].pos, vertices[p.i3].pos);
         
         P.push_back(p);
     }

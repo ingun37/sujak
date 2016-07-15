@@ -15,7 +15,7 @@ using namespace std;
 template <unsigned int N>
 class jlinearrow {
     friend jlinearrow;
-    float row[N];
+    double row[N];
     
 public:
     bool operator< (const jlinearrow& r) const
@@ -24,19 +24,19 @@ public:
             return false;
         return leadingEntry() < r.leadingEntry();
     }
-    float& operator[](unsigned int i)
+    double& operator[](unsigned int i)
     {
         if(i >= N)
             throw "asefsefiiiiii";
         return row[i];
     }
     
-    void operator*=(float f)
+    void operator*=(double f)
     {
         for(int i=0;i<N;i++)
             row[i] *= f;
     }
-    void operator/=(float f)
+    void operator/=(double f)
     {
         if(f == 0)
             throw "devivision 0";
@@ -58,14 +58,14 @@ public:
         (*this)+=(-r);
     }
     
-    jlinearrow operator*(float f) const
+    jlinearrow operator*(double f) const
     {
         jlinearrow a(*this);
         a*=f;
         return a;
     }
 
-    jlinearrow operator/(float f) const
+    jlinearrow operator/(double f) const
     {
         if(f == 0)
             throw "zero division";
@@ -93,7 +93,7 @@ public:
     }
 
     
-    void set(float e, ...)
+    void set(double e, ...)
     {
         row[0] = e;
         va_list vl;
@@ -141,12 +141,12 @@ public:
         (*this) -= r*(row[entry]/r.getAt(entry));
     }
     
-    float getAt(unsigned int i) const
+    double getAt(unsigned int i) const
     {
         return row[i];
     }
     
-    void setAt(unsigned int i, float v)
+    void setAt(unsigned int i, double v)
     {
         row[i] = v;
     }
@@ -157,7 +157,7 @@ public:
         return true;
     }
     
-    float getCoefficientAt(const unsigned int at) const
+    double getCoefficientAt(const unsigned int at) const
     {
         if(at <= leadingEntry())
             throw "leadingEntry is not coefficient!";
@@ -168,9 +168,9 @@ public:
         return row[at];
     }
     
-    float getSumOfFreeVariableCoefficients() const
+    double getSumOfFreeVariableCoefficients() const
     {
-        float sum=0;
+        double sum=0;
         for(int i=leadingEntry()+1;i<N-1;i++)
             sum += getCoefficientAt(i);
         return sum;
@@ -185,7 +185,7 @@ public:
         return cnt;
     }
     
-    float last() const
+    double last() const
     {
         return row[N-1];
     }
@@ -196,31 +196,24 @@ public:
             row[i] = 0;
     }
     
-    jlinearrow(float e1, float e2, float e3, float e4)
+    jlinearrow(double e1, double e2, double e3, double e4)
     {
         if(N != 4)
             throw "asefoo23233";
         set(e1, e2, e3, e4);
     }
     
-    jlinearrow(float e1, float e2, float e3, float e4, float e5)
+    jlinearrow(double e1, double e2, double e3, double e4, double e5)
     {
         if(N != 5)
             throw "jlinearrow e5";
         set(e1, e2, e3, e4, e5);
     }
     
-    jlinearrow(float* es)
+    jlinearrow(double* es)
     {
         for(int i=0;i<N;i++)
             row[i] = es;
-    }
-    jlinearrow( const vector<float>& ev )
-    {
-        if(ev.size() >= N)
-            throw "soefsjiefse";
-        for(int i=0;i<N;i++)
-            row[i] = ev[i];
     }
 };
 

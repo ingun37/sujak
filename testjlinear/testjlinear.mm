@@ -30,24 +30,24 @@ void testEchelon(float m11, float m12, float m13, float m14,
         }
     }
 }
-void testPlane(float p1x, float p1y, float p1z,
-               float p2x, float p2y, float p2z,
-               float p3x, float p3y, float p3z,
-               float vx, float vy, float vz, float dist)
+void testPlane(double p1x, double p1y, double p1z,
+               double p2x, double p2y, double p2z,
+               double p3x, double p3y, double p3z,
+               double vx, double vy, double vz, double dist)
 {
-    float3 p1{p1x, p1y, p1z};
-    float3 p2{p2x, p2y, p2z};
-    float3 p3{p3x, p3y, p3z};
-    matrix_float4x4 K;
+    double3 p1{p1x, p1y, p1z};
+    double3 p2{p2x, p2y, p2z};
+    double3 p3{p3x, p3y, p3z};
+    matrix_double4x4 K;
     
     K = jlinear::makePlaneDistanceK(p1, p2, p3);
     
     
     
     
-    float4 v4{vx, vy, vz, 1};
+    double4 v4{vx, vy, vz, 1};
     
-    float dsqr = vector_dot( v4, (K * v4));
+    double dsqr = vector_dot( v4, (K * v4));
     
     if(::fabs(dsqr - (dist*dist)) > 0.0001)
         throw "incorrect";

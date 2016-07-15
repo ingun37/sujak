@@ -65,17 +65,17 @@ namespace jlinear
             for(int i=0;i<C;i++)
                 rows.push_back(jlinearrow<R>());
         }
-        float getAt(unsigned int c, unsigned int r) const
+        double getAt(unsigned int c, unsigned int r) const
         {
             if(c >= C)
                 throw "sefqiqiqiqiooooo";
             return rows[c].getAt(r);
         }
-        inline void setrow(unsigned int ri, float e1, float e2, float e3, float e4)
+        inline void setrow(unsigned int ri, double e1, double e2, double e3, double e4)
         {
             rows[ri].set(e1, e2, e3, e4);
         }
-        inline void setrow(unsigned int ri, float e1, float e2, float e3, float e4, float e5)
+        inline void setrow(unsigned int ri, double e1, double e2, double e3, double e4, double e5)
         {
             rows[ri].set(e1, e2, e3, e4, e5);
         }
@@ -122,7 +122,7 @@ namespace jlinear
             return !isRowRepresentingElementExist(element);
         }
         
-        float getCoefficientAt(unsigned int element, unsigned int nth)
+        double getCoefficientAt(unsigned int element, unsigned int nth)
         {
             return rowRepresentingElement(element).getCoefficientAt(nth);
         }
@@ -130,7 +130,7 @@ namespace jlinear
         {
             return rowRepresentingElement(element).getNumberFreeVariableDependency();
         }
-        float getSumOfFreeVariableCoefficientOfElement(unsigned int element)
+        double getSumOfFreeVariableCoefficientOfElement(unsigned int element)
         {
             return rowRepresentingElement(element).getSumOfFreeVariableCoefficients();
         }

@@ -11,10 +11,21 @@
 
 
 #include <stdio.h>
-
+#include <string.h>
 #include "jconstants.h"
 #include "jallocator.hpp"
 
+class jobjinfo_static
+{
+public:
+    char name[16];
+    simd::float3 pos;
+    jobjinfo_static(char* _name, float x, float y, float z)
+    {
+        strcpy(name, _name);
+        pos = simd::float3{x, y, z};
+    }
+};
 class jskeleton;
 
 typedef void(*platformSpecificSetRenderState)(JRenderState state);
@@ -31,18 +42,16 @@ class jcore
 {
 	
 	filepool fpool;
+    bool loadstaticdone;
+    platformSpecificGetFile pfgetfile;
+    platformSpecificGetObjInfo pfgetobjinfo;
+    char* loadfile(const char *name, const char *ext);
 public:
 	jcore();
+    void init(void *vbuffers[], int *ibuffer, platformSpecificGetFile pGetFile, platformSpecificGetObjInfo pGetObjInfo);
+    void loadstatic(jobjinfo_static objinfo);
+    void doneloadstatic();
 	void update();
-	
 	void render( platformSpecificSetRenderState, platformSpecificSetPrimitive, platformSpecificRenderIndexed);
-
-    void initVideoMemoryMapper(void* buffers[], int *_buffIndex);
-	void layout();
-	
-
-	void loadAll( platformSpecificGetFile pfunc, platformSpecificGetObjInfo pgetobjinfo );
-	
-	filepool& getFilePool() {return fpool;}
 };
 #endif /* jcore_hpp */

@@ -37,10 +37,7 @@ public:
 	void setPair(id<MTLRenderPipelineState> _color, id<MTLDepthStencilState> _depth)
 	{
 		if(color != nil || depthstencil != nil || inited == true)
-		{
-			NSLog(@"reinitializing renderContext");
-			exit(1);
-		}
+            [NSException raise:@"render" format:@"reinitializing renderContext"];
 		
 		color = _color;
 		depthstencil = _depth;
@@ -74,40 +71,35 @@ void withMetalGetObjInfo(const char* jobjname, char* nameskel, char* namemesh, s
     strncpy(namemesh, [mesh UTF8String], strlen([mesh UTF8String]));
 }
 
+
 void withMetalLoadFile(const char* szFileName, const char* szExt, char* &file, unsigned long& size)
 {
+    const unsigned int tmpfilebuffsize = (1024 * 1024);
+    static char tmpfilebuff[tmpfilebuffsize];
 	NSURL* url = [[NSBundle mainBundle] URLForResource:[NSString stringWithUTF8String:szFileName] withExtension:[NSString stringWithUTF8String:szExt] subdirectory:@"meshes"];
 	NSData* data = [NSData dataWithContentsOfURL:url];
 	
 	if(data == nil)
-	{
-		NSLog(@"no file : %@ %@", [NSString stringWithUTF8String:szFileName], [NSString stringWithUTF8String:szExt]);
-		exit(1);
-	}
+        [NSException raise:@"render" format:@"no file at %@", [url absoluteString]];
 	
 	size = [data length];
-	file = core.getFilePool().getAvailable(size);
+    if(size >= tmpfilebuffsize)
+        throw "f buff shortage";
 	
-	[data getBytes:file length:size];
+	[data getBytes:tmpfilebuff length:size];
+    file = tmpfilebuff;
 }
 
 void withMetalSetRenderState( JRenderState state )
 {
 	if(_renderEncoder == nil)
-	{
-		puts("no renderencoder");
-		exit(1);
-	}
+        [NSException raise:@"render" format:@"no renderencoder"];
 	
 #ifdef DEBUG
 	for(int i=0;i<JRenderState::JRenderState_number;i++)
-	{
 		if(!renderContextPairs[i].isInited())
-		{
-			NSLog(@"one of rendercontext is not inited");
-			exit(1);
-		}
-	}
+            [NSException raise:@"render" format:@"one of rendercontexst is not inited"];
+
 #endif
 	[_renderEncoder setRenderPipelineState:renderContextPairs[state].color];
 	[_renderEncoder setDepthStencilState:renderContextPairs[state].depthstencil];
@@ -124,8 +116,7 @@ void withMetalSetPrimitive(JRenderPrimitive prim)
 			_primitiveTypeCurrent = MTLPrimitiveTypeLine;
 			break;
 		default:
-			puts("unexpected primitivetype");
-			exit(1);
+            [NSException raise:@"render" format:@"unexpected primitivetype"];
 			break;
 	}
 }
@@ -133,10 +124,8 @@ void withMetalSetPrimitive(JRenderPrimitive prim)
 void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
 {
 	if(_renderEncoder == nil)
-	{
-		puts("no encoder trying to draw");
-		exit(1);
-	}
+        [NSException raise:@"render" format:@"no encoder trying to draw"];
+    
 	[_renderEncoder drawIndexedPrimitives:_primitiveTypeCurrent indexCount:cnt indexType:MTLIndexTypeUInt32 indexBuffer:_indexBuffer indexBufferOffset:offset * sizeof(int)];
 }
 
@@ -196,18 +185,37 @@ void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
     
 	_indexBuffer = [_device newBufferWithLength:jindexbuffersize options:MTLResourceCPUCacheModeWriteCombined];
 	
-	core.loadAll(withMetalLoadFile, withMetalGetObjInfo);
-	
     void* tmpbuffers[JVertexAttribute_number];
     for(int ib = 0;ib<JVertexAttribute_number;ib++)
     {
         tmpbuffers[ib] = [_vertexbuffers[ib] contents];
     }
-    core.initVideoMemoryMapper(tmpbuffers, (int*)[_indexBuffer contents]);
-	core.layout();
-	
-	
-
+    try
+    {
+        @try
+        {
+            core.init(tmpbuffers, (int*)[_indexBuffer contents], withMetalLoadFile, withMetalGetObjInfo);
+            core.loadstatic(jobjinfo_static("soldier0", 0, 0, 0));
+            core.doneloadstatic();
+        }
+        @catch(NSException *ex)
+        {
+            NSLog(@"%@", ex);
+            throw;
+        }
+        @catch(...)
+        {
+            throw;
+        }
+    }
+    catch(const char* msg)
+    {
+        NSLog(@"%s", msg);
+    }
+    catch(...)
+    {
+        throw;
+    }
 	matrix_float4x4 mv = jmath::GetViewMatrix({0,70,400}, {0,1,0}, {0,70,0});
 	matrix_float4x4 mp = jmath::GetProjectionMatrixPerspective(1.4, 1, 1, 500);
     

@@ -51,7 +51,7 @@ T* jallocator<T,I>::getStart()
 }
 
 template<typename T, unsigned long I>
-T* jallocator<T,I>::getAt(unsigned long i) const
+T* jallocator<T,I>::getAt(unsigned long i)
 {
 	return &objs[i];
 }

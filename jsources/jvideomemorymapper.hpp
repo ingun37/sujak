@@ -39,10 +39,7 @@ public:
         for(int i=0;i<JVertexAttribute_number;i++)
         {
             if(_buffers[i] == NULL)
-            {
-                puts("video mem err");
-                exit(1);
-            }
+                throw "video mem err";
             buffers[i] = _buffers[i];
         }
         

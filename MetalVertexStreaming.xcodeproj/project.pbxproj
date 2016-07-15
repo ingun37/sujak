@@ -60,7 +60,6 @@
 		62F8146919AFBD9E00C9BDD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */; };
 		6B41FCBE1D335D0500A3329B /* jlinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B41FCBC1D335D0500A3329B /* jlinear.cpp */; };
 		6B41FCBF1D335D0500A3329B /* jlinear.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B41FCBD1D335D0500A3329B /* jlinear.hpp */; };
-		6B41FCC21D335D7800A3329B /* libjlinear.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */; };
 		6B41FCC51D3491D400A3329B /* jlinearrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B41FCC31D3491D400A3329B /* jlinearrow.cpp */; };
 		6B41FCC61D3491D400A3329B /* jlinearrow.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B41FCC41D3491D400A3329B /* jlinearrow.hpp */; };
 		6B41FCC91D34B33F00A3329B /* jlinearsystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B41FCC71D34B33F00A3329B /* jlinearsystem.cpp */; };
@@ -68,6 +67,7 @@
 		6B41FCD21D34F2A000A3329B /* testjlinear.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B41FCD11D34F2A000A3329B /* testjlinear.mm */; };
 		6B41FCD41D34F2A000A3329B /* libjlinear.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */; };
 		6B44C69B1CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B44C6991CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp */; };
+		6B568B2E1D387BFB00C7715A /* libjlinear.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */; };
 		6B6B5D641CC5D49400B6533B /* jfbxexporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D621CC5D49400B6533B /* jfbxexporter.cpp */; };
 		6B6B5D671CC5D67200B6533B /* jfbxcustomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D651CC5D67200B6533B /* jfbxcustomizer.cpp */; };
 		6B6B5D6A1CC5E97100B6533B /* jfbxvalidater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D681CC5E97100B6533B /* jfbxvalidater.cpp */; };
@@ -86,14 +86,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6B41FCC01D335D6E00A3329B /* PBXContainerItemProxy */ = {
+		6B41FCD51D34F2A000A3329B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 626C5F9B193298C6007A3E00 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6B41FCB61D335CD800A3329B;
 			remoteInfo = jlinear;
 		};
-		6B41FCD51D34F2A000A3329B /* PBXContainerItemProxy */ = {
+		6B568B2C1D387BF700C7715A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 626C5F9B193298C6007A3E00 /* Project object */;
 			proxyType = 1;
@@ -214,7 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B41FCC21D335D7800A3329B /* libjlinear.dylib in Frameworks */,
+				6B568B2E1D387BFB00C7715A /* libjlinear.dylib in Frameworks */,
 				167D37511C75923600C8F698 /* libfbxsdk.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,7 +486,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6B41FCC11D335D6E00A3329B /* PBXTargetDependency */,
+				6B568B2D1D387BF700C7715A /* PBXTargetDependency */,
 			);
 			name = fbxconverter;
 			productName = fbxconverter;
@@ -683,15 +683,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6B41FCC11D335D6E00A3329B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6B41FCB61D335CD800A3329B /* jlinear */;
-			targetProxy = 6B41FCC01D335D6E00A3329B /* PBXContainerItemProxy */;
-		};
 		6B41FCD61D34F2A000A3329B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6B41FCB61D335CD800A3329B /* jlinear */;
 			targetProxy = 6B41FCD51D34F2A000A3329B /* PBXContainerItemProxy */;
+		};
+		6B568B2D1D387BF700C7715A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B41FCB61D335CD800A3329B /* jlinear */;
+			targetProxy = 6B568B2C1D387BF700C7715A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

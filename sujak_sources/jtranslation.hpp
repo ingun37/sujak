@@ -16,18 +16,9 @@ class jtranslation
 public:
 	simd::float4 pos;
 
-	jtranslation()
-	{
-		pos = {0,0,0,1};
-	}
-	jtranslation(float x, float y, float z)
-	{
-		pos = {x, y, z , 1};
-	}
-	jtranslation(simd::float4 _pos)
-	{
-		pos = _pos;
-	}
+    jtranslation();
+    jtranslation(float x, float y, float z);
+    jtranslation(simd::float4 _pos);
     
     inline void sety(float v)
     {

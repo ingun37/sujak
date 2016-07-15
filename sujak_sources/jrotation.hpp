@@ -22,14 +22,8 @@ class jrotation
 public:
 	simd::float3 xyz;
 
-	jrotation()
-	{
-        xyz = {0,0,0};
-	}
-	jrotation(simd::float3 _xyz)
-	{
-		xyz = _xyz;
-	}
+    jrotation();
+    jrotation(simd::float3 _xyz);
     
     inline void degree(float _x, float _y, float _z)
     {

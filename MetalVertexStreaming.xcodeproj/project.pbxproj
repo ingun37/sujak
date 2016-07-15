@@ -10,42 +10,10 @@
 		1606DB2D1BF9AA0500976579 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1606DB2C1BF9AA0500976579 /* main.cpp */; };
 		1606DB3F1BF9C8E900976579 /* fbxs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1606DB3D1BF9C22300976579 /* fbxs */; };
 		1606DB411BF9C98900976579 /* meshes in Resources */ = {isa = PBXBuildFile; fileRef = 1606DB401BF9C98900976579 /* meshes */; };
-		162BA9381C30B9FC00EE9D1A /* jbinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162BA9361C30B9FC00EE9D1A /* jbinary.cpp */; };
-		162BA9391C30B9FC00EE9D1A /* jbinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162BA9361C30B9FC00EE9D1A /* jbinary.cpp */; };
-		162BA93A1C30B9FC00EE9D1A /* jbinary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 162BA9371C30B9FC00EE9D1A /* jbinary.hpp */; };
-		163BF8A01C2287500046E0E1 /* jskinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 163BF89E1C2287500046E0E1 /* jskinner.cpp */; };
-		163BF8A11C2287500046E0E1 /* jskinner.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 163BF89F1C2287500046E0E1 /* jskinner.hpp */; };
-		165595B81C213E5F00A394D6 /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16657DDB1C181A6700570828 /* jtranslation.cpp */; };
-		16657DDD1C181A6700570828 /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16657DDB1C181A6700570828 /* jtranslation.cpp */; };
-		16657DDE1C181A6700570828 /* jtranslation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16657DDC1C181A6700570828 /* jtranslation.hpp */; };
-		167470801C0713B9008BCAE1 /* jrotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674707E1C0713B9008BCAE1 /* jrotation.cpp */; };
-		167470811C0713B9008BCAE1 /* jrotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674707E1C0713B9008BCAE1 /* jrotation.cpp */; };
-		167470821C0713B9008BCAE1 /* jrotation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1674707F1C0713B9008BCAE1 /* jrotation.hpp */; };
-		167470851C083BA6008BCAE1 /* jallocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 167470831C083BA6008BCAE1 /* jallocator.cpp */; };
-		167470861C083BA6008BCAE1 /* jallocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 167470841C083BA6008BCAE1 /* jallocator.hpp */; };
 		167D37511C75923600C8F698 /* libfbxsdk.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1606DB311BF9AAB000976579 /* libfbxsdk.dylib */; };
 		167D37531C75924800C8F698 /* libfbxsdk.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 167D37521C75924800C8F698 /* libfbxsdk.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		1682CBFA1C2BDEDD0090C084 /* jvideomemorymapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1682CBF81C2BDEDD0090C084 /* jvideomemorymapper.cpp */; };
-		1682CBFB1C2BDEDD0090C084 /* jvideomemorymapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1682CBF91C2BDEDD0090C084 /* jvideomemorymapper.hpp */; };
-		168D336B1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */; };
-		16CFCA421C06EB00009E29C2 /* jjoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 16CFCA411C06EB00009E29C2 /* jjoint.h */; };
-		16E1C5C81C15B3420055B8F5 /* jnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16E1C5C61C15B3420055B8F5 /* jnode.cpp */; };
-		16E1C5C91C15B3420055B8F5 /* jnode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16E1C5C71C15B3420055B8F5 /* jnode.hpp */; };
-		16EC79E91BE7637000C1BACA /* jmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EC79E71BE7637000C1BACA /* jmath.cpp */; };
-		16EC79EA1BE7637000C1BACA /* jmath.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16EC79E81BE7637000C1BACA /* jmath.hpp */; };
-		16EC79ED1BE8AB7F00C1BACA /* jskeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EC79EB1BE8AB7F00C1BACA /* jskeleton.cpp */; };
-		16EC79EE1BE8AB7F00C1BACA /* jskeleton.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16EC79EC1BE8AB7F00C1BACA /* jskeleton.hpp */; };
-		16EC79F51BE8B32D00C1BACA /* jrenderobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EC79F31BE8B32D00C1BACA /* jrenderobject.cpp */; };
-		16EC79F61BE8B32D00C1BACA /* jrenderobject.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16EC79F41BE8B32D00C1BACA /* jrenderobject.hpp */; };
-		16EC79FF1BE9A9D800C1BACA /* jrenderstategroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EC79FD1BE9A9D800C1BACA /* jrenderstategroup.cpp */; };
-		16EC7A001BE9A9D800C1BACA /* jrenderstategroup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16EC79FE1BE9A9D800C1BACA /* jrenderstategroup.hpp */; };
-		16EC7A141BE9E28400C1BACA /* jrenderprimitivegroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EC7A121BE9E28400C1BACA /* jrenderprimitivegroup.cpp */; };
-		16EC7A151BE9E28400C1BACA /* jrenderprimitivegroup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16EC7A131BE9E28400C1BACA /* jrenderprimitivegroup.hpp */; };
-		16EC7A281BE9F44600C1BACA /* jcore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16EC7A261BE9F44600C1BACA /* jcore.cpp */; };
-		16EC7A291BE9F44600C1BACA /* jcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 16EC7A271BE9F44600C1BACA /* jcore.hpp */; };
 		622A9BA519A98514007F8120 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 622A9BA419A98514007F8120 /* Main.storyboard */; };
 		623F27DF19341462000FA88C /* shaders.metal in Resources */ = {isa = PBXBuildFile; fileRef = 623F27DE19341462000FA88C /* shaders.metal */; };
-		626C5FAA193298C6007A3E00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 626C5FA9193298C6007A3E00 /* main.m */; };
 		626C5FBA193298C6007A3E00 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626C5FB9193298C6007A3E00 /* Images.xcassets */; };
 		626C5FD7193298EF007A3E00 /* AAPLAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 626C5FCF193298EF007A3E00 /* AAPLAppDelegate.h */; };
 		626C5FD8193298EF007A3E00 /* AAPLAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 626C5FD0193298EF007A3E00 /* AAPLAppDelegate.mm */; };
@@ -75,14 +43,30 @@
 		6B6B5D701CC60A6100B6533B /* jfbxcustomizer_joint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D6E1CC60A6100B6533B /* jfbxcustomizer_joint.cpp */; };
 		6B6B5D731CC60CF000B6533B /* jfbxcustomizer_vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D711CC60CF000B6533B /* jfbxcustomizer_vertex.cpp */; };
 		6B6B5D761CC62AB800B6533B /* jfbxcustomizer_skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D741CC62AB800B6533B /* jfbxcustomizer_skin.cpp */; };
-		6B6B5D771CC63A5A00B6533B /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BDD27921CB754F2005190B4 /* jcurve.cpp */; };
 		6B6B5D781CC63A5A00B6533B /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */; };
-		6BAC12161CC77B5500783713 /* jconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BAC12151CC77B5500783713 /* jconstants.h */; };
-		6BAC12181CC77B7300783713 /* jconstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC12171CC77B7300783713 /* jconstants.cpp */; };
-		6BC97EDD1CBCE3AC0042EA34 /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */; };
-		6BC97EDF1CBCE3AC0042EA34 /* jcurvenode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */; };
-		6BDD27941CB754F2005190B4 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BDD27921CB754F2005190B4 /* jcurve.cpp */; };
-		6BDD27961CB754F2005190B4 /* jcurve.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BDD27931CB754F2005190B4 /* jcurve.hpp */; };
+		6BA9BAF51D38A9E1003F35B1 /* jcore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAF11D38A9C9003F35B1 /* jcore.cpp */; };
+		6BA9BB241D38ABDE003F35B1 /* libsujakmobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA9BAE61D38A930003F35B1 /* libsujakmobile.a */; };
+		6BA9BB251D38AD1A003F35B1 /* jmath.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BA9BB011D38AB7B003F35B1 /* jmath.hpp */; };
+		6BA9BB261D38AD20003F35B1 /* jmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB001D38AB7B003F35B1 /* jmath.cpp */; };
+		6BA9BB271D38AD5E003F35B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 626C5FA9193298C6007A3E00 /* main.m */; };
+		6BA9BB281D38ADDA003F35B1 /* jallocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAFA1D38AB7B003F35B1 /* jallocator.cpp */; };
+		6BA9BB291D38ADDA003F35B1 /* jbinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAFC1D38AB7B003F35B1 /* jbinary.cpp */; };
+		6BA9BB2A1D38ADDA003F35B1 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAFE1D38AB7B003F35B1 /* jcurve.cpp */; };
+		6BA9BB2B1D38ADDA003F35B1 /* jmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB001D38AB7B003F35B1 /* jmath.cpp */; };
+		6BA9BB2C1D38ADDA003F35B1 /* jnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB021D38AB7B003F35B1 /* jnode.cpp */; };
+		6BA9BB2D1D38ADDA003F35B1 /* jrenderobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB041D38AB7B003F35B1 /* jrenderobject.cpp */; };
+		6BA9BB2E1D38ADDA003F35B1 /* jrenderstategroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB061D38AB7B003F35B1 /* jrenderstategroup.cpp */; };
+		6BA9BB2F1D38ADDA003F35B1 /* jskeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB081D38AB7B003F35B1 /* jskeleton.cpp */; };
+		6BA9BB301D38ADDA003F35B1 /* jskinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB0A1D38AB7B003F35B1 /* jskinner.cpp */; };
+		6BA9BB311D38ADDA003F35B1 /* jvideomemorymapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB0C1D38AB7B003F35B1 /* jvideomemorymapper.cpp */; };
+		6BA9BB321D38ADDA003F35B1 /* jconstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAF61D38AA90003F35B1 /* jconstants.cpp */; };
+		6BA9BB371D38AE0D003F35B1 /* jrenderprimitivegroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB331D38AE0A003F35B1 /* jrenderprimitivegroup.cpp */; };
+		6BA9BB3A1D38AF7B003F35B1 /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB381D38AF7B003F35B1 /* jtranslation.cpp */; };
+		6BA9BB3B1D38AF7B003F35B1 /* jtranslation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BA9BB391D38AF7B003F35B1 /* jtranslation.hpp */; };
+		6BA9BB3C1D38AF82003F35B1 /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB381D38AF7B003F35B1 /* jtranslation.cpp */; };
+		6BA9BB3F1D38AFB8003F35B1 /* jrotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB3D1D38AFB8003F35B1 /* jrotation.cpp */; };
+		6BA9BB401D38AFB8003F35B1 /* jrotation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BA9BB3E1D38AFB8003F35B1 /* jrotation.hpp */; };
+		6BA9BB411D38AFD6003F35B1 /* jrotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB3D1D38AFB8003F35B1 /* jrotation.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +84,13 @@
 			remoteGlobalIDString = 6B41FCB61D335CD800A3329B;
 			remoteInfo = jlinear;
 		};
+		6BA9BB221D38ABD5003F35B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 626C5F9B193298C6007A3E00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BA9BAE51D38A930003F35B1;
+			remoteInfo = sujakmobile;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -114,6 +105,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6BA9BAE41D38A930003F35B1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -125,37 +125,11 @@
 		1606DB3B1BF9C03C00976579 /* libfbxsdk.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfbxsdk.dylib; path = "../../../Applications/Autodesk/FBX SDK/2015.1/lib/clang/release/libfbxsdk.dylib"; sourceTree = "<group>"; };
 		1606DB3D1BF9C22300976579 /* fbxs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fbxs; sourceTree = "<group>"; };
 		1606DB401BF9C98900976579 /* meshes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = meshes; sourceTree = "<group>"; };
-		162BA9361C30B9FC00EE9D1A /* jbinary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jbinary.cpp; sourceTree = "<group>"; };
-		162BA9371C30B9FC00EE9D1A /* jbinary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jbinary.hpp; sourceTree = "<group>"; };
-		163BF89E1C2287500046E0E1 /* jskinner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskinner.cpp; sourceTree = "<group>"; };
-		163BF89F1C2287500046E0E1 /* jskinner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskinner.hpp; sourceTree = "<group>"; };
-		16657DDB1C181A6700570828 /* jtranslation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jtranslation.cpp; sourceTree = "<group>"; };
-		16657DDC1C181A6700570828 /* jtranslation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jtranslation.hpp; sourceTree = "<group>"; };
-		1674707E1C0713B9008BCAE1 /* jrotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrotation.cpp; sourceTree = "<group>"; };
-		1674707F1C0713B9008BCAE1 /* jrotation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrotation.hpp; sourceTree = "<group>"; };
-		167470831C083BA6008BCAE1 /* jallocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jallocator.cpp; path = jsources/jallocator.cpp; sourceTree = "<group>"; };
-		167470841C083BA6008BCAE1 /* jallocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jallocator.hpp; path = jsources/jallocator.hpp; sourceTree = "<group>"; };
 		167D374D1C758F3C00C8F698 /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../Applications/Autodesk/FBX SDK/2015.1/lib/clang/release/libfbxsdk.a"; sourceTree = "<group>"; };
 		167D37521C75924800C8F698 /* libfbxsdk.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfbxsdk.dylib; path = "../../../Applications/Autodesk/FBX SDK/2015.1/lib/clang/release/libfbxsdk.dylib"; sourceTree = "<group>"; };
-		1682CBF81C2BDEDD0090C084 /* jvideomemorymapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jvideomemorymapper.cpp; path = jsources/jvideomemorymapper.cpp; sourceTree = "<group>"; };
-		1682CBF91C2BDEDD0090C084 /* jvideomemorymapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jvideomemorymapper.hpp; path = jsources/jvideomemorymapper.hpp; sourceTree = "<group>"; };
 		168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvideomemoryaligninfo.h; sourceTree = "<group>"; };
 		16CFCA411C06EB00009E29C2 /* jjoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjoint.h; sourceTree = "<group>"; };
-		16E1C5C61C15B3420055B8F5 /* jnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jnode.cpp; path = jsources/jnode.cpp; sourceTree = "<group>"; };
-		16E1C5C71C15B3420055B8F5 /* jnode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jnode.hpp; path = jsources/jnode.hpp; sourceTree = "<group>"; };
 		16EC79E51BE756F000C1BACA /* jdefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = jdefinitions.h; path = MetalVertexStreaming/jdefinitions.h; sourceTree = "<group>"; };
-		16EC79E71BE7637000C1BACA /* jmath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jmath.cpp; path = jsources/jmath.cpp; sourceTree = "<group>"; };
-		16EC79E81BE7637000C1BACA /* jmath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jmath.hpp; path = jsources/jmath.hpp; sourceTree = "<group>"; };
-		16EC79EB1BE8AB7F00C1BACA /* jskeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jskeleton.cpp; path = jsources/jskeleton.cpp; sourceTree = "<group>"; };
-		16EC79EC1BE8AB7F00C1BACA /* jskeleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jskeleton.hpp; path = jsources/jskeleton.hpp; sourceTree = "<group>"; };
-		16EC79F31BE8B32D00C1BACA /* jrenderobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jrenderobject.cpp; path = jsources/jrenderobject.cpp; sourceTree = "<group>"; };
-		16EC79F41BE8B32D00C1BACA /* jrenderobject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jrenderobject.hpp; path = jsources/jrenderobject.hpp; sourceTree = "<group>"; };
-		16EC79FD1BE9A9D800C1BACA /* jrenderstategroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jrenderstategroup.cpp; path = jsources/jrenderstategroup.cpp; sourceTree = "<group>"; };
-		16EC79FE1BE9A9D800C1BACA /* jrenderstategroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jrenderstategroup.hpp; path = jsources/jrenderstategroup.hpp; sourceTree = "<group>"; };
-		16EC7A121BE9E28400C1BACA /* jrenderprimitivegroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jrenderprimitivegroup.cpp; path = jsources/jrenderprimitivegroup.cpp; sourceTree = "<group>"; };
-		16EC7A131BE9E28400C1BACA /* jrenderprimitivegroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jrenderprimitivegroup.hpp; path = jsources/jrenderprimitivegroup.hpp; sourceTree = "<group>"; };
-		16EC7A261BE9F44600C1BACA /* jcore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jcore.cpp; path = jsources/jcore.cpp; sourceTree = "<group>"; };
-		16EC7A271BE9F44600C1BACA /* jcore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jcore.hpp; path = jsources/jcore.hpp; sourceTree = "<group>"; };
 		622A9BA419A98514007F8120 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		623F27DE19341462000FA88C /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
 		626C5FA4193298C6007A3E00 /* MetalVertexStreaming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalVertexStreaming.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,13 +174,40 @@
 		6B6B5D721CC60CF000B6533B /* jfbxcustomizer_vertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_vertex.hpp; sourceTree = "<group>"; };
 		6B6B5D741CC62AB800B6533B /* jfbxcustomizer_skin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_skin.cpp; sourceTree = "<group>"; };
 		6B6B5D751CC62AB800B6533B /* jfbxcustomizer_skin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_skin.hpp; sourceTree = "<group>"; };
-		6BAC12151CC77B5500783713 /* jconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jconstants.h; sourceTree = "<group>"; };
-		6BAC12171CC77B7300783713 /* jconstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jconstants.cpp; sourceTree = "<group>"; };
+		6BA9BAE61D38A930003F35B1 /* libsujakmobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsujakmobile.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BA9BAF11D38A9C9003F35B1 /* jcore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcore.cpp; sourceTree = "<group>"; };
+		6BA9BAF21D38A9C9003F35B1 /* jcore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcore.hpp; sourceTree = "<group>"; };
+		6BA9BAF61D38AA90003F35B1 /* jconstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jconstants.cpp; sourceTree = "<group>"; };
+		6BA9BAF71D38AA90003F35B1 /* jconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jconstants.h; sourceTree = "<group>"; };
+		6BA9BAFA1D38AB7B003F35B1 /* jallocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jallocator.cpp; sourceTree = "<group>"; };
+		6BA9BAFB1D38AB7B003F35B1 /* jallocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jallocator.hpp; sourceTree = "<group>"; };
+		6BA9BAFC1D38AB7B003F35B1 /* jbinary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jbinary.cpp; sourceTree = "<group>"; };
+		6BA9BAFD1D38AB7B003F35B1 /* jbinary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jbinary.hpp; sourceTree = "<group>"; };
+		6BA9BAFE1D38AB7B003F35B1 /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurve.cpp; sourceTree = "<group>"; };
+		6BA9BAFF1D38AB7B003F35B1 /* jcurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurve.hpp; sourceTree = "<group>"; };
+		6BA9BB001D38AB7B003F35B1 /* jmath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jmath.cpp; sourceTree = "<group>"; };
+		6BA9BB011D38AB7B003F35B1 /* jmath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmath.hpp; sourceTree = "<group>"; };
+		6BA9BB021D38AB7B003F35B1 /* jnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnode.cpp; sourceTree = "<group>"; };
+		6BA9BB031D38AB7B003F35B1 /* jnode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jnode.hpp; sourceTree = "<group>"; };
+		6BA9BB041D38AB7B003F35B1 /* jrenderobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderobject.cpp; sourceTree = "<group>"; };
+		6BA9BB051D38AB7B003F35B1 /* jrenderobject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderobject.hpp; sourceTree = "<group>"; };
+		6BA9BB061D38AB7B003F35B1 /* jrenderstategroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderstategroup.cpp; sourceTree = "<group>"; };
+		6BA9BB071D38AB7B003F35B1 /* jrenderstategroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderstategroup.hpp; sourceTree = "<group>"; };
+		6BA9BB081D38AB7B003F35B1 /* jskeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskeleton.cpp; sourceTree = "<group>"; };
+		6BA9BB091D38AB7B003F35B1 /* jskeleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskeleton.hpp; sourceTree = "<group>"; };
+		6BA9BB0A1D38AB7B003F35B1 /* jskinner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskinner.cpp; sourceTree = "<group>"; };
+		6BA9BB0B1D38AB7B003F35B1 /* jskinner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskinner.hpp; sourceTree = "<group>"; };
+		6BA9BB0C1D38AB7B003F35B1 /* jvideomemorymapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jvideomemorymapper.cpp; sourceTree = "<group>"; };
+		6BA9BB0D1D38AB7B003F35B1 /* jvideomemorymapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jvideomemorymapper.hpp; sourceTree = "<group>"; };
+		6BA9BB331D38AE0A003F35B1 /* jrenderprimitivegroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderprimitivegroup.cpp; sourceTree = "<group>"; };
+		6BA9BB341D38AE0A003F35B1 /* jrenderprimitivegroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderprimitivegroup.hpp; sourceTree = "<group>"; };
+		6BA9BB381D38AF7B003F35B1 /* jtranslation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jtranslation.cpp; sourceTree = "<group>"; };
+		6BA9BB391D38AF7B003F35B1 /* jtranslation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jtranslation.hpp; sourceTree = "<group>"; };
+		6BA9BB3D1D38AFB8003F35B1 /* jrotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrotation.cpp; sourceTree = "<group>"; };
+		6BA9BB3E1D38AFB8003F35B1 /* jrotation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrotation.hpp; sourceTree = "<group>"; };
 		6BAC12191CC8927500783713 /* jvector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvector.h; sourceTree = "<group>"; };
 		6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurvenode.cpp; sourceTree = "<group>"; };
 		6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurvenode.hpp; sourceTree = "<group>"; };
-		6BDD27921CB754F2005190B4 /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jcurve.cpp; path = jsources/jcurve.cpp; sourceTree = "<group>"; };
-		6BDD27931CB754F2005190B4 /* jcurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = jcurve.hpp; path = jsources/jcurve.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA9BB241D38ABDE003F35B1 /* libsujakmobile.a in Frameworks */,
 				626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */,
 				626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */,
 			);
@@ -240,6 +242,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B41FCD41D34F2A000A3329B /* libjlinear.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BA9BAE31D38A930003F35B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,39 +283,9 @@
 		16EC79E61BE7633B00C1BACA /* jsources */ = {
 			isa = PBXGroup;
 			children = (
-				6BDD27921CB754F2005190B4 /* jcurve.cpp */,
-				6BDD27931CB754F2005190B4 /* jcurve.hpp */,
 				16EC79E51BE756F000C1BACA /* jdefinitions.h */,
-				6BAC12151CC77B5500783713 /* jconstants.h */,
-				6BAC12171CC77B7300783713 /* jconstants.cpp */,
-				16EC79E71BE7637000C1BACA /* jmath.cpp */,
-				16EC79E81BE7637000C1BACA /* jmath.hpp */,
-				16EC79EB1BE8AB7F00C1BACA /* jskeleton.cpp */,
-				16EC79EC1BE8AB7F00C1BACA /* jskeleton.hpp */,
-				16EC79F31BE8B32D00C1BACA /* jrenderobject.cpp */,
-				16EC79F41BE8B32D00C1BACA /* jrenderobject.hpp */,
-				16EC79FD1BE9A9D800C1BACA /* jrenderstategroup.cpp */,
-				16EC79FE1BE9A9D800C1BACA /* jrenderstategroup.hpp */,
-				16EC7A121BE9E28400C1BACA /* jrenderprimitivegroup.cpp */,
-				16EC7A131BE9E28400C1BACA /* jrenderprimitivegroup.hpp */,
-				16EC7A261BE9F44600C1BACA /* jcore.cpp */,
-				16EC7A271BE9F44600C1BACA /* jcore.hpp */,
 				16CFCA411C06EB00009E29C2 /* jjoint.h */,
-				1674707E1C0713B9008BCAE1 /* jrotation.cpp */,
-				1674707F1C0713B9008BCAE1 /* jrotation.hpp */,
 				6B351CC51CBE3BFF00540D7F /* bitmap_image.hpp */,
-				167470831C083BA6008BCAE1 /* jallocator.cpp */,
-				167470841C083BA6008BCAE1 /* jallocator.hpp */,
-				16E1C5C61C15B3420055B8F5 /* jnode.cpp */,
-				16E1C5C71C15B3420055B8F5 /* jnode.hpp */,
-				16657DDB1C181A6700570828 /* jtranslation.cpp */,
-				16657DDC1C181A6700570828 /* jtranslation.hpp */,
-				163BF89E1C2287500046E0E1 /* jskinner.cpp */,
-				163BF89F1C2287500046E0E1 /* jskinner.hpp */,
-				1682CBF81C2BDEDD0090C084 /* jvideomemorymapper.cpp */,
-				1682CBF91C2BDEDD0090C084 /* jvideomemorymapper.hpp */,
-				162BA9361C30B9FC00EE9D1A /* jbinary.cpp */,
-				162BA9371C30B9FC00EE9D1A /* jbinary.hpp */,
 				168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */,
 				6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */,
 				6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */,
@@ -337,6 +316,7 @@
 		626C5F9A193298C6007A3E00 = {
 			isa = PBXGroup;
 			children = (
+				6BA9BAF01D38A9C9003F35B1 /* sujak_sources */,
 				6B41FCBB1D335CED00A3329B /* jlinear */,
 				167D37521C75924800C8F698 /* libfbxsdk.dylib */,
 				167D374D1C758F3C00C8F698 /* libfbxsdk.a */,
@@ -347,6 +327,7 @@
 				626C5FA6193298C6007A3E00 /* MetalVertexStreaming */,
 				1606DB2B1BF9AA0500976579 /* fbxconverter */,
 				6B41FCD01D34F2A000A3329B /* testjlinear */,
+				6BA9BAE71D38A930003F35B1 /* sujakmobile */,
 				623F27DD1934144B000FA88C /* Frameworks */,
 				626C5FA5193298C6007A3E00 /* Products */,
 			);
@@ -359,6 +340,7 @@
 				1606DB2A1BF9AA0500976579 /* fbxconverter */,
 				6B41FCB71D335CD800A3329B /* libjlinear.dylib */,
 				6B41FCCF1D34F2A000A3329B /* testjlinear.xctest */,
+				6BA9BAE61D38A930003F35B1 /* libsujakmobile.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,6 +412,50 @@
 			path = testjlinear;
 			sourceTree = "<group>";
 		};
+		6BA9BAE71D38A930003F35B1 /* sujakmobile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sujakmobile;
+			sourceTree = "<group>";
+		};
+		6BA9BAF01D38A9C9003F35B1 /* sujak_sources */ = {
+			isa = PBXGroup;
+			children = (
+				6BA9BB3D1D38AFB8003F35B1 /* jrotation.cpp */,
+				6BA9BB3E1D38AFB8003F35B1 /* jrotation.hpp */,
+				6BA9BB381D38AF7B003F35B1 /* jtranslation.cpp */,
+				6BA9BB391D38AF7B003F35B1 /* jtranslation.hpp */,
+				6BA9BB331D38AE0A003F35B1 /* jrenderprimitivegroup.cpp */,
+				6BA9BB341D38AE0A003F35B1 /* jrenderprimitivegroup.hpp */,
+				6BA9BAFA1D38AB7B003F35B1 /* jallocator.cpp */,
+				6BA9BAFB1D38AB7B003F35B1 /* jallocator.hpp */,
+				6BA9BAFC1D38AB7B003F35B1 /* jbinary.cpp */,
+				6BA9BAFD1D38AB7B003F35B1 /* jbinary.hpp */,
+				6BA9BAFE1D38AB7B003F35B1 /* jcurve.cpp */,
+				6BA9BAFF1D38AB7B003F35B1 /* jcurve.hpp */,
+				6BA9BB001D38AB7B003F35B1 /* jmath.cpp */,
+				6BA9BB011D38AB7B003F35B1 /* jmath.hpp */,
+				6BA9BB021D38AB7B003F35B1 /* jnode.cpp */,
+				6BA9BB031D38AB7B003F35B1 /* jnode.hpp */,
+				6BA9BB041D38AB7B003F35B1 /* jrenderobject.cpp */,
+				6BA9BB051D38AB7B003F35B1 /* jrenderobject.hpp */,
+				6BA9BB061D38AB7B003F35B1 /* jrenderstategroup.cpp */,
+				6BA9BB071D38AB7B003F35B1 /* jrenderstategroup.hpp */,
+				6BA9BB081D38AB7B003F35B1 /* jskeleton.cpp */,
+				6BA9BB091D38AB7B003F35B1 /* jskeleton.hpp */,
+				6BA9BB0A1D38AB7B003F35B1 /* jskinner.cpp */,
+				6BA9BB0B1D38AB7B003F35B1 /* jskinner.hpp */,
+				6BA9BB0C1D38AB7B003F35B1 /* jvideomemorymapper.cpp */,
+				6BA9BB0D1D38AB7B003F35B1 /* jvideomemorymapper.hpp */,
+				6BA9BAF61D38AA90003F35B1 /* jconstants.cpp */,
+				6BA9BAF71D38AA90003F35B1 /* jconstants.h */,
+				6BA9BAF11D38A9C9003F35B1 /* jcore.cpp */,
+				6BA9BAF21D38A9C9003F35B1 /* jcore.hpp */,
+			);
+			path = sujak_sources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -437,28 +463,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16EC79F61BE8B32D00C1BACA /* jrenderobject.hpp in Headers */,
-				167470821C0713B9008BCAE1 /* jrotation.hpp in Headers */,
+				6BA9BB251D38AD1A003F35B1 /* jmath.hpp in Headers */,
+				6BA9BB401D38AFB8003F35B1 /* jrotation.hpp in Headers */,
 				626C5FD7193298EF007A3E00 /* AAPLAppDelegate.h in Headers */,
-				6BDD27961CB754F2005190B4 /* jcurve.hpp in Headers */,
 				626C5FE41932993E007A3E00 /* AAPLRenderer.h in Headers */,
-				6BAC12161CC77B5500783713 /* jconstants.h in Headers */,
-				162BA93A1C30B9FC00EE9D1A /* jbinary.hpp in Headers */,
-				16EC7A001BE9A9D800C1BACA /* jrenderstategroup.hpp in Headers */,
-				167470861C083BA6008BCAE1 /* jallocator.hpp in Headers */,
-				16CFCA421C06EB00009E29C2 /* jjoint.h in Headers */,
 				626C5FDB193298EF007A3E00 /* AAPLViewController.h in Headers */,
-				16EC79EA1BE7637000C1BACA /* jmath.hpp in Headers */,
-				6BC97EDF1CBCE3AC0042EA34 /* jcurvenode.hpp in Headers */,
-				16EC7A291BE9F44600C1BACA /* jcore.hpp in Headers */,
-				1682CBFB1C2BDEDD0090C084 /* jvideomemorymapper.hpp in Headers */,
-				168D336B1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h in Headers */,
-				16EC79EE1BE8AB7F00C1BACA /* jskeleton.hpp in Headers */,
-				163BF8A11C2287500046E0E1 /* jskinner.hpp in Headers */,
-				16E1C5C91C15B3420055B8F5 /* jnode.hpp in Headers */,
 				626C5FD9193298EF007A3E00 /* AAPLView.h in Headers */,
-				16EC7A151BE9E28400C1BACA /* jrenderprimitivegroup.hpp in Headers */,
-				16657DDE1C181A6700570828 /* jtranslation.hpp in Headers */,
+				6BA9BB3B1D38AF7B003F35B1 /* jtranslation.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +516,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6BA9BB231D38ABD5003F35B1 /* PBXTargetDependency */,
 			);
 			name = MetalVertexStreaming;
 			productName = MetalVertexStreaming;
@@ -546,6 +558,23 @@
 			productReference = 6B41FCCF1D34F2A000A3329B /* testjlinear.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6BA9BAE51D38A930003F35B1 /* sujakmobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BA9BAEE1D38A930003F35B1 /* Build configuration list for PBXNativeTarget "sujakmobile" */;
+			buildPhases = (
+				6BA9BAE21D38A930003F35B1 /* Sources */,
+				6BA9BAE31D38A930003F35B1 /* Frameworks */,
+				6BA9BAE41D38A930003F35B1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sujakmobile;
+			productName = sujakmobile;
+			productReference = 6BA9BAE61D38A930003F35B1 /* libsujakmobile.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -567,6 +596,9 @@
 					6B41FCCE1D34F2A000A3329B = {
 						CreatedOnToolsVersion = 7.3;
 					};
+					6BA9BAE51D38A930003F35B1 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 				};
 			};
 			buildConfigurationList = 626C5F9E193298C6007A3E00 /* Build configuration list for PBXProject "MetalVertexStreaming" */;
@@ -586,6 +618,7 @@
 				1606DB291BF9AA0500976579 /* fbxconverter */,
 				6B41FCB61D335CD800A3329B /* jlinear */,
 				6B41FCCE1D34F2A000A3329B /* testjlinear */,
+				6BA9BAE51D38A930003F35B1 /* sujakmobile */,
 			);
 		};
 /* End PBXProject section */
@@ -617,20 +650,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B6B5D771CC63A5A00B6533B /* jcurve.cpp in Sources */,
 				6B6B5D781CC63A5A00B6533B /* jcurvenode.cpp in Sources */,
 				6B6B5D761CC62AB800B6533B /* jfbxcustomizer_skin.cpp in Sources */,
-				165595B81C213E5F00A394D6 /* jtranslation.cpp in Sources */,
 				6B6B5D701CC60A6100B6533B /* jfbxcustomizer_joint.cpp in Sources */,
 				6B6B5D731CC60CF000B6533B /* jfbxcustomizer_vertex.cpp in Sources */,
-				167470811C0713B9008BCAE1 /* jrotation.cpp in Sources */,
 				6B6B5D671CC5D67200B6533B /* jfbxcustomizer.cpp in Sources */,
 				1606DB2D1BF9AA0500976579 /* main.cpp in Sources */,
 				6B6B5D641CC5D49400B6533B /* jfbxexporter.cpp in Sources */,
 				6B44C69B1CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp in Sources */,
 				6B6B5D6D1CC5EC1900B6533B /* jfbxcustomizer_curve.cpp in Sources */,
 				6B6B5D6A1CC5E97100B6533B /* jfbxvalidater.cpp in Sources */,
-				162BA9391C30B9FC00EE9D1A /* jbinary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,27 +667,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16EC79E91BE7637000C1BACA /* jmath.cpp in Sources */,
-				6BDD27941CB754F2005190B4 /* jcurve.cpp in Sources */,
-				167470851C083BA6008BCAE1 /* jallocator.cpp in Sources */,
-				16EC79FF1BE9A9D800C1BACA /* jrenderstategroup.cpp in Sources */,
-				6BC97EDD1CBCE3AC0042EA34 /* jcurvenode.cpp in Sources */,
-				162BA9381C30B9FC00EE9D1A /* jbinary.cpp in Sources */,
+				6BA9BB3F1D38AFB8003F35B1 /* jrotation.cpp in Sources */,
+				6BA9BB271D38AD5E003F35B1 /* main.m in Sources */,
+				6BA9BB261D38AD20003F35B1 /* jmath.cpp in Sources */,
 				626C5FDA193298EF007A3E00 /* AAPLView.mm in Sources */,
-				163BF8A01C2287500046E0E1 /* jskinner.cpp in Sources */,
-				16EC79F51BE8B32D00C1BACA /* jrenderobject.cpp in Sources */,
-				167470801C0713B9008BCAE1 /* jrotation.cpp in Sources */,
-				16E1C5C81C15B3420055B8F5 /* jnode.cpp in Sources */,
 				626C5FD8193298EF007A3E00 /* AAPLAppDelegate.mm in Sources */,
-				1682CBFA1C2BDEDD0090C084 /* jvideomemorymapper.cpp in Sources */,
-				6BAC12181CC77B7300783713 /* jconstants.cpp in Sources */,
+				6BA9BB3A1D38AF7B003F35B1 /* jtranslation.cpp in Sources */,
 				626C5FE51932993E007A3E00 /* AAPLRenderer.mm in Sources */,
-				16EC79ED1BE8AB7F00C1BACA /* jskeleton.cpp in Sources */,
-				16657DDD1C181A6700570828 /* jtranslation.cpp in Sources */,
 				626C5FDC193298EF007A3E00 /* AAPLViewController.mm in Sources */,
-				16EC7A281BE9F44600C1BACA /* jcore.cpp in Sources */,
-				626C5FAA193298C6007A3E00 /* main.m in Sources */,
-				16EC7A141BE9E28400C1BACA /* jrenderprimitivegroup.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +696,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6BA9BAE21D38A930003F35B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BA9BB411D38AFD6003F35B1 /* jrotation.cpp in Sources */,
+				6BA9BB3C1D38AF82003F35B1 /* jtranslation.cpp in Sources */,
+				6BA9BB371D38AE0D003F35B1 /* jrenderprimitivegroup.cpp in Sources */,
+				6BA9BB281D38ADDA003F35B1 /* jallocator.cpp in Sources */,
+				6BA9BB291D38ADDA003F35B1 /* jbinary.cpp in Sources */,
+				6BA9BB2A1D38ADDA003F35B1 /* jcurve.cpp in Sources */,
+				6BA9BB2B1D38ADDA003F35B1 /* jmath.cpp in Sources */,
+				6BA9BB2C1D38ADDA003F35B1 /* jnode.cpp in Sources */,
+				6BA9BB2D1D38ADDA003F35B1 /* jrenderobject.cpp in Sources */,
+				6BA9BB2E1D38ADDA003F35B1 /* jrenderstategroup.cpp in Sources */,
+				6BA9BB2F1D38ADDA003F35B1 /* jskeleton.cpp in Sources */,
+				6BA9BB301D38ADDA003F35B1 /* jskinner.cpp in Sources */,
+				6BA9BB311D38ADDA003F35B1 /* jvideomemorymapper.cpp in Sources */,
+				6BA9BB321D38ADDA003F35B1 /* jconstants.cpp in Sources */,
+				6BA9BAF51D38A9E1003F35B1 /* jcore.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -692,6 +730,11 @@
 			isa = PBXTargetDependency;
 			target = 6B41FCB61D335CD800A3329B /* jlinear */;
 			targetProxy = 6B568B2C1D387BF700C7715A /* PBXContainerItemProxy */;
+		};
+		6BA9BB231D38ABD5003F35B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BA9BAE51D38A930003F35B1 /* sujakmobile */;
+			targetProxy = 6BA9BB221D38ABD5003F35B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -829,7 +872,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: 인건 전 (D9G4KQW77Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MetalVertexStreaming/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loadcompete.dev;
@@ -847,7 +890,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: 인건 전 (D9G4KQW77Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MetalVertexStreaming/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.loadcompete.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -928,6 +971,35 @@
 			};
 			name = Release;
 		};
+		6BA9BAEC1D38A930003F35B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6BA9BAED1D38A930003F35B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -975,6 +1047,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6BA9BAEE1D38A930003F35B1 /* Build configuration list for PBXNativeTarget "sujakmobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BA9BAEC1D38A930003F35B1 /* Debug */,
+				6BA9BAED1D38A930003F35B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

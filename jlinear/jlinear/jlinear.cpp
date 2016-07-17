@@ -1,14 +1,15 @@
-//
-//  jlinear.cpp
-//  MetalVertexStreaming
-//
-//  Created by ingun on 7/11/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
-//
-#include <iostream>
+/*
+ *  jlinear.cpp
+ *  jlinear
+ *
+ *  Created by Ingun Jon on 7/17/16.
+ *  Copyright © 2016 Ingun Jon. All rights reserved.
+ *
+ */
+
 #include <iomanip>
 #include "jlinear.hpp"
-#include "jlinearsystem.hpp"
+#include "jlinearsystem.h"
 
 using namespace std;
 using namespace simd;

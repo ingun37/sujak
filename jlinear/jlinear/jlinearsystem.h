@@ -1,17 +1,18 @@
 //
-//  jlinearsystem.hpp
-//  MetalVertexStreaming
+//  jlinearsystem.h
+//  jlinear
 //
-//  Created by ingun on 7/12/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
+//  Created by Ingun Jon on 7/17/16.
+//  Copyright © 2016 Ingun Jon. All rights reserved.
 //
 
-#ifndef jlinearsystem_hpp
-#define jlinearsystem_hpp
+#ifndef jlinearsystem_h
+#define jlinearsystem_h
+#pragma GCC visibility push(hidden)
 #include <simd/simd.h>
 #include <vector>
 #include <algorithm>
-#include "jlinearrow.hpp"
+#include "jlinearrow.h"
 namespace jlinear
 {
     enum JLINEAR_ELEMENTS{A,B,C,D,E,F,G};
@@ -136,4 +137,7 @@ namespace jlinear
         }
     };
 }
-#endif /* jlinearsystem_hpp */
+
+#pragma GCC visibility pop
+
+#endif

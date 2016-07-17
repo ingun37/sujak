@@ -1,3 +1,11 @@
+//
+//  Tests.m
+//  Tests
+//
+//  Created by Ingun Jon on 7/17/16.
+//  Copyright © 2016 Ingun Jon. All rights reserved.
+//
+
 #import <XCTest/XCTest.h>
 #import <math.h>
 #include "jlinear.hpp"
@@ -52,11 +60,12 @@ void testPlane(double p1x, double p1y, double p1z,
     if(::fabs(dsqr - (dist*dist)) > 0.0001)
         throw "incorrect";
 }
-@interface testjlinear : XCTestCase
+
+@interface Tests : XCTestCase
 
 @end
 
-@implementation testjlinear
+@implementation Tests
 
 - (void)setUp {
     [super setUp];
@@ -137,6 +146,7 @@ void testPlane(double p1x, double p1y, double p1z,
         NSLog(@"%s", msg);
         throw;
     }
+
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }

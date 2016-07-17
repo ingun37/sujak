@@ -1,20 +1,22 @@
 //
-//  jlinearrow.hpp
-//  MetalVertexStreaming
+//  jlinearrow.h
+//  jlinear
 //
-//  Created by ingun on 7/12/16.
-//  Copyright © 2016 Apple Inc. All rights reserved.
+//  Created by Ingun Jon on 7/17/16.
+//  Copyright © 2016 Ingun Jon. All rights reserved.
 //
 
-#ifndef jlinearrow_hpp
-#define jlinearrow_hpp
+#ifndef jlinearrow_h
+#define jlinearrow_h
+#pragma GCC visibility push(hidden)
 #include <vector>
 #include <math.h>
 using namespace std;
 
-template <unsigned int N>
+
 namespace jlinear
 {
+    template <unsigned int N>
     class jlinearrow {
         friend jlinearrow;
         double row[N];
@@ -219,4 +221,6 @@ namespace jlinear
         }
     };
 }
-#endif /* jlinearrow_hpp */
+#pragma GCC visibility pop
+
+#endif /* jlinearrow_h */

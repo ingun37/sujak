@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6BA9BAE51D38A930003F35B1"
-               BuildableName = "libsujakmobile.a"
-               BlueprintName = "sujakmobile"
-               ReferencedContainer = "container:MetalVertexStreaming.xcodeproj">
+               BlueprintIdentifier = "6B4800A51D3C689F00F3654E"
+               BuildableName = "libsujak.a"
+               BlueprintName = "sujak"
+               ReferencedContainer = "container:sujak.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6BA9BAE51D38A930003F35B1"
-            BuildableName = "libsujakmobile.a"
-            BlueprintName = "sujakmobile"
-            ReferencedContainer = "container:MetalVertexStreaming.xcodeproj">
+            BlueprintIdentifier = "6B4800A51D3C689F00F3654E"
+            BuildableName = "libsujak.a"
+            BlueprintName = "sujak"
+            ReferencedContainer = "container:sujak.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6BA9BAE51D38A930003F35B1"
-            BuildableName = "libsujakmobile.a"
-            BlueprintName = "sujakmobile"
-            ReferencedContainer = "container:MetalVertexStreaming.xcodeproj">
+            BlueprintIdentifier = "6B4800A51D3C689F00F3654E"
+            BuildableName = "libsujak.a"
+            BlueprintName = "sujak"
+            ReferencedContainer = "container:sujak.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

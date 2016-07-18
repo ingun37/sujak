@@ -26,9 +26,7 @@
 		626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FE819329E72007A3E00 /* Metal.framework */; };
 		626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C5FEA19329E78007A3E00 /* QuartzCore.framework */; };
 		62F8146919AFBD9E00C9BDD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */; };
-		6B41FCD41D34F2A000A3329B /* libjlinear.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */; };
 		6B44C69B1CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B44C6991CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp */; };
-		6B568B2E1D387BFB00C7715A /* libjlinear.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */; };
 		6B6B5D641CC5D49400B6533B /* jfbxexporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D621CC5D49400B6533B /* jfbxexporter.cpp */; };
 		6B6B5D671CC5D67200B6533B /* jfbxcustomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D651CC5D67200B6533B /* jfbxcustomizer.cpp */; };
 		6B6B5D6A1CC5E97100B6533B /* jfbxvalidater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D681CC5E97100B6533B /* jfbxvalidater.cpp */; };
@@ -36,55 +34,8 @@
 		6B6B5D701CC60A6100B6533B /* jfbxcustomizer_joint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D6E1CC60A6100B6533B /* jfbxcustomizer_joint.cpp */; };
 		6B6B5D731CC60CF000B6533B /* jfbxcustomizer_vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D711CC60CF000B6533B /* jfbxcustomizer_vertex.cpp */; };
 		6B6B5D761CC62AB800B6533B /* jfbxcustomizer_skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D741CC62AB800B6533B /* jfbxcustomizer_skin.cpp */; };
-		6B6B5D781CC63A5A00B6533B /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */; };
-		6BA9BAF51D38A9E1003F35B1 /* jcore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAF11D38A9C9003F35B1 /* jcore.cpp */; };
-		6BA9BB241D38ABDE003F35B1 /* libsujakmobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA9BAE61D38A930003F35B1 /* libsujakmobile.a */; };
-		6BA9BB251D38AD1A003F35B1 /* jmath.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BA9BB011D38AB7B003F35B1 /* jmath.hpp */; };
-		6BA9BB261D38AD20003F35B1 /* jmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB001D38AB7B003F35B1 /* jmath.cpp */; };
 		6BA9BB271D38AD5E003F35B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 626C5FA9193298C6007A3E00 /* main.m */; };
-		6BA9BB281D38ADDA003F35B1 /* jallocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAFA1D38AB7B003F35B1 /* jallocator.cpp */; };
-		6BA9BB291D38ADDA003F35B1 /* jbinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAFC1D38AB7B003F35B1 /* jbinary.cpp */; };
-		6BA9BB2A1D38ADDA003F35B1 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAFE1D38AB7B003F35B1 /* jcurve.cpp */; };
-		6BA9BB2B1D38ADDA003F35B1 /* jmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB001D38AB7B003F35B1 /* jmath.cpp */; };
-		6BA9BB2C1D38ADDA003F35B1 /* jnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB021D38AB7B003F35B1 /* jnode.cpp */; };
-		6BA9BB2D1D38ADDA003F35B1 /* jrenderobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB041D38AB7B003F35B1 /* jrenderobject.cpp */; };
-		6BA9BB2E1D38ADDA003F35B1 /* jrenderstategroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB061D38AB7B003F35B1 /* jrenderstategroup.cpp */; };
-		6BA9BB2F1D38ADDA003F35B1 /* jskeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB081D38AB7B003F35B1 /* jskeleton.cpp */; };
-		6BA9BB301D38ADDA003F35B1 /* jskinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB0A1D38AB7B003F35B1 /* jskinner.cpp */; };
-		6BA9BB311D38ADDA003F35B1 /* jvideomemorymapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB0C1D38AB7B003F35B1 /* jvideomemorymapper.cpp */; };
-		6BA9BB321D38ADDA003F35B1 /* jconstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BAF61D38AA90003F35B1 /* jconstants.cpp */; };
-		6BA9BB371D38AE0D003F35B1 /* jrenderprimitivegroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB331D38AE0A003F35B1 /* jrenderprimitivegroup.cpp */; };
-		6BA9BB3A1D38AF7B003F35B1 /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB381D38AF7B003F35B1 /* jtranslation.cpp */; };
-		6BA9BB3B1D38AF7B003F35B1 /* jtranslation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BA9BB391D38AF7B003F35B1 /* jtranslation.hpp */; };
-		6BA9BB3C1D38AF82003F35B1 /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB381D38AF7B003F35B1 /* jtranslation.cpp */; };
-		6BA9BB3F1D38AFB8003F35B1 /* jrotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB3D1D38AFB8003F35B1 /* jrotation.cpp */; };
-		6BA9BB401D38AFB8003F35B1 /* jrotation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BA9BB3E1D38AFB8003F35B1 /* jrotation.hpp */; };
-		6BA9BB411D38AFD6003F35B1 /* jrotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BB3D1D38AFB8003F35B1 /* jrotation.cpp */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6B41FCD51D34F2A000A3329B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 626C5F9B193298C6007A3E00 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6B41FCB61D335CD800A3329B;
-			remoteInfo = jlinear;
-		};
-		6B568B2C1D387BF700C7715A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 626C5F9B193298C6007A3E00 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6B41FCB61D335CD800A3329B;
-			remoteInfo = jlinear;
-		};
-		6BA9BB221D38ABD5003F35B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 626C5F9B193298C6007A3E00 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BA9BAE51D38A930003F35B1;
-			remoteInfo = sujakmobile;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1606DB281BF9AA0500976579 /* CopyFiles */ = {
@@ -95,15 +46,6 @@
 			files = (
 				167D37531C75924800C8F698 /* libfbxsdk.dylib in CopyFiles */,
 				1606DB3F1BF9C8E900976579 /* fbxs in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BA9BAE41D38A930003F35B1 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,9 +62,6 @@
 		1606DB401BF9C98900976579 /* meshes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = meshes; sourceTree = "<group>"; };
 		167D374D1C758F3C00C8F698 /* libfbxsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfbxsdk.a; path = "../../../Applications/Autodesk/FBX SDK/2015.1/lib/clang/release/libfbxsdk.a"; sourceTree = "<group>"; };
 		167D37521C75924800C8F698 /* libfbxsdk.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfbxsdk.dylib; path = "../../../Applications/Autodesk/FBX SDK/2015.1/lib/clang/release/libfbxsdk.dylib"; sourceTree = "<group>"; };
-		168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvideomemoryaligninfo.h; sourceTree = "<group>"; };
-		16CFCA411C06EB00009E29C2 /* jjoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjoint.h; sourceTree = "<group>"; };
-		16EC79E51BE756F000C1BACA /* jdefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = jdefinitions.h; path = MetalVertexStreaming/jdefinitions.h; sourceTree = "<group>"; };
 		622A9BA419A98514007F8120 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		623F27DE19341462000FA88C /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
 		626C5FA4193298C6007A3E00 /* MetalVertexStreaming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalVertexStreaming.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,8 +80,6 @@
 		626C5FEA19329E78007A3E00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		62F8146819AFBD9E00C9BDD7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		6B351CC51CBE3BFF00540D7F /* bitmap_image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bitmap_image.hpp; sourceTree = "<group>"; };
-		6B41FCB71D335CD800A3329B /* libjlinear.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libjlinear.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B41FCCF1D34F2A000A3329B /* testjlinear.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testjlinear.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B44C6991CD86D9C0055F7B5 /* jfbxcustomizer_lod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_lod.cpp; sourceTree = "<group>"; };
 		6B44C69A1CD86D9C0055F7B5 /* jfbxcustomizer_lod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_lod.hpp; sourceTree = "<group>"; };
 		6B6B5D621CC5D49400B6533B /* jfbxexporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxexporter.cpp; sourceTree = "<group>"; };
@@ -159,40 +96,7 @@
 		6B6B5D721CC60CF000B6533B /* jfbxcustomizer_vertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_vertex.hpp; sourceTree = "<group>"; };
 		6B6B5D741CC62AB800B6533B /* jfbxcustomizer_skin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_skin.cpp; sourceTree = "<group>"; };
 		6B6B5D751CC62AB800B6533B /* jfbxcustomizer_skin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_skin.hpp; sourceTree = "<group>"; };
-		6BA9BAE61D38A930003F35B1 /* libsujakmobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsujakmobile.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BA9BAF11D38A9C9003F35B1 /* jcore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcore.cpp; sourceTree = "<group>"; };
-		6BA9BAF21D38A9C9003F35B1 /* jcore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcore.hpp; sourceTree = "<group>"; };
-		6BA9BAF61D38AA90003F35B1 /* jconstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jconstants.cpp; sourceTree = "<group>"; };
-		6BA9BAF71D38AA90003F35B1 /* jconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jconstants.h; sourceTree = "<group>"; };
-		6BA9BAFA1D38AB7B003F35B1 /* jallocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jallocator.cpp; sourceTree = "<group>"; };
-		6BA9BAFB1D38AB7B003F35B1 /* jallocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jallocator.hpp; sourceTree = "<group>"; };
-		6BA9BAFC1D38AB7B003F35B1 /* jbinary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jbinary.cpp; sourceTree = "<group>"; };
-		6BA9BAFD1D38AB7B003F35B1 /* jbinary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jbinary.hpp; sourceTree = "<group>"; };
-		6BA9BAFE1D38AB7B003F35B1 /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurve.cpp; sourceTree = "<group>"; };
-		6BA9BAFF1D38AB7B003F35B1 /* jcurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurve.hpp; sourceTree = "<group>"; };
-		6BA9BB001D38AB7B003F35B1 /* jmath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jmath.cpp; sourceTree = "<group>"; };
-		6BA9BB011D38AB7B003F35B1 /* jmath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmath.hpp; sourceTree = "<group>"; };
-		6BA9BB021D38AB7B003F35B1 /* jnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnode.cpp; sourceTree = "<group>"; };
-		6BA9BB031D38AB7B003F35B1 /* jnode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jnode.hpp; sourceTree = "<group>"; };
-		6BA9BB041D38AB7B003F35B1 /* jrenderobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderobject.cpp; sourceTree = "<group>"; };
-		6BA9BB051D38AB7B003F35B1 /* jrenderobject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderobject.hpp; sourceTree = "<group>"; };
-		6BA9BB061D38AB7B003F35B1 /* jrenderstategroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderstategroup.cpp; sourceTree = "<group>"; };
-		6BA9BB071D38AB7B003F35B1 /* jrenderstategroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderstategroup.hpp; sourceTree = "<group>"; };
-		6BA9BB081D38AB7B003F35B1 /* jskeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskeleton.cpp; sourceTree = "<group>"; };
-		6BA9BB091D38AB7B003F35B1 /* jskeleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskeleton.hpp; sourceTree = "<group>"; };
-		6BA9BB0A1D38AB7B003F35B1 /* jskinner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskinner.cpp; sourceTree = "<group>"; };
-		6BA9BB0B1D38AB7B003F35B1 /* jskinner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskinner.hpp; sourceTree = "<group>"; };
-		6BA9BB0C1D38AB7B003F35B1 /* jvideomemorymapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jvideomemorymapper.cpp; sourceTree = "<group>"; };
-		6BA9BB0D1D38AB7B003F35B1 /* jvideomemorymapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jvideomemorymapper.hpp; sourceTree = "<group>"; };
-		6BA9BB331D38AE0A003F35B1 /* jrenderprimitivegroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderprimitivegroup.cpp; sourceTree = "<group>"; };
-		6BA9BB341D38AE0A003F35B1 /* jrenderprimitivegroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderprimitivegroup.hpp; sourceTree = "<group>"; };
-		6BA9BB381D38AF7B003F35B1 /* jtranslation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jtranslation.cpp; sourceTree = "<group>"; };
-		6BA9BB391D38AF7B003F35B1 /* jtranslation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jtranslation.hpp; sourceTree = "<group>"; };
-		6BA9BB3D1D38AFB8003F35B1 /* jrotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrotation.cpp; sourceTree = "<group>"; };
-		6BA9BB3E1D38AFB8003F35B1 /* jrotation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrotation.hpp; sourceTree = "<group>"; };
 		6BAC12191CC8927500783713 /* jvector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvector.h; sourceTree = "<group>"; };
-		6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurvenode.cpp; sourceTree = "<group>"; };
-		6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurvenode.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +104,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B568B2E1D387BFB00C7715A /* libjlinear.dylib in Frameworks */,
 				167D37511C75923600C8F698 /* libfbxsdk.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,31 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BA9BB241D38ABDE003F35B1 /* libsujakmobile.a in Frameworks */,
 				626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */,
 				626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6B41FCB41D335CD800A3329B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6B41FCCC1D34F2A000A3329B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6B41FCD41D34F2A000A3329B /* libjlinear.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BA9BAE31D38A930003F35B1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,12 +148,7 @@
 		16EC79E61BE7633B00C1BACA /* jsources */ = {
 			isa = PBXGroup;
 			children = (
-				16EC79E51BE756F000C1BACA /* jdefinitions.h */,
-				16CFCA411C06EB00009E29C2 /* jjoint.h */,
 				6B351CC51CBE3BFF00540D7F /* bitmap_image.hpp */,
-				168D336A1C4DEEA80035AAE4 /* jvideomemoryaligninfo.h */,
-				6BC97EDB1CBCE3AC0042EA34 /* jcurvenode.cpp */,
-				6BC97EDC1CBCE3AC0042EA34 /* jcurvenode.hpp */,
 			);
 			name = jsources;
 			sourceTree = "<group>";
@@ -301,7 +176,6 @@
 		626C5F9A193298C6007A3E00 = {
 			isa = PBXGroup;
 			children = (
-				6BA9BAF01D38A9C9003F35B1 /* sujak_sources */,
 				167D37521C75924800C8F698 /* libfbxsdk.dylib */,
 				167D374D1C758F3C00C8F698 /* libfbxsdk.a */,
 				1606DB401BF9C98900976579 /* meshes */,
@@ -310,7 +184,6 @@
 				16EC79E61BE7633B00C1BACA /* jsources */,
 				626C5FA6193298C6007A3E00 /* MetalVertexStreaming */,
 				1606DB2B1BF9AA0500976579 /* fbxconverter */,
-				6BA9BAE71D38A930003F35B1 /* sujakmobile */,
 				623F27DD1934144B000FA88C /* Frameworks */,
 				626C5FA5193298C6007A3E00 /* Products */,
 			);
@@ -321,9 +194,6 @@
 			children = (
 				626C5FA4193298C6007A3E00 /* MetalVertexStreaming.app */,
 				1606DB2A1BF9AA0500976579 /* fbxconverter */,
-				6B41FCB71D335CD800A3329B /* libjlinear.dylib */,
-				6B41FCCF1D34F2A000A3329B /* testjlinear.xctest */,
-				6BA9BAE61D38A930003F35B1 /* libsujakmobile.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,50 +243,6 @@
 			name = Renderer;
 			sourceTree = "<group>";
 		};
-		6BA9BAE71D38A930003F35B1 /* sujakmobile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = sujakmobile;
-			sourceTree = "<group>";
-		};
-		6BA9BAF01D38A9C9003F35B1 /* sujak_sources */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9BB3D1D38AFB8003F35B1 /* jrotation.cpp */,
-				6BA9BB3E1D38AFB8003F35B1 /* jrotation.hpp */,
-				6BA9BB381D38AF7B003F35B1 /* jtranslation.cpp */,
-				6BA9BB391D38AF7B003F35B1 /* jtranslation.hpp */,
-				6BA9BB331D38AE0A003F35B1 /* jrenderprimitivegroup.cpp */,
-				6BA9BB341D38AE0A003F35B1 /* jrenderprimitivegroup.hpp */,
-				6BA9BAFA1D38AB7B003F35B1 /* jallocator.cpp */,
-				6BA9BAFB1D38AB7B003F35B1 /* jallocator.hpp */,
-				6BA9BAFC1D38AB7B003F35B1 /* jbinary.cpp */,
-				6BA9BAFD1D38AB7B003F35B1 /* jbinary.hpp */,
-				6BA9BAFE1D38AB7B003F35B1 /* jcurve.cpp */,
-				6BA9BAFF1D38AB7B003F35B1 /* jcurve.hpp */,
-				6BA9BB001D38AB7B003F35B1 /* jmath.cpp */,
-				6BA9BB011D38AB7B003F35B1 /* jmath.hpp */,
-				6BA9BB021D38AB7B003F35B1 /* jnode.cpp */,
-				6BA9BB031D38AB7B003F35B1 /* jnode.hpp */,
-				6BA9BB041D38AB7B003F35B1 /* jrenderobject.cpp */,
-				6BA9BB051D38AB7B003F35B1 /* jrenderobject.hpp */,
-				6BA9BB061D38AB7B003F35B1 /* jrenderstategroup.cpp */,
-				6BA9BB071D38AB7B003F35B1 /* jrenderstategroup.hpp */,
-				6BA9BB081D38AB7B003F35B1 /* jskeleton.cpp */,
-				6BA9BB091D38AB7B003F35B1 /* jskeleton.hpp */,
-				6BA9BB0A1D38AB7B003F35B1 /* jskinner.cpp */,
-				6BA9BB0B1D38AB7B003F35B1 /* jskinner.hpp */,
-				6BA9BB0C1D38AB7B003F35B1 /* jvideomemorymapper.cpp */,
-				6BA9BB0D1D38AB7B003F35B1 /* jvideomemorymapper.hpp */,
-				6BA9BAF61D38AA90003F35B1 /* jconstants.cpp */,
-				6BA9BAF71D38AA90003F35B1 /* jconstants.h */,
-				6BA9BAF11D38A9C9003F35B1 /* jcore.cpp */,
-				6BA9BAF21D38A9C9003F35B1 /* jcore.hpp */,
-			);
-			path = sujak_sources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -424,20 +250,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BA9BB251D38AD1A003F35B1 /* jmath.hpp in Headers */,
-				6BA9BB401D38AFB8003F35B1 /* jrotation.hpp in Headers */,
 				626C5FD7193298EF007A3E00 /* AAPLAppDelegate.h in Headers */,
 				626C5FE41932993E007A3E00 /* AAPLRenderer.h in Headers */,
 				626C5FDB193298EF007A3E00 /* AAPLViewController.h in Headers */,
 				626C5FD9193298EF007A3E00 /* AAPLView.h in Headers */,
-				6BA9BB3B1D38AF7B003F35B1 /* jtranslation.hpp in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6B41FCB51D335CD800A3329B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +271,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				6B568B2D1D387BF700C7715A /* PBXTargetDependency */,
 			);
 			name = fbxconverter;
 			productName = fbxconverter;
@@ -474,64 +289,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				6BA9BB231D38ABD5003F35B1 /* PBXTargetDependency */,
 			);
 			name = MetalVertexStreaming;
 			productName = MetalVertexStreaming;
 			productReference = 626C5FA4193298C6007A3E00 /* MetalVertexStreaming.app */;
 			productType = "com.apple.product-type.application";
-		};
-		6B41FCB61D335CD800A3329B /* jlinear */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6B41FCBA1D335CD800A3329B /* Build configuration list for PBXNativeTarget "jlinear" */;
-			buildPhases = (
-				6B41FCB31D335CD800A3329B /* Sources */,
-				6B41FCB41D335CD800A3329B /* Frameworks */,
-				6B41FCB51D335CD800A3329B /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = jlinear;
-			productName = jlinear;
-			productReference = 6B41FCB71D335CD800A3329B /* libjlinear.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-		6B41FCCE1D34F2A000A3329B /* testjlinear */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6B41FCD71D34F2A000A3329B /* Build configuration list for PBXNativeTarget "testjlinear" */;
-			buildPhases = (
-				6B41FCCB1D34F2A000A3329B /* Sources */,
-				6B41FCCC1D34F2A000A3329B /* Frameworks */,
-				6B41FCCD1D34F2A000A3329B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6B41FCD61D34F2A000A3329B /* PBXTargetDependency */,
-			);
-			name = testjlinear;
-			productName = testjlinear;
-			productReference = 6B41FCCF1D34F2A000A3329B /* testjlinear.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6BA9BAE51D38A930003F35B1 /* sujakmobile */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6BA9BAEE1D38A930003F35B1 /* Build configuration list for PBXNativeTarget "sujakmobile" */;
-			buildPhases = (
-				6BA9BAE21D38A930003F35B1 /* Sources */,
-				6BA9BAE31D38A930003F35B1 /* Frameworks */,
-				6BA9BAE41D38A930003F35B1 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = sujakmobile;
-			productName = sujakmobile;
-			productReference = 6BA9BAE61D38A930003F35B1 /* libsujakmobile.a */;
-			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -547,15 +309,6 @@
 					};
 					626C5FA3193298C6007A3E00 = {
 						DevelopmentTeam = L5UTUQP5FK;
-					};
-					6B41FCB61D335CD800A3329B = {
-						CreatedOnToolsVersion = 7.3;
-					};
-					6B41FCCE1D34F2A000A3329B = {
-						CreatedOnToolsVersion = 7.3;
-					};
-					6BA9BAE51D38A930003F35B1 = {
-						CreatedOnToolsVersion = 7.3;
 					};
 				};
 			};
@@ -574,9 +327,6 @@
 			targets = (
 				626C5FA3193298C6007A3E00 /* MetalVertexStreaming */,
 				1606DB291BF9AA0500976579 /* fbxconverter */,
-				6B41FCB61D335CD800A3329B /* jlinear */,
-				6B41FCCE1D34F2A000A3329B /* testjlinear */,
-				6BA9BAE51D38A930003F35B1 /* sujakmobile */,
 			);
 		};
 /* End PBXProject section */
@@ -594,13 +344,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B41FCCD1D34F2A000A3329B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -608,7 +351,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B6B5D781CC63A5A00B6533B /* jcurvenode.cpp in Sources */,
 				6B6B5D761CC62AB800B6533B /* jfbxcustomizer_skin.cpp in Sources */,
 				6B6B5D701CC60A6100B6533B /* jfbxcustomizer_joint.cpp in Sources */,
 				6B6B5D731CC60CF000B6533B /* jfbxcustomizer_vertex.cpp in Sources */,
@@ -625,72 +367,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BA9BB3F1D38AFB8003F35B1 /* jrotation.cpp in Sources */,
 				6BA9BB271D38AD5E003F35B1 /* main.m in Sources */,
-				6BA9BB261D38AD20003F35B1 /* jmath.cpp in Sources */,
 				626C5FDA193298EF007A3E00 /* AAPLView.mm in Sources */,
 				626C5FD8193298EF007A3E00 /* AAPLAppDelegate.mm in Sources */,
-				6BA9BB3A1D38AF7B003F35B1 /* jtranslation.cpp in Sources */,
 				626C5FE51932993E007A3E00 /* AAPLRenderer.mm in Sources */,
 				626C5FDC193298EF007A3E00 /* AAPLViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B41FCB31D335CD800A3329B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6B41FCCB1D34F2A000A3329B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BA9BAE21D38A930003F35B1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BA9BB411D38AFD6003F35B1 /* jrotation.cpp in Sources */,
-				6BA9BB3C1D38AF82003F35B1 /* jtranslation.cpp in Sources */,
-				6BA9BB371D38AE0D003F35B1 /* jrenderprimitivegroup.cpp in Sources */,
-				6BA9BB281D38ADDA003F35B1 /* jallocator.cpp in Sources */,
-				6BA9BB291D38ADDA003F35B1 /* jbinary.cpp in Sources */,
-				6BA9BB2A1D38ADDA003F35B1 /* jcurve.cpp in Sources */,
-				6BA9BB2B1D38ADDA003F35B1 /* jmath.cpp in Sources */,
-				6BA9BB2C1D38ADDA003F35B1 /* jnode.cpp in Sources */,
-				6BA9BB2D1D38ADDA003F35B1 /* jrenderobject.cpp in Sources */,
-				6BA9BB2E1D38ADDA003F35B1 /* jrenderstategroup.cpp in Sources */,
-				6BA9BB2F1D38ADDA003F35B1 /* jskeleton.cpp in Sources */,
-				6BA9BB301D38ADDA003F35B1 /* jskinner.cpp in Sources */,
-				6BA9BB311D38ADDA003F35B1 /* jvideomemorymapper.cpp in Sources */,
-				6BA9BB321D38ADDA003F35B1 /* jconstants.cpp in Sources */,
-				6BA9BAF51D38A9E1003F35B1 /* jcore.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6B41FCD61D34F2A000A3329B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6B41FCB61D335CD800A3329B /* jlinear */;
-			targetProxy = 6B41FCD51D34F2A000A3329B /* PBXContainerItemProxy */;
-		};
-		6B568B2D1D387BF700C7715A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6B41FCB61D335CD800A3329B /* jlinear */;
-			targetProxy = 6B568B2C1D387BF700C7715A /* PBXContainerItemProxy */;
-		};
-		6BA9BB231D38ABD5003F35B1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6BA9BAE51D38A930003F35B1 /* sujakmobile */;
-			targetProxy = 6BA9BB221D38ABD5003F35B1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1606DB2E1BF9AA0500976579 /* Debug */ = {
@@ -853,107 +538,6 @@
 			};
 			name = Release;
 		};
-		6B41FCB81D335CD800A3329B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_IDENTITY = "-";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				GCC_NO_COMMON_BLOCKS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		6B41FCB91D335CD800A3329B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				GCC_NO_COMMON_BLOCKS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		6B41FCD81D34F2A000A3329B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = testjlinear/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = loadcomplete.testjlinear;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		6B41FCD91D34F2A000A3329B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = testjlinear/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = loadcomplete.testjlinear;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		6BA9BAEC1D38A930003F35B1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		6BA9BAED1D38A930003F35B1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -980,33 +564,6 @@
 			buildConfigurations = (
 				626C5FCA193298C6007A3E00 /* Debug */,
 				626C5FCB193298C6007A3E00 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6B41FCBA1D335CD800A3329B /* Build configuration list for PBXNativeTarget "jlinear" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6B41FCB81D335CD800A3329B /* Debug */,
-				6B41FCB91D335CD800A3329B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6B41FCD71D34F2A000A3329B /* Build configuration list for PBXNativeTarget "testjlinear" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6B41FCD81D34F2A000A3329B /* Debug */,
-				6B41FCD91D34F2A000A3329B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6BA9BAEE1D38A930003F35B1 /* Build configuration list for PBXNativeTarget "sujakmobile" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6BA9BAEC1D38A930003F35B1 /* Debug */,
-				6BA9BAED1D38A930003F35B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

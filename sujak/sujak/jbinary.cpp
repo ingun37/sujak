@@ -4,10 +4,13 @@
 #include "jallocator.hpp"
 #include "jcurvenode.hpp"
 #include "jcurve.hpp"
+using namespace sujak;
+
 typedef jallocator<simd::float4, 12000> poolf4;
 
 using namespace std;
-void jbinary_jmesh::getInfo(char* data, int &vcnt, int &icnt, simd::float4* &poolPos, simd::float4* &poolNormal, simd::float2* &pooluv, int* &poolIdx)
+using namespace sujak;
+void sujak::jbinary_jmesh::getInfo(char* data, int &vcnt, int &icnt, simd::float4* &poolPos, simd::float4* &poolNormal, simd::float2* &pooluv, int* &poolIdx)
 {
 	if(data == NULL)
 	{
@@ -35,13 +38,13 @@ void jbinary_jmesh::getInfo(char* data, int &vcnt, int &icnt, simd::float4* &poo
 	poolIdx = (int*)fp;
 }
 
-void jbinary_jmesh::saveInfo(int &vcnt, int &icnt, simd::float4 *poolPos, simd::float4 *poolNormal, int *poolIdx)
+void sujak::jbinary_jmesh::saveInfo(int &vcnt, int &icnt, simd::float4 *poolPos, simd::float4 *poolNormal, int *poolIdx)
 {
 	
 }
 typedef jallocator<int, 5000> pooli;
 
-void jbinary_jskinner::getInfo(char *data, int &clustercnt, matrix_float4x4* &inverses, matrix_float4x4* &bindmeshes, int *&jointidxs, int *&cpcounts, int *&cpIdxs, float *&weights, int *&accuTable)
+void sujak::jbinary_jskinner::getInfo(char *data, int &clustercnt, matrix_float4x4* &inverses, matrix_float4x4* &bindmeshes, int *&jointidxs, int *&cpcounts, int *&cpIdxs, float *&weights, int *&accuTable)
 {
 	if(data == NULL)
 	{
@@ -82,7 +85,7 @@ void jbinary_jskinner::getInfo(char *data, int &clustercnt, matrix_float4x4* &in
 
 typedef jallocator<jcurvenode, 1024> poolcurvenode;
 typedef jallocator<jcurve, 2000> poolcurve;
-void jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelcnt)
+void sujak::jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelcnt)
 {
     char* fp = data;
 

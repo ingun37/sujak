@@ -8,18 +8,18 @@
 
 #include "jcurve.hpp"
 
-simd::float4x4 hermite(
+simd::float4x4 sujak::hermite(
                        (simd::float4){1, 0,  0,  0},
                        (simd::float4){0, 0,  1,  0},
                        (simd::float4){-3,3,  -2, -1},
                        (simd::float4){2, -2, 1,  1}
 );
 
-float jcurve::getTimeInterval(float ratio)
+float sujak::jcurve::getTimeInterval(float ratio)
 {
     return (ratio*times[cnt-1]) + ((1-ratio)*times[0]);
 }
-float jcurve::evaluate(float at)
+float sujak::jcurve::evaluate(float at)
 {
     //todo optimize
     

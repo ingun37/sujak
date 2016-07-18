@@ -1,6 +1,6 @@
 #include "jmath.hpp"
 
-using namespace jmath;
+
 
 void printMatrix(const matrix_float4x4& m)
 {
@@ -10,7 +10,7 @@ void printMatrix(const matrix_float4x4& m)
 	}
 }
 
-matrix_float4x4 jmath::GetRotateMatrix(float x, float y, float z, float radian)
+matrix_float4x4 sujak::jmath::GetRotateMatrix(float x, float y, float z, float radian)
 {
 	float c = cosf(radian);
 	float s = sinf(radian);
@@ -24,7 +24,7 @@ matrix_float4x4 jmath::GetRotateMatrix(float x, float y, float z, float radian)
 	return rmat;
 }
 
-matrix_float4x4 jmath::GetTranslationMatrix( const float dx, const float dy, const float dz )
+matrix_float4x4 sujak::jmath::GetTranslationMatrix( const float dx, const float dy, const float dz )
 {
 	matrix_float4x4 rmat = matrix_identity_float4x4;
 	
@@ -33,7 +33,7 @@ matrix_float4x4 jmath::GetTranslationMatrix( const float dx, const float dy, con
 	return rmat;
 }
 
-matrix_float4x4 jmath::GetViewMatrix( const simd::float3& eye, const simd::float3& up, const simd::float3& at )
+matrix_float4x4 sujak::jmath::GetViewMatrix( const simd::float3& eye, const simd::float3& up, const simd::float3& at )
 {
 	simd::float3 f, r, u;
 	f = simd::normalize(at-eye);
@@ -53,7 +53,7 @@ matrix_float4x4 jmath::GetViewMatrix( const simd::float3& eye, const simd::float
 	return matrix_multiply(dotMat, movMat);
 }
 
-matrix_float4x4 jmath::GetProjectionMatrixPerspective( const float r, const float t, const float n, const float f )
+matrix_float4x4 sujak::jmath::GetProjectionMatrixPerspective( const float r, const float t, const float n, const float f )
 {
 	matrix_float4x4 rmat;
 	
@@ -65,7 +65,7 @@ matrix_float4x4 jmath::GetProjectionMatrixPerspective( const float r, const floa
 	return rmat;
 }
 
-matrix_float4x4 jmath::GetProjectionMatrixOrthogonal(const float r, const float t, const float n, const float f)
+matrix_float4x4 sujak::jmath::GetProjectionMatrixOrthogonal(const float r, const float t, const float n, const float f)
 {
 	matrix_float4x4 rmat;
 	rmat.columns[0] = {1/r, 0, 0, 0};

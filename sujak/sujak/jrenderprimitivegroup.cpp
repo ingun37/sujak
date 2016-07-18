@@ -2,7 +2,7 @@
 #include "jrenderprimitivegroup.hpp"
 #include "jnode.hpp"
 #include "jrenderobject.hpp"
-jrenderprimitivegroup::jrenderprimitivegroup()
+sujak::jrenderprimitivegroup::jrenderprimitivegroup()
 {
 	for(int i=0;i<jrenderprimitivegroup_maxcap;i++)
 		objs[i] = NULL;
@@ -11,12 +11,12 @@ jrenderprimitivegroup::jrenderprimitivegroup()
     
 }
 
-void jrenderprimitivegroup::addObj(jnode *obj)
+void sujak::jrenderprimitivegroup::addObj(jnode *obj)
 {
 	objs[objCnt++] = obj;
 }
 
-void jrenderprimitivegroup::calculateMinMax()
+void sujak::jrenderprimitivegroup::calculateMinMax()
 {
     if(objCnt == 0)
     {

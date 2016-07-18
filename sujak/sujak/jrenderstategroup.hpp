@@ -4,11 +4,14 @@
 #include <stdio.h>
 #include "jconstants.h"
 #include "jrenderprimitivegroup.hpp"
-class jrenderstategroup
+namespace sujak
 {
-public:
-	jrenderprimitivegroup subPrimitiveGroups[JRenderPrimitive_number];
-	jrenderstategroup();
-	
-};
+    class jrenderstategroup
+    {
+    public:
+        sujak::jrenderprimitivegroup subPrimitiveGroups[JRenderPrimitive_number];
+        jrenderstategroup();
+        
+    };
+}
 #endif /* jrendercontext_hpp */

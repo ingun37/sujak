@@ -6,7 +6,7 @@
  Metal Renderer for Metal Vertex Streaming sample. Acts as the update and render delegate for the view controller and performs rendering. Renders a simple basic triangle with and updates the vertices every frame using a shared CPU/GPU memory buffer.
  */
 
-#include "jcore.hpp"
+#include <jcore.hpp>
 #include "jmath.hpp"
 
 #import "AAPLRenderer.h"
@@ -15,7 +15,7 @@
 
 #import <simd/simd.h>
 
-
+using namespace sujak;
 
 static const long kInFlightCommandBuffers = 1;
 

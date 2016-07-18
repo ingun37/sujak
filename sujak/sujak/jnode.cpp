@@ -13,8 +13,9 @@
 #include "jnode.hpp"
 #include "jallocator.hpp"
 
+using namespace sujak;
 
-void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
+void sujak::jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
 {
 	if(skinner == NULL || skeleton == NULL || !localsPrecomputed )
 	{
@@ -41,7 +42,7 @@ void jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
 typedef jallocator<jskeleton, 80> jallocskel;
 typedef jallocator<jrenderobject, 80> jallocrobj;
 typedef jallocator<jskinner, 80> jallocskin;
-void jnode::clone(jnode &node)
+void sujak::jnode::clone(jnode &node)
 {
     node = *this;
     jskeleton* newskel = jallocskel::getAvailable(1);
@@ -59,7 +60,7 @@ void jnode::clone(jnode &node)
 typedef jallocator<simd::float4*, 1024> poolpf4;
 typedef jallocator<simd::float4, 60000> poolf4;
 typedef jallocator<matrix_float4x4, 1024> poolM;
-void jnode::precomputeLocals()//todo : share
+void sujak::jnode::precomputeLocals()//todo : share
 {
     if(localsPrecomputed)
     {

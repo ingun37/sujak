@@ -10,11 +10,14 @@
 #include "jnode.hpp"
 #include "jcurve.hpp"
 
+using namespace sujak;
 
 typedef jallocator<simd::float4, 400> jallocatorF4;
 typedef jallocator<int, 400> jallocatorInt;
 
 jrenderstategroup renderstateGroups[JRenderState_number];
+
+using namespace sujak;
 
 void makeRenderObjCurve(simd::float2 p1, simd::float2 p2, simd::float2 t1, simd::float2 t2, unsigned long smooth, jrenderobject& renderobj )
 {
@@ -212,7 +215,7 @@ typedef jallocator<jnode, 100> jallocatorJnode;
 typedef jallocator<int, 6000> jallocatorInt6000;
 typedef jallocator<float, 6000> jallocatorFloat6000;
 
-jcore::jcore()
+sujak::jcore::jcore()
 {
 	if(inited)
 		throw "somethingwrong";
@@ -221,7 +224,7 @@ jcore::jcore()
 	inited = true;
 }
 
-void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpecificSetPrimitive pfuncPrim, platformSpecificRenderIndexed pfuncRender)
+void sujak::jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpecificSetPrimitive pfuncPrim, platformSpecificRenderIndexed pfuncRender)
 {
 	for(int i=0;i<JRenderState_number;i++)
 	{
@@ -239,14 +242,14 @@ void jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpec
 typedef jallocator<jnode*, 80> jallocskinnedmeshes;
 jvideomemorymapper mmapper;
 
-void jcore::init(void **vbuffers, int *ibuffer, platformSpecificGetFile pGetFile, platformSpecificGetObjInfo pGetObjInfo)
+void sujak::jcore::init(void **vbuffers, int *ibuffer, platformSpecificGetFile pGetFile, platformSpecificGetObjInfo pGetObjInfo)
 {
     mmapper.init(vbuffers, ibuffer);
     pfgetfile = pGetFile;
     pfgetobjinfo = pGetObjInfo;
 }
 
-void jcore::doneloadstatic()
+void sujak::jcore::doneloadstatic()
 {
     for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
         renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj( *jallocskinnedmeshes::getAt(i) );
@@ -274,7 +277,7 @@ void jcore::doneloadstatic()
 
 
 
-char* jcore::loadfile(const char *name, const char *ext)
+char* sujak::jcore::loadfile(const char *name, const char *ext)
 {
     unsigned long size = 0;
     char* tmp;
@@ -286,7 +289,7 @@ char* jcore::loadfile(const char *name, const char *ext)
     return r;
 }
 
-void jcore::loadstatic(jobjinfo_static objinfo)
+void sujak::jcore::loadstatic(jobjinfo_static objinfo)
 {
     const char* extMesh = ".jmesh";
     const char* extJoin = ".jjoin";
@@ -319,7 +322,7 @@ void jcore::loadstatic(jobjinfo_static objinfo)
     char* fileAnim = loadfile(nameskel, extAnim);
     char* fileTable = loadfile(nameskel, extTable);
     
-    jskeleton* sk = jallocatorSkeleton::getAvailable(1);
+    sujak::jskeleton* sk = jallocatorSkeleton::getAvailable(1);
     sk->setFromFile(fileTable, fileJoin, fileAnim);
     
     jskinner* skinner = jallocatorSkinner::getAvailable(1);
@@ -332,7 +335,7 @@ void jcore::loadstatic(jobjinfo_static objinfo)
     jallocskinnedmeshes::getAvailable(1)[0] = lod1;
 }
 
-void jcore::update()
+void sujak::jcore::update()
 {
     static float t = 0;
 	for(int i=0;i<jallocskinnedmeshes::getCnt();i++)

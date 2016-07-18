@@ -11,16 +11,18 @@
 #include <string.h>
 #include <stdlib.h>
 
+using namespace sujak;
+
 typedef jallocator<simd::float4, 4000> jallocf4;
 typedef jallocator<simd::float2, 4000> jallocf2;
 
-jrenderobject::jrenderobject()
+sujak::jrenderobject::jrenderobject()
 {
 	dataset = false;
 	layedout = false;
 }
 
-void jrenderobject::setData(simd::float4 *p, simd::float4 *n, simd::float4 *c, simd::float2 *u, int vc, int *i, int ic)
+void sujak::jrenderobject::setData(simd::float4 *p, simd::float4 *n, simd::float4 *c, simd::float2 *u, int vc, int *i, int ic)
 {
     dataset = true;
  
@@ -64,7 +66,7 @@ void jrenderobject::setData(simd::float4 *p, simd::float4 *n, simd::float4 *c, s
     indexCnt = ic;
 }
 
-void jrenderobject::clone(jrenderobject &robj)
+void sujak::jrenderobject::clone(jrenderobject &robj)
 {
     robj = *this;
     robj.layedout = false;

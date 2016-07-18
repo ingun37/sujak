@@ -15,34 +15,36 @@
 #include "jconstants.h"
 #include "jvideomemoryaligninfo.h"
 
-class jrenderobject
+namespace sujak
 {
-	friend class jvideomemorymapper;
-    friend class jnode;
-	//TODO : bitfield
-	bool layedout;
-	bool dataset;
-	
-    void* attributeDatas[JVertexAttribute_number];
-    
-	int vertexCnt;
-	int* indices;
-	int indexCnt;
-
-public:
-
-	jvideomemoryaligninfo aligninfo;
-	//todo nocopy
-	inline int getIndexCnt() const {return indexCnt;}
-	inline int getVertexCnt() const {return vertexCnt;}
-	inline int getVcBufferOffset() const {return aligninfo.vBufferOffset;}
-	inline int getIBufferOffset() const {return aligninfo.iBufferOffset;}
-    inline simd::float4 getPositionAt(int i) const {return ((simd::float4*)attributeDatas[JVertexAttribute_position])[i];}
-
-    void setData(simd::float4* p, simd::float4* n, simd::float4* c, simd::float2* u, int vc, int* i, int ic);
-	
-	jrenderobject();
-    void clone(jrenderobject& robj);
-};
-
+    class jrenderobject
+    {
+        friend class jvideomemorymapper;
+        friend class jnode;
+        //TODO : bitfield
+        bool layedout;
+        bool dataset;
+        
+        void* attributeDatas[JVertexAttribute_number];
+        
+        int vertexCnt;
+        int* indices;
+        int indexCnt;
+        
+    public:
+        
+        jvideomemoryaligninfo aligninfo;
+        //todo nocopy
+        inline int getIndexCnt() const {return indexCnt;}
+        inline int getVertexCnt() const {return vertexCnt;}
+        inline int getVcBufferOffset() const {return aligninfo.vBufferOffset;}
+        inline int getIBufferOffset() const {return aligninfo.iBufferOffset;}
+        inline simd::float4 getPositionAt(int i) const {return ((simd::float4*)attributeDatas[JVertexAttribute_position])[i];}
+        
+        void setData(simd::float4* p, simd::float4* n, simd::float4* c, simd::float2* u, int vc, int* i, int ic);
+        
+        jrenderobject();
+        void clone(jrenderobject& robj);
+    };
+}
 #endif /* jrenderobject_hpp */

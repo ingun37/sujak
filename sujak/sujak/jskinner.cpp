@@ -1,7 +1,7 @@
 #include "jskinner.hpp"
 
 
-void jskinner::clone(jskinner &skinner)
+void sujak::jskinner::clone(jskinner &skinner)
 {
     skinner = *this;
 }

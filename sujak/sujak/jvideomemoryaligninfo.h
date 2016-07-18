@@ -8,10 +8,12 @@
 
 #ifndef jvideomemoryaligninfo_h
 #define jvideomemoryaligninfo_h
-
-typedef struct _jvideomemoryaligninfo
+namespace sujak
 {
-	int vBufferOffset;
-	int iBufferOffset;
-} jvideomemoryaligninfo;
+    typedef struct _jvideomemoryaligninfo
+    {
+        int vBufferOffset;
+        int iBufferOffset;
+    } jvideomemoryaligninfo;
+}
 #endif /* jvideomemoryaligninfo_h */

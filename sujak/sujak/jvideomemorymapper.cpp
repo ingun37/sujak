@@ -6,7 +6,7 @@
 
 #define ipoolmax 30000
 int ipool[ipoolmax];
-void jvideomemorymapper::mapToVideoMemory(jrenderobject *obj)
+void sujak::jvideomemorymapper::mapToVideoMemory(jrenderobject *obj)
 {
 	if(!inited )
 	{
@@ -44,7 +44,7 @@ void jvideomemorymapper::mapToVideoMemory(jrenderobject *obj)
 	obj->layedout = true;
 }
 
-simd::float4* jvideomemorymapper::getPositionMemoryOf(const jrenderobject &obj)
+simd::float4* sujak::jvideomemorymapper::getPositionMemoryOf(const jrenderobject &obj)
 {
     return &(((simd::float4*)buffers[JVertexAttribute_position])[obj.getVcBufferOffset()]);
 }

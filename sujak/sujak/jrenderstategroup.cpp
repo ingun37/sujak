@@ -1,6 +1,6 @@
 #include "jrenderstategroup.hpp"
 
-jrenderstategroup::jrenderstategroup()
+sujak::jrenderstategroup::jrenderstategroup()
 {
 
 }

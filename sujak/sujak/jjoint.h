@@ -3,20 +3,22 @@
 #include <simd/simd.h>
 #include "jrotation.hpp"
 #include "jtranslation.hpp"
-class jjoint
+namespace sujak
 {
-public:
-	jtranslation pos;
-	jrotation rot;
-    JROTATION_ORDER order;
-	inline matrix_float4x4 getTransMat()
-	{
-		return matrix_multiply(pos.getMat(), rot.toMat(order));
-	}
-	inline matrix_float4x4 getOnlyRotation()
-	{
-		return rot.toMat(order);
-	}
-};
-
+    class jjoint
+    {
+    public:
+        jtranslation pos;
+        jrotation rot;
+        JROTATION_ORDER order;
+        inline matrix_float4x4 getTransMat()
+        {
+            return matrix_multiply(pos.getMat(), rot.toMat(order));
+        }
+        inline matrix_float4x4 getOnlyRotation()
+        {
+            return rot.toMat(order);
+        }
+    };
+}
 #endif /* JJoint_h */

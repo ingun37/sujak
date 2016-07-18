@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:sujak/sujak.xcodeproj">
+      location = "container:sujak/sujak.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:jlinear/jlinear.xcodeproj">
+      location = "container:jlinear/jlinear.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:engine/MetalVertexStreaming.xcodeproj">
+      location = "container:engine/MetalVertexStreaming.xcodeproj">
    </FileRef>
 </Workspace>

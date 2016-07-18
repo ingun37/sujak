@@ -13,16 +13,19 @@
 
 #define jrenderprimitivegroup_maxcap 80
 
-class jnode;
-class jrenderprimitivegroup
+namespace sujak
 {
-public:
-	jnode* objs[jrenderprimitivegroup_maxcap];
-	int objCnt;
-    unsigned long min;
-    unsigned long total;
-	void addObj(jnode* obj);
-    void calculateMinMax();
-	jrenderprimitivegroup();
-};
+    class jnode;
+    class jrenderprimitivegroup
+    {
+    public:
+        jnode* objs[jrenderprimitivegroup_maxcap];
+        int objCnt;
+        unsigned long min;
+        unsigned long total;
+        void addObj(jnode* obj);
+        void calculateMinMax();
+        jrenderprimitivegroup();
+    };
+}
 #endif /* jrenderprimitivegroup_hpp */

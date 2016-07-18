@@ -12,33 +12,36 @@
 #include <simd/simd.h>
 #include <stdio.h>
 #include "jjoint.h"
-class jcurvenode;
-class jskeleton
+namespace sujak
 {
-    friend jskeleton;
-	jjoint *joints;
-    
-	int* table;
-	
-	int jointnum;
-    jcurvenode *curvenodes;
-    matrix_float4x4* globals;
-    
-    int *currentkeys;
-    float currentt;
-    bool animating;
-public:
-    void clone(jskeleton& skeleton);
-    
-	inline int getJointCnt() const {return jointnum;}
-	inline jjoint* getjointsArr() const { return joints; }
-	inline int* getTableArr() const {return table;}
-    inline bool isanimating() { return animating; }
-    matrix_float4x4* computeglobals();
-    
-	void setFromFile(char* tableBytes, char* jointBytes, char* animbytes);
-    void animateto(float at);
-    void advance(float dt);
-	jskeleton();
-};
+    class jcurvenode;
+    class jskeleton
+    {
+        friend jskeleton;
+        jjoint *joints;
+        
+        int* table;
+        
+        int jointnum;
+        jcurvenode *curvenodes;
+        matrix_float4x4* globals;
+        
+        int *currentkeys;
+        float currentt;
+        bool animating;
+    public:
+        void clone(jskeleton& skeleton);
+        
+        inline int getJointCnt() const {return jointnum;}
+        inline jjoint* getjointsArr() const { return joints; }
+        inline int* getTableArr() const {return table;}
+        inline bool isanimating() { return animating; }
+        matrix_float4x4* computeglobals();
+        
+        void setFromFile(char* tableBytes, char* jointBytes, char* animbytes);
+        void animateto(float at);
+        void advance(float dt);
+        jskeleton();
+    };
+}
 #endif /* jskeleton_hpp */

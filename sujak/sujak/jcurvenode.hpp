@@ -10,18 +10,19 @@
 #define jcurvenode_hpp
 
 #include <stdio.h>
-
-class jcurve;
-
-enum JCURVENODE_PROPERTY{JCURVENODE_PROPERTY_ROTATION, JCURVENODE_PROPERTY_TRANSLATION, JCURVENODE_PROPERTY_NUMBER};
-class jcurvenode
+namespace sujak
 {
-    jcurve *curves[2][3];
-public:
-    inline jcurve **getcurveofproperty(JCURVENODE_PROPERTY property)
+    class jcurve;
+    
+    enum JCURVENODE_PROPERTY{JCURVENODE_PROPERTY_ROTATION, JCURVENODE_PROPERTY_TRANSLATION, JCURVENODE_PROPERTY_NUMBER};
+    class jcurvenode
     {
-        return curves[property];
-    }
-};
-
+        jcurve *curves[2][3];
+    public:
+        inline jcurve **getcurveofproperty(JCURVENODE_PROPERTY property)
+        {
+            return curves[property];
+        }
+    };
+}
 #endif /* jcurvenode_hpp */

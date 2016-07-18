@@ -4,7 +4,9 @@
 #include "jbinary.hpp"
 #include "jcurvenode.hpp"
 #include "jcurve.hpp"
-jskeleton::jskeleton()
+
+using namespace sujak;
+sujak::jskeleton::jskeleton()
 {
 	jointnum = 0;
 	joints = NULL;
@@ -20,7 +22,7 @@ typedef jallocator<simd::float3, 128> jallocatorf3;
 
 typedef jallocator<int, 20000> poolkey;
 
-void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
+void sujak::jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 {
 	jointnum = *(int*)tableBytes;
 	table = (int*)(tableBytes + sizeof(int));
@@ -34,7 +36,7 @@ void jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 }
 
 typedef jallocator<jjoint, 3000> jallocjoint;
-void jskeleton::clone(jskeleton &skeleton)
+void sujak::jskeleton::clone(jskeleton &skeleton)
 {
     jjoint* newjoints = jallocjoint::getAvailable(jointnum);
     
@@ -50,7 +52,7 @@ void jskeleton::clone(jskeleton &skeleton)
     skeleton.currentkeys = poolkey::getAvailable(jointnum*JCURVENODE_PROPERTY_NUMBER * 3);
 }
 
-matrix_float4x4* jskeleton::computeglobals()
+matrix_float4x4* sujak::jskeleton::computeglobals()
 {
     //important : up->down ordered array must be guaranteed!!!!!!!!!!!!
     for(int i=0;i<jointnum;i++)
@@ -63,7 +65,7 @@ matrix_float4x4* jskeleton::computeglobals()
     return globals;
 }
 
-void jskeleton::animateto(float at)
+void sujak::jskeleton::animateto(float at)
 {
     currentt = at;
     for(int ij=0;ij<jointnum;ij++)
@@ -108,7 +110,7 @@ void jskeleton::animateto(float at)
     }
 }
 
-void jskeleton::advance(float dt)
+void sujak::jskeleton::advance(float dt)
 {
     animating = false;
     const float radtodeg = 180.f/3.141592;

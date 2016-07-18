@@ -20,6 +20,20 @@
                ReferencedContainer = "container:MetalVertexStreaming.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6B4800A51D3C689F00F3654E"
+               BuildableName = "libsujak.a"
+               BlueprintName = "sujak"
+               ReferencedContainer = "container:../sujak/sujak.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

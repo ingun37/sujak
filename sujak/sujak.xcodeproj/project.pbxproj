@@ -23,6 +23,7 @@
 		6B4800DE1D3C68E700F3654E /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800CD1D3C68E700F3654E /* jtranslation.cpp */; };
 		6B4800DF1D3C68E700F3654E /* jvideomemorymapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800CF1D3C68E700F3654E /* jvideomemorymapper.cpp */; };
 		6B4800E41D3C698000F3654E /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800E21D3C698000F3654E /* jcurvenode.cpp */; };
+		6B78FC671D3C70AE000872EC /* jcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B4800BA1D3C68E700F3654E /* jcore.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -147,6 +148,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		6B78FC651D3C706D000872EC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B78FC671D3C70AE000872EC /* jcore.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		6B4800A51D3C689F00F3654E /* sujak */ = {
 			isa = PBXNativeTarget;
@@ -155,6 +167,7 @@
 				6B4800A21D3C689F00F3654E /* Sources */,
 				6B4800A31D3C689F00F3654E /* Frameworks */,
 				6B4800A41D3C689F00F3654E /* CopyFiles */,
+				6B78FC651D3C706D000872EC /* Headers */,
 			);
 			buildRules = (
 			);
@@ -308,6 +321,7 @@
 		6B4800B01D3C689F00F3654E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -317,6 +331,7 @@
 		6B4800B11D3C689F00F3654E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

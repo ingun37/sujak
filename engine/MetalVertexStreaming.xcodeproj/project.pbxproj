@@ -35,6 +35,10 @@
 		6B6B5D731CC60CF000B6533B /* jfbxcustomizer_vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D711CC60CF000B6533B /* jfbxcustomizer_vertex.cpp */; };
 		6B6B5D761CC62AB800B6533B /* jfbxcustomizer_skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B5D741CC62AB800B6533B /* jfbxcustomizer_skin.cpp */; };
 		6BA9BB271D38AD5E003F35B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 626C5FA9193298C6007A3E00 /* main.m */; };
+		6BDEC3BF1D3CA8DF00A39B50 /* libsujak.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BDEC3BE1D3CA8DF00A39B50 /* libsujak.a */; };
+		6BDEC3C11D3CA92200A39B50 /* jcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BDEC3C01D3CA92200A39B50 /* jcore.hpp */; };
+		6BDEC3C31D3CA9E400A39B50 /* jmath.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BDEC3C21D3CA9E400A39B50 /* jmath.hpp */; };
+		6BDEC3C51D3CAD3E00A39B50 /* jdefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BDEC3C41D3CAD3E00A39B50 /* jdefinitions.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,7 +100,12 @@
 		6B6B5D721CC60CF000B6533B /* jfbxcustomizer_vertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_vertex.hpp; sourceTree = "<group>"; };
 		6B6B5D741CC62AB800B6533B /* jfbxcustomizer_skin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_skin.cpp; sourceTree = "<group>"; };
 		6B6B5D751CC62AB800B6533B /* jfbxcustomizer_skin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_skin.hpp; sourceTree = "<group>"; };
+		6B78FC631D3C6CD8000872EC /* libsujak.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsujak.a; path = "../../Library/Developer/Xcode/DerivedData/metal-hidnnxiiuevhzdgkmfckjmtkkslc/Build/Products/Debug-iphonesimulator/libsujak.a"; sourceTree = "<group>"; };
 		6BAC12191CC8927500783713 /* jvector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvector.h; sourceTree = "<group>"; };
+		6BDEC3BE1D3CA8DF00A39B50 /* libsujak.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsujak.a; path = "../../Library/Developer/Xcode/DerivedData/metal-hidnnxiiuevhzdgkmfckjmtkkslc/Build/Products/Debug-iphoneos/libsujak.a"; sourceTree = "<group>"; };
+		6BDEC3C01D3CA92200A39B50 /* jcore.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jcore.hpp; path = ../sujak/sujak/jcore.hpp; sourceTree = "<group>"; };
+		6BDEC3C21D3CA9E400A39B50 /* jmath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jmath.hpp; path = ../sujak/sujak/jmath.hpp; sourceTree = "<group>"; };
+		6BDEC3C41D3CAD3E00A39B50 /* jdefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = jdefinitions.h; path = ../sujak/sujak/jdefinitions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BDEC3BF1D3CA8DF00A39B50 /* libsujak.a in Frameworks */,
 				626C5FEB19329E78007A3E00 /* QuartzCore.framework in Frameworks */,
 				626C5FE919329E72007A3E00 /* Metal.framework in Frameworks */,
 			);
@@ -164,6 +174,8 @@
 		623F27DD1934144B000FA88C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BDEC3BE1D3CA8DF00A39B50 /* libsujak.a */,
+				6B78FC631D3C6CD8000872EC /* libsujak.a */,
 				1606DB361BF9B5AD00976579 /* libz.tbd */,
 				1606DB341BF9B55D00976579 /* libcopyfile.tbd */,
 				1606DB311BF9AAB000976579 /* libfbxsdk.dylib */,
@@ -176,6 +188,9 @@
 		626C5F9A193298C6007A3E00 = {
 			isa = PBXGroup;
 			children = (
+				6BDEC3C41D3CAD3E00A39B50 /* jdefinitions.h */,
+				6BDEC3C21D3CA9E400A39B50 /* jmath.hpp */,
+				6BDEC3C01D3CA92200A39B50 /* jcore.hpp */,
 				167D37521C75924800C8F698 /* libfbxsdk.dylib */,
 				167D374D1C758F3C00C8F698 /* libfbxsdk.a */,
 				1606DB401BF9C98900976579 /* meshes */,
@@ -250,6 +265,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BDEC3C51D3CAD3E00A39B50 /* jdefinitions.h in Headers */,
+				6BDEC3C31D3CA9E400A39B50 /* jmath.hpp in Headers */,
+				6BDEC3C11D3CA92200A39B50 /* jcore.hpp in Headers */,
 				626C5FD7193298EF007A3E00 /* AAPLAppDelegate.h in Headers */,
 				626C5FE41932993E007A3E00 /* AAPLRenderer.h in Headers */,
 				626C5FDB193298EF007A3E00 /* AAPLViewController.h in Headers */,
@@ -506,6 +524,7 @@
 		626C5FCA193298C6007A3E00 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 인건 전 (D9G4KQW77Q)";
@@ -514,6 +533,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_HEADER_SEARCH_PATHS = /Users/ingun/metal/engine/sujak_sources;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loadcompete.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -524,6 +544,7 @@
 		626C5FCB193298C6007A3E00 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 인건 전 (D9G4KQW77Q)";
@@ -531,6 +552,7 @@
 				INFOPLIST_FILE = MetalVertexStreaming/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_HEADER_SEARCH_PATHS = /Users/ingun/metal/engine/sujak_sources;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loadcompete.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

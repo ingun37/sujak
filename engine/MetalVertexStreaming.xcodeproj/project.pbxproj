@@ -533,7 +533,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				MTL_HEADER_SEARCH_PATHS = /Users/ingun/metal/engine/sujak_sources;
+				MTL_HEADER_SEARCH_PATHS = /Users/ingun/metal/sujak/sujak;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loadcompete.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -552,7 +552,7 @@
 				INFOPLIST_FILE = MetalVertexStreaming/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_HEADER_SEARCH_PATHS = /Users/ingun/metal/engine/sujak_sources;
+				MTL_HEADER_SEARCH_PATHS = /Users/ingun/metal/sujak/sujak;
 				PRODUCT_BUNDLE_IDENTIFIER = com.loadcompete.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

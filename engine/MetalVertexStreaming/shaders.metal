@@ -9,7 +9,7 @@
 #include <metal_stdlib>
 #include "jdefinitions.h"
 using namespace metal;
-
+using namespace sujak;
 struct vertexinput
 {
 	float4 position [[attribute(0)]];

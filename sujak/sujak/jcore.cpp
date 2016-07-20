@@ -224,16 +224,16 @@ sujak::jcore::jcore()
 	inited = true;
 }
 
-void sujak::jcore::render(platformSpecificSetRenderState pfuncRenderState, platformSpecificSetPrimitive pfuncPrim, platformSpecificRenderIndexed pfuncRender)
+void sujak::jcore::render()
 {
 	for(int i=0;i<JRenderState_number;i++)
 	{
-		(*pfuncRenderState)((JRenderState)i);
+        gl->setRenderState((JRenderState)i);
 		for(int j=0;j<JRenderPrimitive_number;j++)
 		{
-			(*pfuncPrim)((JRenderPrimitive)j);
+            gl->setPrimitive((JRenderPrimitive)j);
             if(renderstateGroups[i].subPrimitiveGroups[j].total > 0)
-                (*pfuncRender)( renderstateGroups[i].subPrimitiveGroups[j].min, renderstateGroups[i].subPrimitiveGroups[j].total );
+                gl->renderIndexed( renderstateGroups[i].subPrimitiveGroups[j].min, renderstateGroups[i].subPrimitiveGroups[j].total );
 			
 		}
 	}
@@ -242,11 +242,11 @@ void sujak::jcore::render(platformSpecificSetRenderState pfuncRenderState, platf
 typedef jallocator<jnode*, 80> jallocskinnedmeshes;
 jvideomemorymapper mmapper;
 
-void sujak::jcore::init(void **vbuffers, int *ibuffer, platformSpecificGetFile pGetFile, platformSpecificGetObjInfo pGetObjInfo)
+void sujak::jcore::init(void **vbuffers, int *ibuffer, jos* _os, jgl* _gl)
 {
+    gl = _gl;
+    os = _os;
     mmapper.init(vbuffers, ibuffer);
-    pfgetfile = pGetFile;
-    pfgetobjinfo = pGetObjInfo;
 }
 
 void sujak::jcore::doneloadstatic()
@@ -281,7 +281,8 @@ char* sujak::jcore::loadfile(const char *name, const char *ext)
 {
     unsigned long size = 0;
     char* tmp;
-    (*pfgetfile)(name, ext, tmp, size);
+    
+    os->getFile(name, ext, tmp, size);
     if(size==0)
         throw "file size is null";
     char* r = filepool::getAvailable(size);
@@ -303,8 +304,7 @@ void sujak::jcore::loadstatic(jobjinfo_static objinfo)
     char namemesh[32];
     char nameskel[32];
     
-    (*pfgetobjinfo)(objinfo.name, nameskel, namemesh, 32);
-    
+    os->getObjInfo(objinfo.name, nameskel, namemesh, 32);
     
     char* fileMesh = loadfile(namemesh, extMesh);
     char* fileSkin = loadfile(namemesh, extSkin);

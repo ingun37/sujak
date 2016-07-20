@@ -24,6 +24,8 @@
 		6B4800DF1D3C68E700F3654E /* jvideomemorymapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800CF1D3C68E700F3654E /* jvideomemorymapper.cpp */; };
 		6B4800E41D3C698000F3654E /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800E21D3C698000F3654E /* jcurvenode.cpp */; };
 		6B78FC671D3C70AE000872EC /* jcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B4800BA1D3C68E700F3654E /* jcore.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BAFC2381D3F3961008158E5 /* jgl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BAFC2371D3F3961008158E5 /* jgl.h */; };
+		6BAFC23A1D3F3B31008158E5 /* jos.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BAFC2391D3F3B31008158E5 /* jos.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,6 +77,8 @@
 		6B4800E21D3C698000F3654E /* jcurvenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurvenode.cpp; sourceTree = "<group>"; };
 		6B4800E31D3C698000F3654E /* jcurvenode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurvenode.hpp; sourceTree = "<group>"; };
 		6B4800E51D3C699400F3654E /* jvideomemoryaligninfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvideomemoryaligninfo.h; sourceTree = "<group>"; };
+		6BAFC2371D3F3961008158E5 /* jgl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jgl.h; sourceTree = "<group>"; };
+		6BAFC2391D3F3B31008158E5 /* jos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jos.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 				6B4800CE1D3C68E700F3654E /* jtranslation.hpp */,
 				6B4800CF1D3C68E700F3654E /* jvideomemorymapper.cpp */,
 				6B4800D01D3C68E700F3654E /* jvideomemorymapper.hpp */,
+				6BAFC2371D3F3961008158E5 /* jgl.h */,
+				6BAFC2391D3F3B31008158E5 /* jos.h */,
 			);
 			path = sujak;
 			sourceTree = "<group>";
@@ -153,6 +159,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BAFC23A1D3F3B31008158E5 /* jos.h in Headers */,
+				6BAFC2381D3F3961008158E5 /* jgl.h in Headers */,
 				6B78FC671D3C70AE000872EC /* jcore.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "jconstants.h"
+#include "jgl.h"
+#include "jos.h"
 #include "jallocator.hpp"
 namespace sujak
 {
@@ -29,31 +30,24 @@ namespace sujak
     };
     class jskeleton;
     
-    typedef void(*platformSpecificSetRenderState)(JRenderState state);
-    typedef void(*platformSpecificSetPrimitive)(JRenderPrimitive prim);
-    typedef void(*platformSpecificRenderIndexed)(unsigned long offset, unsigned long cnt);
-    typedef void(*platformSpecificGetFile)(const char* szFileName, const char* szExt, char* &file, unsigned long& size);
-    typedef void(*platformSpecificGetObjInfo)(const char* jobjname, char* nameskel, char* namemesh, size_t namebufflen);
-    typedef void(*loadSkeletonsPlatformSpecific)(jskeleton* objs, const int len, int &cap);
     
     
     typedef jallocator<char, 1024*1024> filepool;
     
     class jcore
     {
-        
+        jgl* gl;
+        jos* os;
         filepool fpool;
         bool loadstaticdone;
-        platformSpecificGetFile pfgetfile;
-        platformSpecificGetObjInfo pfgetobjinfo;
         char* loadfile(const char *name, const char *ext);
     public:
         jcore();
-        void init(void *vbuffers[], int *ibuffer, platformSpecificGetFile pGetFile, platformSpecificGetObjInfo pGetObjInfo);
+        void init(void *vbuffers[], int *ibuffer, jos* _os, jgl* _gl);
         void loadstatic(jobjinfo_static objinfo);
         void doneloadstatic();
         void update();
-        void render( platformSpecificSetRenderState, platformSpecificSetPrimitive, platformSpecificRenderIndexed);
+        void render();
     };
 }
 

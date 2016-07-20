@@ -31,7 +31,7 @@ void sujak::jrenderprimitivegroup::calculateMinMax()
     {
         unsigned long begin;
         unsigned long end;
-        begin = objs[i]->getRenderObject()->aligninfo.iBufferOffset;
+        //begin = objs[i]->getRenderObject()->aligninfo.iBufferOffset;
         end = begin + objs[i]->getRenderObject()->getIndexCnt();
         total += objs[i]->getRenderObject()->getIndexCnt();
         

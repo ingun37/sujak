@@ -1,94 +1,128 @@
-//
-//  jmetal.m
-//  jmetal
-//
-//  Created by ingun on 7/20/16.
-//  Copyright © 2016 loadcomplete. All rights reserved.
-//
-#import <QuartzCore/QuartzCore.h>
-#import <Metal/Metal.h>
-#import "jmetal.h"
+#import "jmetal.hpp"
+
+#import "jmetalrendercontextdata.hpp"
 
 using namespace sujak;
 
-class jrendercontextpair
+
+
+void jmetal::loadObject(sujak::JRenderContext state, sujak::jrenderobject *obj)
 {
-    bool inited;
-public:
-    id<MTLRenderPipelineState> color;
-    id<MTLDepthStencilState> depthstencil;
-    bool isInited(){ return inited; }
-    void setPair(id<MTLRenderPipelineState> _color, id<MTLDepthStencilState> _depth)
+	/*
+	jmetalrendercontextdata* context = rendercontextdatas[state];
+	jmetalvertexbuffer *vertexbuffer = context.att;
+	
+	for(int i=0;i<JVertexAttribute_number;i++)
+	{
+		JVertexAttribute eIdx = (JVertexAttribute)i;
+		jmetalbuffer* attbuffer = [vertexbuffer getBufferOf:eIdx];
+		const void* vertexattributedata = obj->getDataForCopy(eIdx);
+		JDataTypeVertex jtype = jconstant_vertex_attributes[i].type;
+		unsigned long len = obj->getVertexCnt() * jmetalconstanttypesize[jtype];
+		
+		[attbuffer append:vertexattributedata len:len];
+	}
+	 */
+	//[context.index.buffer append:obj->getIndexDataForCopy() len:jmetalconstanttypesize[jconstant_index_type] * obj->getIndexCnt()];
+}
+
+void jmetal::render(id<MTLTexture> rendertarget)
+{
+	id<MTLCommandBuffer> cmdbuff = [commandqueue commandBuffer];
+	renderpassdesc.colorAttachments[0].texture = rendertarget;
+	
+	id <MTLRenderCommandEncoder> rencoder = [cmdbuff renderCommandEncoderWithDescriptor:renderpassdesc];
+	
+	for(int i=0;i<JRenderContext_number;i++)
+	{
+		jmetalrendercontextdata* context = rendercontextdatas[i];
+		
+		[rencoder setRenderPipelineState:context.renderpipeline];
+		/*
+		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_position].buffer offset:0 atIndex:JBuffer_vertex_position];
+		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_normal].buffer offset:0 atIndex:JBuffer_vertex_normal];
+		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_color].buffer offset:0 atIndex:JBuffer_vertex_color];
+		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_uv].buffer offset:0 atIndex:JBuffer_vertex_uv];
+		 */
+		//[rencoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle indexCount:[context.index indexCnt] indexType:jmetalconstantindextype[jconstant_index_type] indexBuffer:context.index.buffer.buffer indexBufferOffset:0];
+	}
+	[rencoder endEncoding];
+	[cmdbuff commit];
+} 
+
+void jmetal::init(int width, int height)
+{
+    id<MTLDevice> device = MTLCreateSystemDefaultDevice();
+    commandqueue = [device newCommandQueue];
+    
+    id<MTLLibrary> library = [device newDefaultLibrary];
+    
+    MTLVertexDescriptor *vdesc = [MTLVertexDescriptor new];
+    
+    for(int iva=0;iva<JVertexAttribute_number;iva++)
     {
-        if(color != nil || depthstencil != nil || inited == true)
-        [NSException raise:@"render" format:@"reinitializing renderContext"];
+        MTLVertexAttributeDescriptor* vadesc = [MTLVertexAttributeDescriptor new];
+        vadesc.bufferIndex = jconstant_vertex_attributes[iva].bufferIdx;
+        vadesc.offset = 0;
+		vadesc.format = jmetalconstantmetaltype[jconstant_vertex_attributes[iva].type];
+		
+        MTLVertexBufferLayoutDescriptor* vldesc = [MTLVertexBufferLayoutDescriptor new];
+        vldesc.stepFunction = MTLVertexStepFunctionPerVertex;
+        vldesc.stride = 0;
+        vldesc.stepRate = 1;
         
-        color = _color;
-        depthstencil = _depth;
-        inited = true;
+        [vdesc.layouts setObject:vldesc atIndexedSubscript:iva];
+        [vdesc.attributes setObject:vadesc atIndexedSubscript:iva];
     }
-    jrendercontextpair()
+ 
+	MTLTextureDescriptor *dtdesc = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatDepth32Float width:width height:height mipmapped:NO];
+	dtdesc.textureType = MTLTextureType2D;
+	dtdesc.sampleCount = 1;
+	rtDepth = [device newTextureWithDescriptor:dtdesc];
+	
+	MTLTextureDescriptor *stdesc = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatStencil8 width:width height:height mipmapped:NO];
+	stdesc.textureType = MTLTextureType2D;
+	stdesc.sampleCount = 1;
+	rtStencil = [device newTextureWithDescriptor:stdesc];
+	
+	renderpassdesc = [MTLRenderPassDescriptor new];
+	renderpassdesc.colorAttachments[0].loadAction = MTLLoadActionClear;
+	renderpassdesc.colorAttachments[0].storeAction = MTLStoreActionStore;
+	renderpassdesc.colorAttachments[0].clearColor = MTLClearColorMake(0.4, 0.2, 0.1, 1);
+	
+	renderpassdesc.depthAttachment.loadAction = MTLLoadActionClear;
+	renderpassdesc.depthAttachment.storeAction = MTLStoreActionStore;
+	renderpassdesc.depthAttachment.clearDepth = 1;
+	renderpassdesc.depthAttachment.texture = rtDepth;
+	
+	renderpassdesc.stencilAttachment.texture = rtStencil;
+	
+    for(int i=0;i<JRenderContext_number;i++)
     {
-        inited = false;
-        color = nil;
-        depthstencil = nil;
+        NSString* nameV = [NSString stringWithUTF8String: jmetalconstantshaderentryvert[ jconstant_states_color[ jconstant_contexts[i].color ].shaderVert]];
+        NSString* nameF = [NSString stringWithUTF8String: jmetalconstantshaderentryfrag[ jconstant_states_color[ jconstant_contexts[i].color ].shaderFrag]];
+		
+        id<MTLFunction> frag = [library newFunctionWithName:nameF];
+        id<MTLFunction> vert = [library newFunctionWithName:nameV];
+		
+		if(frag == nil || vert == nil)
+		{
+			[NSException raise:@"no shader" format:@"no shader...."];
+		}
+		
+		MTLRenderPipelineDescriptor* descPipe = [MTLRenderPipelineDescriptor new];
+		
+        descPipe.vertexFunction = vert;
+        descPipe.fragmentFunction = frag;
+        descPipe.vertexDescriptor = vdesc;
+        descPipe.sampleCount = 1;
+		descPipe.depthAttachmentPixelFormat = jmetalconstantpixeltype[jconstant_pixelformat_depth];
+		descPipe.stencilAttachmentPixelFormat = jmetalconstantpixeltype[jconstant_pixelformat_stencil];
+		descPipe.colorAttachments[0].pixelFormat = jmetalconstantpixeltype[jconstant_pixelformat_color];
+		descPipe.colorAttachments[0].blendingEnabled = YES;
+		
+		rendercontextdatas[i].renderpipeline = [device newRenderPipelineStateWithDescriptor:descPipe error:nil];
+		rendercontextdatas[i].stream = [[jmetalstreambuffer alloc]initWithDevcie:device];
+		rendercontextdatas[i].uniform = [[jmetaluniformbuffer alloc]initWithDevice:device];
     }
-};
-
-jrendercontextpair renderContextPairs[JRenderState::JRenderState_number];
-
-jmetal::jmetal()
-{
-    renderEncoder = nil;
-    primitiveTypeCurrent = MTLPrimitiveTypeTriangle;
-    indexBuffer = nil;
-}
-
-Class jmetal::layerClass()
-{
-    return [CAMetalLayer class];
-}
-
-void jmetal::preRender()
-{
-    
-}
-
-void jmetal::renderIndexed(unsigned long offset, unsigned long cnt)
-{
-    if(renderEncoder == nil)
-    [NSException raise:@"render" format:@"no encoder trying to draw"];
-    
-    [renderEncoder drawIndexedPrimitives:primitiveTypeCurrent indexCount:cnt indexType:MTLIndexTypeUInt32 indexBuffer:indexBuffer indexBufferOffset:offset * sizeof(int)];
-}
-
-void jmetal::setPrimitive(sujak::JRenderPrimitive prim)
-{
-    switch (prim)
-    {
-        case JRenderPrimitive_triangle:
-        primitiveTypeCurrent = MTLPrimitiveTypeTriangle;
-        break;
-        case JRenderPrimitive_line:
-        primitiveTypeCurrent = MTLPrimitiveTypeLine;
-        break;
-        default:
-        [NSException raise:@"render" format:@"unexpected primitivetype"];
-        break;
-    }
-}
-
-void jmetal::setRenderState(sujak::JRenderState state)
-{
-    if(renderEncoder == nil)
-    [NSException raise:@"render" format:@"no renderencoder"];
-    
-#ifdef DEBUG
-    for(int i=0;i<JRenderState::JRenderState_number;i++)
-    if(!renderContextPairs[i].isInited())
-    [NSException raise:@"render" format:@"one of rendercontexst is not inited"];
-    
-#endif
-    [renderEncoder setRenderPipelineState:renderContextPairs[state].color];
-    [renderEncoder setDepthStencilState:renderContextPairs[state].depthstencil];
 }

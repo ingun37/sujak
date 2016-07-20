@@ -6,7 +6,7 @@
 #include "jcurve.hpp"
 using namespace sujak;
 
-typedef jallocator<simd::float4, 12000> poolf4;
+typedef jallocator<simd::float4, 12000, jbinary_jmesh> poolf4;
 
 using namespace std;
 using namespace sujak;
@@ -42,7 +42,7 @@ void sujak::jbinary_jmesh::saveInfo(int &vcnt, int &icnt, simd::float4 *poolPos,
 {
 	
 }
-typedef jallocator<int, 5000> pooli;
+typedef jallocator<int, 5000, jbinary_jskinner> pooli;
 
 void sujak::jbinary_jskinner::getInfo(char *data, int &clustercnt, matrix_float4x4* &inverses, matrix_float4x4* &bindmeshes, int *&jointidxs, int *&cpcounts, int *&cpIdxs, float *&weights, int *&accuTable)
 {
@@ -83,8 +83,8 @@ void sujak::jbinary_jskinner::getInfo(char *data, int &clustercnt, matrix_float4
     
 }
 
-typedef jallocator<jcurvenode, 1024> poolcurvenode;
-typedef jallocator<jcurve, 2000> poolcurve;
+typedef jallocator<jcurvenode, 1024, jbinary_janim> poolcurvenode;
+typedef jallocator<jcurve, 2000, jbinary_janim> poolcurve;
 void sujak::jbinary_janim::getInfo(char *data, jcurvenode *&curvenodes, const int skelcnt)
 {
     char* fp = data;

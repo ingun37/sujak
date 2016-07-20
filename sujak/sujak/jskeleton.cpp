@@ -17,10 +17,10 @@ sujak::jskeleton::jskeleton()
     animating = false;
 }
 
-typedef jallocator<matrix_float4x4, 3000> poolmat;
-typedef jallocator<simd::float3, 128> jallocatorf3;
+typedef jallocator<matrix_float4x4, 3000, jskeleton> poolmat;
+typedef jallocator<simd::float3, 128, jskeleton> jallocatorf3;
 
-typedef jallocator<int, 20000> poolkey;
+typedef jallocator<int, 20000, jskeleton> poolkey;
 
 void sujak::jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* animbytes)
 {
@@ -35,7 +35,7 @@ void sujak::jskeleton::setFromFile(char *tableBytes, char *jointBytes, char* ani
     currentkeys = poolkey::getAvailable(jointnum * JCURVENODE_PROPERTY_NUMBER * 3);
 }
 
-typedef jallocator<jjoint, 3000> jallocjoint;
+typedef jallocator<jjoint, 3000, jskeleton> jallocjoint;
 void sujak::jskeleton::clone(jskeleton &skeleton)
 {
     jjoint* newjoints = jallocjoint::getAvailable(jointnum);

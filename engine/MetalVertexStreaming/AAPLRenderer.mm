@@ -21,37 +21,11 @@ static const long kInFlightCommandBuffers = 1;
 
 JUniformBlock _uniformb;
 id <MTLTexture> _texture;
-id <MTLBuffer> _vertexbuffers[JVertexAttribute_number];
-id <MTLBuffer> _indexBuffer = nil;
-id <MTLRenderCommandEncoder> _renderEncoder = nil;
-MTLPrimitiveType _primitiveTypeCurrent = MTLPrimitiveTypeTriangle;
+
+
+
+
 id <MTLBuffer> _uniformBuffer = nil;
-
-class jrendercontextpair
-{
-	bool inited;
-public:
-	id<MTLRenderPipelineState> color;
-	id<MTLDepthStencilState> depthstencil;
-	bool isInited(){ return inited; }
-	void setPair(id<MTLRenderPipelineState> _color, id<MTLDepthStencilState> _depth)
-	{
-		if(color != nil || depthstencil != nil || inited == true)
-            [NSException raise:@"render" format:@"reinitializing renderContext"];
-		
-		color = _color;
-		depthstencil = _depth;
-		inited = true;
-	}
-	jrendercontextpair()
-	{
-		inited = false;
-		color = nil;
-		depthstencil = nil;
-	}
-};
-
-jrendercontextpair renderContextPairs[JRenderState::JRenderState_number];
 
 
 jcore core;
@@ -90,50 +64,10 @@ void withMetalLoadFile(const char* szFileName, const char* szExt, char* &file, u
     file = tmpfilebuff;
 }
 
-void withMetalSetRenderState( JRenderState state )
-{
-	if(_renderEncoder == nil)
-        [NSException raise:@"render" format:@"no renderencoder"];
-	
-#ifdef DEBUG
-	for(int i=0;i<JRenderState::JRenderState_number;i++)
-		if(!renderContextPairs[i].isInited())
-            [NSException raise:@"render" format:@"one of rendercontexst is not inited"];
-
-#endif
-	[_renderEncoder setRenderPipelineState:renderContextPairs[state].color];
-	[_renderEncoder setDepthStencilState:renderContextPairs[state].depthstencil];
-}
-
-void withMetalSetPrimitive(JRenderPrimitive prim)
-{
-	switch (prim)
-	{
-		case JRenderPrimitive_triangle:
-			_primitiveTypeCurrent = MTLPrimitiveTypeTriangle;
-			break;
-		case JRenderPrimitive_line:
-			_primitiveTypeCurrent = MTLPrimitiveTypeLine;
-			break;
-		default:
-            [NSException raise:@"render" format:@"unexpected primitivetype"];
-			break;
-	}
-}
-
-void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
-{
-	if(_renderEncoder == nil)
-        [NSException raise:@"render" format:@"no encoder trying to draw"];
-    
-	[_renderEncoder drawIndexedPrimitives:_primitiveTypeCurrent indexCount:cnt indexType:MTLIndexTypeUInt32 indexBuffer:_indexBuffer indexBufferOffset:offset * sizeof(int)];
-}
 
 @implementation AAPLRenderer
 {
-    id <MTLDevice> _device;
-    id <MTLCommandQueue> _commandQueue;
-    id <MTLLibrary> _defaultLibrary;
+    
     
     dispatch_semaphore_t _inflight_semaphore;
 }
@@ -151,39 +85,16 @@ void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
 
 - (void)configure:(AAPLView *)view
 {
-    // find a usable Device
-    _device = view.device;
-
     // setup view with drawable formats
-    view.depthPixelFormat   = MTLPixelFormatDepth32Float_Stencil8;
-    view.stencilPixelFormat = MTLPixelFormatDepth32Float_Stencil8;
     view.sampleCount        = 1;
     
     // create a new command queue
-    _commandQueue = [_device newCommandQueue];
     
-    _defaultLibrary = [_device newDefaultLibrary];
-    if(!_defaultLibrary) {
-        NSLog(@">> ERROR: Couldnt create a default shader library");
-        // assert here becuase if the shader libary isn't loading, nothing good will happen
-        assert(0);
-    }
-    
-    if (![self preparePipelineState:view])
-    {
-        NSLog(@">> ERROR: Couldnt create a valid pipeline state");
-        
-        // cannot render anything without a valid compiled pipeline state object.
-        assert(0);
-    }
     
     // set the vertex shader and buffers defined in the shader source, in this case we have 2 inputs. A position buffer and a color buffer
     // Allocate a buffer to store vertex position data (we'll quad buffer this one)
 
-    for(int ib=0;ib<JVertexAttribute_number;ib++)
-        _vertexbuffers[ib] = [_device newBufferWithLength:jvertexbuffersizes[ib] options:MTLResourceCPUCacheModeWriteCombined];
     
-	_indexBuffer = [_device newBufferWithLength:jindexbuffersize options:MTLResourceCPUCacheModeWriteCombined];
 	
     void* tmpbuffers[JVertexAttribute_number];
     for(int ib = 0;ib<JVertexAttribute_number;ib++)
@@ -265,124 +176,6 @@ void withMetalDrawIndex(unsigned long offset, unsigned long cnt)
     
 }
 
-- (BOOL)preparePipelineState:(AAPLView*)view
-{
-
-
-	
-	MTLVertexDescriptor *mtlVertexDescriptor = [[MTLVertexDescriptor alloc] init];
-	
-    for(int ia = 0;ia<JVertexAttribute_number;ia++)
-    {
-        const int vbuffidx = jvertexbufferindices[ia];
-        
-        switch(jvertexattribtypes[ia])
-        {
-            case JVertexType_f2:
-                mtlVertexDescriptor.attributes[ia].format = MTLVertexFormatFloat2;
-                mtlVertexDescriptor.layouts[vbuffidx].stride = sizeof(simd::float2);
-                break;
-            case JVertexType_f4:
-                mtlVertexDescriptor.attributes[ia].format = MTLVertexFormatFloat4;
-                mtlVertexDescriptor.layouts[vbuffidx].stride = sizeof(simd::float4);
-                break;
-            default:
-                puts("unknown jvertextype");
-                exit(1);
-                break;
-        }
-        
-        mtlVertexDescriptor.attributes[ia].offset = 0;
-        mtlVertexDescriptor.attributes[ia].bufferIndex = jvertexbufferindices[ia];
-        
-        mtlVertexDescriptor.layouts[vbuffidx].stepFunction = MTLVertexStepFunctionPerVertex;
-        mtlVertexDescriptor.layouts[vbuffidx].stepRate = 1;
-    }
-    
-    //  create a reusable pipeline state
-    MTLRenderPipelineDescriptor *pipelineStateDescriptor = [MTLRenderPipelineDescriptor new];
-	MTLDepthStencilDescriptor *depthStencilStateDesc = [[MTLDepthStencilDescriptor alloc]init];
-
-	
-	//////////////////////
-	id <MTLFunction> vertexProgram = [_defaultLibrary newFunctionWithName:@"passThroughVertex"];
-	id <MTLFunction> fragmentProgram = [_defaultLibrary newFunctionWithName:@"passThroughFragment"];
-	
-	if(vertexProgram == nil || fragmentProgram == nil)
-	{
-		NSLog(@"model program gen fail");
-		exit(1);
-	}
-	
-    pipelineStateDescriptor.label = @"MyPipeline";
-    pipelineStateDescriptor.colorAttachments[0].pixelFormat = MTLPixelFormatBGRA8Unorm;
-    pipelineStateDescriptor.sampleCount      = view.sampleCount;
-	pipelineStateDescriptor.vertexDescriptor = mtlVertexDescriptor;
-    pipelineStateDescriptor.vertexFunction   = vertexProgram;
-    pipelineStateDescriptor.fragmentFunction = fragmentProgram;
-	pipelineStateDescriptor.depthAttachmentPixelFormat = view.depthPixelFormat;
-	pipelineStateDescriptor.stencilAttachmentPixelFormat = view.stencilPixelFormat;
-	
-	depthStencilStateDesc.depthCompareFunction = MTLCompareFunctionLess;
-	depthStencilStateDesc.depthWriteEnabled = YES;
-	
-	renderContextPairs[JRenderState::JRenderState_light].setPair (
-		[_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:nil],
-		[_device newDepthStencilStateWithDescriptor:depthStencilStateDesc]);
-
-	/////////////////////////////////////////////////
-	
-	id <MTLFunction> vertLine = [_defaultLibrary newFunctionWithName:@"vertLine"];
-	id <MTLFunction> fragLine = [_defaultLibrary newFunctionWithName:@"fragLine"];
-	
-	if(vertLine == nil || fragLine == nil)
-	{
-		NSLog(@"line program gen fail");
-		exit(1);
-	}
-    
-	pipelineStateDescriptor.vertexFunction = vertLine;
-	pipelineStateDescriptor.fragmentFunction = fragLine;
-    depthStencilStateDesc.depthCompareFunction = MTLCompareFunctionAlways;
-    
-	renderContextPairs[JRenderState::JRenderState_info].setPair(
-		[_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:nil],
-		[_device newDepthStencilStateWithDescriptor:depthStencilStateDesc]);
-	
-	////////////////////////////////////////
-	
-	id <MTLFunction> vertUI = [_defaultLibrary newFunctionWithName:@"vertUI"];
-	id <MTLFunction> fragUI = [_defaultLibrary newFunctionWithName:@"fragUI"];
-	
-	if(vertUI == nil || fragUI == nil)
-	{
-		NSLog(@"ui program gen fail");
-		exit(1);
-	}
-	
-	pipelineStateDescriptor.vertexFunction = vertUI;
-	pipelineStateDescriptor.fragmentFunction = fragUI;
-	
-	depthStencilStateDesc.depthCompareFunction = MTLCompareFunctionAlways;
-	depthStencilStateDesc.depthWriteEnabled = NO;
-	
-	renderContextPairs[JRenderState::JRenderState_ui].setPair(
-		[_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:nil],
-		[_device newDepthStencilStateWithDescriptor:depthStencilStateDesc]);
-
-	/////////////////////////////////////////
-	
-	for(int i=0;i<JRenderState_number;i++)
-	{
-		if (!renderContextPairs[i].isInited())
-		{
-			NSLog(@"oneof rendercontextpairs not inited %d", i);
-			exit(1);
-		}
-	}
-
-    return YES;
-}
 
 - (void)render:(AAPLView *)view
 {

@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "jgl.h"
+#include "jgl.hpp"
 #include "jos.h"
 #include "jallocator.hpp"
 namespace sujak
@@ -32,7 +32,7 @@ namespace sujak
     
     
     
-    typedef jallocator<char, 1024*1024> filepool;
+    typedef jallocator<char, 1024*1024, class jcore> filepool;
     
     class jcore
     {

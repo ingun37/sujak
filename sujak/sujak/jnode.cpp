@@ -39,9 +39,9 @@ void sujak::jnode::computeAndStoreSkinnedPositionTo(simd::float4 *dest)
 		}
 	}
 }
-typedef jallocator<jskeleton, 80> jallocskel;
-typedef jallocator<jrenderobject, 80> jallocrobj;
-typedef jallocator<jskinner, 80> jallocskin;
+typedef jallocator<jskeleton, 80, jnode> jallocskel;
+typedef jallocator<jrenderobject, 80, jnode> jallocrobj;
+typedef jallocator<jskinner, 80, jnode> jallocskin;
 void sujak::jnode::clone(jnode &node)
 {
     node = *this;
@@ -57,9 +57,9 @@ void sujak::jnode::clone(jnode &node)
     node.skinner = newskin;
     node.skeleton = newskel;
 }
-typedef jallocator<simd::float4*, 1024> poolpf4;
-typedef jallocator<simd::float4, 60000> poolf4;
-typedef jallocator<matrix_float4x4, 1024> poolM;
+typedef jallocator<simd::float4*, 1024, jnode> poolpf4;
+typedef jallocator<simd::float4, 60000, jnode> poolf4;
+typedef jallocator<matrix_float4x4, 1024, jnode> poolM;
 void sujak::jnode::precomputeLocals()//todo : share
 {
     if(localsPrecomputed)

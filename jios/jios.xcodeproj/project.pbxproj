@@ -1,0 +1,359 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B0384171D9278D200282402 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0384161D9278D200282402 /* main.m */; };
+		6B03841A1D9278D200282402 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0384191D9278D200282402 /* AppDelegate.m */; };
+		6B03841D1D9278D200282402 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B03841C1D9278D200282402 /* ViewController.mm */; };
+		6B0384201D9278D200282402 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B03841E1D9278D200282402 /* Main.storyboard */; };
+		6B0384221D9278D200282402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0384211D9278D200282402 /* Assets.xcassets */; };
+		6B0384251D9278D200282402 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0384231D9278D200282402 /* LaunchScreen.storyboard */; };
+		6B0384361D952B7100282402 /* libjmetal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0384351D952B7100282402 /* libjmetal.a */; };
+		6B0384391D952BCB00282402 /* jmetal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B0384381D952BCB00282402 /* jmetal.hpp */; };
+		6B0384431D9530D700282402 /* jgl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B0384421D9530D700282402 /* jgl.hpp */; };
+		6B0384481D95329B00282402 /* jiosview.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B0384461D95329B00282402 /* jiosview.h */; };
+		6B0384491D95329B00282402 /* jiosview.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0384471D95329B00282402 /* jiosview.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6B0384121D9278D200282402 /* jios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B0384161D9278D200282402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6B0384181D9278D200282402 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6B0384191D9278D200282402 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6B03841B1D9278D200282402 /* ViewController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewController.hpp; sourceTree = "<group>"; };
+		6B03841C1D9278D200282402 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		6B03841F1D9278D200282402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6B0384211D9278D200282402 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B0384241D9278D200282402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6B0384261D9278D200282402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B0384351D952B7100282402 /* libjmetal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjmetal.a; path = "../../Library/Developer/Xcode/DerivedData/metal-hidnnxiiuevhzdgkmfckjmtkkslc/Build/Products/Debug-iphoneos/libjmetal.a"; sourceTree = "<group>"; };
+		6B0384381D952BCB00282402 /* jmetal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jmetal.hpp; path = ../jmetal/jmetal/jmetal.hpp; sourceTree = "<group>"; };
+		6B0384421D9530D700282402 /* jgl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jgl.hpp; path = ../sujak/sujak/jgl.hpp; sourceTree = "<group>"; };
+		6B0384461D95329B00282402 /* jiosview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jiosview.h; sourceTree = "<group>"; };
+		6B0384471D95329B00282402 /* jiosview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jiosview.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6B03840F1D9278D200282402 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0384361D952B7100282402 /* libjmetal.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6B0384091D9278D200282402 = {
+			isa = PBXGroup;
+			children = (
+				6B0384421D9530D700282402 /* jgl.hpp */,
+				6B0384381D952BCB00282402 /* jmetal.hpp */,
+				6B0384141D9278D200282402 /* jios */,
+				6B0384131D9278D200282402 /* Products */,
+				6B0384341D952B7100282402 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6B0384131D9278D200282402 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B0384121D9278D200282402 /* jios.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B0384141D9278D200282402 /* jios */ = {
+			isa = PBXGroup;
+			children = (
+				6B0384181D9278D200282402 /* AppDelegate.h */,
+				6B0384191D9278D200282402 /* AppDelegate.m */,
+				6B03841B1D9278D200282402 /* ViewController.hpp */,
+				6B03841C1D9278D200282402 /* ViewController.mm */,
+				6B03841E1D9278D200282402 /* Main.storyboard */,
+				6B0384211D9278D200282402 /* Assets.xcassets */,
+				6B0384231D9278D200282402 /* LaunchScreen.storyboard */,
+				6B0384261D9278D200282402 /* Info.plist */,
+				6B0384151D9278D200282402 /* Supporting Files */,
+				6B0384461D95329B00282402 /* jiosview.h */,
+				6B0384471D95329B00282402 /* jiosview.m */,
+			);
+			path = jios;
+			sourceTree = "<group>";
+		};
+		6B0384151D9278D200282402 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6B0384161D9278D200282402 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B0384341D952B7100282402 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B0384351D952B7100282402 /* libjmetal.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6B0384371D952B9500282402 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0384431D9530D700282402 /* jgl.hpp in Headers */,
+				6B0384481D95329B00282402 /* jiosview.h in Headers */,
+				6B0384391D952BCB00282402 /* jmetal.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6B0384111D9278D200282402 /* jios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B0384291D9278D200282402 /* Build configuration list for PBXNativeTarget "jios" */;
+			buildPhases = (
+				6B03840E1D9278D200282402 /* Sources */,
+				6B03840F1D9278D200282402 /* Frameworks */,
+				6B0384101D9278D200282402 /* Resources */,
+				6B0384371D952B9500282402 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jios;
+			productName = jios;
+			productReference = 6B0384121D9278D200282402 /* jios.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6B03840A1D9278D200282402 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = loadcomplete;
+				TargetAttributes = {
+					6B0384111D9278D200282402 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = L5UTUQP5FK;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6B03840D1D9278D200282402 /* Build configuration list for PBXProject "jios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6B0384091D9278D200282402;
+			productRefGroup = 6B0384131D9278D200282402 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B0384111D9278D200282402 /* jios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6B0384101D9278D200282402 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0384251D9278D200282402 /* LaunchScreen.storyboard in Resources */,
+				6B0384221D9278D200282402 /* Assets.xcassets in Resources */,
+				6B0384201D9278D200282402 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6B03840E1D9278D200282402 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B03841D1D9278D200282402 /* ViewController.mm in Sources */,
+				6B0384491D95329B00282402 /* jiosview.m in Sources */,
+				6B03841A1D9278D200282402 /* AppDelegate.m in Sources */,
+				6B0384171D9278D200282402 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6B03841E1D9278D200282402 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B03841F1D9278D200282402 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6B0384231D9278D200282402 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B0384241D9278D200282402 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6B0384271D9278D200282402 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6B0384281D9278D200282402 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6B03842A1D9278D200282402 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L5UTUQP5FK;
+				INFOPLIST_FILE = jios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loadcomplete.jios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6B03842B1D9278D200282402 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L5UTUQP5FK;
+				INFOPLIST_FILE = jios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loadcomplete.jios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6B03840D1D9278D200282402 /* Build configuration list for PBXProject "jios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B0384271D9278D200282402 /* Debug */,
+				6B0384281D9278D200282402 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B0384291D9278D200282402 /* Build configuration list for PBXNativeTarget "jios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B03842A1D9278D200282402 /* Debug */,
+				6B03842B1D9278D200282402 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6B03840A1D9278D200282402 /* Project object */;
+}

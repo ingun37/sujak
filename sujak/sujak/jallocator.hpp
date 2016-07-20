@@ -13,9 +13,10 @@
 #include <stdlib.h>
 namespace sujak
 {
-    template <typename T, unsigned long I>
+    template <typename T, unsigned long I, typename O>
     class jallocator
     {
+		static O *nothing;
         static T objs[I];
         static unsigned long cnt;
     public:
@@ -27,14 +28,14 @@ namespace sujak
     };
     
     
-    template <typename T, unsigned long I>
-    unsigned long jallocator<T,I>::cnt = 0;
+    template <typename T, unsigned long I, typename O>
+    unsigned long jallocator<T,I,O>::cnt = 0;
     
-    template <typename T, unsigned long I>
-    T jallocator<T,I>::objs[];
+    template <typename T, unsigned long I, typename O>
+    T jallocator<T,I,O>::objs[];
     
-    template<typename T, unsigned long I>
-    T* jallocator<T, I>::getAvailable(unsigned long len)
+    template<typename T, unsigned long I, typename O>
+    T* jallocator<T, I,O>::getAvailable(unsigned long len)
     {
         T* obj = &objs[cnt];
         cnt += len;
@@ -46,20 +47,20 @@ namespace sujak
         return obj;
     }
     
-    template<typename T, unsigned long I>
-    T* jallocator<T,I>::getStart()
+    template<typename T, unsigned long I, typename O>
+    T* jallocator<T,I,O>::getStart()
     {
         return objs;
     }
     
-    template<typename T, unsigned long I>
-    T* jallocator<T,I>::getAt(unsigned long i)
+    template<typename T, unsigned long I, typename O>
+    T* jallocator<T,I,O>::getAt(unsigned long i)
     {
         return &objs[i];
     }
     
-    template <typename T, unsigned long I>
-    unsigned long jallocator<T,I>::getCnt()
+    template <typename T, unsigned long I, typename O>
+    unsigned long jallocator<T,I,O>::getCnt()
     {
         return cnt;
     }

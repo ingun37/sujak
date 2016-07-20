@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include "jmath.hpp"
 #include "jcore.hpp"
-#include "jvideomemorymapper.hpp"
 #include "jbinary.hpp"
 #include "jrenderstategroup.hpp"
 #include "jskeleton.hpp"
@@ -12,10 +11,10 @@
 
 using namespace sujak;
 
-typedef jallocator<simd::float4, 400> jallocatorF4;
-typedef jallocator<int, 400> jallocatorInt;
+typedef jallocator<simd::float4, 400, jcore> jallocatorF4;
+typedef jallocator<int, 400, jcore> jallocatorInt;
 
-jrenderstategroup renderstateGroups[JRenderState_number];
+//jrenderstategroup renderstateGroups[JRenderState_number];
 
 using namespace sujak;
 
@@ -207,13 +206,13 @@ static int iQuad[] =
 };
 
 
-typedef jallocator<jrenderobject, 8> jallocatorRenderObjs;
-typedef jallocator<jskeleton, 4> jallocatorSkeleton;
-typedef jallocator<jskinner, 2> jallocatorSkinner;
-typedef jallocator<jnode, 100> jallocatorJnode;
+typedef jallocator<jrenderobject, 8, jcore> jallocatorRenderObjs;
+typedef jallocator<jskeleton, 4, jcore> jallocatorSkeleton;
+typedef jallocator<jskinner, 2, jcore> jallocatorSkinner;
+typedef jallocator<jnode, 100, jcore> jallocatorJnode;
 
-typedef jallocator<int, 6000> jallocatorInt6000;
-typedef jallocator<float, 6000> jallocatorFloat6000;
+typedef jallocator<int, 6000, jcore> jallocatorInt6000;
+typedef jallocator<float, 6000, jcore> jallocatorFloat6000;
 
 sujak::jcore::jcore()
 {
@@ -226,31 +225,21 @@ sujak::jcore::jcore()
 
 void sujak::jcore::render()
 {
-	for(int i=0;i<JRenderState_number;i++)
-	{
-        gl->setRenderState((JRenderState)i);
-		for(int j=0;j<JRenderPrimitive_number;j++)
-		{
-            gl->setPrimitive((JRenderPrimitive)j);
-            if(renderstateGroups[i].subPrimitiveGroups[j].total > 0)
-                gl->renderIndexed( renderstateGroups[i].subPrimitiveGroups[j].min, renderstateGroups[i].subPrimitiveGroups[j].total );
-			
-		}
-	}
+	
 }
 
-typedef jallocator<jnode*, 80> jallocskinnedmeshes;
-jvideomemorymapper mmapper;
+typedef jallocator<jnode*, 80, jcore> jallocskinnedmeshes;
+
 
 void sujak::jcore::init(void **vbuffers, int *ibuffer, jos* _os, jgl* _gl)
 {
     gl = _gl;
     os = _os;
-    mmapper.init(vbuffers, ibuffer);
 }
 
 void sujak::jcore::doneloadstatic()
 {
+    /*
     for(int i=0;i<jallocskinnedmeshes::getCnt();i++)
         renderstateGroups[JRenderState_light].subPrimitiveGroups[JRenderPrimitive_triangle].addObj( *jallocskinnedmeshes::getAt(i) );
     
@@ -273,6 +262,7 @@ void sujak::jcore::doneloadstatic()
     }
     
     loadstaticdone = true;
+     */
 }
 
 
@@ -345,9 +335,9 @@ void sujak::jcore::update()
         {
             nodeToSkin->getSkeleton()->advance(0.006);
         }
-        if(nodeToSkin->getSkeleton()->isanimating())
-            nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
-        //mapSkeletonVertices(*nodeToSkin->getSkeleton(), mmapper.getPositionMemoryOf(*(g_skelmesh)));
+        //if(nodeToSkin->getSkeleton()->isanimating())
+        //    nodeToSkin->computeAndStoreSkinnedPositionTo(mmapper.getPositionMemoryOf(*(nodeToSkin->getRenderObject())));
+        
 	}
     t+=0.1;
 }

@@ -2,7 +2,7 @@
 #define jrendercontext_hpp
 
 #include <stdio.h>
-#include "jconstants.h"
+#include "jconstants.hpp"
 #include "jrenderprimitivegroup.hpp"
 namespace sujak
 {

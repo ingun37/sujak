@@ -26,7 +26,7 @@ struct VertexInOut
     float2  uv;
 };
 
-vertex VertexInOut passThroughVertex(vertexinput in [[stage_in]], constant JUniformBlock& uniformblock[[buffer(JBufferIndex_uniform)]])
+vertex VertexInOut vertLight(vertexinput in [[stage_in]], constant JUniformBlock& uniformblock[[buffer(JBufferIndex_uniform)]])
 {
     VertexInOut outVertex;
     
@@ -38,7 +38,7 @@ vertex VertexInOut passThroughVertex(vertexinput in [[stage_in]], constant JUnif
     return outVertex;
 };
 
-fragment half4 passThroughFragment(VertexInOut inFrag [[stage_in]], texture2d<half> tex2D [[ texture(0) ]])
+fragment half4 fragLight(VertexInOut inFrag [[stage_in]], texture2d<half> tex2D [[ texture(0) ]])
 {
 	float3 lightdir = normalize(float3(0.5,-1,0.3));
 	

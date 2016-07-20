@@ -13,19 +13,16 @@
 
 using namespace sujak;
 
-typedef jallocator<simd::float4, 4000> jallocf4;
-typedef jallocator<simd::float2, 4000> jallocf2;
+typedef jallocator<simd::float4, 4000, jrenderobject> jallocf4;
+typedef jallocator<simd::float2, 4000, jrenderobject> jallocf2;
 
 sujak::jrenderobject::jrenderobject()
 {
 	dataset = false;
-	layedout = false;
 }
 
-void sujak::jrenderobject::setData(simd::float4 *p, simd::float4 *n, simd::float4 *c, simd::float2 *u, int vc, int *i, int ic)
+void sujak::jrenderobject::setData(void* p, void* n, void* c, void* u, unsigned int vc, void* i, unsigned int ic)
 {
-    dataset = true;
- 
     if(p==NULL)
     {
         puts("no positions");
@@ -64,10 +61,11 @@ void sujak::jrenderobject::setData(simd::float4 *p, simd::float4 *n, simd::float
     }
     vertexCnt = vc;
     indexCnt = ic;
+	
+	dataset = true;
 }
 
 void sujak::jrenderobject::clone(jrenderobject &robj)
 {
     robj = *this;
-    robj.layedout = false;
 }

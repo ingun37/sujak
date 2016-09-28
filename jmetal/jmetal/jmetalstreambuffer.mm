@@ -20,7 +20,14 @@
 
 -(void)loadObject:(sujak::jrenderobject *)obj
 {
-    
+	[index loadObjectIndex:obj->getIndexDataForCopy() cnt:obj->getIndexCnt()];
+	[vertex loadObjectVertex:obj->getData2DForCopy() cnt:obj->getVertexCnt()];
+}
+
+-(void)resetOffsets
+{
+	[index resetOffset];
+	[vertex resetOffsets];
 }
 
 @end

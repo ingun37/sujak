@@ -24,4 +24,17 @@ using namespace sujak;
 	return buffers[att];
 }
 
+-(void)resetOffsets
+{
+	for(int i=0;i<JVertexAttribute_number;i++)
+		[buffers[i] resetOffset];
+}
+
+-(void)loadObjectVertex:(const void * const *)data cnt:(unsigned int)cnt
+{
+	for(int i=0;i<JVertexAttribute_number;i++)
+	{
+		[buffers[i] append:data[i] len:(jmetalconstantvertextypesize[i] * cnt)];
+	}
+}
 @end

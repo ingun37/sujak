@@ -43,7 +43,7 @@ void jmetal::render(id<MTLTexture> rendertarget)
 		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_normal].buffer offset:0 atIndex:JBuffer_vertex_normal];
 		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_color].buffer offset:0 atIndex:JBuffer_vertex_color];
 		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_uv].buffer offset:0 atIndex:JBuffer_vertex_uv];
-		 */
+		*/
 		//[rencoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle indexCount:[context.index indexCnt] indexType:jmetalconstantindextype[jconstant_index_type] indexBuffer:context.index.buffer.buffer indexBufferOffset:0];
 	}
 	[rencoder endEncoding];

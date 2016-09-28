@@ -33,4 +33,9 @@
 	memcpy((char*)[_buffer contents] + _offset, data, len);
 	_offset += len;
 }
+
+-(void)resetOffset
+{
+	_offset = 0;
+}
 @end

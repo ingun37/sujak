@@ -34,4 +34,14 @@ using namespace sujak;
 	}
 	return buffer.offset/unitsize;
 }
+
+-(void)resetOffset
+{
+	[buffer resetOffset];
+}
+
+-(void)loadObjectIndex:(const void *)data cnt:(unsigned int)cnt
+{
+	[buffer append:data len:(cnt * jmetalconstantindextypesize[jconstant_index_type])];
+}
 @end

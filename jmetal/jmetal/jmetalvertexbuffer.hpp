@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "jmetalbuffer.hpp"
-#include "jdefinitions.hpp"
+#include "jmetalconstants.hpp"
 @interface jmetalvertexbuffer : NSObject
 {
 	jmetalbuffer* buffers[sujak::JVertexAttribute_number];
@@ -16,5 +16,6 @@
 
 -(jmetalbuffer*)getBufferOf:(sujak::JVertexAttribute) att;
 -(id)initWithDevice:(id<MTLDevice>)device;
-
+-(void)resetOffsets;
+-(void)loadObjectVertex:(const void* const *)data cnt:(unsigned int)cnt;
 @end

@@ -78,7 +78,7 @@ void sujak::jnode::precomputeLocals()//todo : share
         for(int vi=0;vi<skinner->linkCounts[ci];vi++)
         {
             int idx = skinner->accuTable[ci] + vi;
-            precomputeLinkDependencies[ci][vi] = renderobj->getPositionAt( skinner->linkIdxs[idx] ) * skinner->linkWeights[idx];
+            //precomputeLinkDependencies[ci][vi] = renderobj->getPositionAt( skinner->linkIdxs[idx] ) * skinner->linkWeights[idx];
         }
     }
     localsPrecomputed = true;

@@ -14,4 +14,6 @@
 	jmetalbuffer* buffer;
 }
 -(id)initWithDevice:(id<MTLDevice>)device;
+-(void)resetOffset;
+-(void)loadObjectIndex:(const void*)data cnt:(unsigned int)cnt;
 @end

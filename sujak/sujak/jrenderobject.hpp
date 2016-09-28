@@ -36,6 +36,7 @@ namespace sujak
         //inline simd::float4 getPositionAt(int i) const {return ((simd::float4*)attributeDatas[JVertexAttribute_position])[i];}
 		
 		inline const void* getDataForCopy(JVertexAttribute att){ return attributeDatas[att]; }
+		inline const void* const * getData2DForCopy(){ return attributeDatas; }
 		inline const void* getIndexDataForCopy() { return indices; }
         void setData(void* p, void* n, void* c, void* u, unsigned int vc, void* i, unsigned int ic);
         

@@ -21,4 +21,5 @@ namespace sujak
 }
 -(id)initWithDevcie:(id<MTLDevice>)device;
 -(void)loadObject:(sujak::jrenderobject*)obj;
+-(void)resetOffsets;
 @end

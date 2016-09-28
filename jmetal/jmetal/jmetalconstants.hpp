@@ -10,13 +10,34 @@
 #define jmetalconstants_h
 
 #import <Metal/Metal.h>
-#include "jconstants.hpp"
+#import <simd/simd.h>
 
-extern const size_t jmetalconstantvertextypesize[sujak::JDataTypeVertex_number];
-extern const size_t jmetalconstantindextypesize[sujak::JDataTypeIndex_number];
-extern const MTLVertexFormat jmetalconstantmetaltype[sujak::JDataTypeVertex_number];
-extern const char* jmetalconstantshaderentryvert[sujak::JShaderVert_number];
-extern const char* jmetalconstantshaderentryfrag[sujak::JShaderFrag_number];
-extern const MTLIndexType jmetalconstantindextype[sujak::JDataTypeIndex_number];
-extern const MTLPixelFormat jmetalconstantpixeltype[sujak::JPixelFormat_number];
+enum jmetalvertexattribute
+{
+    jmetalvertexattribute_position,
+    jmetalvertexattribute_normal,
+    jmetalvertexattribute_color,
+    jmetalvertexattribute_uv,
+};
+
+#define jmetalconstantvertextype_position   (simd::float4)
+#define jmetalconstantvertextypesize_position sizeof jmetalconstantvertextype_position
+#define jmetalconstantvertexmetaltype       MTLVertexFormatFloat4
+
+#define jmetalconstantvertextype_normal     (simd::float4)
+#define jmetalconstantvertextypesize_normal sizeof jmetalconstantvertextype_normal
+#define jmetalconstantvertexmetaltype       MTLVertexFormatFloat4
+
+#define jmetalconstantvertextype_color      (simd::float4)
+#define jmetalconstantvertextypesize_color  sizeof jmetalconstantvertextype_color
+#define jmetalconstantvertexmetaltype       MTLVertexFormatFloat4
+
+#define jmetalconstantvertextype_uv         (simd::float2)
+#define jmetalconstantvertextypesize_uv     sizeof jmetalconstantvertextype_uv
+#define jmetalconstantvertexmetaltype       MTLVertexFormatFloat2
+
+#define jmetalconstantindextype             (unsigned int)
+#define jmetalconstantindextypesize         sizeof jmetalconstantindextype
+#define jmetalconstantindexmetaltype        MTLIndexTypeUInt32
+
 #endif /* jmetalconstants_h */

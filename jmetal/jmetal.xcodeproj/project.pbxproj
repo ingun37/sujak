@@ -11,7 +11,6 @@
 		6B0384331D94100000282402 /* jmetalindexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B0384311D94100000282402 /* jmetalindexbuffer.mm */; };
 		6B833F3D1D9A7205002EE46F /* jmetaluniformbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B833F3B1D9A7205002EE46F /* jmetaluniformbuffer.mm */; };
 		6B833F411D9A77A6002EE46F /* jmetalstreambuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B833F3F1D9A77A6002EE46F /* jmetalstreambuffer.mm */; };
-		6B833F451D9A7E41002EE46F /* libsujak.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B833F441D9A7E41002EE46F /* libsujak.a */; };
 		6BAFC22C1D3F19E4008158E5 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFC22B1D3F19E4008158E5 /* jmetal.mm */; };
 		6BAFC2331D3F1B3C008158E5 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BAFC2321D3F1B3C008158E5 /* Metal.framework */; };
 		6BAFC2351D3F1C5E008158E5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BAFC2341D3F1C5E008158E5 /* QuartzCore.framework */; };
@@ -37,7 +36,6 @@
 		6B03842D1D92A31100282402 /* jmetalvertexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalvertexbuffer.mm; sourceTree = "<group>"; };
 		6B0384301D94100000282402 /* jmetalindexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalindexbuffer.hpp; sourceTree = "<group>"; };
 		6B0384311D94100000282402 /* jmetalindexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalindexbuffer.mm; sourceTree = "<group>"; };
-		6B0384401D95308700282402 /* jgl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jgl.hpp; path = ../sujak/sujak/jgl.hpp; sourceTree = "<group>"; };
 		6B833F3A1D9A7205002EE46F /* jmetaluniformbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaluniformbuffer.hpp; sourceTree = "<group>"; };
 		6B833F3B1D9A7205002EE46F /* jmetaluniformbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaluniformbuffer.mm; sourceTree = "<group>"; };
 		6B833F3E1D9A77A6002EE46F /* jmetalstreambuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalstreambuffer.hpp; sourceTree = "<group>"; };
@@ -53,8 +51,6 @@
 		6BF333A01D7F0BF80015817D /* jmetalbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalbuffer.hpp; sourceTree = "<group>"; };
 		926A10E61D8C0ECC0090D75F /* jmetalrendercontextdata.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrendercontextdata.hpp; sourceTree = "<group>"; };
 		926A10E71D8C0ECC0090D75F /* jmetalrendercontextdata.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalrendercontextdata.mm; sourceTree = "<group>"; };
-		9278596A1D47C2D6000D63B8 /* jdefinitions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jdefinitions.hpp; path = ../sujak/sujak/jdefinitions.hpp; sourceTree = "<group>"; };
-		929C6C901D413218003AD62A /* jconstants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jconstants.hpp; path = ../sujak/sujak/jconstants.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B833F451D9A7E41002EE46F /* libsujak.a in Frameworks */,
 				6BAFC2351D3F1C5E008158E5 /* QuartzCore.framework in Frameworks */,
 				6BAFC2331D3F1B3C008158E5 /* Metal.framework in Frameworks */,
 			);
@@ -82,9 +77,6 @@
 		6BAFC21D1D3F19E4008158E5 = {
 			isa = PBXGroup;
 			children = (
-				6B0384401D95308700282402 /* jgl.hpp */,
-				9278596A1D47C2D6000D63B8 /* jdefinitions.hpp */,
-				929C6C901D413218003AD62A /* jconstants.hpp */,
 				6BAFC2341D3F1C5E008158E5 /* QuartzCore.framework */,
 				6BAFC2321D3F1B3C008158E5 /* Metal.framework */,
 				6BAFC2281D3F19E4008158E5 /* jmetal */,
@@ -293,7 +285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_INPUT_FILETYPE = automatic;
-				HEADER_SEARCH_PATHS = ../sujak/sujak;
+				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -304,7 +296,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_INPUT_FILETYPE = automatic;
-				HEADER_SEARCH_PATHS = ../sujak/sujak;
+				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

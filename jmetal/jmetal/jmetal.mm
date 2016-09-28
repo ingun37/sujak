@@ -49,7 +49,10 @@ void jmetal::render(id<MTLTexture> rendertarget)
 	[rencoder endEncoding];
 	[cmdbuff commit];
 } 
-
+void jmetal::addVertexAttribute(int bindbufferidx, MTLVertexFormat format)
+{
+    
+}
 void jmetal::init(int width, int height)
 {
     id<MTLDevice> device = MTLCreateSystemDefaultDevice();

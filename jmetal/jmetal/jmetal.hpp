@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Metal/Metal.h>
-#import "jgl.hpp"
+#import "jmetalconstants.hpp"
 
 @class jmetalrendercontextdata;
 
-class jmetal : sujak::jgl
+class jmetal
 {
 	MTLRenderPassDescriptor *renderpassdesc;
     jmetalrendercontextdata* rendercontextdatas[sujak::JRenderContext_number];
@@ -20,7 +20,7 @@ class jmetal : sujak::jgl
 	id<MTLTexture> rtDepth;
 	id<MTLTexture> rtStencil;
 public:
-	
+    void addRenderContext(int bindbufferidx, MTLVertexFormat format);
     virtual void init(int width, int height);
 	virtual void loadObject(sujak::JRenderContext state, sujak::jrenderobject* obj);
     virtual void render(id<MTLTexture> rendertarget);

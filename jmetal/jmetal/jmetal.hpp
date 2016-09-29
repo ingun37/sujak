@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <Metal/Metal.h>
+
+#import "jdefinitions.hpp"
+
 #import "jmetalconstants.hpp"
 
 @class jmetalrendercontextdata;
@@ -20,8 +23,9 @@ class jmetal
 	id<MTLTexture> rtDepth;
 	id<MTLTexture> rtStencil;
 public:
-    void addRenderContext(int bindbufferidx, MTLVertexFormat format);
+    
     virtual void init(int width, int height);
+	void addRenderContext();
 	virtual void loadObject(sujak::JRenderContext state, sujak::jrenderobject* obj);
     virtual void render(id<MTLTexture> rendertarget);
 };

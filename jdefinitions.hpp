@@ -43,9 +43,11 @@ namespace sujak
         JVertexAttribute_uv,
         JVertexAttribute_number,
     };
-    
-    
-    
+    enum JVertexFetchStep
+	{
+		JVertexFecthStep_vertex,
+		JVertexFecthStep_instance,
+	};
     enum JBuffer
     {
         JBuffer_vertex_position,
@@ -120,6 +122,7 @@ namespace sujak
     {
         JDataTypeVertex type;
         JBuffer bufferIdx;
+		JVertexFetchStep step;
     } jconstantvertexatt;
     
     typedef struct _jconstantbuffer

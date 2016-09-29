@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B03842F1D92A31100282402 /* jmetalvertexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B03842D1D92A31100282402 /* jmetalvertexbuffer.mm */; };
 		6B0384331D94100000282402 /* jmetalindexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B0384311D94100000282402 /* jmetalindexbuffer.mm */; };
+		6B4950991D9CAA65008AB5AE /* jdefinitions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B4950981D9CAA65008AB5AE /* jdefinitions.hpp */; };
 		6B833F3D1D9A7205002EE46F /* jmetaluniformbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B833F3B1D9A7205002EE46F /* jmetaluniformbuffer.mm */; };
 		6B833F411D9A77A6002EE46F /* jmetalstreambuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B833F3F1D9A77A6002EE46F /* jmetalstreambuffer.mm */; };
 		6BAFC22C1D3F19E4008158E5 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFC22B1D3F19E4008158E5 /* jmetal.mm */; };
@@ -36,6 +37,7 @@
 		6B03842D1D92A31100282402 /* jmetalvertexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalvertexbuffer.mm; sourceTree = "<group>"; };
 		6B0384301D94100000282402 /* jmetalindexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalindexbuffer.hpp; sourceTree = "<group>"; };
 		6B0384311D94100000282402 /* jmetalindexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalindexbuffer.mm; sourceTree = "<group>"; };
+		6B4950981D9CAA65008AB5AE /* jdefinitions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jdefinitions.hpp; path = ../jdefinitions.hpp; sourceTree = "<group>"; };
 		6B833F3A1D9A7205002EE46F /* jmetaluniformbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaluniformbuffer.hpp; sourceTree = "<group>"; };
 		6B833F3B1D9A7205002EE46F /* jmetaluniformbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaluniformbuffer.mm; sourceTree = "<group>"; };
 		6B833F3E1D9A77A6002EE46F /* jmetalstreambuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalstreambuffer.hpp; sourceTree = "<group>"; };
@@ -46,7 +48,6 @@
 		6BAFC22B1D3F19E4008158E5 /* jmetal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetal.mm; sourceTree = "<group>"; };
 		6BAFC2321D3F1B3C008158E5 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		6BAFC2341D3F1C5E008158E5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6BEB93D91D90060F00B748EE /* jmetalconstants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = jmetalconstants.hpp; sourceTree = "<group>"; };
 		6BF3339E1D7F0BEB0015817D /* jmetalbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalbuffer.mm; sourceTree = "<group>"; };
 		6BF333A01D7F0BF80015817D /* jmetalbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalbuffer.hpp; sourceTree = "<group>"; };
 		926A10E61D8C0ECC0090D75F /* jmetalrendercontextdata.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrendercontextdata.hpp; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		6BAFC21D1D3F19E4008158E5 = {
 			isa = PBXGroup;
 			children = (
+				6B4950981D9CAA65008AB5AE /* jdefinitions.hpp */,
 				6BAFC2341D3F1C5E008158E5 /* QuartzCore.framework */,
 				6BAFC2321D3F1B3C008158E5 /* Metal.framework */,
 				6BAFC2281D3F19E4008158E5 /* jmetal */,
@@ -110,7 +112,6 @@
 				6BF333A01D7F0BF80015817D /* jmetalbuffer.hpp */,
 				926A10E61D8C0ECC0090D75F /* jmetalrendercontextdata.hpp */,
 				926A10E71D8C0ECC0090D75F /* jmetalrendercontextdata.mm */,
-				6BEB93D91D90060F00B748EE /* jmetalconstants.hpp */,
 			);
 			path = jmetal;
 			sourceTree = "<group>";
@@ -122,6 +123,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B4950991D9CAA65008AB5AE /* jdefinitions.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6B4800D11D3C68E700F3654E /* jallocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B31D3C68E700F3654E /* jallocator.cpp */; };
 		6B4800D21D3C68E700F3654E /* jbinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B51D3C68E700F3654E /* jbinary.cpp */; };
-		6B4800D31D3C68E700F3654E /* jconstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B71D3C68E700F3654E /* jconstants.cpp */; };
 		6B4800D41D3C68E700F3654E /* jcore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B91D3C68E700F3654E /* jcore.cpp */; };
 		6B4800D51D3C68E700F3654E /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800BB1D3C68E700F3654E /* jcurve.cpp */; };
 		6B4800D61D3C68E700F3654E /* jmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800BD1D3C68E700F3654E /* jmath.cpp */; };
@@ -40,14 +39,12 @@
 
 /* Begin PBXFileReference section */
 		6B03843A1D95305F00282402 /* jconstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jconstants.hpp; sourceTree = "<group>"; };
-		6B03843B1D95305F00282402 /* jdefinitions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jdefinitions.hpp; sourceTree = "<group>"; };
 		6B03843C1D95305F00282402 /* jgl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jgl.hpp; sourceTree = "<group>"; };
 		6B4800A61D3C689F00F3654E /* libsujak.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsujak.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B4800B31D3C68E700F3654E /* jallocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jallocator.cpp; sourceTree = "<group>"; };
 		6B4800B41D3C68E700F3654E /* jallocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jallocator.hpp; sourceTree = "<group>"; };
 		6B4800B51D3C68E700F3654E /* jbinary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jbinary.cpp; sourceTree = "<group>"; };
 		6B4800B61D3C68E700F3654E /* jbinary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jbinary.hpp; sourceTree = "<group>"; };
-		6B4800B71D3C68E700F3654E /* jconstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jconstants.cpp; sourceTree = "<group>"; };
 		6B4800B91D3C68E700F3654E /* jcore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcore.cpp; sourceTree = "<group>"; };
 		6B4800BA1D3C68E700F3654E /* jcore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcore.hpp; sourceTree = "<group>"; };
 		6B4800BB1D3C68E700F3654E /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurve.cpp; sourceTree = "<group>"; };
@@ -115,7 +112,6 @@
 				6B4800B41D3C68E700F3654E /* jallocator.hpp */,
 				6B4800B51D3C68E700F3654E /* jbinary.cpp */,
 				6B4800B61D3C68E700F3654E /* jbinary.hpp */,
-				6B4800B71D3C68E700F3654E /* jconstants.cpp */,
 				6B4800B91D3C68E700F3654E /* jcore.cpp */,
 				6B4800BA1D3C68E700F3654E /* jcore.hpp */,
 				6B4800BB1D3C68E700F3654E /* jcurve.cpp */,
@@ -139,7 +135,6 @@
 				6B4800CD1D3C68E700F3654E /* jtranslation.cpp */,
 				6B4800CE1D3C68E700F3654E /* jtranslation.hpp */,
 				6B03843A1D95305F00282402 /* jconstants.hpp */,
-				6B03843B1D95305F00282402 /* jdefinitions.hpp */,
 				6B03843C1D95305F00282402 /* jgl.hpp */,
 				6BAFC2391D3F3B31008158E5 /* jos.h */,
 			);
@@ -217,7 +212,6 @@
 			files = (
 				6B4800D61D3C68E700F3654E /* jmath.cpp in Sources */,
 				6B4800DC1D3C68E700F3654E /* jskeleton.cpp in Sources */,
-				6B4800D31D3C68E700F3654E /* jconstants.cpp in Sources */,
 				6B4800DA1D3C68E700F3654E /* jrenderstategroup.cpp in Sources */,
 				6B4800E41D3C698000F3654E /* jcurvenode.cpp in Sources */,
 				6B4800DE1D3C68E700F3654E /* jtranslation.cpp in Sources */,

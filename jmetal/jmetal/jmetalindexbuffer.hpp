@@ -10,10 +10,11 @@
 #import <Metal/Metal.h>
 #import "jmetalbuffer.hpp"
 @interface jmetalindexbuffer : NSObject
-{
-	jmetalbuffer* buffer;
-}
--(id)initWithDevice:(id<MTLDevice>)device;
--(void)resetOffset;
--(void)loadObjectIndex:(const void*)data cnt:(unsigned int)cnt;
+
+@property jmetalbuffer* buffer;
+@property (readonly) unsigned int indexCnt;
+-(id)initWithDevice:(id<MTLDevice>)device reserveIndexCnt:(unsigned int)reserveIndexCnt;
+-(unsigned int)getUnitSize;
+-(void)append:(void*)data cnt:(unsigned int)cnt;
+-(void)reset;
 @end

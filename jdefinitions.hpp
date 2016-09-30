@@ -33,6 +33,7 @@ namespace sujak
 		JPixelFormat_F32,
 		JPixelFormat_8,
 		JPixelFormat_rgba8,
+		JPixelFormat_rgbaf32,
 		JPixelFormat_number,
 	};
     enum JVertexAttribute
@@ -43,11 +44,10 @@ namespace sujak
         JVertexAttribute_uv,
         JVertexAttribute_number,
     };
-    enum JVertexFetchStep
-	{
-		JVertexFecthStep_vertex,
-		JVertexFecthStep_instance,
-	};
+	
+	
+	
+	
     enum JBuffer
     {
         JBuffer_vertex_position,
@@ -58,9 +58,10 @@ namespace sujak
         JBuffer_uniform,
         JBuffer_number,
     };
-    
+	
     enum JShaderVert
     {
+		JShaderVert_color,
         JShaderVert_light,
         JShaderVert_ui,
         JShaderVert_line,
@@ -69,12 +70,19 @@ namespace sujak
     
     enum JShaderFrag
     {
+		JShaderFrag_color,
         JShaderFrag_light,
         JShaderFrag_ui,
         JShaderFrag_line,
         JShaderFrag_number,
     };
-    
+	
+	enum JPipeline
+	{
+		JPipeline_color,
+		JPipeline_number
+	};
+	
     enum JDepthCompare
     {
         JDepthCompare_less,
@@ -84,6 +92,7 @@ namespace sujak
     
     enum JRenderStateColor
     {
+		JRenderStateColor_color,
         JRenderStateColor_light,
         JRenderStateColor_ui,
         JRenderStateColor_line,
@@ -97,55 +106,15 @@ namespace sujak
         JRenderStateDepthStencil_number,
     };
     
-    enum JRenderContext
-    {
-        JRenderContext_light,
-        JRenderContext_ui,
-        JRenderContext_line,
-        JRenderContext_number
-    };
-    
-    typedef struct _JUniformBlock
-    {
-        simd::float4x4 projview;
-        simd::float4x4 orthoview;
-    } JUniformBlock;
-    
+	
+	
     enum JRenderPrimitive
     {
         JRenderPrimitive_triangle,
         JRenderPrimitive_line,
         JRenderPrimitive_number
     };
-    
-    typedef struct _jconstantvertexatt
-    {
-        JDataTypeVertex type;
-        JBuffer bufferIdx;
-		JVertexFetchStep step;
-    } jconstantvertexatt;
-    
-    typedef struct _jconstantbuffer
-    {
-        unsigned long reserveSize;
-    } jconstantbuffer;
-    
-    typedef struct _jconstantrenderstatecolor
-    {
-        JShaderFrag shaderFrag;
-        JShaderVert shaderVert;
-    } jconstantrenderstatecolor;
-    
-    typedef struct _jconstantrenderstatedepthstencil
-    {
-        JDepthCompare depthCompare;
-        bool depthwriteEnabled;
-    } jconstantrenderstatedepthstencil;
-    
-    typedef struct _jconstantrendercontext
-    {
-        JRenderStateColor color;
-        JRenderStateDepthStencil depthStencil;
-    } jconstantrendercontext;
+	
+	
 }
 #endif /* jdefinitions_h */

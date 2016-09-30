@@ -7,41 +7,30 @@
 //
 
 #import "jmetalindexbuffer.hpp"
-#import "jmetalconstants.hpp"
+#import "jmetaldefinitions.hpp"
 using namespace sujak;
 @implementation jmetalindexbuffer
 
--(id)initWithDevice:(id<MTLDevice>)device
+-(id)initWithDevice:(id<MTLDevice>)device reserveIndexCnt:(unsigned int)reserveIndexCnt
 {
-	buffer = [[jmetalbuffer alloc]initWithDevice:device initialSize:1024 option:MTLResourceCPUCacheModeWriteCombined];
+	unsigned long reserveSize = jmetalconstant_indextype_size(jconstant_index_datatype) * reserveIndexCnt;
+	_buffer = [[jmetalbuffer alloc]initWithDevice:device initialSize:reserveSize option:MTLResourceCPUCacheModeWriteCombined];
 	return [super init];
 }
 
--(NSUInteger)indexCnt
+-(void)append:(void *)data cnt:(unsigned int)cnt
 {
-	size_t unitsize = 0;
-	switch(jmetalconstantindextype[jconstant_index_type])
-	{
-		case MTLIndexTypeUInt16:
-			unitsize = sizeof(short);
-			break;
-		case MTLIndexTypeUInt32:
-			unitsize = sizeof(int);
-			break;
-		default:
-			[NSException raise:@"sefsef" format:@"sr;girsga"];
-			break;
-	}
-	return buffer.offset/unitsize;
+	_indexCnt += cnt;
+	unsigned int size = jmetalconstant_indextype_size(jconstant_index_datatype);
+	[_buffer append:data len:(size * cnt)];
 }
-
--(void)resetOffset
+-(unsigned int)getUnitSize
 {
-	[buffer resetOffset];
+	return jmetalconstant_indextype_size( jconstant_index_datatype );
 }
-
--(void)loadObjectIndex:(const void *)data cnt:(unsigned int)cnt
+-(void)reset
 {
-	[buffer append:data len:(cnt * jmetalconstantindextypesize[jconstant_index_type])];
+	[_buffer reset];
+	_indexCnt = 0;
 }
 @end

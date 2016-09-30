@@ -31,9 +31,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Metal_Vertex_Streaming-120x120.png",
+      "size" : "60x60",
       "scale" : "2x"
     },
     {
@@ -72,15 +71,13 @@
       "scale" : "2x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "Metal_Vertex_Streaming-76x76.png",
+      "size" : "76x76",
       "scale" : "1x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "Metal_Vertex_Streaming-152x152.png",
+      "size" : "76x76",
       "scale" : "2x"
     },
     {

@@ -7,12 +7,6 @@
 //
 
 #import "jiosview.h"
-#import <QuartzCore/CAMetalLayer.h>
+
 @implementation jiosview
-
-+(Class)layerClass
-{
-	return [CAMetalLayer class];
-}
-
 @end

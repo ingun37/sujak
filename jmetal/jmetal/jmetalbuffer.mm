@@ -22,19 +22,19 @@
 	return self;
 }
 
--(id)initWithDevice:(id<MTLDevice>)device initialSize:(unsigned int)initialSize option:(MTLResourceOptions)option
+-(id)initWithDevice:(id<MTLDevice>)device initialSize:(unsigned long)initialSize option:(MTLResourceOptions)option
 {
 	_buffer = [device newBufferWithLength:initialSize options:option];
 	return [self init];
 }
 
--(void)append:(const void *)data len:(unsigned long)len
+-(void)append:(const void *)data len:(unsigned int)len
 {
 	memcpy((char*)[_buffer contents] + _offset, data, len);
 	_offset += len;
 }
 
--(void)resetOffset
+-(void)reset
 {
 	_offset = 0;
 }

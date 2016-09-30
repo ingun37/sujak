@@ -7,15 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "jconstants.hpp"
 #import "jmetalbuffer.hpp"
-#include "jmetalconstants.hpp"
+
 @interface jmetalvertexbuffer : NSObject
 {
-	jmetalbuffer* buffers[sujak::JVertexAttribute_number];
+    sujak::JVertexAttribute attribs[sujak::JVertexAttribute_number];
 }
+@property NSMutableArray<jmetalbuffer*> *buffers;
+@property (readonly) int vertextype;
+@property (readonly) size_t attnum;
 
--(jmetalbuffer*)getBufferOf:(sujak::JVertexAttribute) att;
--(id)initWithDevice:(id<MTLDevice>)device;
--(void)resetOffsets;
--(void)loadObjectVertex:(const void* const *)data cnt:(unsigned int)cnt;
+@property (readonly) unsigned int vnum;
+-(sujak::JVertexAttribute) getAttribOfBufferAt:(int)idx;
+-(unsigned int) getUnitSizeOfBufferAt:(int)idx;
+-(id)initWithDevice:(id<MTLDevice>)device vertextype:(int)vertextype reserveVertexCnt:(unsigned int)reserveVertexCnt;
+-(void)append:(void **)datas cnt:(unsigned int)cnt vertextype:(int)vertextype;
+-(void)reset;
 @end

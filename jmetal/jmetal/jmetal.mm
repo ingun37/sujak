@@ -1,136 +1,101 @@
 #import "jmetal.hpp"
 
-#import "jmetalrendercontextdata.hpp"
-
+#import "jmetaltransients.hpp"
+#import "jmetalnontransients.hpp"
+#import "jmetaldefinitions.hpp"
+#include <math.h>
 using namespace sujak;
 
-void jmetal::addRenderContext()
+void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize)
 {
-	//to member
-	unsigned int rendercontextcnt = 0;
-	//
-	jmetalrendercontextdata* context = rendercontextdatas[rendercontextcnt++];
-	
-	
-}
-
-void jmetal::loadObject(sujak::JRenderContext state, sujak::jrenderobject *obj)
-{
-	/*
-	jmetalrendercontextdata* context = rendercontextdatas[state];
-	jmetalvertexbuffer *vertexbuffer = context.att;
-	
-	for(int i=0;i<JVertexAttribute_number;i++)
-	{
-		JVertexAttribute eIdx = (JVertexAttribute)i;
-		jmetalbuffer* attbuffer = [vertexbuffer getBufferOf:eIdx];
-		const void* vertexattributedata = obj->getDataForCopy(eIdx);
-		JDataTypeVertex jtype = jconstant_vertex_attributes[i].type;
-		unsigned long len = obj->getVertexCnt() * jmetalconstanttypesize[jtype];
-		
-		[attbuffer append:vertexattributedata len:len];
-	}
-	 */
-	//[context.index.buffer append:obj->getIndexDataForCopy() len:jmetalconstanttypesize[jconstant_index_type] * obj->getIndexCnt()];
-}
-
-void jmetal::render(id<MTLTexture> rendertarget)
-{
-	id<MTLCommandBuffer> cmdbuff = [commandqueue commandBuffer];
-	renderpassdesc.colorAttachments[0].texture = rendertarget;
-	
-	id <MTLRenderCommandEncoder> rencoder = [cmdbuff renderCommandEncoderWithDescriptor:renderpassdesc];
-	
-	for(int i=0;i<JRenderContext_number;i++)
-	{
-		jmetalrendercontextdata* context = rendercontextdatas[i];
-		
-		[rencoder setRenderPipelineState:context.renderpipeline];
-		/*
-		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_position].buffer offset:0 atIndex:JBuffer_vertex_position];
-		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_normal].buffer offset:0 atIndex:JBuffer_vertex_normal];
-		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_color].buffer offset:0 atIndex:JBuffer_vertex_color];
-		[rencoder setVertexBuffer:[context.att getBufferOf:JVertexAttribute_uv].buffer offset:0 atIndex:JBuffer_vertex_uv];
-		*/
-		//[rencoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle indexCount:[context.index indexCnt] indexType:jmetalconstantindextype[jconstant_index_type] indexBuffer:context.index.buffer.buffer indexBufferOffset:0];
-	}
-	[rencoder endEncoding];
-	[cmdbuff commit];
-} 
-
-void jmetal::init(int width, int height)
-{
-    id<MTLDevice> device = MTLCreateSystemDefaultDevice();
+    device = MTLCreateSystemDefaultDevice();
     commandqueue = [device newCommandQueue];
     
-    id<MTLLibrary> library = [device newDefaultLibrary];
-    
-    MTLVertexDescriptor *vdesc = [MTLVertexDescriptor new];
-    
-    for(int iva=0;iva<JVertexAttribute_number;iva++)
-    {
-        MTLVertexAttributeDescriptor* vadesc = [MTLVertexAttributeDescriptor new];
-        vadesc.bufferIndex = jconstant_vertex_attributes[iva].bufferIdx;
-        vadesc.offset = 0;
-		vadesc.format = jmetalconstantmetaltype[jconstant_vertex_attributes[iva].type];
+    library = [device newDefaultLibrary];
+	if(library == nil)
+	{
+		NSString *path = [[NSBundle mainBundle] pathForResource:@"jmetalshader" ofType:@"metallib"];
 		
-        MTLVertexBufferLayoutDescriptor* vldesc = [MTLVertexBufferLayoutDescriptor new];
-        vldesc.stepFunction = MTLVertexStepFunctionPerVertex;
-        vldesc.stride = 0;
-        vldesc.stepRate = 1;
-        
-        [vdesc.layouts setObject:vldesc atIndexedSubscript:iva];
-        [vdesc.attributes setObject:vadesc atIndexedSubscript:iva];
-    }
- 
-	MTLTextureDescriptor *dtdesc = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatDepth32Float width:width height:height mipmapped:NO];
-	dtdesc.textureType = MTLTextureType2D;
-	dtdesc.sampleCount = 1;
-	rtDepth = [device newTextureWithDescriptor:dtdesc];
-	
-	MTLTextureDescriptor *stdesc = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatStencil8 width:width height:height mipmapped:NO];
-	stdesc.textureType = MTLTextureType2D;
-	stdesc.sampleCount = 1;
-	rtStencil = [device newTextureWithDescriptor:stdesc];
-	
-	renderpassdesc = [MTLRenderPassDescriptor new];
-	renderpassdesc.colorAttachments[0].loadAction = MTLLoadActionClear;
-	renderpassdesc.colorAttachments[0].storeAction = MTLStoreActionStore;
-	renderpassdesc.colorAttachments[0].clearColor = MTLClearColorMake(0.4, 0.2, 0.1, 1);
-	
-	renderpassdesc.depthAttachment.loadAction = MTLLoadActionClear;
-	renderpassdesc.depthAttachment.storeAction = MTLStoreActionStore;
-	renderpassdesc.depthAttachment.clearDepth = 1;
-	renderpassdesc.depthAttachment.texture = rtDepth;
-	
-	renderpassdesc.stencilAttachment.texture = rtStencil;
-	
-    for(int i=0;i<JRenderContext_number;i++)
-    {
-        NSString* nameV = [NSString stringWithUTF8String: jmetalconstantshaderentryvert[ jconstant_states_color[ jconstant_contexts[i].color ].shaderVert]];
-        NSString* nameF = [NSString stringWithUTF8String: jmetalconstantshaderentryfrag[ jconstant_states_color[ jconstant_contexts[i].color ].shaderFrag]];
-		
-        id<MTLFunction> frag = [library newFunctionWithName:nameF];
-        id<MTLFunction> vert = [library newFunctionWithName:nameV];
-		
-		if(frag == nil || vert == nil)
+		library = [device newLibraryWithFile:path error:nil];
+		if(library == nil)
 		{
-			[NSException raise:@"no shader" format:@"no shader...."];
+			[NSException raise:@"library is no" format:@""];
 		}
-		
-		MTLRenderPipelineDescriptor* descPipe = [MTLRenderPipelineDescriptor new];
-		
-        descPipe.vertexFunction = vert;
-        descPipe.fragmentFunction = frag;
-        descPipe.vertexDescriptor = vdesc;
-        descPipe.sampleCount = 1;
-		descPipe.depthAttachmentPixelFormat = jmetalconstantpixeltype[jconstant_pixelformat_depth];
-		descPipe.stencilAttachmentPixelFormat = jmetalconstantpixeltype[jconstant_pixelformat_stencil];
-		descPipe.colorAttachments[0].pixelFormat = jmetalconstantpixeltype[jconstant_pixelformat_color];
-		descPipe.colorAttachments[0].blendingEnabled = YES;
-		
-		rendercontextdatas[i].renderpipeline = [device newRenderPipelineStateWithDescriptor:descPipe error:nil];
-		rendercontextdatas[i].stream = [[jmetalstreambuffer alloc]initWithDevcie:device];
-		rendercontextdatas[i].uniform = [[jmetaluniformbuffer alloc]initWithDevice:device];
-    }
+	}
+	
+	
+	
+	
+	metallayer.drawableSize = drawableSize;
+
+	metallayer.device = device;
+	metallayer.pixelFormat = jmetalconstant_pixelformat(jconstant_framebuffer_pixelformat);
+	metallayer.framebufferOnly = YES;//todo : do something
 }
+
+void jmetal::draw(void **vdatas, int vtype, unsigned int vcnt, void *idata, unsigned int icnt, id<MTLTexture> ctarget, JPipeline p, id<MTLDrawable> drawableToPresent)
+{
+	draw(vdatas, vtype, vcnt, idata, icnt, ctarget, p, drawableToPresent,
+		 [jmetalnontransients defaultDepthTexWithDevice:device width:[ctarget width] height:[ctarget height] format: jmetalconstant_pixelformat(jconstant_depth_pixelformat) ],
+		 [jmetalnontransients defaultStencilTexWithDevice:device width:[ctarget width] height:[ctarget height] format:jmetalconstant_pixelformat(jconstant_stencil_pixelformat)] );
+}
+
+void jmetal::draw(void** vdatas, int vtype, unsigned int vcnt, void* idata, unsigned int icnt,
+				  id<MTLTexture> ctarget, JPipeline p, id<MTLDrawable> drawableToPresent,
+				  id<MTLTexture> dtarget,
+				  id<MTLTexture> starget
+				  )
+{
+	
+	jmetalrenderingwork* work = rendertransients.getormake(ctarget, dtarget, starget, drawableToPresent);
+    jmetalrenderstategroups* state = work->getormakeone([jmetalnontransients pipelineWithDevice:device library:library of:p]);
+	jmetalrenderobj* obj = state->getormakeone(vtype);
+	
+    jmetalstreambuffer* streambuffer = [jmetalnontransients bufferOfType:vtype device:device];
+    unsigned int ioffset = streambuffer.index.indexCnt;
+    unsigned int voffset = streambuffer.vertex.vnum;
+    [streambuffer appendVertexData:vdatas vertextype:vtype vertexCnt:vcnt indexData:idata indexCnt:icnt];
+    
+    jmetalbufferalign align(voffset, ioffset, vcnt, icnt);
+	obj->aligns.push_back(align);
+}
+
+void jmetal::render()
+{
+    for(vec_jmetalrenderingwork::iterator work = rendertransients.renderingworks.begin() ; work!=rendertransients.renderingworks.end();work++)
+    {
+		MTLRenderPassDescriptor *renderpass = [jmetaltransients newRenderPass:work->colortarget depth:work->depthtarget stencil:work->stenciltarget];
+		id<MTLCommandBuffer> cmdbuff = [commandqueue commandBuffer];
+		id <MTLRenderCommandEncoder> rencoder = [cmdbuff renderCommandEncoderWithDescriptor:renderpass];
+		[rencoder setCullMode:MTLCullModeNone];
+		
+        for(vec_jmetalrenderstategroups::iterator state = work->renderstategroups.begin();state != work->renderstategroups.end();state++)
+        {
+            [rencoder setRenderPipelineState:state->pipeline];
+            
+            for(vec_jmetalrenderobj::iterator robj = state->objs.begin();robj!=state->objs.end();robj++)
+            {
+                jmetalstreambuffer* sbuffer = [jmetalnontransients bufferOfType:robj->vertextype device:nil];
+                for(int buffi=0;buffi<sbuffer.vertex.attnum;buffi++)
+                {
+                    [rencoder setVertexBuffer:sbuffer.vertex.buffers[buffi].buffer offset:0 atIndex: jconstant_bufferidx_of( [sbuffer.vertex getAttribOfBufferAt:buffi] ) ];
+                }
+				
+                for( vec_jmetalbufferalign::iterator align = robj->aligns.begin() ; align != robj->aligns.end() ; align++ )
+                {
+                    for(int buffi=0;buffi<sbuffer.vertex.attnum;buffi++)
+                        [rencoder setVertexBufferOffset:align->voffset * [sbuffer.vertex getUnitSizeOfBufferAt:buffi] atIndex:jconstant_bufferidx_of([sbuffer.vertex getAttribOfBufferAt:buffi])];
+					
+                    [rencoder drawIndexedPrimitives:MTLPrimitiveTypeTriangle indexCount:align->icnt indexType:jmetalconstant_indextype(jconstant_index_datatype) indexBuffer:sbuffer.index.buffer.buffer indexBufferOffset:align->ioffset * [sbuffer.index getUnitSize]];
+					
+                }
+				[sbuffer reset];
+            }
+		}
+		[rencoder endEncoding];
+		
+		[cmdbuff presentDrawable:work->drawable];
+		[cmdbuff commit];
+	}
+	rendertransients.clear();
+} 

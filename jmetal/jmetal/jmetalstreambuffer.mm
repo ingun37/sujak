@@ -8,26 +8,26 @@
 
 
 #import "jmetalstreambuffer.hpp"
-#import "jrenderobject.hpp"
+using namespace sujak;
 @implementation jmetalstreambuffer
 
--(id)initWithDevcie:(id<MTLDevice>)device
+-(id)initWithDevcie:(id<MTLDevice>)device vertextype:(int)vertextype reserveVertexCnt:(unsigned int)reserveVertexCnt reserveIndexCnt:(unsigned int)reserveIndexCnt
 {
-	index = [[jmetalindexbuffer alloc]initWithDevice:device];
-	vertex = [[jmetalvertexbuffer alloc]initWithDevice:device];
+	_index = [[jmetalindexbuffer alloc]initWithDevice:device reserveIndexCnt:reserveIndexCnt];
+    _vertex = [[jmetalvertexbuffer alloc]initWithDevice:device vertextype:vertextype reserveVertexCnt:reserveVertexCnt];
 	return [super init];
 }
 
--(void)loadObject:(sujak::jrenderobject *)obj
+-(void)appendVertexData:(void **)vdatas vertextype:(int)vertextype vertexCnt:(unsigned int)vcnt indexData:(void *)idata indexCnt:(unsigned int)icnt
 {
-	[index loadObjectIndex:obj->getIndexDataForCopy() cnt:obj->getIndexCnt()];
-	[vertex loadObjectVertex:obj->getData2DForCopy() cnt:obj->getVertexCnt()];
+    
+    [_vertex append:vdatas cnt:vcnt vertextype:vertextype];
+	[_index append:idata cnt:icnt];
 }
 
--(void)resetOffsets
+-(void)reset
 {
-	[index resetOffset];
-	[vertex resetOffsets];
+	[_index reset];
+	[_vertex reset];
 }
-
 @end

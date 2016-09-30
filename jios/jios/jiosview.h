@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface jiosview : UIView
-
+-(void)update;
+-(void)display;
 @end

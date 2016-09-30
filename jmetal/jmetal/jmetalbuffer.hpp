@@ -15,11 +15,11 @@
 {
 	
 }
-@property (readonly) unsigned long offset;
+@property (readonly) unsigned int offset;
 @property id<MTLBuffer> buffer;
--(id)initWithDevice:(id<MTLDevice>)device initialSize:(unsigned int)initialSize option:(MTLResourceOptions)option;
--(void)append:(const void*)data len:(unsigned long)len;
--(void)resetOffset;
+-(id)initWithDevice:(id<MTLDevice>)device initialSize:(unsigned long)initialSize option:(MTLResourceOptions)option;
+-(void)append:(const void*)data len:(unsigned int)len;
+-(void)reset;
 @end
 
 #endif /* jmetalbuffer_h */

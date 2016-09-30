@@ -7,20 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B03842F1D92A31100282402 /* jmetalvertexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B03842D1D92A31100282402 /* jmetalvertexbuffer.mm */; };
-		6B0384331D94100000282402 /* jmetalindexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B0384311D94100000282402 /* jmetalindexbuffer.mm */; };
-		6B4950991D9CAA65008AB5AE /* jdefinitions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B4950981D9CAA65008AB5AE /* jdefinitions.hpp */; };
-		6B833F3D1D9A7205002EE46F /* jmetaluniformbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B833F3B1D9A7205002EE46F /* jmetaluniformbuffer.mm */; };
-		6B833F411D9A77A6002EE46F /* jmetalstreambuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B833F3F1D9A77A6002EE46F /* jmetalstreambuffer.mm */; };
-		6BAFC22C1D3F19E4008158E5 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BAFC22B1D3F19E4008158E5 /* jmetal.mm */; };
-		6BAFC2331D3F1B3C008158E5 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BAFC2321D3F1B3C008158E5 /* Metal.framework */; };
-		6BAFC2351D3F1C5E008158E5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BAFC2341D3F1C5E008158E5 /* QuartzCore.framework */; };
-		6BF3339F1D7F0BEB0015817D /* jmetalbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF3339E1D7F0BEB0015817D /* jmetalbuffer.mm */; };
-		926A10E91D8C0ECC0090D75F /* jmetalrendercontextdata.mm in Sources */ = {isa = PBXBuildFile; fileRef = 926A10E71D8C0ECC0090D75F /* jmetalrendercontextdata.mm */; };
+		6BF99A0D1DA4CEF200F85839 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F61DA4CEF200F85839 /* jmetal.mm */; };
+		6BF99A0E1DA4CEF200F85839 /* jmetalbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F81DA4CEF200F85839 /* jmetalbuffer.mm */; };
+		6BF99A0F1DA4CEF200F85839 /* jmetalindexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999FC1DA4CEF200F85839 /* jmetalindexbuffer.mm */; };
+		6BF99A101DA4CEF200F85839 /* jmetalnontransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999FE1DA4CEF200F85839 /* jmetalnontransients.mm */; };
+		6BF99A111DA4CEF200F85839 /* jmetalrendertransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A031DA4CEF200F85839 /* jmetalrendertransients.mm */; };
+		6BF99A121DA4CEF200F85839 /* jmetalstreambuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A051DA4CEF200F85839 /* jmetalstreambuffer.mm */; };
+		6BF99A131DA4CEF200F85839 /* jmetaltransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A071DA4CEF200F85839 /* jmetaltransients.mm */; };
+		6BF99A141DA4CEF200F85839 /* jmetaluniformbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A091DA4CEF200F85839 /* jmetaluniformbuffer.mm */; };
+		6BF99A151DA4CEF200F85839 /* jmetalvertexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A0B1DA4CEF200F85839 /* jmetalvertexbuffer.mm */; };
+		6BF99A191DA4CF0800F85839 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF99A181DA4CF0800F85839 /* Metal.framework */; };
+		6BF99A1D1DA4CF2800F85839 /* jconstants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BF99A1B1DA4CF2800F85839 /* jconstants.hpp */; };
+		6BF99A1E1DA4CF2800F85839 /* jdefinitions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BF99A1C1DA4CF2800F85839 /* jdefinitions.hpp */; };
+		6BF99A241DA4CFD800F85839 /* jmetalshader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A231DA4CFD800F85839 /* jmetalshader.metal */; };
+		6BF99A2C1DA4D0B200F85839 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF99A2B1DA4D0B200F85839 /* QuartzCore.framework */; };
+		6BF99A601DA4D3EB00F85839 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A5F1DA4D3EB00F85839 /* main.m */; };
+		6BF99A631DA4D3EB00F85839 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A621DA4D3EB00F85839 /* AppDelegate.m */; };
+		6BF99A661DA4D3EB00F85839 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A651DA4D3EB00F85839 /* ViewController.m */; };
+		6BF99A691DA4D3EB00F85839 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF99A671DA4D3EB00F85839 /* Main.storyboard */; };
+		6BF99A6B1DA4D3EB00F85839 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF99A6A1DA4D3EB00F85839 /* Assets.xcassets */; };
+		6BF99A6E1DA4D3EB00F85839 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF99A6C1DA4D3EB00F85839 /* LaunchScreen.storyboard */; };
+		6BF99A751DA4D49100F85839 /* testview.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A741DA4D49100F85839 /* testview.mm */; };
+		6BF99A7A1DA4D50800F85839 /* libjmetal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF999E91DA4CED500F85839 /* libjmetal.a */; };
+		6BF99A821DA4D91100F85839 /* jmetalshader.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 6BF99A211DA4CFD800F85839 /* jmetalshader.metallib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6BF99A291DA4D09000F85839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BF999E11DA4CED500F85839 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BF99A201DA4CFD800F85839;
+			remoteInfo = jmetalshader;
+		};
+		6BF99A761DA4D50100F85839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BF999E11DA4CED500F85839 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BF999E81DA4CED500F85839;
+			remoteInfo = jmetal;
+		};
+		6BF99A781DA4D50100F85839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BF999E11DA4CED500F85839 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BF99A201DA4CFD800F85839;
+			remoteInfo = jmetalshader;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		6BAFC2241D3F19E4008158E5 /* Copy Files */ = {
+		6BF999E71DA4CED500F85839 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -33,171 +70,370 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6B03842C1D92A31100282402 /* jmetalvertexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalvertexbuffer.hpp; sourceTree = "<group>"; };
-		6B03842D1D92A31100282402 /* jmetalvertexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalvertexbuffer.mm; sourceTree = "<group>"; };
-		6B0384301D94100000282402 /* jmetalindexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalindexbuffer.hpp; sourceTree = "<group>"; };
-		6B0384311D94100000282402 /* jmetalindexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalindexbuffer.mm; sourceTree = "<group>"; };
-		6B4950981D9CAA65008AB5AE /* jdefinitions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jdefinitions.hpp; path = ../jdefinitions.hpp; sourceTree = "<group>"; };
-		6B833F3A1D9A7205002EE46F /* jmetaluniformbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaluniformbuffer.hpp; sourceTree = "<group>"; };
-		6B833F3B1D9A7205002EE46F /* jmetaluniformbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaluniformbuffer.mm; sourceTree = "<group>"; };
-		6B833F3E1D9A77A6002EE46F /* jmetalstreambuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalstreambuffer.hpp; sourceTree = "<group>"; };
-		6B833F3F1D9A77A6002EE46F /* jmetalstreambuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalstreambuffer.mm; sourceTree = "<group>"; };
-		6B833F441D9A7E41002EE46F /* libsujak.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsujak.a; path = "../../Library/Developer/Xcode/DerivedData/metal-hidnnxiiuevhzdgkmfckjmtkkslc/Build/Products/Debug-iphoneos/libsujak.a"; sourceTree = "<group>"; };
-		6BAFC2261D3F19E4008158E5 /* libjmetal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjmetal.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BAFC2291D3F19E4008158E5 /* jmetal.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = jmetal.hpp; sourceTree = "<group>"; };
-		6BAFC22B1D3F19E4008158E5 /* jmetal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetal.mm; sourceTree = "<group>"; };
-		6BAFC2321D3F1B3C008158E5 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
-		6BAFC2341D3F1C5E008158E5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		6BF3339E1D7F0BEB0015817D /* jmetalbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalbuffer.mm; sourceTree = "<group>"; };
-		6BF333A01D7F0BF80015817D /* jmetalbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalbuffer.hpp; sourceTree = "<group>"; };
-		926A10E61D8C0ECC0090D75F /* jmetalrendercontextdata.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrendercontextdata.hpp; sourceTree = "<group>"; };
-		926A10E71D8C0ECC0090D75F /* jmetalrendercontextdata.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalrendercontextdata.mm; sourceTree = "<group>"; };
+		6BF999E91DA4CED500F85839 /* libjmetal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjmetal.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BF999F51DA4CEF200F85839 /* jmetal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetal.hpp; sourceTree = "<group>"; };
+		6BF999F61DA4CEF200F85839 /* jmetal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetal.mm; sourceTree = "<group>"; };
+		6BF999F71DA4CEF200F85839 /* jmetalbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalbuffer.hpp; sourceTree = "<group>"; };
+		6BF999F81DA4CEF200F85839 /* jmetalbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalbuffer.mm; sourceTree = "<group>"; };
+		6BF999F91DA4CEF200F85839 /* jmetalbufferalign.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalbufferalign.hpp; sourceTree = "<group>"; };
+		6BF999FA1DA4CEF200F85839 /* jmetaldefinitions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaldefinitions.hpp; sourceTree = "<group>"; };
+		6BF999FB1DA4CEF200F85839 /* jmetalindexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalindexbuffer.hpp; sourceTree = "<group>"; };
+		6BF999FC1DA4CEF200F85839 /* jmetalindexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalindexbuffer.mm; sourceTree = "<group>"; };
+		6BF999FD1DA4CEF200F85839 /* jmetalnontransients.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalnontransients.hpp; sourceTree = "<group>"; };
+		6BF999FE1DA4CEF200F85839 /* jmetalnontransients.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalnontransients.mm; sourceTree = "<group>"; };
+		6BF999FF1DA4CEF200F85839 /* jmetalrenderingwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrenderingwork.hpp; sourceTree = "<group>"; };
+		6BF99A001DA4CEF200F85839 /* jmetalrenderobj.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrenderobj.hpp; sourceTree = "<group>"; };
+		6BF99A011DA4CEF200F85839 /* jmetalrenderstategroups.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrenderstategroups.hpp; sourceTree = "<group>"; };
+		6BF99A021DA4CEF200F85839 /* jmetalrendertransients.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrendertransients.hpp; sourceTree = "<group>"; };
+		6BF99A031DA4CEF200F85839 /* jmetalrendertransients.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalrendertransients.mm; sourceTree = "<group>"; };
+		6BF99A041DA4CEF200F85839 /* jmetalstreambuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalstreambuffer.hpp; sourceTree = "<group>"; };
+		6BF99A051DA4CEF200F85839 /* jmetalstreambuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalstreambuffer.mm; sourceTree = "<group>"; };
+		6BF99A061DA4CEF200F85839 /* jmetaltransients.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaltransients.hpp; sourceTree = "<group>"; };
+		6BF99A071DA4CEF200F85839 /* jmetaltransients.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaltransients.mm; sourceTree = "<group>"; };
+		6BF99A081DA4CEF200F85839 /* jmetaluniformbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaluniformbuffer.hpp; sourceTree = "<group>"; };
+		6BF99A091DA4CEF200F85839 /* jmetaluniformbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaluniformbuffer.mm; sourceTree = "<group>"; };
+		6BF99A0A1DA4CEF200F85839 /* jmetalvertexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalvertexbuffer.hpp; sourceTree = "<group>"; };
+		6BF99A0B1DA4CEF200F85839 /* jmetalvertexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalvertexbuffer.mm; sourceTree = "<group>"; };
+		6BF99A181DA4CF0800F85839 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		6BF99A1B1DA4CF2800F85839 /* jconstants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jconstants.hpp; path = ../jconstants.hpp; sourceTree = "<group>"; };
+		6BF99A1C1DA4CF2800F85839 /* jdefinitions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jdefinitions.hpp; path = ../jdefinitions.hpp; sourceTree = "<group>"; };
+		6BF99A211DA4CFD800F85839 /* jmetalshader.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = jmetalshader.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BF99A231DA4CFD800F85839 /* jmetalshader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = jmetalshader.metal; sourceTree = "<group>"; };
+		6BF99A2B1DA4D0B200F85839 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6BF99A5C1DA4D3EB00F85839 /* jmetaltest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jmetaltest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BF99A5F1DA4D3EB00F85839 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6BF99A611DA4D3EB00F85839 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6BF99A621DA4D3EB00F85839 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6BF99A641DA4D3EB00F85839 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6BF99A651DA4D3EB00F85839 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6BF99A681DA4D3EB00F85839 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6BF99A6A1DA4D3EB00F85839 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6BF99A6D1DA4D3EB00F85839 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6BF99A6F1DA4D3EB00F85839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BF99A731DA4D49100F85839 /* testview.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = testview.hpp; sourceTree = "<group>"; };
+		6BF99A741DA4D49100F85839 /* testview.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testview.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6BAFC2231D3F19E4008158E5 /* Frameworks */ = {
+		6BF999E61DA4CED500F85839 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BAFC2351D3F1C5E008158E5 /* QuartzCore.framework in Frameworks */,
-				6BAFC2331D3F1B3C008158E5 /* Metal.framework in Frameworks */,
+				6BF99A2C1DA4D0B200F85839 /* QuartzCore.framework in Frameworks */,
+				6BF99A191DA4CF0800F85839 /* Metal.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF99A591DA4D3EB00F85839 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BF99A7A1DA4D50800F85839 /* libjmetal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6B833F431D9A7E41002EE46F /* Frameworks */ = {
+		6BF999E01DA4CED500F85839 = {
 			isa = PBXGroup;
 			children = (
-				6B833F441D9A7E41002EE46F /* libsujak.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6BAFC21D1D3F19E4008158E5 = {
-			isa = PBXGroup;
-			children = (
-				6B4950981D9CAA65008AB5AE /* jdefinitions.hpp */,
-				6BAFC2341D3F1C5E008158E5 /* QuartzCore.framework */,
-				6BAFC2321D3F1B3C008158E5 /* Metal.framework */,
-				6BAFC2281D3F19E4008158E5 /* jmetal */,
-				6BAFC2271D3F19E4008158E5 /* Products */,
-				6B833F431D9A7E41002EE46F /* Frameworks */,
+				6BF99A1B1DA4CF2800F85839 /* jconstants.hpp */,
+				6BF99A1C1DA4CF2800F85839 /* jdefinitions.hpp */,
+				6BF999EB1DA4CED500F85839 /* jmetal */,
+				6BF99A221DA4CFD800F85839 /* jmetalshader */,
+				6BF99A5D1DA4D3EB00F85839 /* jmetaltest */,
+				6BF999EA1DA4CED500F85839 /* Products */,
+				6BF99A171DA4CF0800F85839 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		6BAFC2271D3F19E4008158E5 /* Products */ = {
+		6BF999EA1DA4CED500F85839 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6BAFC2261D3F19E4008158E5 /* libjmetal.a */,
+				6BF999E91DA4CED500F85839 /* libjmetal.a */,
+				6BF99A211DA4CFD800F85839 /* jmetalshader.metallib */,
+				6BF99A5C1DA4D3EB00F85839 /* jmetaltest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6BAFC2281D3F19E4008158E5 /* jmetal */ = {
+		6BF999EB1DA4CED500F85839 /* jmetal */ = {
 			isa = PBXGroup;
 			children = (
-				6BAFC2291D3F19E4008158E5 /* jmetal.hpp */,
-				6BAFC22B1D3F19E4008158E5 /* jmetal.mm */,
-				6B03842C1D92A31100282402 /* jmetalvertexbuffer.hpp */,
-				6B03842D1D92A31100282402 /* jmetalvertexbuffer.mm */,
-				6B833F3E1D9A77A6002EE46F /* jmetalstreambuffer.hpp */,
-				6B833F3F1D9A77A6002EE46F /* jmetalstreambuffer.mm */,
-				6B0384301D94100000282402 /* jmetalindexbuffer.hpp */,
-				6B833F3A1D9A7205002EE46F /* jmetaluniformbuffer.hpp */,
-				6B833F3B1D9A7205002EE46F /* jmetaluniformbuffer.mm */,
-				6B0384311D94100000282402 /* jmetalindexbuffer.mm */,
-				6BF3339E1D7F0BEB0015817D /* jmetalbuffer.mm */,
-				6BF333A01D7F0BF80015817D /* jmetalbuffer.hpp */,
-				926A10E61D8C0ECC0090D75F /* jmetalrendercontextdata.hpp */,
-				926A10E71D8C0ECC0090D75F /* jmetalrendercontextdata.mm */,
+				6BF999F51DA4CEF200F85839 /* jmetal.hpp */,
+				6BF999F61DA4CEF200F85839 /* jmetal.mm */,
+				6BF999F71DA4CEF200F85839 /* jmetalbuffer.hpp */,
+				6BF999F81DA4CEF200F85839 /* jmetalbuffer.mm */,
+				6BF999F91DA4CEF200F85839 /* jmetalbufferalign.hpp */,
+				6BF999FA1DA4CEF200F85839 /* jmetaldefinitions.hpp */,
+				6BF999FB1DA4CEF200F85839 /* jmetalindexbuffer.hpp */,
+				6BF999FC1DA4CEF200F85839 /* jmetalindexbuffer.mm */,
+				6BF999FD1DA4CEF200F85839 /* jmetalnontransients.hpp */,
+				6BF999FE1DA4CEF200F85839 /* jmetalnontransients.mm */,
+				6BF999FF1DA4CEF200F85839 /* jmetalrenderingwork.hpp */,
+				6BF99A001DA4CEF200F85839 /* jmetalrenderobj.hpp */,
+				6BF99A011DA4CEF200F85839 /* jmetalrenderstategroups.hpp */,
+				6BF99A021DA4CEF200F85839 /* jmetalrendertransients.hpp */,
+				6BF99A031DA4CEF200F85839 /* jmetalrendertransients.mm */,
+				6BF99A041DA4CEF200F85839 /* jmetalstreambuffer.hpp */,
+				6BF99A051DA4CEF200F85839 /* jmetalstreambuffer.mm */,
+				6BF99A061DA4CEF200F85839 /* jmetaltransients.hpp */,
+				6BF99A071DA4CEF200F85839 /* jmetaltransients.mm */,
+				6BF99A081DA4CEF200F85839 /* jmetaluniformbuffer.hpp */,
+				6BF99A091DA4CEF200F85839 /* jmetaluniformbuffer.mm */,
+				6BF99A0A1DA4CEF200F85839 /* jmetalvertexbuffer.hpp */,
+				6BF99A0B1DA4CEF200F85839 /* jmetalvertexbuffer.mm */,
 			);
 			path = jmetal;
+			sourceTree = "<group>";
+		};
+		6BF99A171DA4CF0800F85839 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BF99A2B1DA4D0B200F85839 /* QuartzCore.framework */,
+				6BF99A181DA4CF0800F85839 /* Metal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BF99A221DA4CFD800F85839 /* jmetalshader */ = {
+			isa = PBXGroup;
+			children = (
+				6BF99A231DA4CFD800F85839 /* jmetalshader.metal */,
+			);
+			path = jmetalshader;
+			sourceTree = "<group>";
+		};
+		6BF99A5D1DA4D3EB00F85839 /* jmetaltest */ = {
+			isa = PBXGroup;
+			children = (
+				6BF99A611DA4D3EB00F85839 /* AppDelegate.h */,
+				6BF99A621DA4D3EB00F85839 /* AppDelegate.m */,
+				6BF99A641DA4D3EB00F85839 /* ViewController.h */,
+				6BF99A651DA4D3EB00F85839 /* ViewController.m */,
+				6BF99A671DA4D3EB00F85839 /* Main.storyboard */,
+				6BF99A6A1DA4D3EB00F85839 /* Assets.xcassets */,
+				6BF99A6C1DA4D3EB00F85839 /* LaunchScreen.storyboard */,
+				6BF99A6F1DA4D3EB00F85839 /* Info.plist */,
+				6BF99A5E1DA4D3EB00F85839 /* Supporting Files */,
+				6BF99A731DA4D49100F85839 /* testview.hpp */,
+				6BF99A741DA4D49100F85839 /* testview.mm */,
+			);
+			path = jmetaltest;
+			sourceTree = "<group>";
+		};
+		6BF99A5E1DA4D3EB00F85839 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BF99A5F1DA4D3EB00F85839 /* main.m */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6BAFC23B1D3F3C2F008158E5 /* Headers */ = {
+		6BF99A1A1DA4CF1C00F85839 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B4950991D9CAA65008AB5AE /* jdefinitions.hpp in Headers */,
+				6BF99A1D1DA4CF2800F85839 /* jconstants.hpp in Headers */,
+				6BF99A1E1DA4CF2800F85839 /* jdefinitions.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6BAFC2251D3F19E4008158E5 /* jmetal */ = {
+		6BF999E81DA4CED500F85839 /* jmetal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6BAFC22F1D3F19E4008158E5 /* Build configuration list for PBXNativeTarget "jmetal" */;
+			buildConfigurationList = 6BF999F21DA4CED500F85839 /* Build configuration list for PBXNativeTarget "jmetal" */;
 			buildPhases = (
-				6BAFC2221D3F19E4008158E5 /* Sources */,
-				6BAFC2231D3F19E4008158E5 /* Frameworks */,
-				6BAFC2241D3F19E4008158E5 /* Copy Files */,
-				6BAFC23B1D3F3C2F008158E5 /* Headers */,
+				6BF999E51DA4CED500F85839 /* Sources */,
+				6BF999E61DA4CED500F85839 /* Frameworks */,
+				6BF999E71DA4CED500F85839 /* Copy Files */,
+				6BF99A1A1DA4CF1C00F85839 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6BF99A2A1DA4D09000F85839 /* PBXTargetDependency */,
+			);
+			name = jmetal;
+			productName = jmetal;
+			productReference = 6BF999E91DA4CED500F85839 /* libjmetal.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		6BF99A201DA4CFD800F85839 /* jmetalshader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BF99A251DA4CFD800F85839 /* Build configuration list for PBXNativeTarget "jmetalshader" */;
+			buildPhases = (
+				6BF99A1F1DA4CFD800F85839 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = jmetal;
-			productName = jmetal;
-			productReference = 6BAFC2261D3F19E4008158E5 /* libjmetal.a */;
-			productType = "com.apple.product-type.library.static";
+			name = jmetalshader;
+			productName = jmetalshader;
+			productReference = 6BF99A211DA4CFD800F85839 /* jmetalshader.metallib */;
+			productType = "com.apple.product-type.metal-library";
+		};
+		6BF99A5B1DA4D3EB00F85839 /* jmetaltest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BF99A701DA4D3EB00F85839 /* Build configuration list for PBXNativeTarget "jmetaltest" */;
+			buildPhases = (
+				6BF99A581DA4D3EB00F85839 /* Sources */,
+				6BF99A591DA4D3EB00F85839 /* Frameworks */,
+				6BF99A5A1DA4D3EB00F85839 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6BF99A771DA4D50100F85839 /* PBXTargetDependency */,
+				6BF99A791DA4D50100F85839 /* PBXTargetDependency */,
+			);
+			name = jmetaltest;
+			productName = jmetaltest;
+			productReference = 6BF99A5C1DA4D3EB00F85839 /* jmetaltest.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6BAFC21E1D3F19E4008158E5 /* Project object */ = {
+		6BF999E11DA4CED500F85839 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = loadcomplete;
 				TargetAttributes = {
-					6BAFC2251D3F19E4008158E5 = {
-						CreatedOnToolsVersion = 7.3;
+					6BF999E81DA4CED500F85839 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					6BF99A201DA4CFD800F85839 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					6BF99A5B1DA4D3EB00F85839 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 93H77FAP9B;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 6BAFC2211D3F19E4008158E5 /* Build configuration list for PBXProject "jmetal" */;
+			buildConfigurationList = 6BF999E41DA4CED500F85839 /* Build configuration list for PBXProject "jmetal" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = 6BAFC21D1D3F19E4008158E5;
-			productRefGroup = 6BAFC2271D3F19E4008158E5 /* Products */;
+			mainGroup = 6BF999E01DA4CED500F85839;
+			productRefGroup = 6BF999EA1DA4CED500F85839 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6BAFC2251D3F19E4008158E5 /* jmetal */,
+				6BF999E81DA4CED500F85839 /* jmetal */,
+				6BF99A201DA4CFD800F85839 /* jmetalshader */,
+				6BF99A5B1DA4D3EB00F85839 /* jmetaltest */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		6BF99A5A1DA4D3EB00F85839 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BF99A821DA4D91100F85839 /* jmetalshader.metallib in Resources */,
+				6BF99A6E1DA4D3EB00F85839 /* LaunchScreen.storyboard in Resources */,
+				6BF99A6B1DA4D3EB00F85839 /* Assets.xcassets in Resources */,
+				6BF99A691DA4D3EB00F85839 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		6BAFC2221D3F19E4008158E5 /* Sources */ = {
+		6BF999E51DA4CED500F85839 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B03842F1D92A31100282402 /* jmetalvertexbuffer.mm in Sources */,
-				6BF3339F1D7F0BEB0015817D /* jmetalbuffer.mm in Sources */,
-				6BAFC22C1D3F19E4008158E5 /* jmetal.mm in Sources */,
-				6B833F411D9A77A6002EE46F /* jmetalstreambuffer.mm in Sources */,
-				926A10E91D8C0ECC0090D75F /* jmetalrendercontextdata.mm in Sources */,
-				6B0384331D94100000282402 /* jmetalindexbuffer.mm in Sources */,
-				6B833F3D1D9A7205002EE46F /* jmetaluniformbuffer.mm in Sources */,
+				6BF99A0E1DA4CEF200F85839 /* jmetalbuffer.mm in Sources */,
+				6BF99A151DA4CEF200F85839 /* jmetalvertexbuffer.mm in Sources */,
+				6BF99A131DA4CEF200F85839 /* jmetaltransients.mm in Sources */,
+				6BF99A101DA4CEF200F85839 /* jmetalnontransients.mm in Sources */,
+				6BF99A121DA4CEF200F85839 /* jmetalstreambuffer.mm in Sources */,
+				6BF99A111DA4CEF200F85839 /* jmetalrendertransients.mm in Sources */,
+				6BF99A141DA4CEF200F85839 /* jmetaluniformbuffer.mm in Sources */,
+				6BF99A0D1DA4CEF200F85839 /* jmetal.mm in Sources */,
+				6BF99A0F1DA4CEF200F85839 /* jmetalindexbuffer.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF99A1F1DA4CFD800F85839 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BF99A241DA4CFD800F85839 /* jmetalshader.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF99A581DA4D3EB00F85839 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BF99A751DA4D49100F85839 /* testview.mm in Sources */,
+				6BF99A661DA4D3EB00F85839 /* ViewController.m in Sources */,
+				6BF99A631DA4D3EB00F85839 /* AppDelegate.m in Sources */,
+				6BF99A601DA4D3EB00F85839 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6BF99A2A1DA4D09000F85839 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BF99A201DA4CFD800F85839 /* jmetalshader */;
+			targetProxy = 6BF99A291DA4D09000F85839 /* PBXContainerItemProxy */;
+		};
+		6BF99A771DA4D50100F85839 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BF999E81DA4CED500F85839 /* jmetal */;
+			targetProxy = 6BF99A761DA4D50100F85839 /* PBXContainerItemProxy */;
+		};
+		6BF99A791DA4D50100F85839 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BF99A201DA4CFD800F85839 /* jmetalshader */;
+			targetProxy = 6BF99A781DA4D50100F85839 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6BF99A671DA4D3EB00F85839 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BF99A681DA4D3EB00F85839 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6BF99A6C1DA4D3EB00F85839 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BF99A6D1DA4D3EB00F85839 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		6BAFC22D1D3F19E4008158E5 /* Debug */ = {
+		6BF999F01DA4CED500F85839 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -209,12 +445,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -236,14 +473,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		6BAFC22E1D3F19E4008158E5 /* Release */ = {
+		6BF999F11DA4CED500F85839 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -255,12 +492,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -276,57 +514,114 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		6BAFC2301D3F19E4008158E5 /* Debug */ = {
+		6BF999F31DA4CED500F85839 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_INPUT_FILETYPE = automatic;
-				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		6BAFC2311D3F19E4008158E5 /* Release */ = {
+		6BF999F41DA4CED500F85839 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_INPUT_FILETYPE = automatic;
-				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
+		6BF99A261DA4CFD800F85839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.0;
+			};
+			name = Debug;
+		};
+		6BF99A271DA4CFD800F85839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.0;
+			};
+			name = Release;
+		};
+		6BF99A711DA4D3EB00F85839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93H77FAP9B;
+				INFOPLIST_FILE = jmetaltest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loadcomplete.jmetaltest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6BF99A721DA4D3EB00F85839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93H77FAP9B;
+				INFOPLIST_FILE = jmetaltest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loadcomplete.jmetaltest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6BAFC2211D3F19E4008158E5 /* Build configuration list for PBXProject "jmetal" */ = {
+		6BF999E41DA4CED500F85839 /* Build configuration list for PBXProject "jmetal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6BAFC22D1D3F19E4008158E5 /* Debug */,
-				6BAFC22E1D3F19E4008158E5 /* Release */,
+				6BF999F01DA4CED500F85839 /* Debug */,
+				6BF999F11DA4CED500F85839 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BAFC22F1D3F19E4008158E5 /* Build configuration list for PBXNativeTarget "jmetal" */ = {
+		6BF999F21DA4CED500F85839 /* Build configuration list for PBXNativeTarget "jmetal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6BAFC2301D3F19E4008158E5 /* Debug */,
-				6BAFC2311D3F19E4008158E5 /* Release */,
+				6BF999F31DA4CED500F85839 /* Debug */,
+				6BF999F41DA4CED500F85839 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+		};
+		6BF99A251DA4CFD800F85839 /* Build configuration list for PBXNativeTarget "jmetalshader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BF99A261DA4CFD800F85839 /* Debug */,
+				6BF99A271DA4CFD800F85839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6BF99A701DA4D3EB00F85839 /* Build configuration list for PBXNativeTarget "jmetaltest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BF99A711DA4D3EB00F85839 /* Debug */,
+				6BF99A721DA4D3EB00F85839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6BAFC21E1D3F19E4008158E5 /* Project object */;
+	rootObject = 6BF999E11DA4CED500F85839 /* Project object */;
 }

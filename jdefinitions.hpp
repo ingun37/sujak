@@ -115,6 +115,11 @@ namespace sujak
         JRenderPrimitive_number
     };
 	
-	
+	typedef struct _JUniform
+	{
+		matrix_float4x4 proj;
+		matrix_float4x4 ortho;
+		matrix_float4x4 view;
+	}JUniform;
 }
 #endif /* jdefinitions_h */

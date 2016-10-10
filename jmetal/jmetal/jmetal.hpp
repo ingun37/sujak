@@ -1,4 +1,4 @@
-
+#include <simd/simd.h>
 #import <UIKit/UIKit.h>
 
 
@@ -8,6 +8,7 @@
 
 #import "jdefinitions.hpp"
 #import "jmetalrendertransients.hpp"
+
 class jmetal
 {
 	id<MTLCommandQueue> commandqueue;
@@ -22,8 +23,9 @@ class jmetal
 			  id<MTLTexture> dtarget,
 			  id<MTLTexture> starget
 			  );
+	void updateUniform(sujak::JUniform uni);
 	void render();
-	void init(CAMetalLayer* metallayer, CGSize drawableSize);
+	void init(CAMetalLayer* metallayer, CGSize drawableSize, sujak::JUniform initUniform);
 	
 	
 	

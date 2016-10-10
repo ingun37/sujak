@@ -6,7 +6,7 @@
 #include <math.h>
 using namespace sujak;
 
-void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize)
+void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize, JUniform initUniform)
 {
     device = MTLCreateSystemDefaultDevice();
     commandqueue = [device newCommandQueue];
@@ -31,6 +31,16 @@ void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize)
 	metallayer.device = device;
 	metallayer.pixelFormat = jmetalconstant_pixelformat(jconstant_framebuffer_pixelformat);
 	metallayer.framebufferOnly = YES;//todo : do something
+	
+	updateUniform(initUniform);
+}
+
+void jmetal::updateUniform(JUniform uni)
+{
+	jmetalbuffer* uniformbuffer = [jmetalnontransients uniformBufferWithDevice:device];
+	
+	[uniformbuffer reset];
+	[uniformbuffer append:&uni len:sizeof(JUniform)];
 }
 
 void jmetal::draw(void **vdatas, int vtype, unsigned int vcnt, void *idata, unsigned int icnt, id<MTLTexture> ctarget, JPipeline p, id<MTLDrawable> drawableToPresent)
@@ -68,7 +78,7 @@ void jmetal::render()
 		id<MTLCommandBuffer> cmdbuff = [commandqueue commandBuffer];
 		id <MTLRenderCommandEncoder> rencoder = [cmdbuff renderCommandEncoderWithDescriptor:renderpass];
 		[rencoder setCullMode:MTLCullModeNone];
-		
+		[rencoder setVertexBuffer:[jmetalnontransients uniformBufferWithDevice:device].buffer offset:0 atIndex:JBuffer_uniform];
         for(vec_jmetalrenderstategroups::iterator state = work->renderstategroups.begin();state != work->renderstategroups.end();state++)
         {
             [rencoder setRenderPipelineState:state->pipeline];

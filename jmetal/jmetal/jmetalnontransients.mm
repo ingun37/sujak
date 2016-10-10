@@ -117,5 +117,13 @@ id<MTLTexture> texs = nil;
 	}
 	return texs;
 }
-
+jmetalbuffer* uniformbuff = nil;
++(jmetalbuffer *)uniformBufferWithDevice:(id<MTLDevice>)device
+{
+	if(uniformbuff!=nil)
+		return uniformbuff;
+	
+	uniformbuff = [[jmetalbuffer alloc]initWithDevice:device initialSize:sizeof(JUniform) option:MTLResourceOptionCPUCacheModeWriteCombined];
+	return uniformbuff;
+}
 @end

@@ -48,7 +48,7 @@ int vtype = (1 << JVertexAttribute_position) | (1 << JVertexAttribute_color);
 	UIScreen* screen = self.window.screen ?: [UIScreen mainScreen];
 	drawableSize.width *= screen.nativeScale;
 	drawableSize.height *= screen.nativeScale;
-	gl.init(metallayer, drawableSize);
+	gl.init(metallayer, drawableSize, JUniform());
 	
 }
 -(instancetype)initWithCoder:(NSCoder *)aDecoder

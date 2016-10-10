@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,9 +16,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92D8FC8E1D3B5E0D007EE412"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
+               BlueprintIdentifier = "6BA653391DABEA6200896D10"
+               BuildableName = "jlineartest.xctest"
+               BlueprintName = "jlineartest"
                ReferencedContainer = "container:jlinear.xcodeproj">
             </BuildableReference>
          </TestableReference>

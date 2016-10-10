@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:jmetal/jmetal.xcodeproj">
+      location = "group:jlinear/jlinear.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:jlinear/jlinear.xcodeproj">
+      location = "group:jmetal/jmetal.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:sujak/sujak.xcodeproj">

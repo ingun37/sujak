@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BA6535F1DABEAF900896D10 /* libjlinear.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6535E1DABEAF900896D10 /* libjlinear.a */; };
 		6BF99A0D1DA4CEF200F85839 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F61DA4CEF200F85839 /* jmetal.mm */; };
 		6BF99A0E1DA4CEF200F85839 /* jmetalbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F81DA4CEF200F85839 /* jmetalbuffer.mm */; };
 		6BF99A0F1DA4CEF200F85839 /* jmetalindexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999FC1DA4CEF200F85839 /* jmetalindexbuffer.mm */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6BA6535E1DABEAF900896D10 /* libjlinear.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjlinear.a; path = "../../Library/Developer/Xcode/DerivedData/metal-hidnnxiiuevhzdgkmfckjmtkkslc/Build/Products/Debug/libjlinear.a"; sourceTree = "<group>"; };
 		6BF999E91DA4CED500F85839 /* libjmetal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjmetal.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF999F51DA4CEF200F85839 /* jmetal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetal.hpp; sourceTree = "<group>"; };
 		6BF999F61DA4CEF200F85839 /* jmetal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetal.mm; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA6535F1DABEAF900896D10 /* libjlinear.a in Frameworks */,
 				6BF99A7A1DA4D50800F85839 /* libjmetal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +194,7 @@
 		6BF99A171DA4CF0800F85839 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BA6535E1DABEAF900896D10 /* libjlinear.a */,
 				6BF99A2B1DA4D0B200F85839 /* QuartzCore.framework */,
 				6BF99A181DA4CF0800F85839 /* Metal.framework */,
 			);
@@ -604,6 +608,7 @@
 				6BF999F41DA4CED500F85839 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6BF99A251DA4CFD800F85839 /* Build configuration list for PBXNativeTarget "jmetalshader" */ = {
 			isa = XCConfigurationList;
@@ -612,6 +617,7 @@
 				6BF99A271DA4CFD800F85839 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6BF99A701DA4D3EB00F85839 /* Build configuration list for PBXNativeTarget "jmetaltest" */ = {
 			isa = XCConfigurationList;
@@ -620,6 +626,7 @@
 				6BF99A721DA4D3EB00F85839 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

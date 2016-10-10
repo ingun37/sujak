@@ -25,10 +25,10 @@ struct VertexOutput {
 	float4 color;
 };
 
-vertex VertexOutput vert_color(VertexInput in [[stage_in]])
+vertex VertexOutput vert_color(VertexInput in [[stage_in]], constant JUniform& uni [[buffer(JBuffer_uniform)]])
 {
 	VertexOutput out;
-	out.pos = in.position;
+	out.pos = uni.ortho * uni.view * in.position;
 	out.color = in.color;
 	return out;
 }

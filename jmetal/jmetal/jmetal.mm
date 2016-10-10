@@ -22,10 +22,7 @@ void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize, JUniform initUn
 			[NSException raise:@"library is no" format:@""];
 		}
 	}
-	
-	
-	
-	
+
 	metallayer.drawableSize = drawableSize;
 
 	metallayer.device = device;

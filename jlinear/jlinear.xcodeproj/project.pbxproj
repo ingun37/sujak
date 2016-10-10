@@ -7,119 +7,115 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92D8FC7D1D3B5CA9007EE412 /* jlinear.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D8FC7C1D3B5CA9007EE412 /* jlinear.hpp */; };
-		92D8FC7F1D3B5CA9007EE412 /* jlinearPriv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D8FC7E1D3B5CA9007EE412 /* jlinearPriv.hpp */; };
-		92D8FC811D3B5CA9007EE412 /* jlinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D8FC801D3B5CA9007EE412 /* jlinear.cpp */; };
-		92D8FC881D3B5D53007EE412 /* jlinearsystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D8FC871D3B5D53007EE412 /* jlinearsystem.h */; };
-		92D8FC8A1D3B5DA0007EE412 /* jlinearrow.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D8FC891D3B5DA0007EE412 /* jlinearrow.h */; };
-		92D8FC921D3B5E0D007EE412 /* Tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D8FC911D3B5E0D007EE412 /* Tests.mm */; };
-		92D8FC941D3B5E0D007EE412 /* libjlinear.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D8FC791D3B5CA9007EE412 /* libjlinear.dylib */; };
+		6BA6534A1DABEA7100896D10 /* jlinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA653451DABEA7100896D10 /* jlinear.cpp */; };
+		6BA6534B1DABEA7100896D10 /* jlinear.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BA653461DABEA7100896D10 /* jlinear.hpp */; };
+		6BA6534C1DABEA7100896D10 /* jlinearrow.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BA653471DABEA7100896D10 /* jlinearrow.h */; };
+		6BA6534D1DABEA7100896D10 /* jlinearsystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BA653481DABEA7100896D10 /* jlinearsystem.h */; };
+		6BA653561DABEA9C00896D10 /* jlineartest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BA653551DABEA9C00896D10 /* jlineartest.mm */; };
+		6BA653581DABEA9C00896D10 /* libjlinear.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6532E1DABE9E300896D10 /* libjlinear.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		92D8FC951D3B5E0D007EE412 /* PBXContainerItemProxy */ = {
+		6BA653591DABEA9C00896D10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 92D8FC711D3B5CA9007EE412 /* Project object */;
+			containerPortal = 6BA653261DABE9E300896D10 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 92D8FC781D3B5CA9007EE412;
+			remoteGlobalIDString = 6BA6532D1DABE9E300896D10;
 			remoteInfo = jlinear;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		92D8FC791D3B5CA9007EE412 /* libjlinear.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libjlinear.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		92D8FC7C1D3B5CA9007EE412 /* jlinear.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = jlinear.hpp; sourceTree = "<group>"; };
-		92D8FC7E1D3B5CA9007EE412 /* jlinearPriv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = jlinearPriv.hpp; sourceTree = "<group>"; };
-		92D8FC801D3B5CA9007EE412 /* jlinear.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = jlinear.cpp; sourceTree = "<group>"; };
-		92D8FC871D3B5D53007EE412 /* jlinearsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jlinearsystem.h; sourceTree = "<group>"; };
-		92D8FC891D3B5DA0007EE412 /* jlinearrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jlinearrow.h; sourceTree = "<group>"; };
-		92D8FC8F1D3B5E0D007EE412 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		92D8FC911D3B5E0D007EE412 /* Tests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Tests.mm; sourceTree = "<group>"; };
-		92D8FC931D3B5E0D007EE412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BA6532E1DABE9E300896D10 /* libjlinear.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjlinear.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BA653451DABEA7100896D10 /* jlinear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jlinear.cpp; sourceTree = "<group>"; };
+		6BA653461DABEA7100896D10 /* jlinear.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jlinear.hpp; sourceTree = "<group>"; };
+		6BA653471DABEA7100896D10 /* jlinearrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jlinearrow.h; sourceTree = "<group>"; };
+		6BA653481DABEA7100896D10 /* jlinearsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jlinearsystem.h; sourceTree = "<group>"; };
+		6BA653531DABEA9C00896D10 /* jlineartest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jlineartest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BA653551DABEA9C00896D10 /* jlineartest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = jlineartest.mm; sourceTree = "<group>"; };
+		6BA653571DABEA9C00896D10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		92D8FC761D3B5CA9007EE412 /* Frameworks */ = {
+		6BA6532B1DABE9E300896D10 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92D8FC8C1D3B5E0D007EE412 /* Frameworks */ = {
+		6BA653501DABEA9C00896D10 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D8FC941D3B5E0D007EE412 /* libjlinear.dylib in Frameworks */,
+				6BA653581DABEA9C00896D10 /* libjlinear.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		92D8FC701D3B5CA9007EE412 = {
+		6BA653251DABE9E300896D10 = {
 			isa = PBXGroup;
 			children = (
-				92D8FC7B1D3B5CA9007EE412 /* jlinear */,
-				92D8FC901D3B5E0D007EE412 /* Tests */,
-				92D8FC7A1D3B5CA9007EE412 /* Products */,
+				6BA653351DABE9FB00896D10 /* jlinear */,
+				6BA653541DABEA9C00896D10 /* jlineartest */,
+				6BA6532F1DABE9E300896D10 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		92D8FC7A1D3B5CA9007EE412 /* Products */ = {
+		6BA6532F1DABE9E300896D10 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				92D8FC791D3B5CA9007EE412 /* libjlinear.dylib */,
-				92D8FC8F1D3B5E0D007EE412 /* Tests.xctest */,
+				6BA6532E1DABE9E300896D10 /* libjlinear.a */,
+				6BA653531DABEA9C00896D10 /* jlineartest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		92D8FC7B1D3B5CA9007EE412 /* jlinear */ = {
+		6BA653351DABE9FB00896D10 /* jlinear */ = {
 			isa = PBXGroup;
 			children = (
-				92D8FC7C1D3B5CA9007EE412 /* jlinear.hpp */,
-				92D8FC7E1D3B5CA9007EE412 /* jlinearPriv.hpp */,
-				92D8FC801D3B5CA9007EE412 /* jlinear.cpp */,
-				92D8FC871D3B5D53007EE412 /* jlinearsystem.h */,
-				92D8FC891D3B5DA0007EE412 /* jlinearrow.h */,
+				6BA653451DABEA7100896D10 /* jlinear.cpp */,
+				6BA653461DABEA7100896D10 /* jlinear.hpp */,
+				6BA653471DABEA7100896D10 /* jlinearrow.h */,
+				6BA653481DABEA7100896D10 /* jlinearsystem.h */,
 			);
 			path = jlinear;
 			sourceTree = "<group>";
 		};
-		92D8FC901D3B5E0D007EE412 /* Tests */ = {
+		6BA653541DABEA9C00896D10 /* jlineartest */ = {
 			isa = PBXGroup;
 			children = (
-				92D8FC911D3B5E0D007EE412 /* Tests.mm */,
-				92D8FC931D3B5E0D007EE412 /* Info.plist */,
+				6BA653551DABEA9C00896D10 /* jlineartest.mm */,
+				6BA653571DABEA9C00896D10 /* Info.plist */,
 			);
-			path = Tests;
+			path = jlineartest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		92D8FC771D3B5CA9007EE412 /* Headers */ = {
+		6BA6532C1DABE9E300896D10 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D8FC881D3B5D53007EE412 /* jlinearsystem.h in Headers */,
-				92D8FC7D1D3B5CA9007EE412 /* jlinear.hpp in Headers */,
-				92D8FC7F1D3B5CA9007EE412 /* jlinearPriv.hpp in Headers */,
-				92D8FC8A1D3B5DA0007EE412 /* jlinearrow.h in Headers */,
+				6BA6534B1DABEA7100896D10 /* jlinear.hpp in Headers */,
+				6BA6534D1DABEA7100896D10 /* jlinearsystem.h in Headers */,
+				6BA6534C1DABEA7100896D10 /* jlinearrow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		92D8FC781D3B5CA9007EE412 /* jlinear */ = {
+		6BA6532D1DABE9E300896D10 /* jlinear */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92D8FC841D3B5CA9007EE412 /* Build configuration list for PBXNativeTarget "jlinear" */;
+			buildConfigurationList = 6BA653321DABE9E300896D10 /* Build configuration list for PBXNativeTarget "jlinear" */;
 			buildPhases = (
-				92D8FC751D3B5CA9007EE412 /* Sources */,
-				92D8FC761D3B5CA9007EE412 /* Frameworks */,
-				92D8FC771D3B5CA9007EE412 /* Headers */,
+				6BA6532A1DABE9E300896D10 /* Sources */,
+				6BA6532B1DABE9E300896D10 /* Frameworks */,
+				6BA6532C1DABE9E300896D10 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -127,64 +123,66 @@
 			);
 			name = jlinear;
 			productName = jlinear;
-			productReference = 92D8FC791D3B5CA9007EE412 /* libjlinear.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
+			productReference = 6BA6532E1DABE9E300896D10 /* libjlinear.a */;
+			productType = "com.apple.product-type.library.static";
 		};
-		92D8FC8E1D3B5E0D007EE412 /* Tests */ = {
+		6BA653521DABEA9C00896D10 /* jlineartest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92D8FC971D3B5E0D007EE412 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = 6BA6535B1DABEA9C00896D10 /* Build configuration list for PBXNativeTarget "jlineartest" */;
 			buildPhases = (
-				92D8FC8B1D3B5E0D007EE412 /* Sources */,
-				92D8FC8C1D3B5E0D007EE412 /* Frameworks */,
-				92D8FC8D1D3B5E0D007EE412 /* Resources */,
+				6BA6534F1DABEA9C00896D10 /* Sources */,
+				6BA653501DABEA9C00896D10 /* Frameworks */,
+				6BA653511DABEA9C00896D10 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				92D8FC961D3B5E0D007EE412 /* PBXTargetDependency */,
+				6BA6535A1DABEA9C00896D10 /* PBXTargetDependency */,
 			);
-			name = Tests;
-			productName = Tests;
-			productReference = 92D8FC8F1D3B5E0D007EE412 /* Tests.xctest */;
+			name = jlineartest;
+			productName = jlineartest;
+			productReference = 6BA653531DABEA9C00896D10 /* jlineartest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		92D8FC711D3B5CA9007EE412 /* Project object */ = {
+		6BA653261DABE9E300896D10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Ingun Jon";
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = loadcomplete;
 				TargetAttributes = {
-					92D8FC781D3B5CA9007EE412 = {
-						CreatedOnToolsVersion = 7.3.1;
+					6BA6532D1DABE9E300896D10 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
 					};
-					92D8FC8E1D3B5E0D007EE412 = {
-						CreatedOnToolsVersion = 7.3.1;
+					6BA653521DABEA9C00896D10 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 92D8FC741D3B5CA9007EE412 /* Build configuration list for PBXProject "jlinear" */;
+			buildConfigurationList = 6BA653291DABE9E300896D10 /* Build configuration list for PBXProject "jlinear" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 92D8FC701D3B5CA9007EE412;
-			productRefGroup = 92D8FC7A1D3B5CA9007EE412 /* Products */;
+			mainGroup = 6BA653251DABE9E300896D10;
+			productRefGroup = 6BA6532F1DABE9E300896D10 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				92D8FC781D3B5CA9007EE412 /* jlinear */,
-				92D8FC8E1D3B5E0D007EE412 /* Tests */,
+				6BA6532D1DABE9E300896D10 /* jlinear */,
+				6BA653521DABEA9C00896D10 /* jlineartest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		92D8FC8D1D3B5E0D007EE412 /* Resources */ = {
+		6BA653511DABEA9C00896D10 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -194,34 +192,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		92D8FC751D3B5CA9007EE412 /* Sources */ = {
+		6BA6532A1DABE9E300896D10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D8FC811D3B5CA9007EE412 /* jlinear.cpp in Sources */,
+				6BA6534A1DABEA7100896D10 /* jlinear.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92D8FC8B1D3B5E0D007EE412 /* Sources */ = {
+		6BA6534F1DABEA9C00896D10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92D8FC921D3B5E0D007EE412 /* Tests.mm in Sources */,
+				6BA653561DABEA9C00896D10 /* jlineartest.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		92D8FC961D3B5E0D007EE412 /* PBXTargetDependency */ = {
+		6BA6535A1DABEA9C00896D10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 92D8FC781D3B5CA9007EE412 /* jlinear */;
-			targetProxy = 92D8FC951D3B5E0D007EE412 /* PBXContainerItemProxy */;
+			target = 6BA6532D1DABE9E300896D10 /* jlinear */;
+			targetProxy = 6BA653591DABEA9C00896D10 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		92D8FC821D3B5CA9007EE412 /* Debug */ = {
+		6BA653301DABE9E300896D10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -233,10 +231,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -258,14 +259,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
-		92D8FC831D3B5CA9007EE412 /* Release */ = {
+		6BA653311DABE9E300896D10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -277,10 +278,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -296,89 +300,83 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		92D8FC851D3B5CA9007EE412 /* Debug */ = {
+		6BA653331DABE9E300896D10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.0;
 			};
 			name = Debug;
 		};
-		92D8FC861D3B5CA9007EE412 /* Release */ = {
+		6BA653341DABE9E300896D10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.0;
 			};
 			name = Release;
 		};
-		92D8FC981D3B5E0D007EE412 /* Debug */ = {
+		6BA6535C1DABEA9C00896D10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = jlineartest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.loadcomplete.jlinear.Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loadcomplete.jlineartest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		92D8FC991D3B5E0D007EE412 /* Release */ = {
+		6BA6535D1DABEA9C00896D10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = jlineartest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.loadcomplete.jlinear.Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loadcomplete.jlineartest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		92D8FC741D3B5CA9007EE412 /* Build configuration list for PBXProject "jlinear" */ = {
+		6BA653291DABE9E300896D10 /* Build configuration list for PBXProject "jlinear" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				92D8FC821D3B5CA9007EE412 /* Debug */,
-				92D8FC831D3B5CA9007EE412 /* Release */,
+				6BA653301DABE9E300896D10 /* Debug */,
+				6BA653311DABE9E300896D10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92D8FC841D3B5CA9007EE412 /* Build configuration list for PBXNativeTarget "jlinear" */ = {
+		6BA653321DABE9E300896D10 /* Build configuration list for PBXNativeTarget "jlinear" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				92D8FC851D3B5CA9007EE412 /* Debug */,
-				92D8FC861D3B5CA9007EE412 /* Release */,
+				6BA653331DABE9E300896D10 /* Debug */,
+				6BA653341DABE9E300896D10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		92D8FC971D3B5E0D007EE412 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		6BA6535B1DABEA9C00896D10 /* Build configuration list for PBXNativeTarget "jlineartest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				92D8FC981D3B5E0D007EE412 /* Debug */,
-				92D8FC991D3B5E0D007EE412 /* Release */,
+				6BA6535C1DABEA9C00896D10 /* Debug */,
+				6BA6535D1DABEA9C00896D10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 92D8FC711D3B5CA9007EE412 /* Project object */;
+	rootObject = 6BA653261DABE9E300896D10 /* Project object */;
 }

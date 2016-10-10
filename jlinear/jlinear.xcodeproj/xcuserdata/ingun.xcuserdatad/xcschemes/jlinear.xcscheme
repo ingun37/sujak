@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92D8FC781D3B5CA9007EE412"
-               BuildableName = "libjlinear.dylib"
+               BlueprintIdentifier = "6BA6532D1DABE9E300896D10"
+               BuildableName = "libjlinear.a"
                BlueprintName = "jlinear"
                ReferencedContainer = "container:jlinear.xcodeproj">
             </BuildableReference>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92D8FC8E1D3B5E0D007EE412"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
-               ReferencedContainer = "container:jlinear.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92D8FC781D3B5CA9007EE412"
-            BuildableName = "libjlinear.dylib"
-            BlueprintName = "jlinear"
-            ReferencedContainer = "container:jlinear.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92D8FC781D3B5CA9007EE412"
-            BuildableName = "libjlinear.dylib"
+            BlueprintIdentifier = "6BA6532D1DABE9E300896D10"
+            BuildableName = "libjlinear.a"
             BlueprintName = "jlinear"
             ReferencedContainer = "container:jlinear.xcodeproj">
          </BuildableReference>
@@ -82,8 +63,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92D8FC781D3B5CA9007EE412"
-            BuildableName = "libjlinear.dylib"
+            BlueprintIdentifier = "6BA6532D1DABE9E300896D10"
+            BuildableName = "libjlinear.a"
             BlueprintName = "jlinear"
             ReferencedContainer = "container:jlinear.xcodeproj">
          </BuildableReference>

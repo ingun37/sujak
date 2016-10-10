@@ -10,15 +10,15 @@
 #import <QuartzCore/CAMetalLayer.h>
 #import "jmetal.hpp"
 #import "jconstants.hpp"
-
+#import "../../jlinear/jlinear/jlinear.hpp"
 using namespace sujak;
 jmetal gl;
 
 simd::float4 pos[] = {
-	{-0.2, 0.2, 0, 1},
-	{ 0.2, 0.2, 0, 1},
-	{ 0.2, -0.2, 0, 1},
-	{-0.2, -0.2, 0, 1},
+	{-20, 20, -20, 1},
+	{ 20, 20, -29, 1},
+	{ 20, -20, -29, 1},
+	{-20, -28, -30, 1},
 };
 
 simd::float4 col[] = {
@@ -48,7 +48,11 @@ int vtype = (1 << JVertexAttribute_position) | (1 << JVertexAttribute_color);
 	UIScreen* screen = self.window.screen ?: [UIScreen mainScreen];
 	drawableSize.width *= screen.nativeScale;
 	drawableSize.height *= screen.nativeScale;
-	gl.init(metallayer, drawableSize, JUniform());
+	
+	JUniform uni;
+	uni.ortho = jlinear::GetProjectionMatrixOrthogonal(drawableSize.width/2, drawableSize.height/2, 1, 100);
+	uni.view = jlinear::GetViewMatrix({0,0,0}, {0,1,0}, {0,0,-1});
+	gl.init(metallayer, drawableSize, uni);
 	
 }
 -(instancetype)initWithCoder:(NSCoder *)aDecoder

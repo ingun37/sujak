@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:jgl/jgl.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:jlinear/jlinear.xcodeproj">
    </FileRef>
    <FileRef

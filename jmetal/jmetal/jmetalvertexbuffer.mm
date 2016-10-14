@@ -23,14 +23,14 @@ using namespace sujak;
     
     for(int i=0;i<_attnum;i++)
     {
-        size_t initsize = jmetalconstant_vertex_datatype_size( jconstant_vertex_attribute_datatype( attribs[i] ) ) * reserveVertexCnt;
+        size_t initsize = jmetalconstant_datatype_size( jconstant_attribute_datatype( attribs[i] ) ) * reserveVertexCnt;
         [_buffers addObject:[[jmetalbuffer alloc] initWithDevice:device initialSize:initsize option:MTLResourceCPUCacheModeWriteCombined]];
     }
 	return [super init];
 }
 -(unsigned int)getUnitSizeOfBufferAt:(int)idx
 {
-	return jmetalconstant_vertex_datatype_size( jconstant_vertex_attribute_datatype( attribs[idx] ) );
+	return jmetalconstant_datatype_size( jconstant_attribute_datatype( attribs[idx] ) );
 }
 -(sujak::JVertexAttribute)getAttribOfBufferAt:(int)idx
 {
@@ -44,7 +44,7 @@ using namespace sujak;
     _vnum += cnt;
     for(int i=0;i<_attnum;i++)
     {
-        unsigned int buffersize = jmetalconstant_vertex_datatype_size( jconstant_vertex_attribute_datatype(attribs[i]) ) * cnt;
+        unsigned int buffersize = jmetalconstant_vertex_datatype_size( jconstant_attribute_datatype(attribs[i]) ) * cnt;
         if(datas[i] == NULL)
             [NSException raise:@"ery45u" format:@""];
         [_buffers[i] append:datas[i] len:buffersize];

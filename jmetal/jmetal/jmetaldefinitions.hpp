@@ -10,24 +10,16 @@
 #define jmetaldefinitions_h
 #import "jconstants.hpp"
 
-unsigned int jmetalconstant_vertex_datatype_size(sujak::JDataTypeVertex t)
+unsigned int jmetalconstant_datatype_size(sujak::JDataType t)
 {
 	switch(t)
 	{
-		case sujak::JDataTypeVertex_f2: return sizeof(simd::float2);
-		case sujak::JDataTypeVertex_f4: return sizeof(simd::float4);
-		case sujak::JDataTypeVertex_f44: return sizeof(matrix_float4x4);
+		case sujak::JDataType_f2: return sizeof(simd::float2);
+		case sujak::JDataType_f4: return sizeof(simd::float4);
+		case sujak::JDataType_f44: return sizeof(matrix_float4x4);
+		case sujak::JDataType_uint16: return sizeof(unsigned short);
+		case sujak::JDataType_uint32: return sizeof(unsigned int);
 		default: throw "unknown type";
-	}
-}
-
-unsigned int jmetalconstant_indextype_size(sujak::JDataTypeIndex t)
-{
-	switch (t)
-	{
-		case sujak::JDataTypeIndex_16: return sizeof(unsigned short);
-		case sujak::JDataTypeIndex_32: return sizeof(unsigned int);
-		default: throw "unknown index type";
 	}
 }
 
@@ -43,25 +35,23 @@ MTLPixelFormat jmetalconstant_pixelformat(sujak::JPixelFormat f)
 	}
 }
 
-MTLVertexFormat jmetalconstant_vertexformat(sujak::JDataTypeVertex t)
+MTLVertexFormat jmetalconstant_vertexformat(sujak::JDataType t)
 {
     switch(t)
     {
-        case sujak::JDataTypeVertex_f2: return MTLVertexFormatFloat2;
-        case sujak::JDataTypeVertex_f4: return MTLVertexFormatFloat4;
-        default:
-            throw "unknown data type fo sss";
+        case sujak::JDataType_f2: return MTLVertexFormatFloat2;
+        case sujak::JDataType_f4: return MTLVertexFormatFloat4;
+        default: throw "unknown data type fo sss";
     }
 }
 
-MTLIndexType jmetalconstant_indextype(sujak::JDataTypeIndex t)
+MTLIndexType jmetalconstant_indextype(sujak::JDataType t)
 {
     switch(t)
     {
-        case sujak::JDataTypeIndex_16: return MTLIndexTypeUInt16;
-        case sujak::JDataTypeIndex_32: return MTLIndexTypeUInt32;
-        default:
-            throw "9292t2493t2490t904";
+        case sujak::JDataType_uint16: return MTLIndexTypeUInt16;
+        case sujak::JDataType_uint32: return MTLIndexTypeUInt32;
+        default: throw "9292t2493t2490t904";
     }
 }
 

@@ -12,21 +12,16 @@
 
 namespace sujak
 {
-    enum JDataTypeVertex
+    enum JDataType
     {
-        JDataTypeVertex_None,
-        JDataTypeVertex_f4,
-        JDataTypeVertex_f2,
-        JDataTypeVertex_f44,
-        JDataTypeVertex_number,
+        JDataType_None,
+        JDataType_f4,
+        JDataType_f2,
+        JDataType_f44,
+		JDataType_uint16,
+		JDataType_uint32,
+        JDataType_number,
     };
-	
-	enum JDataTypeIndex
-	{
-		JDataTypeIndex_16,
-		JDataTypeIndex_32,
-		JDataTypeIndex_number,
-	};
 	
 	enum JPixelFormat
 	{
@@ -36,6 +31,7 @@ namespace sujak
 		JPixelFormat_rgbaf32,
 		JPixelFormat_number,
 	};
+
     enum JVertexAttribute
     {
         JVertexAttribute_position,
@@ -45,8 +41,11 @@ namespace sujak
         JVertexAttribute_number,
     };
 	
-	
-	
+	enum JInstanceAttribute
+	{
+		JInstanceAttribute_trans,
+		JInstanceAttribute_number,
+	};
 	
     enum JBuffer
     {
@@ -54,6 +53,7 @@ namespace sujak
         JBuffer_vertex_normal,
         JBuffer_vertex_color,
         JBuffer_vertex_uv,
+		JBuffer_instance,
         JBuffer_index,
         JBuffer_uniform,
         JBuffer_number,

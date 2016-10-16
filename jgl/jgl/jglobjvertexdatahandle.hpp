@@ -14,8 +14,6 @@
 class jglObjVertexDataHandle
 {
 public:
-    unsigned int offset;
-    unsigned int len;
     void* datas[sujak::JVertexAttribute_number];
     jglObjVertexDataHandle();
 };

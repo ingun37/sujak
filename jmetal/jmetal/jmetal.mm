@@ -1,10 +1,33 @@
+#include <math.h>
+#include <map>
+
 #import "jmetal.hpp"
+
+#import "jmtlvertexbuffer.hpp"
 
 #import "jmetaltransients.hpp"
 #import "jmetalnontransients.hpp"
 #import "jmetaldefinitions.hpp"
-#include <math.h>
+#import "jallocator.hpp"
+
+using namespace std;
 using namespace sujak;
+typedef map<int,jmtlVertexBuffer*> mapVertexBuffer;
+mapVertexBuffer vbuffers;
+
+typedef jallocator<jmtlVertexBuffer, 8, jmetal> poolVBuffer;
+
+jglObjVertexDataHandle jmetal::loadVertexObjectOnMemory(int vtype, unsigned int vcnt)
+{
+    jglObjVertexDataHandle dataHandle;
+    
+    if(vbuffers.find(vtype) == vbuffers.end())
+    {
+        jmtlVertexBuffer* b = poolVBuffer::getAvailable(1);
+        b->init(vtype, device);
+        vbuffers[vtype] = b;
+    }
+}
 
 void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize, JUniform initUniform)
 {

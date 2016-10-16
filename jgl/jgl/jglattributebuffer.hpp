@@ -8,7 +8,7 @@
 
 #ifndef jglattributebuffer_hpp
 #define jglattributebuffer_hpp
-
+#include "jglobjvertexdatahandle.hpp"
 #define JGLATTRIBUTEBUFFER_MAXATT_CNT 32
 
 class jglBuffer;
@@ -33,7 +33,8 @@ protected:
 	virtual void initAttributeInfo( jglAttributeBufferAttributeInfo& info, int exponentNum ) = 0;
 	jglAttributeBuffer();
     void init(int flag);
-    void appendTo(int a, const void* data, unsigned int unitCnt);
+    jglObjVertexDataHandle getHandleAndAdvance(unsigned int vcnt);
+    
 public:
     
 };

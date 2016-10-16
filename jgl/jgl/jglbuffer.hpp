@@ -17,7 +17,7 @@ protected:
     void init(unsigned int reserve);
     jglBuffer();
 public:
-	void append(const void* data, unsigned int len);
+	void advance(unsigned int len);
 	void reset();
 	
 };

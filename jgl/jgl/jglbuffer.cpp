@@ -8,11 +8,13 @@
 #include <iostream>
 #include "jglBuffer.hpp"
 
-void jglBuffer::append(void *data, unsigned int len)
+void jglBuffer::append(const void *data, unsigned int len)
 {
 	if(data == NULL)
 		throw "data is null";
-	this->len += len;
+	
+    memcpy((char*)handle() + this->len, data, len);//todo safer
+    this->len += len;
 }
 
 void jglBuffer::reset()
@@ -23,4 +25,9 @@ void jglBuffer::reset()
 jglBuffer::jglBuffer()
 {
 	len = 0;
+}
+
+void jglBuffer::init(unsigned int reserve)
+{
+    
 }

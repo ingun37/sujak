@@ -40,7 +40,7 @@ id<MTLRenderPipelineState> pipelines[JPipeline_number] = {nil, };
 {
 	if(pipelines[p] != nil)
 		return pipelines[p];
-    jtype_pipeline pipe = jconstant_programs[p];
+    jtype_pipeline pipe = jconstant_programs(p);
 	MTLRenderPipelineDescriptor* desc = [MTLRenderPipelineDescriptor new];
 	
 	std::vector<NSUInteger> buffidxs;
@@ -49,13 +49,13 @@ id<MTLRenderPipelineState> pipelines[JPipeline_number] = {nil, };
 	
     size_t attnum;
     JVertexAttribute attribs[JVertexAttribute_number];
-    jconstant_vertextype_info(pipe.attribs, attnum, attribs);
+    jconstant_vertextype_info(pipe.vtype, attnum, attribs);
     
     for(int i=0;i<attnum;i++)
     {
 		buffidxs.push_back( jconstant_bufferidx_of(attribs[i]) );
-		vformats.push_back( jmetalconstant_vertexformat( jconstant_vertex_attribute_datatype(attribs[i]) ));
-		strides.push_back( jmetalconstant_vertex_datatype_size( jconstant_vertex_attribute_datatype(attribs[i]) ));
+		vformats.push_back( jmetalconstant_vertexformat( jconstant_attribute_datatype(attribs[i]) ));
+		strides.push_back( jmetalconstant_datatype_size( jconstant_attribute_datatype(attribs[i]) ));
     }
     
     desc.vertexDescriptor = [jmetaltransients newVertexDescWithCnt:attnum buffidxs:&buffidxs[0] vertexformats:&vformats[0] stride:&strides[0]];
@@ -77,21 +77,7 @@ id<MTLRenderPipelineState> pipelines[JPipeline_number] = {nil, };
 	}
 	return pipelines[p];
 }
-NSMutableArray<jmetalstreambuffer*> *streambuffers = [NSMutableArray array];
-+(jmetalstreambuffer *)bufferOfType:(int)type device:(id<MTLDevice>)device
-{
-	for(jmetalstreambuffer* buff in streambuffers)
-	{
-		if(buff.vertex.vertextype == type)
-			return buff;
-	}
-	
-	jmetalstreambuffer* newbuff = [[jmetalstreambuffer alloc] initWithDevcie:device vertextype:type reserveVertexCnt:128 reserveIndexCnt:128];
-	
-	[streambuffers addObject:newbuff];
-	
-    return newbuff;
-}
+
 id<MTLTexture> texd = nil;
 +(id<MTLTexture>)defaultDepthTexWithDevice:(id<MTLDevice>)device width:(NSUInteger)w height:(NSUInteger)h format:(MTLPixelFormat)f
 {
@@ -116,14 +102,5 @@ id<MTLTexture> texs = nil;
 		texs = [device newTextureWithDescriptor:desc];
 	}
 	return texs;
-}
-jmetalbuffer* uniformbuff = nil;
-+(jmetalbuffer *)uniformBufferWithDevice:(id<MTLDevice>)device
-{
-	if(uniformbuff!=nil)
-		return uniformbuff;
-	
-	uniformbuff = [[jmetalbuffer alloc]initWithDevice:device initialSize:sizeof(JUniform) option:MTLResourceOptionCPUCacheModeWriteCombined];
-	return uniformbuff;
 }
 @end

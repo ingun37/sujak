@@ -11,23 +11,32 @@
 
 #define JGLATTRIBUTEBUFFER_MAXATT_CNT 32
 
-class jglbuffer;
+class jglBuffer;
 
 typedef struct _jglAttributeBufferAttributeInfo
 {
 	unsigned short unitsize;
-	jglbuffer* buffer;
+	jglBuffer* buffer;
+    _jglAttributeBufferAttributeInfo()
+    {
+        unitsize = 0;
+        buffer = 0;
+    }
 } jglAttributeBufferAttributeInfo;
 
 
 class jglAttributeBuffer
 {
 	int flag;
-	unsigned int cnt;
 	jglAttributeBufferAttributeInfo attributes[JGLATTRIBUTEBUFFER_MAXATT_CNT];
 protected:
 	virtual void initAttributeInfo( jglAttributeBufferAttributeInfo& info, int exponentNum ) = 0;
-	jglAttributeBuffer(int flag, unsigned int cnt);
+	jglAttributeBuffer();
+    void init(int flag);
+    void appendTo(int a, const void* data, unsigned int unitCnt);
+public:
+    
 };
+
 
 #endif /* jglattributebuffer_hpp */

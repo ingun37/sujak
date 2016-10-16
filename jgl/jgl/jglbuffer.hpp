@@ -12,11 +12,14 @@
 class jglBuffer
 {
 	unsigned int len;
+protected:
+    virtual void* handle() = 0;
+    void init(unsigned int reserve);
+    jglBuffer();
 public:
-	jglBuffer();
-	void append(void* data, unsigned int len);
+	void append(const void* data, unsigned int len);
 	void reset();
-	virtual void* handle() = 0;
+	
 };
 
 #endif /* jglbuffer_h */

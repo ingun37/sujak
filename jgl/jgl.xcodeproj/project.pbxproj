@@ -11,8 +11,10 @@
 		6BBBDCE91DB130D800DF935C /* jglbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBDCE81DB130D800DF935C /* jglbuffer.cpp */; };
 		6BBBDCEC1DB1326500DF935C /* jglattributebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBDCEA1DB1326500DF935C /* jglattributebuffer.cpp */; };
 		6BBBDCED1DB1326500DF935C /* jglattributebuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BBBDCEB1DB1326500DF935C /* jglattributebuffer.hpp */; };
-		6BBBDCF01DB1398700DF935C /* jglvertexbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBDCEE1DB1398700DF935C /* jglvertexbuffer.cpp */; };
-		6BBBDCF11DB1398700DF935C /* jglvertexbuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BBBDCEF1DB1398700DF935C /* jglvertexbuffer.hpp */; };
+		92A618F01DB3DE4200C136B0 /* jglobjvertexdatahandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92A618EE1DB3DE4200C136B0 /* jglobjvertexdatahandle.cpp */; };
+		92A618F11DB3DE4200C136B0 /* jglobjvertexdatahandle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618EF1DB3DE4200C136B0 /* jglobjvertexdatahandle.hpp */; };
+		92A618F41DB3DE6400C136B0 /* jconstants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618F21DB3DE6400C136B0 /* jconstants.hpp */; };
+		92A618F51DB3DE6400C136B0 /* jdefinitions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618F31DB3DE6400C136B0 /* jdefinitions.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +23,10 @@
 		6BBBDCE81DB130D800DF935C /* jglbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglbuffer.cpp; sourceTree = "<group>"; };
 		6BBBDCEA1DB1326500DF935C /* jglattributebuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglattributebuffer.cpp; sourceTree = "<group>"; };
 		6BBBDCEB1DB1326500DF935C /* jglattributebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglattributebuffer.hpp; sourceTree = "<group>"; };
-		6BBBDCEE1DB1398700DF935C /* jglvertexbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglvertexbuffer.cpp; sourceTree = "<group>"; };
-		6BBBDCEF1DB1398700DF935C /* jglvertexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglvertexbuffer.hpp; sourceTree = "<group>"; };
+		92A618EE1DB3DE4200C136B0 /* jglobjvertexdatahandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglobjvertexdatahandle.cpp; sourceTree = "<group>"; };
+		92A618EF1DB3DE4200C136B0 /* jglobjvertexdatahandle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglobjvertexdatahandle.hpp; sourceTree = "<group>"; };
+		92A618F21DB3DE6400C136B0 /* jconstants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jconstants.hpp; path = ../jconstants.hpp; sourceTree = "<group>"; };
+		92A618F31DB3DE6400C136B0 /* jdefinitions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jdefinitions.hpp; path = ../jdefinitions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,8 @@
 		6BBBDCD31DB12EDC00DF935C = {
 			isa = PBXGroup;
 			children = (
+				92A618F21DB3DE6400C136B0 /* jconstants.hpp */,
+				92A618F31DB3DE6400C136B0 /* jdefinitions.hpp */,
 				6BBBDCE31DB12F0200DF935C /* jgl */,
 				6BBBDCDD1DB12EDC00DF935C /* Products */,
 			);
@@ -59,8 +65,8 @@
 				6BBBDCE81DB130D800DF935C /* jglbuffer.cpp */,
 				6BBBDCEA1DB1326500DF935C /* jglattributebuffer.cpp */,
 				6BBBDCEB1DB1326500DF935C /* jglattributebuffer.hpp */,
-				6BBBDCEE1DB1398700DF935C /* jglvertexbuffer.cpp */,
-				6BBBDCEF1DB1398700DF935C /* jglvertexbuffer.hpp */,
+				92A618EE1DB3DE4200C136B0 /* jglobjvertexdatahandle.cpp */,
+				92A618EF1DB3DE4200C136B0 /* jglobjvertexdatahandle.hpp */,
 			);
 			path = jgl;
 			sourceTree = "<group>";
@@ -72,8 +78,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92A618F41DB3DE6400C136B0 /* jconstants.hpp in Headers */,
+				92A618F51DB3DE6400C136B0 /* jdefinitions.hpp in Headers */,
+				92A618F11DB3DE4200C136B0 /* jglobjvertexdatahandle.hpp in Headers */,
 				6BBBDCE51DB12F2100DF935C /* jglbuffer.hpp in Headers */,
-				6BBBDCF11DB1398700DF935C /* jglvertexbuffer.hpp in Headers */,
 				6BBBDCED1DB1326500DF935C /* jglattributebuffer.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BBBDCEC1DB1326500DF935C /* jglattributebuffer.cpp in Sources */,
-				6BBBDCF01DB1398700DF935C /* jglvertexbuffer.cpp in Sources */,
 				6BBBDCE91DB130D800DF935C /* jglbuffer.cpp in Sources */,
+				92A618F01DB3DE4200C136B0 /* jglobjvertexdatahandle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +279,7 @@
 				6BBBDCE21DB12EDC00DF935C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

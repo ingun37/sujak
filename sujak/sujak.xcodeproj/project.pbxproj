@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B4800D11D3C68E700F3654E /* jallocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B31D3C68E700F3654E /* jallocator.cpp */; };
 		6B4800D21D3C68E700F3654E /* jbinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B51D3C68E700F3654E /* jbinary.cpp */; };
 		6B4800D41D3C68E700F3654E /* jcore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B91D3C68E700F3654E /* jcore.cpp */; };
 		6B4800D51D3C68E700F3654E /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800BB1D3C68E700F3654E /* jcurve.cpp */; };
@@ -41,8 +40,6 @@
 		6B03843A1D95305F00282402 /* jconstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jconstants.hpp; sourceTree = "<group>"; };
 		6B03843C1D95305F00282402 /* jgl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jgl.hpp; sourceTree = "<group>"; };
 		6B4800A61D3C689F00F3654E /* libsujak.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsujak.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B4800B31D3C68E700F3654E /* jallocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jallocator.cpp; sourceTree = "<group>"; };
-		6B4800B41D3C68E700F3654E /* jallocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jallocator.hpp; sourceTree = "<group>"; };
 		6B4800B51D3C68E700F3654E /* jbinary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jbinary.cpp; sourceTree = "<group>"; };
 		6B4800B61D3C68E700F3654E /* jbinary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jbinary.hpp; sourceTree = "<group>"; };
 		6B4800B91D3C68E700F3654E /* jcore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcore.cpp; sourceTree = "<group>"; };
@@ -108,8 +105,6 @@
 				6B4800E21D3C698000F3654E /* jcurvenode.cpp */,
 				6B4800E31D3C698000F3654E /* jcurvenode.hpp */,
 				6B4800E11D3C695E00F3654E /* jjoint.h */,
-				6B4800B31D3C68E700F3654E /* jallocator.cpp */,
-				6B4800B41D3C68E700F3654E /* jallocator.hpp */,
 				6B4800B51D3C68E700F3654E /* jbinary.cpp */,
 				6B4800B61D3C68E700F3654E /* jbinary.hpp */,
 				6B4800B91D3C68E700F3654E /* jcore.cpp */,
@@ -219,7 +214,6 @@
 				6B4800DD1D3C68E700F3654E /* jskinner.cpp in Sources */,
 				6B4800DB1D3C68E700F3654E /* jrotation.cpp in Sources */,
 				6B4800D81D3C68E700F3654E /* jrenderobject.cpp in Sources */,
-				6B4800D11D3C68E700F3654E /* jallocator.cpp in Sources */,
 				6B4800D91D3C68E700F3654E /* jrenderprimitivegroup.cpp in Sources */,
 				6B4800D51D3C68E700F3654E /* jcurve.cpp in Sources */,
 				6B4800D21D3C68E700F3654E /* jbinary.cpp in Sources */,

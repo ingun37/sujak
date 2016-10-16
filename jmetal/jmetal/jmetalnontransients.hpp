@@ -9,12 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <Metal/Metal.h>
 #import "jconstants.hpp"
-#import "jmetalstreambuffer.hpp"
+
 @interface jmetalnontransients : NSObject
 
 +(id<MTLRenderPipelineState>)pipelineWithDevice:(id<MTLDevice>)device library:(id<MTLLibrary>)library of:(sujak::JPipeline)p;
-+(jmetalstreambuffer*)bufferOfType:(int)type device:(id<MTLDevice>)device;
-+(jmetalbuffer*)uniformBufferWithDevice:(id<MTLDevice>)device;
+
 +(id<MTLTexture>)defaultDepthTexWithDevice:(id<MTLDevice>)device width:(NSUInteger)w height:(NSUInteger)h format:(MTLPixelFormat)f;
 +(id<MTLTexture>)defaultStencilTexWithDevice:(id<MTLDevice>)device width:(NSUInteger)w height:(NSUInteger)h  format:(MTLPixelFormat)f;
 @end

@@ -38,7 +38,6 @@
 		92A618E91DB3AC1200C136B0 /* jglattributebuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618E81DB3AC1200C136B0 /* jglattributebuffer.hpp */; };
 		92A618EC1DB3AC2700C136B0 /* jmtlattributebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92A618EA1DB3AC2700C136B0 /* jmtlattributebuffer.mm */; };
 		92A618ED1DB3AC2700C136B0 /* jmtlattributebuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618EB1DB3AC2700C136B0 /* jmtlattributebuffer.hpp */; };
-		92A618F71DB3E17400C136B0 /* jglobjvertexdatahandle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618F61DB3E17400C136B0 /* jglobjvertexdatahandle.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,7 +128,6 @@
 		92A618E81DB3AC1200C136B0 /* jglattributebuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglattributebuffer.hpp; path = ../jgl/jgl/jglattributebuffer.hpp; sourceTree = "<group>"; };
 		92A618EA1DB3AC2700C136B0 /* jmtlattributebuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlattributebuffer.mm; sourceTree = "<group>"; };
 		92A618EB1DB3AC2700C136B0 /* jmtlattributebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlattributebuffer.hpp; sourceTree = "<group>"; };
-		92A618F61DB3E17400C136B0 /* jglobjvertexdatahandle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglobjvertexdatahandle.hpp; path = ../jgl/jgl/jglobjvertexdatahandle.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +157,6 @@
 		6BF999E01DA4CED500F85839 = {
 			isa = PBXGroup;
 			children = (
-				92A618F61DB3E17400C136B0 /* jglobjvertexdatahandle.hpp */,
 				92A618E81DB3AC1200C136B0 /* jglattributebuffer.hpp */,
 				92A618E61DB3952D00C136B0 /* jallocator.hpp */,
 				92A618DE1DB2AD4900C136B0 /* jglbuffer.hpp */,
@@ -268,7 +265,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92A618F71DB3E17400C136B0 /* jglobjvertexdatahandle.hpp in Headers */,
 				92A618E91DB3AC1200C136B0 /* jglattributebuffer.hpp in Headers */,
 				92A618E71DB3952D00C136B0 /* jallocator.hpp in Headers */,
 				92A618E11DB2AD4900C136B0 /* jglbuffer.hpp in Headers */,

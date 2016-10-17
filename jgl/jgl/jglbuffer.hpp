@@ -17,6 +17,7 @@ protected:
     void init(unsigned int reserve);
     jglBuffer();
 public:
+    void* advancedHandle();
 	void advance(unsigned int len);
 	void reset();
 	

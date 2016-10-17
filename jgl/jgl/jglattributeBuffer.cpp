@@ -26,10 +26,16 @@ void jglAttributeBuffer::init(int flag)
     }
 }
 
-void jglAttributeBuffer::appendTo(int a, const void *data, unsigned int unitCnt)
+jglObjVertexDataHandle jglAttributeBuffer::getHandleAndAdvance(unsigned int vcnt)
 {
-    if(!(flag & (1 << a)))
-        throw "whwioerhwioefhowehfiwef";
-    
-    attributes[a].buffer->append(data, unitCnt * attributes[a].unitsize);
+    jglObjVertexDataHandle handle;
+    for(int i=0;i<JGLATTRIBUTEBUFFER_MAXATT_CNT;i++)
+    {
+        if(flag & (1 << i))
+        {
+            handle.datas[i] = attributes[i].buffer->advancedHandle();
+            attributes[i].buffer->advance( attributes[i].unitsize * vcnt );
+        }
+    }
+    return handle;
 }

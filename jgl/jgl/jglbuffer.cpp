@@ -12,7 +12,10 @@ void jglBuffer::advance(unsigned int len)
 {
     this->len += len;
 }
-
+void* jglBuffer::advancedHandle()
+{
+    return (char*)handle() + len;
+}
 void jglBuffer::reset()
 {
 	this->len = 0;

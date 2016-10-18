@@ -11,14 +11,15 @@
 
 class jglBuffer
 {
-	unsigned int len;
+	unsigned int pointer;
+	unsigned int reservedSize;
 protected:
     virtual void* handle() = 0;
     void init(unsigned int reserve);
     jglBuffer();
 public:
-    void* advancedHandle();
-	void advance(unsigned int len);
+    void* handleAtPointer();
+	void writeAndAdvance(const void* src, unsigned int len);
 	void reset();
 	
 };

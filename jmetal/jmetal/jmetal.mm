@@ -24,29 +24,38 @@ typedef jallocator<jmtlInstanceBuffer, 8, jmetal> poolInstanceBuffer;
 
 jmtlBuffer uniformbuffer;
 
-jglObjVertexDataHandle jmetal::loadVertexObjectOnMemory(int vtype, unsigned int vcnt)
+void jmetal::loadVertexObjectOnMemory(unsigned int vcnt, simd::float4* positions, simd::float4* colors)
 {
+	int vtype = (1 << JVertexAttribute_color) | (1 << JVertexAttribute_position);
+	
+	if(jconstant_attribute_datatype(JVertexAttribute_color) != JDataType_f4)
+		throw "902392903sksdjfksdf";
+	if(jconstant_attribute_datatype(JVertexAttribute_position) != JDataType_f4)
+		throw "9123232323233232sdfgxcv";
     if(vbuffers.find(vtype) == vbuffers.end())
     {
         jmtlVertexBuffer* b = poolVBuffer::getAvailable(1);
         b->init(vtype, device);
         vbuffers[vtype] = b;
     }
-    
-    return vbuffers[vtype]->getHandleAndAdvance(vcnt);
+	return vbuffers[vtype]->writeAndAdvance(vcnt, JVertexAttribute_position, positions, JVertexAttribute_color, colors);
 }
 
-jglObjVertexDataHandle jmetal::loadInstanceObjectOnMemory(int itype, unsigned int icnt)
+void jmetal::loadInstanceObjectOnMemory(int cnt, matrix_float4x4* trans)
 {
-    if(instancebuffers.find(itype) == instancebuffers.end())
+	int type = (1 << JInstanceAttribute_trans);
+	
+	if(jconstant_attribute_datatype(JInstanceAttribute_trans) != JDataType_f44)
+		throw "ilkiojlkmijlkijlk"
+		
+    if(instancebuffers.find(type) == instancebuffers.end())
     {
         jmtlInstanceBuffer* b = poolInstanceBuffer::getAvailable(1);
-        b->init(vtype, device);
-        vbuffers[vtype] = b;
+        b->init(type, device);
+        instancebuffers[itype] = b;
     }
     
-    return vbuffers[vtype]->getHandleAndAdvance(vcnt);
-
+    return instancebuffers[itype]->writeAndAdvance(cnt, JInstanceAttribute_trans, trans);
 }
 
 void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize, JUniform initUniform)
@@ -78,7 +87,8 @@ void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize, JUniform initUn
 
 void jmetal::updateUniform(JUniform uni)
 {
-    memcpy(uniformbuffer.advancedHandle(), &uni, sizeof(JUniform));
+	uniformbuffer->reset();
+	uniformbuffer->writeAndAdvance(&uni, sizeof(JUniform));
 }
 
 void jmetal::draw(void **vdatas, int vtype, unsigned int vcnt, void *idata, unsigned int icnt, id<MTLTexture> ctarget, JPipeline p, id<MTLDrawable> drawableToPresent)

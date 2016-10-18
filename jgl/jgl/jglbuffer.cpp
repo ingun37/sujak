@@ -8,25 +8,34 @@
 #include <iostream>
 #include "jglBuffer.hpp"
 
-void jglBuffer::advance(unsigned int len)
+void* jglBuffer::handleAtPointer()
 {
-    this->len += len;
-}
-void* jglBuffer::advancedHandle()
-{
-    return (char*)handle() + len;
+    return (char*)handle() + pointer;
 }
 void jglBuffer::reset()
 {
-	this->len = 0;
+	this->pointer = 0;
 }
 
 jglBuffer::jglBuffer()
 {
-	len = 0;
+	pointer = 0;
+	reservedSize = 0;
 }
 
 void jglBuffer::init(unsigned int reserve)
 {
-    
+	reservedSize = reserve;
+}
+
+void jglBuffer::writeAndAdvance(const void *src, unsigned int len)
+{
+	if(((unsigned int)-1) - this->pointer < len)
+		throw "exceeee1";
+	if(((unsigned int)-1) - len < this->pointer)
+		throw "exceeeee2";
+	if(this->pointer + len > reservedSize)
+		throw "exceeeeeeeee";
+	memcpy(handleAtPointer(), src, len);
+	this->pointer += len;
 }

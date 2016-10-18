@@ -16,7 +16,7 @@ class jmtlBuffer : public jglBuffer
 {
     id<MTLBuffer> buffer;
 protected:
-    virtual void* handle();
+	virtual void* handle();
 public:
     void init(unsigned int reserve, id<MTLDevice> device, MTLResourceOptions option);
 };

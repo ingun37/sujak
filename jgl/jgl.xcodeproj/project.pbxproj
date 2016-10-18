@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B1C1AAD1DB59F260007B088 /* jwritehandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B1C1AAC1DB59F260007B088 /* jwritehandler.hpp */; };
 		6BBBDCE51DB12F2100DF935C /* jglbuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BBBDCE41DB12F2100DF935C /* jglbuffer.hpp */; };
 		6BBBDCE91DB130D800DF935C /* jglbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBDCE81DB130D800DF935C /* jglbuffer.cpp */; };
 		6BBBDCEC1DB1326500DF935C /* jglattributebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBDCEA1DB1326500DF935C /* jglattributebuffer.cpp */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B1C1AAC1DB59F260007B088 /* jwritehandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jwritehandler.hpp; path = ../jwritehandler.hpp; sourceTree = "<group>"; };
 		6BBBDCDC1DB12EDC00DF935C /* libjgl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjgl.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BBBDCE41DB12F2100DF935C /* jglbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglbuffer.hpp; sourceTree = "<group>"; };
 		6BBBDCE81DB130D800DF935C /* jglbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglbuffer.cpp; sourceTree = "<group>"; };
@@ -39,6 +41,7 @@
 		6BBBDCD31DB12EDC00DF935C = {
 			isa = PBXGroup;
 			children = (
+				6B1C1AAC1DB59F260007B088 /* jwritehandler.hpp */,
 				92A618F21DB3DE6400C136B0 /* jconstants.hpp */,
 				92A618F31DB3DE6400C136B0 /* jdefinitions.hpp */,
 				6BBBDCE31DB12F0200DF935C /* jgl */,
@@ -72,6 +75,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B1C1AAD1DB59F260007B088 /* jwritehandler.hpp in Headers */,
 				92A618F41DB3DE6400C136B0 /* jconstants.hpp in Headers */,
 				92A618F51DB3DE6400C136B0 /* jdefinitions.hpp in Headers */,
 				6BBBDCE51DB12F2100DF935C /* jglbuffer.hpp in Headers */,

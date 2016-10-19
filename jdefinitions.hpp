@@ -115,6 +115,17 @@ namespace sujak
         JRenderPrimitive_number
     };
 	
+	enum JAttributeGroupInstance
+	{
+		JAttributeGroupInstance_trans,
+		JAttributeGroupInstance_number,
+	};
+	
+	enum JAttributeGroupVertex
+	{
+		JAttributeGroupVertex_position_color,
+		JAttributeGroupVertex_number,
+	};
 	typedef struct _JUniform
 	{
 		matrix_float4x4 proj;

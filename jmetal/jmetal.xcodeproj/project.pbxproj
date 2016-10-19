@@ -15,6 +15,11 @@
 		6BE97BE51DB777CA00C1EB26 /* jmtlshadertable.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BE31DB777CA00C1EB26 /* jmtlshadertable.mm */; };
 		6BE97BE61DB777CA00C1EB26 /* jmtlshadertable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BE41DB777CA00C1EB26 /* jmtlshadertable.hpp */; };
 		6BE97BE81DB7786A00C1EB26 /* jglshadertable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BE71DB7786A00C1EB26 /* jglshadertable.hpp */; };
+		6BE97BEF1DB79E5900C1EB26 /* jmtlinstancebuffertable.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BED1DB79E5900C1EB26 /* jmtlinstancebuffertable.mm */; };
+		6BE97BF01DB79E5900C1EB26 /* jmtlinstancebuffertable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BEE1DB79E5900C1EB26 /* jmtlinstancebuffertable.hpp */; };
+		6BE97BFA1DB7A1D600C1EB26 /* jglnontransienttable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BF91DB7A1D600C1EB26 /* jglnontransienttable.hpp */; };
+		6BE97BFD1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp */; };
+		6BE97BFE1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */; };
 		6BF324461DAF69F000D4671E /* jmtlinstancebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */; };
 		6BF99A0D1DA4CEF200F85839 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F61DA4CEF200F85839 /* jmetal.mm */; };
 		6BF99A0E1DA4CEF200F85839 /* jmtlbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F81DA4CEF200F85839 /* jmtlbuffer.mm */; };
@@ -92,6 +97,11 @@
 		6BE97BE31DB777CA00C1EB26 /* jmtlshadertable.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlshadertable.mm; sourceTree = "<group>"; };
 		6BE97BE41DB777CA00C1EB26 /* jmtlshadertable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlshadertable.hpp; sourceTree = "<group>"; };
 		6BE97BE71DB7786A00C1EB26 /* jglshadertable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglshadertable.hpp; path = ../jgl/jgl/jglshadertable.hpp; sourceTree = "<group>"; };
+		6BE97BED1DB79E5900C1EB26 /* jmtlinstancebuffertable.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlinstancebuffertable.mm; sourceTree = "<group>"; };
+		6BE97BEE1DB79E5900C1EB26 /* jmtlinstancebuffertable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlinstancebuffertable.hpp; sourceTree = "<group>"; };
+		6BE97BF91DB7A1D600C1EB26 /* jglnontransienttable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglnontransienttable.hpp; path = ../jgl/jgl/jglnontransienttable.hpp; sourceTree = "<group>"; };
+		6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jmtltablevertexbuffer.cpp; sourceTree = "<group>"; };
+		6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtltablevertexbuffer.hpp; sourceTree = "<group>"; };
 		6BF324431DAF69F000D4671E /* jmtlinstancebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlinstancebuffer.hpp; sourceTree = "<group>"; };
 		6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlinstancebuffer.mm; sourceTree = "<group>"; };
 		6BF999E91DA4CED500F85839 /* libjmetal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjmetal.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +179,7 @@
 		6BF999E01DA4CED500F85839 = {
 			isa = PBXGroup;
 			children = (
+				6BE97BF91DB7A1D600C1EB26 /* jglnontransienttable.hpp */,
 				6BE97BE71DB7786A00C1EB26 /* jglshadertable.hpp */,
 				6BE97BD71DB76CB900C1EB26 /* jglshader.hpp */,
 				92A618E81DB3AC1200C136B0 /* jglattributebuffer.hpp */,
@@ -211,6 +222,10 @@
 				6BE97BD41DB76C8900C1EB26 /* jmtlshader.hpp */,
 				6BE97BE31DB777CA00C1EB26 /* jmtlshadertable.mm */,
 				6BE97BE41DB777CA00C1EB26 /* jmtlshadertable.hpp */,
+				6BE97BED1DB79E5900C1EB26 /* jmtlinstancebuffertable.mm */,
+				6BE97BEE1DB79E5900C1EB26 /* jmtlinstancebuffertable.hpp */,
+				6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp */,
+				6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */,
 				6BF999F91DA4CEF200F85839 /* jmetalbufferalign.hpp */,
 				6BF999FA1DA4CEF200F85839 /* jmetaldefinitions.hpp */,
 				6BF999FB1DA4CEF200F85839 /* jmetalindexbuffer.hpp */,
@@ -283,6 +298,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BE97BFA1DB7A1D600C1EB26 /* jglnontransienttable.hpp in Headers */,
 				6BE97BE81DB7786A00C1EB26 /* jglshadertable.hpp in Headers */,
 				6BE97BD81DB76CB900C1EB26 /* jglshader.hpp in Headers */,
 				92A618E91DB3AC1200C136B0 /* jglattributebuffer.hpp in Headers */,
@@ -290,7 +306,9 @@
 				92A618E11DB2AD4900C136B0 /* jglbuffer.hpp in Headers */,
 				6BE97BD61DB76C8900C1EB26 /* jmtlshader.hpp in Headers */,
 				6BF99A1D1DA4CF2800F85839 /* jconstants.hpp in Headers */,
+				6BE97BFE1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp in Headers */,
 				92A618ED1DB3AC2700C136B0 /* jmtlattributebuffer.hpp in Headers */,
+				6BE97BF01DB79E5900C1EB26 /* jmtlinstancebuffertable.hpp in Headers */,
 				6BF99A1E1DA4CF2800F85839 /* jdefinitions.hpp in Headers */,
 				6BE97BE61DB777CA00C1EB26 /* jmtlshadertable.hpp in Headers */,
 			);
@@ -421,6 +439,8 @@
 				6BE97BD51DB76C8900C1EB26 /* jmtlshader.mm in Sources */,
 				6BF99A131DA4CEF200F85839 /* jmetaltransients.mm in Sources */,
 				6BF99A101DA4CEF200F85839 /* jmetalnontransients.mm in Sources */,
+				6BE97BEF1DB79E5900C1EB26 /* jmtlinstancebuffertable.mm in Sources */,
+				6BE97BFD1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp in Sources */,
 				6BF99A111DA4CEF200F85839 /* jmetalrendertransients.mm in Sources */,
 				92A618EC1DB3AC2700C136B0 /* jmtlattributebuffer.mm in Sources */,
 				6BF324461DAF69F000D4671E /* jmtlinstancebuffer.mm in Sources */,

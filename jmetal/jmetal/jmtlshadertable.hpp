@@ -16,7 +16,7 @@ class jmtlShaderTable : public jglShaderTable
 	id<MTLDevice> device;
 	id<MTLLibrary> library;
 protected:
-	virtual jglShader* shaderOf(sujak::JPipeline p);
+	virtual jglShader* makeOf(int key);
 public:
 	void init(id<MTLDevice> device);
 };

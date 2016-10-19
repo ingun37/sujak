@@ -16,8 +16,7 @@ class jglShader;
 class jglShaderTable : public jglNonTransientTable<jglShader*>
 {
 protected:
-	virtual jglShader* shaderOf(sujak::JPipeline p) = 0;
-	void init();
+	void init() = 0;
 };
 
 #endif /* jglshaderpool_hpp */

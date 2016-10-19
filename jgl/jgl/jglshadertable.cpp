@@ -10,6 +10,5 @@
 using namespace sujak;
 void jglShaderTable::init()
 {
-	for(int i=0;i<JPipeline_number;i++)
-		set(i, shaderOf((JPipeline)i));
+	jglNonTransientTable<jglShader*>::initOrdered(JPipeline_number);
 }

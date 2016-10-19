@@ -13,6 +13,7 @@
 using namespace sujak;
 void jmtlShaderTable::init(id<MTLDevice> device)
 {
+	jglShaderTable::init();
 	this->device = device;
 	library = [device newDefaultLibrary];
 	if(library == nil)
@@ -25,11 +26,12 @@ void jmtlShaderTable::init(id<MTLDevice> device)
 			[NSException raise:@"library is no" format:@""];
 		}
 	}
+	jglShaderTable::init();
 }
 typedef jallocator<jmtlShader, 4, jmtlShaderTable> shaderpool;
-jglShader* jmtlShaderTable::shaderOf(sujak::JPipeline p)
+jglShader* jmtlShaderTable::makeOf(int key)
 {
 	jmtlShader* shader = shaderpool::getAvailable(1);
-	shader->init(p, device, library);
+	shader->init((JPipeline)key, device, library);
 	return shader;
 }

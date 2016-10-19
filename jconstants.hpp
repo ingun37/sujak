@@ -88,15 +88,35 @@ namespace sujak
         int vertexFlag;
 		int instanceFlag;
     }jtype_pipeline;
-    
+	
+	const int jconstant_attribute_group_instance_trans = (1 << JAttributeGroupInstance_trans);
+	int jconstant_attribute_group( JAttributeGroupInstance ag)
+	{
+		switch(ag)
+		{
+			case JAttributeGroupInstance_trans: return jconstant_attribute_group_instance_trans;
+			default: throw "923980234902903tr0293t9";
+		}
+	}
+		
+	const int jconstant_attribute_group_vertex_position_color = (1 << jconstant_attribute_group_vertex_position_color);
+	int jconstant_attribute_group( JAttributeGroupVertex ag)
+	{
+		switch(ag)
+		{
+			case JAttributeGroupVertex_position_color: return jconstant_attribute_group_vertex_position_color;
+			default: throw "9w23902309r293r2903r902390r23rgsgcvcvbc";
+		}
+	}
+	
     const jtype_pipeline jconstant_program_color = {
 		.v = JShaderVert_color,
 		.f = JShaderFrag_color,
 		.pf_color = JPixelFormat_rgba8,
 		.pf_depth=JPixelFormat_F32,
 		.pf_stencil = JPixelFormat_8,
-		.vtype = (1 << JVertexAttribute_position)|(1 << JVertexAttribute_color),
-		.insttype = (1 << JInstanceAttribute_trans),
+		.vertexFlag = jconstant_attribute_group_vertex_position_color,
+		.instanceFlag = jconstant_attribute_group_instance_trans,
 	};
 		
 	const jtype_pipeline& jconstant_programs(JPipeline p)

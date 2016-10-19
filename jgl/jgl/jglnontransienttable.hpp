@@ -13,16 +13,38 @@
 template <typename T>
 class jglNonTransientTable
 {
+	bool inited;
 	std::map<int, T> m;
+protected:
+	virtual T makeOf(int k) = 0;
+	void initArbitrary(unsigned int num, const int* fixedkeys )
+	{
+		for(int i=0;i<num;i++)
+			set( fixedkeys[i], makeOf(fixedkeys[i]) );
+		inited = true;
+	}
+	void initOrdered(unsigned int num )
+	{
+		for(int i=0;i<num;i++)
+			set( i, makeOf(i) );
+		inited = true;
+	}
 public:
+	jglNonTransientTable()
+	{
+		inited = false;
+	}
+	
 	T get(int k)
 	{
+		if(!inited) throw "90239ildkljskflsdf";
 		if(m.find(k) == m.end())
 			throw "9w903490334t34t34t43t";
 		return m[k];
 	}
 	void set(int k, T o)
 	{
+		if(!inited) throw "902sjlfsijldfijlsfsef";
 		m[k] = o;
 	}
 };

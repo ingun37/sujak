@@ -16,10 +16,10 @@
 		6BE97BCE1DB74F5900C1EB26 /* jglrenderitem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BCC1DB74F5900C1EB26 /* jglrenderitem.hpp */; };
 		6BE97BD11DB759D400C1EB26 /* jglshader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BCF1DB759D400C1EB26 /* jglshader.cpp */; };
 		6BE97BD21DB759D400C1EB26 /* jglshader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BD01DB759D400C1EB26 /* jglshader.hpp */; };
-		6BE97BDB1DB76EEA00C1EB26 /* jglshadertable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BD91DB76EEA00C1EB26 /* jglshadertable.cpp */; };
-		6BE97BDC1DB76EEA00C1EB26 /* jglshadertable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BDA1DB76EEA00C1EB26 /* jglshadertable.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BE97BDB1DB76EEA00C1EB26 /* jgltableshader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BD91DB76EEA00C1EB26 /* jgltableshader.cpp */; };
+		6BE97BDC1DB76EEA00C1EB26 /* jgltableshader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BDA1DB76EEA00C1EB26 /* jgltableshader.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BE97BE21DB76F7A00C1EB26 /* jallocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BE11DB76F7A00C1EB26 /* jallocator.hpp */; };
-		6BE97BF81DB7A1A200C1EB26 /* jglnontransienttable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BF71DB7A1A200C1EB26 /* jglnontransienttable.hpp */; };
+		6BE97BF81DB7A1A200C1EB26 /* jgltablenontransient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BF71DB7A1A200C1EB26 /* jgltablenontransient.hpp */; };
 		92A618F41DB3DE6400C136B0 /* jconstants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618F21DB3DE6400C136B0 /* jconstants.hpp */; };
 		92A618F51DB3DE6400C136B0 /* jdefinitions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618F31DB3DE6400C136B0 /* jdefinitions.hpp */; };
 /* End PBXBuildFile section */
@@ -35,10 +35,10 @@
 		6BE97BCC1DB74F5900C1EB26 /* jglrenderitem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglrenderitem.hpp; sourceTree = "<group>"; };
 		6BE97BCF1DB759D400C1EB26 /* jglshader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglshader.cpp; sourceTree = "<group>"; };
 		6BE97BD01DB759D400C1EB26 /* jglshader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglshader.hpp; sourceTree = "<group>"; };
-		6BE97BD91DB76EEA00C1EB26 /* jglshadertable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglshadertable.cpp; sourceTree = "<group>"; };
-		6BE97BDA1DB76EEA00C1EB26 /* jglshadertable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglshadertable.hpp; sourceTree = "<group>"; };
+		6BE97BD91DB76EEA00C1EB26 /* jgltableshader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jgltableshader.cpp; sourceTree = "<group>"; };
+		6BE97BDA1DB76EEA00C1EB26 /* jgltableshader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jgltableshader.hpp; sourceTree = "<group>"; };
 		6BE97BE11DB76F7A00C1EB26 /* jallocator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jallocator.hpp; path = ../jallocator.hpp; sourceTree = "<group>"; };
-		6BE97BF71DB7A1A200C1EB26 /* jglnontransienttable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglnontransienttable.hpp; sourceTree = "<group>"; };
+		6BE97BF71DB7A1A200C1EB26 /* jgltablenontransient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jgltablenontransient.hpp; sourceTree = "<group>"; };
 		92A618F21DB3DE6400C136B0 /* jconstants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jconstants.hpp; path = ../jconstants.hpp; sourceTree = "<group>"; };
 		92A618F31DB3DE6400C136B0 /* jdefinitions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jdefinitions.hpp; path = ../jdefinitions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,9 +85,9 @@
 				6BE97BCC1DB74F5900C1EB26 /* jglrenderitem.hpp */,
 				6BE97BCF1DB759D400C1EB26 /* jglshader.cpp */,
 				6BE97BD01DB759D400C1EB26 /* jglshader.hpp */,
-				6BE97BD91DB76EEA00C1EB26 /* jglshadertable.cpp */,
-				6BE97BDA1DB76EEA00C1EB26 /* jglshadertable.hpp */,
-				6BE97BF71DB7A1A200C1EB26 /* jglnontransienttable.hpp */,
+				6BE97BD91DB76EEA00C1EB26 /* jgltableshader.cpp */,
+				6BE97BDA1DB76EEA00C1EB26 /* jgltableshader.hpp */,
+				6BE97BF71DB7A1A200C1EB26 /* jgltablenontransient.hpp */,
 			);
 			path = jgl;
 			sourceTree = "<group>";
@@ -99,7 +99,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BE97BDC1DB76EEA00C1EB26 /* jglshadertable.hpp in Headers */,
+				6BE97BDC1DB76EEA00C1EB26 /* jgltableshader.hpp in Headers */,
 				6BE97BE21DB76F7A00C1EB26 /* jallocator.hpp in Headers */,
 				6BE97BD21DB759D400C1EB26 /* jglshader.hpp in Headers */,
 				6B1C1AAD1DB59F260007B088 /* jwritehandler.hpp in Headers */,
@@ -107,7 +107,7 @@
 				92A618F51DB3DE6400C136B0 /* jdefinitions.hpp in Headers */,
 				6BE97BCE1DB74F5900C1EB26 /* jglrenderitem.hpp in Headers */,
 				6BBBDCE51DB12F2100DF935C /* jglbuffer.hpp in Headers */,
-				6BE97BF81DB7A1A200C1EB26 /* jglnontransienttable.hpp in Headers */,
+				6BE97BF81DB7A1A200C1EB26 /* jgltablenontransient.hpp in Headers */,
 				6BBBDCED1DB1326500DF935C /* jglattributebuffer.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,7 +174,7 @@
 				6BBBDCEC1DB1326500DF935C /* jglattributebuffer.cpp in Sources */,
 				6BE97BD11DB759D400C1EB26 /* jglshader.cpp in Sources */,
 				6BBBDCE91DB130D800DF935C /* jglbuffer.cpp in Sources */,
-				6BE97BDB1DB76EEA00C1EB26 /* jglshadertable.cpp in Sources */,
+				6BE97BDB1DB76EEA00C1EB26 /* jgltableshader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

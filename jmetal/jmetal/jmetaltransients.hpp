@@ -17,5 +17,5 @@
 
 @interface jmetaltransients : NSObject 
 +(MTLRenderPassDescriptor*) newRenderPass:(id<MTLTexture>)color depth:(id<MTLTexture>)depth stencil:(id<MTLTexture>)stencil;
-+(MTLVertexDescriptor*) newVertexDescWithCnt:(NSUInteger)cnt buffidxs:(NSUInteger*)buffidxs vertexformats:(MTLVertexFormat*)vformats stride:(unsigned int*)strides;
+
 @end

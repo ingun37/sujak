@@ -99,7 +99,7 @@ namespace sujak
 		}
 	}
 		
-	const int jconstant_attribute_group_vertex_position_color = (1 << jconstant_attribute_group_vertex_position_color);
+	const int jconstant_attribute_group_vertex_position_color = (1 << JAttributeGroupVertex_position_color);
 	int jconstant_attribute_group( JAttributeGroupVertex ag)
 	{
 		switch(ag)

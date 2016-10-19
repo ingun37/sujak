@@ -6,14 +6,14 @@
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#include "jmtlshadertable.hpp"
+#include "jmtltableshader.hpp"
 #include "jmtlshader.hpp"
 #include "jallocator.hpp"
 
 using namespace sujak;
-void jmtlShaderTable::init(id<MTLDevice> device)
+void jmtlTableShader::init(id<MTLDevice> device)
 {
-	jglShaderTable::init();
+	jglTableShader::init();
 	this->device = device;
 	library = [device newDefaultLibrary];
 	if(library == nil)
@@ -26,10 +26,10 @@ void jmtlShaderTable::init(id<MTLDevice> device)
 			[NSException raise:@"library is no" format:@""];
 		}
 	}
-	jglShaderTable::init();
+	jglTableShader::init();
 }
-typedef jallocator<jmtlShader, 4, jmtlShaderTable> shaderpool;
-jglShader* jmtlShaderTable::makeOf(int key)
+typedef jallocator<jmtlShader, 4, jmtlTableShader> shaderpool;
+jglShader* jmtlTableShader::makeOf(int key)
 {
 	jmtlShader* shader = shaderpool::getAvailable(1);
 	shader->init((JPipeline)key, device, library);

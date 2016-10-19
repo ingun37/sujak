@@ -6,9 +6,9 @@
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#include "jglshadertable.hpp"
+#include "jgltableshader.hpp"
 using namespace sujak;
-void jglShaderTable::init()
+void jglTableShader::init()
 {
 	jglNonTransientTable<jglShader*>::initOrdered(JPipeline_number);
 }

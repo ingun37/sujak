@@ -9,14 +9,14 @@
 #ifndef jglshaderpool_hpp
 #define jglshaderpool_hpp
 
-#include "jglnontransienttable.hpp"
+#include "jgltablenontransient.hpp"
 #include "jdefinitions.hpp"
 
 class jglShader;
-class jglShaderTable : public jglNonTransientTable<jglShader*>
+class jglTableShader : public jglTableNonTransient<jglShader*>
 {
 protected:
-	void init() = 0;
+	virtual void init() = 0;
 };
 
 #endif /* jglshaderpool_hpp */

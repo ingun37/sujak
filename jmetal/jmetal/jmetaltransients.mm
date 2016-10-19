@@ -34,15 +34,4 @@
 	return pass;
 }
 
-+(MTLVertexDescriptor*) newVertexDescWithCnt:(NSUInteger)cnt buffidxs:(NSUInteger*)buffidxs vertexformats:(MTLVertexFormat*)vformats stride:(unsigned int*)strides
-{
-    if(cnt == 0)
-        [NSException raise:@"cnt is 0" format:@""];
-    
-	
-
-	NSLog(@"vertex description : %@", desc.description);
-	
-	return desc;
-}
 @end

@@ -9,9 +9,9 @@
 #ifndef jmtlshadertable_hpp
 #define jmtlshadertable_hpp
 #import <Metal/Metal.h>
-#include "jglshadertable.hpp"
+#include "jgltableshader.hpp"
 
-class jmtlShaderTable : public jglShaderTable
+class jmtlTableShader : public jglTableShader
 {
 	id<MTLDevice> device;
 	id<MTLLibrary> library;

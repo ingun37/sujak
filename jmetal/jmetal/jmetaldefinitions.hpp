@@ -35,7 +35,7 @@ MTLPixelFormat jmetalconstant_pixelformat(sujak::JPixelFormat f)
 	}
 }
 
-MTLVertexFormat jmetalconstant_vertexformat(sujak::JDataType t)
+MTLVertexFormat jmetalconstant_mtldataformat(sujak::JDataType t)
 {
     switch(t)
     {

@@ -39,21 +39,7 @@
     if(cnt == 0)
         [NSException raise:@"cnt is 0" format:@""];
     
-	MTLVertexDescriptor *desc = [MTLVertexDescriptor new];
 	
-    for(int i=0;i<cnt;i++)
-	{
-        if(buffidxs[i] >= 32)
-            [NSException raise:@"buffidxs exceeds 32" format:@""];
-		
-		desc.attributes[i].bufferIndex = buffidxs[i];
-		desc.attributes[i].format = vformats[i];
-		desc.attributes[i].offset = 0;
-		
-		desc.layouts[buffidxs[i]].stride = strides[i];
-		
-		
-	}
 
 	NSLog(@"vertex description : %@", desc.description);
 	

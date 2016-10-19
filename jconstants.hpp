@@ -51,38 +51,32 @@ namespace sujak
 	
     const JBuffer jconstant_bufferidx_uniform = JBuffer_uniform;
     
-    void jconstant_vertextype_info(const int t, size_t& attnum, JVertexAttribute* attribs)
+    void jconstant_attributes_of_flag(const int f, size_t& attnum, JVertexAttribute* attribs)
     {
-        std::vector<JVertexAttribute> v;
+		int cnt = 0;
         for(int i=0;i<JVertexAttribute_number;i++)
         {
-            if(t & (1 << i))
+            if(f & (1 << i))
             {
-                v.push_back((JVertexAttribute)i);
+				attribs[cnt++] = (JVertexAttribute)i;
             }
         }
         
-        attnum = v.size();
-        
-        for(int i=0;i<attnum;i++)
-            attribs[i] = v[i];
+        attnum = cnt;
     }
 	
-	void jconstant_instancetype_info(const int t, size_t& attnum, JInstanceAttribute* attribs)
+	void jconstant_attributes_of_flag(const int f, size_t& attnum, JInstanceAttribute* attribs)
 	{
-		std::vector<JInstanceAttribute> v;
+		int cnt = 0;
 		for(int i=0;i<JInstanceAttribute_number;i++)
 		{
-			if(t & (1 << i))
+			if(f & (1 << i))
 			{
-				v.push_back((JInstanceAttribute)i);
+				attribs[cnt++] = (JInstanceAttribute)i;
 			}
 		}
 		
-		attnum = v.size();
-		
-		for(int i=0;i<attnum;i++)
-			attribs[i] = v[i];
+		attnum = cnt;
 	}
     typedef struct _jtype_pipeline
     {
@@ -91,8 +85,8 @@ namespace sujak
         JPixelFormat pf_color;
         JPixelFormat pf_depth;
         JPixelFormat pf_stencil;
-        int vtype;
-		int insttype;
+        int vertexFlag;
+		int instanceFlag;
     }jtype_pipeline;
     
     const jtype_pipeline jconstant_program_color = {
@@ -105,7 +99,7 @@ namespace sujak
 		.insttype = (1 << JInstanceAttribute_trans),
 	};
 		
-	jtype_pipeline jconstant_programs(JPipeline p)
+	const jtype_pipeline& jconstant_programs(JPipeline p)
 	{
 		switch(p)
 		{

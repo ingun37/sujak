@@ -26,19 +26,19 @@ jmtlBuffer uniformbuffer;
 
 void jmetal::loadVertexObjectOnMemory(unsigned int vcnt, simd::float4* positions, simd::float4* colors)
 {
-	int vtype = (1 << JVertexAttribute_color) | (1 << JVertexAttribute_position);
+	int type = (1 << JVertexAttribute_color) | (1 << JVertexAttribute_position);
 	
 	if(jconstant_attribute_datatype(JVertexAttribute_color) != JDataType_f4)
 		throw "902392903sksdjfksdf";
 	if(jconstant_attribute_datatype(JVertexAttribute_position) != JDataType_f4)
 		throw "9123232323233232sdfgxcv";
-    if(vbuffers.find(vtype) == vbuffers.end())
+    if(vbuffers.find(type) == vbuffers.end())
     {
         jmtlVertexBuffer* b = poolVBuffer::getAvailable(1);
         b->init(vtype, device);
         vbuffers[vtype] = b;
     }
-	return vbuffers[vtype]->writeAndAdvance(vcnt, JVertexAttribute_position, positions, JVertexAttribute_color, colors);
+	return vbuffers[type]->writeAndAdvance(vcnt, JVertexAttribute_position, positions, JVertexAttribute_color, colors);
 }
 
 void jmetal::loadInstanceObjectOnMemory(int cnt, matrix_float4x4* trans)
@@ -98,7 +98,7 @@ void jmetal::draw(void **vdatas, int vtype, unsigned int vcnt, void *idata, unsi
 		 [jmetalnontransients defaultStencilTexWithDevice:device width:[ctarget width] height:[ctarget height] format:jmetalconstant_pixelformat(jconstant_stencil_pixelformat)] );
 }
 
-void jmetal::draw(void** vdatas, int vtype, unsigned int vcnt, void* idata, unsigned int icnt,
+void jmetal::draw(int vtype, unsigned int vcnt, void* idata, unsigned int icnt,
 				  id<MTLTexture> ctarget, JPipeline p, id<MTLDrawable> drawableToPresent,
 				  id<MTLTexture> dtarget,
 				  id<MTLTexture> starget

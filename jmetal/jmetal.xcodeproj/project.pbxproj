@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		6BA6535F1DABEAF900896D10 /* libjlinear.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6535E1DABEAF900896D10 /* libjlinear.a */; };
 		6BBBDCE71DB12F2C00DF935C /* libjgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBBDCE61DB12F2C00DF935C /* libjgl.a */; };
+		6BE97BD51DB76C8900C1EB26 /* jmtlshader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BD31DB76C8900C1EB26 /* jmtlshader.mm */; };
+		6BE97BD61DB76C8900C1EB26 /* jmtlshader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BD41DB76C8900C1EB26 /* jmtlshader.hpp */; };
+		6BE97BD81DB76CB900C1EB26 /* jglshader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BD71DB76CB900C1EB26 /* jglshader.hpp */; };
+		6BE97BE51DB777CA00C1EB26 /* jmtlshadertable.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BE31DB777CA00C1EB26 /* jmtlshadertable.mm */; };
+		6BE97BE61DB777CA00C1EB26 /* jmtlshadertable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BE41DB777CA00C1EB26 /* jmtlshadertable.hpp */; };
+		6BE97BE81DB7786A00C1EB26 /* jglshadertable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BE71DB7786A00C1EB26 /* jglshadertable.hpp */; };
 		6BF324461DAF69F000D4671E /* jmtlinstancebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */; };
 		6BF99A0D1DA4CEF200F85839 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F61DA4CEF200F85839 /* jmetal.mm */; };
 		6BF99A0E1DA4CEF200F85839 /* jmtlbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F81DA4CEF200F85839 /* jmtlbuffer.mm */; };
@@ -80,6 +86,12 @@
 /* Begin PBXFileReference section */
 		6BA6535E1DABEAF900896D10 /* libjlinear.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjlinear.a; path = "../../Library/Developer/Xcode/DerivedData/metal-hidnnxiiuevhzdgkmfckjmtkkslc/Build/Products/Debug/libjlinear.a"; sourceTree = "<group>"; };
 		6BBBDCE61DB12F2C00DF935C /* libjgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjgl.a; path = ../jgl/build/Debug/libjgl.a; sourceTree = "<group>"; };
+		6BE97BD31DB76C8900C1EB26 /* jmtlshader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlshader.mm; sourceTree = "<group>"; };
+		6BE97BD41DB76C8900C1EB26 /* jmtlshader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlshader.hpp; sourceTree = "<group>"; };
+		6BE97BD71DB76CB900C1EB26 /* jglshader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglshader.hpp; path = ../jgl/jgl/jglshader.hpp; sourceTree = "<group>"; };
+		6BE97BE31DB777CA00C1EB26 /* jmtlshadertable.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlshadertable.mm; sourceTree = "<group>"; };
+		6BE97BE41DB777CA00C1EB26 /* jmtlshadertable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlshadertable.hpp; sourceTree = "<group>"; };
+		6BE97BE71DB7786A00C1EB26 /* jglshadertable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglshadertable.hpp; path = ../jgl/jgl/jglshadertable.hpp; sourceTree = "<group>"; };
 		6BF324431DAF69F000D4671E /* jmtlinstancebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlinstancebuffer.hpp; sourceTree = "<group>"; };
 		6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlinstancebuffer.mm; sourceTree = "<group>"; };
 		6BF999E91DA4CED500F85839 /* libjmetal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjmetal.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +169,8 @@
 		6BF999E01DA4CED500F85839 = {
 			isa = PBXGroup;
 			children = (
+				6BE97BE71DB7786A00C1EB26 /* jglshadertable.hpp */,
+				6BE97BD71DB76CB900C1EB26 /* jglshader.hpp */,
 				92A618E81DB3AC1200C136B0 /* jglattributebuffer.hpp */,
 				92A618E61DB3952D00C136B0 /* jallocator.hpp */,
 				92A618DE1DB2AD4900C136B0 /* jglbuffer.hpp */,
@@ -193,6 +207,10 @@
 				6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */,
 				6BF99A0A1DA4CEF200F85839 /* jmtlvertexbuffer.hpp */,
 				6BF99A0B1DA4CEF200F85839 /* jmtlvertexbuffer.mm */,
+				6BE97BD31DB76C8900C1EB26 /* jmtlshader.mm */,
+				6BE97BD41DB76C8900C1EB26 /* jmtlshader.hpp */,
+				6BE97BE31DB777CA00C1EB26 /* jmtlshadertable.mm */,
+				6BE97BE41DB777CA00C1EB26 /* jmtlshadertable.hpp */,
 				6BF999F91DA4CEF200F85839 /* jmetalbufferalign.hpp */,
 				6BF999FA1DA4CEF200F85839 /* jmetaldefinitions.hpp */,
 				6BF999FB1DA4CEF200F85839 /* jmetalindexbuffer.hpp */,
@@ -265,12 +283,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BE97BE81DB7786A00C1EB26 /* jglshadertable.hpp in Headers */,
+				6BE97BD81DB76CB900C1EB26 /* jglshader.hpp in Headers */,
 				92A618E91DB3AC1200C136B0 /* jglattributebuffer.hpp in Headers */,
 				92A618E71DB3952D00C136B0 /* jallocator.hpp in Headers */,
 				92A618E11DB2AD4900C136B0 /* jglbuffer.hpp in Headers */,
+				6BE97BD61DB76C8900C1EB26 /* jmtlshader.hpp in Headers */,
 				6BF99A1D1DA4CF2800F85839 /* jconstants.hpp in Headers */,
 				92A618ED1DB3AC2700C136B0 /* jmtlattributebuffer.hpp in Headers */,
 				6BF99A1E1DA4CF2800F85839 /* jdefinitions.hpp in Headers */,
+				6BE97BE61DB777CA00C1EB26 /* jmtlshadertable.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +417,8 @@
 			files = (
 				6BF99A0E1DA4CEF200F85839 /* jmtlbuffer.mm in Sources */,
 				6BF99A151DA4CEF200F85839 /* jmtlvertexbuffer.mm in Sources */,
+				6BE97BE51DB777CA00C1EB26 /* jmtlshadertable.mm in Sources */,
+				6BE97BD51DB76C8900C1EB26 /* jmtlshader.mm in Sources */,
 				6BF99A131DA4CEF200F85839 /* jmetaltransients.mm in Sources */,
 				6BF99A101DA4CEF200F85839 /* jmetalnontransients.mm in Sources */,
 				6BF99A111DA4CEF200F85839 /* jmetalrendertransients.mm in Sources */,

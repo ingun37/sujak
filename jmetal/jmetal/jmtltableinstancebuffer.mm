@@ -22,5 +22,5 @@ jmtlInstanceBuffer* jmtlTableInstanceBuffer::makeOf(int k)
 void jmtlTableInstanceBuffer::init(id<MTLDevice> device)
 {
 	this->device = device;
-	jglNonTransientTable<jmtlInstanceBuffer*>::initOrdered(JAttributeGroupInstance_number);
+	jglTableNonTransient<jmtlInstanceBuffer*>::initOrdered(JAttributeGroupInstance_number);
 }

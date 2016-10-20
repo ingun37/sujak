@@ -10,7 +10,4 @@
 
 jglRenderItem::jglRenderItem()
 {
-	vType = 0;
-	instType = 0;
-	shader = NULL;
 }

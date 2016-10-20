@@ -11,7 +11,7 @@
 #import <Metal/Metal.h>
 #include "jgltablenontransient.hpp"
 class jmtlInstanceBuffer;
-class jmtlTableInstanceBuffer : public jglNonTransientTable<jmtlInstanceBuffer*>
+class jmtlTableInstanceBuffer : public jglTableNonTransient<jmtlInstanceBuffer*>
 {
 	id<MTLDevice> device;
 public:

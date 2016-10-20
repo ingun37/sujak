@@ -8,11 +8,13 @@
 
 
 #import "jmetaluniformbuffer.hpp"
-
+#import "jmtlbuffer.hpp"
+jmtlBuffer buff;
 @implementation jmetaluniformbuffer
 -(id)initWithDevice:(id<MTLDevice>)device
 {
-	buffer = [[jmetalbuffer alloc]initWithDevice:device initialSize:128 option:MTLResourceCPUCacheModeWriteCombined];
-	return [super init];
+	self = [super init];
+	buff.init(128, device, MTLResourceCPUCacheModeWriteCombined);
+	return self;
 }
 @end

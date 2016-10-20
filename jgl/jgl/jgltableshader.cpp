@@ -10,5 +10,5 @@
 using namespace sujak;
 void jglTableShader::init()
 {
-	jglNonTransientTable<jglShader*>::initOrdered(JPipeline_number);
+	jglTableNonTransient<jglShader*>::initOrdered(JPipeline_number);
 }

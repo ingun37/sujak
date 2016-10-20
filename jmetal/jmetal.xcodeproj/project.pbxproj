@@ -18,7 +18,7 @@
 		6BE97BEF1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BED1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm */; };
 		6BE97BF01DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BEE1DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp */; };
 		6BE97BFA1DB7A1D600C1EB26 /* jgltablenontransient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BF91DB7A1D600C1EB26 /* jgltablenontransient.hpp */; };
-		6BE97BFD1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp */; };
+		6BE97BFD1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm */; };
 		6BE97BFE1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */; };
 		6BF324461DAF69F000D4671E /* jmtlinstancebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */; };
 		6BF99A0D1DA4CEF200F85839 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F61DA4CEF200F85839 /* jmetal.mm */; };
@@ -100,7 +100,7 @@
 		6BE97BED1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtltableinstancebuffer.mm; sourceTree = "<group>"; };
 		6BE97BEE1DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtltableinstancebuffer.hpp; sourceTree = "<group>"; };
 		6BE97BF91DB7A1D600C1EB26 /* jgltablenontransient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jgltablenontransient.hpp; path = ../jgl/jgl/jgltablenontransient.hpp; sourceTree = "<group>"; };
-		6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jmtltablevertexbuffer.cpp; sourceTree = "<group>"; };
+		6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtltablevertexbuffer.mm; sourceTree = "<group>"; };
 		6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtltablevertexbuffer.hpp; sourceTree = "<group>"; };
 		6BF324431DAF69F000D4671E /* jmtlinstancebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlinstancebuffer.hpp; sourceTree = "<group>"; };
 		6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlinstancebuffer.mm; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 				6BE97BE41DB777CA00C1EB26 /* jmtltableshader.hpp */,
 				6BE97BED1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm */,
 				6BE97BEE1DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp */,
-				6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp */,
+				6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm */,
 				6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */,
 				6BF999F91DA4CEF200F85839 /* jmetalbufferalign.hpp */,
 				6BF999FA1DA4CEF200F85839 /* jmetaldefinitions.hpp */,
@@ -440,7 +440,7 @@
 				6BF99A131DA4CEF200F85839 /* jmetaltransients.mm in Sources */,
 				6BF99A101DA4CEF200F85839 /* jmetalnontransients.mm in Sources */,
 				6BE97BEF1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm in Sources */,
-				6BE97BFD1DB7A73E00C1EB26 /* jmtltablevertexbuffer.cpp in Sources */,
+				6BE97BFD1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm in Sources */,
 				6BF99A111DA4CEF200F85839 /* jmetalrendertransients.mm in Sources */,
 				92A618EC1DB3AC2700C136B0 /* jmtlattributebuffer.mm in Sources */,
 				6BF324461DAF69F000D4671E /* jmtlinstancebuffer.mm in Sources */,

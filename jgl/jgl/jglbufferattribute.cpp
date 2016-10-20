@@ -13,6 +13,7 @@ jglAttributeBuffer::jglAttributeBuffer()
 {
 	this->flag = 0;
 	this->attributecnt = 0;
+	this->cnt = 0;
 }
 
 void jglAttributeBuffer::init(int flag)
@@ -28,7 +29,7 @@ void jglAttributeBuffer::init(int flag)
     }
 }
 
-void jglAttributeBuffer::writeAndAdvance(unsigned int cnt, int attribute1, const void* src1,
+void jglAttributeBuffer::append(unsigned int &offsetCnt, unsigned int cnt, int attribute1, const void* src1,
 					 int attribute2, const void* src2,
 					 int attribute3, const void* src3)
 {
@@ -50,24 +51,33 @@ void jglAttributeBuffer::writeAndAdvance(unsigned int cnt, int attribute1, const
 			break;
 	}
 	i++;
-	writeAndAdvance(cnt, i, datas);
+	append(offsetCnt, cnt, i, datas);
 		
 }
 
-void jglAttributeBuffer::writeAndAdvance(unsigned int unitcnt, int datacnt, const jglAttributeData datas[])
+void jglAttributeBuffer::append(unsigned int &offsetCnt, unsigned int unitcnt, int datacnt, const jglAttributeData datas[])
 {
 	if(datacnt != attributecnt)
 		throw "9802wr092h934fh2f";
-	int flag = this->flag;
+	
+	//flag validate
+	{
+		int tmpflag = this->flag;
+		for(int i=0;i<attributecnt;i++)
+		{
+			if(!(tmpflag & (1 << datas[i].attribute)))
+				throw "98902039u023490349090iodifi";
+			tmpflag ^= (1 << datas[i].attribute);
+		}
+		if(tmpflag != 0)
+			throw "sildgihsdfgilhsdhilgilsdfgi";
+	}
+	
+	offsetCnt = this->cnt;
 	for(int i=0;i<attributecnt;i++)
 	{
-		if(!(flag & (1 << datas[i].attribute)))
-			throw "98902039u023490349090iodifi";
-		flag ^= (1 << datas[i].attribute);
 		jglAttributeBufferAttributeInfo& a = attributes[ datas[i].attribute ];
-		
 		a.buffer->writeAndAdvance(datas[i].src, a.unitsize * unitcnt);
 	}
-	if(flag != 0)
-		throw "sildgihsdfgilhsdhilgilsdfgi";
+	this->cnt += unitcnt;
 }

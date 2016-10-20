@@ -30,22 +30,25 @@ typedef struct _jglAttributeData
 	int attribute;
 	const void* src;
 } jglAttributeData;
+
+
 class jglAttributeBuffer
 {
 	int flag;
 	int attributecnt;
 	jglAttributeBufferAttributeInfo attributes[JGLATTRIBUTEBUFFER_MAXATT_CNT];
+	int cnt;
 protected:
 	virtual void initAttributeInfo( jglAttributeBufferAttributeInfo& info, int exponentNum ) = 0;
 	jglAttributeBuffer();
     void init(int flag);
 
 public:
-	void writeAndAdvance(unsigned int cnt, int attribute1, const void* src1,
+	void append(unsigned int &offsetCnt, unsigned int unitcnt, int attribute1, const void* src1,
 						 int attribute2=0, const void* src2=0,
 						 int attribute3=0, const void* src3=0);
 	
-	void writeAndAdvance(unsigned int unitcnt, int datacnt, const jglAttributeData datas[]);
+	void append(unsigned int &offsetCnt, unsigned int unitcnt, int datacnt, const jglAttributeData datas[]);
 };
 
 

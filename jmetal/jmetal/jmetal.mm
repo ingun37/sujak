@@ -1,5 +1,4 @@
 #include <math.h>
-#include <map>
 
 #import "jmetal.hpp"
 
@@ -10,17 +9,13 @@
 #import "jmetalnontransients.hpp"
 #import "jmetaldefinitions.hpp"
 #import "jallocator.hpp"
+#import "jmtltableshader.hpp"
+#import "jmtltablevertexbuffer.hpp"
+#import "jmtltableinstancebuffer.hpp"
 
 using namespace std;
 using namespace sujak;
 
-typedef map<int,jmtlVertexBuffer*> mapVertexBuffer;
-mapVertexBuffer vbuffers;
-typedef jallocator<jmtlVertexBuffer, 8, jmetal> poolVBuffer;
-
-typedef map<int,jmtlInstanceBuffer*> mapInstanceBuffer;
-mapInstanceBuffer instancebuffers;
-typedef jallocator<jmtlInstanceBuffer, 8, jmetal> poolInstanceBuffer;
 
 jmtlBuffer uniformbuffer;
 
@@ -46,7 +41,7 @@ void jmetal::loadInstanceObjectOnMemory(int cnt, matrix_float4x4* trans)
 	int type = (1 << JInstanceAttribute_trans);
 	
 	if(jconstant_attribute_datatype(JInstanceAttribute_trans) != JDataType_f44)
-		throw "ilkiojlkmijlkijlk"
+		throw "ilkiojlkmijlkijlk";
 		
     if(instancebuffers.find(type) == instancebuffers.end())
     {

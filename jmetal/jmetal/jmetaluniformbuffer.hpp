@@ -9,11 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <Metal/Metal.h>
 
-#import "jmetalbuffer.hpp"
-
+class jmtlBuffer;
 @interface jmetaluniformbuffer : NSObject
 {
-	jmetalbuffer* buffer;
+	jmtlBuffer* buffer;
 }
 -(id)initWithDevice:(id<MTLDevice>)device;
 @end

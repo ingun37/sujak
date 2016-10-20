@@ -16,12 +16,12 @@ typedef jallocator<jmtlVertexBuffer, 4, jglTableVertexBuffer> bufferpool;
 jmtlVertexBuffer* jglTableVertexBuffer::makeOf(int k)
 {
 	jmtlVertexBuffer* buffer = bufferpool::getAvailable(1);
-	buffer->init( jconstant_attribute_group((JAttributeGroupVertex)k, device );
+	buffer->init( jconstant_attribute_group((JAttributeGroupVertex)k), device );
 	return buffer;
 }
 
 void jglTableVertexBuffer::init(id<MTLDevice> device)
 {
 	this->device = device;
-	jglNonTransientTable<jmtlVertexBuffer*>::initOrdered( JAttributeGroupVertex_number );
+	jglTableNonTransient<jmtlVertexBuffer*>::initOrdered( JAttributeGroupVertex_number );
 }

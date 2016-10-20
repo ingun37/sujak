@@ -19,15 +19,15 @@ typedef struct _jglBufferAlign
 
 class jglRenderItem
 {
-	int vType;
+	sujak::JAttributeGroupVertex vag;
 	jglBufferAlign vAlign;
-	int instType;
+	sujak::JAttributeGroupInstance iag;
 	jglBufferAlign instAlign;
 	jglBufferAlign idxAlign;
 	sujak::JPipeline shader;
 	
 public:
-	
+
 	jglRenderItem();
 };
 

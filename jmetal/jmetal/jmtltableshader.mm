@@ -28,6 +28,7 @@ void jmtlTableShader::init(id<MTLDevice> device)
 	}
 	jglTableShader::init();
 }
+
 typedef jallocator<jmtlShader, 4, jmtlTableShader> shaderpool;
 jglShader* jmtlTableShader::makeOf(int key)
 {

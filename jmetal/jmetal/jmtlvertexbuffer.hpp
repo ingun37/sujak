@@ -12,6 +12,6 @@
 
 class jmtlVertexBuffer : public jmtlAttributeBuffer
 {
-    virtual unsigned int unitSizeOf(int exponentNum) = 0;
-    virtual unsigned int reserveUnitCnt() = 0;
+    virtual unsigned int unitSizeOf(int exponentNum);
+    virtual unsigned int reserveUnitCnt();
 };

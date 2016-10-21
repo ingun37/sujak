@@ -10,10 +10,10 @@
 #define jmtlattributebuffer_hpp
 
 #import <Metal/Metal.h>
-#include "jglattributebuffer.hpp"
+#include "jglBufferAttribute.hpp"
 
 
-class jmtlAttributeBuffer : public jglAttributeBuffer
+class jmtlBufferAttribute : public jglBufferAttribute
 {
     id<MTLDevice> device;
 protected:

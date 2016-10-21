@@ -1,5 +1,5 @@
 //
-//  jglbuffer.cpp
+//  jglBuffer.cpp
 //  jgl
 //
 //  Created by ingun on 15/10/2016.

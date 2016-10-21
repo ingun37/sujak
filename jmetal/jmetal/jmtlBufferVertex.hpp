@@ -1,20 +1,17 @@
 //
-//  jmetalinstancebuffer.h
+//  jmetalvertexbuffer.h
 //  jmetal
 //
-//  Created by ingun on 13/10/2016.
+//  Created by ingun on 9/21/16.
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <Metal/Metal.h>
 #import "jconstants.hpp"
+#import "jmtlBufferAttribute.hpp"
 
-#include "jmtlattributebuffer.hpp"
-
-class jmtlInstanceBuffer : public jmtlAttributeBuffer
+class jmtlBufferVertex : public jmtlBufferAttribute
 {
     virtual unsigned int unitSizeOf(int exponentNum);
     virtual unsigned int reserveUnitCnt();
 };
-

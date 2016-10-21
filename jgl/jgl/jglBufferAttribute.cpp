@@ -6,17 +6,17 @@
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 #include <iostream>
-#include "jglattributebuffer.hpp"
-#include "jglbuffer.hpp"
+#include "jglBufferAttribute.hpp"
+#include "jglBuffer.hpp"
 
-jglAttributeBuffer::jglAttributeBuffer()
+jglBufferAttribute::jglBufferAttribute()
 {
 	this->flag = 0;
 	this->attributecnt = 0;
 	this->cnt = 0;
 }
 
-void jglAttributeBuffer::init(int flag)
+void jglBufferAttribute::init(int flag)
 {
     this->flag = flag;
 
@@ -29,7 +29,7 @@ void jglAttributeBuffer::init(int flag)
     }
 }
 
-void jglAttributeBuffer::append(unsigned int &offsetCnt, unsigned int cnt, int attribute1, const void* src1,
+void jglBufferAttribute::append(unsigned int &offsetCnt, unsigned int cnt, int attribute1, const void* src1,
 					 int attribute2, const void* src2,
 					 int attribute3, const void* src3)
 {
@@ -55,7 +55,7 @@ void jglAttributeBuffer::append(unsigned int &offsetCnt, unsigned int cnt, int a
 		
 }
 
-void jglAttributeBuffer::append(unsigned int &offsetCnt, unsigned int unitcnt, int datacnt, const jglAttributeData datas[])
+void jglBufferAttribute::append(unsigned int &offsetCnt, unsigned int unitcnt, int datacnt, const jglAttributeData datas[])
 {
 	if(datacnt != attributecnt)
 		throw "9802wr092h934fh2f";

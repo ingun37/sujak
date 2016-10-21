@@ -1,13 +1,13 @@
 //
-//  jmtlshadertable.cpp
+//  jmtlShadertable.cpp
 //  jmetal
 //
 //  Created by ingun on 19/10/2016.
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#include "jmtltableshader.hpp"
-#include "jmtlshader.hpp"
+#include "jmtlTableShader.hpp"
+#include "jmtlShader.hpp"
 #include "jallocator.hpp"
 
 using namespace sujak;

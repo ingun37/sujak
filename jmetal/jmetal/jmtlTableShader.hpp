@@ -1,15 +1,15 @@
 //
-//  jmtlshadertable.hpp
+//  jmtlShadertable.hpp
 //  jmetal
 //
 //  Created by ingun on 19/10/2016.
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#ifndef jmtlshadertable_hpp
-#define jmtlshadertable_hpp
+#ifndef jmtlShadertable_hpp
+#define jmtlShadertable_hpp
 #import <Metal/Metal.h>
-#include "jgltableshader.hpp"
+#include "jglTableShader.hpp"
 
 class jmtlTableShader : public jglTableShader
 {
@@ -21,4 +21,4 @@ public:
 	void init(id<MTLDevice> device);
 };
 
-#endif /* jmtlshadertable_hpp */
+#endif /* jmtlShadertable_hpp */

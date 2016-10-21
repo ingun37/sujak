@@ -6,21 +6,21 @@
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#include "jmtlattributebuffer.hpp"
+#include "jmtlBufferAttribute.hpp"
 #include "jallocator.hpp"
-#include "jmtlbuffer.hpp"
+#include "jmtlBuffer.hpp"
 using namespace sujak;
 
-void jmtlAttributeBuffer::init(int flag, id<MTLDevice> device)
+void jmtlBufferAttribute::init(int flag, id<MTLDevice> device)
 {
-    jglAttributeBuffer::init(flag);
+    jglBufferAttribute::init(flag);
     this->device = device;
 }
 
-typedef jallocator<jmtlBuffer, 16, jmtlAttributeBuffer> poolBuff;
+typedef jallocator<jmtlBuffer, 16, jmtlBufferAttribute> poolBuff;
 
 
-void jmtlAttributeBuffer::initAttributeInfo( jglAttributeBufferAttributeInfo& info, int exponentNum )
+void jmtlBufferAttribute::initAttributeInfo( jglAttributeBufferAttributeInfo& info, int exponentNum )
 {
     info.unitsize = unitSizeOf(exponentNum);
     jmtlBuffer* buff = poolBuff::getAvailable(1);

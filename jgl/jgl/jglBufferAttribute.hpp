@@ -32,7 +32,7 @@ typedef struct _jglAttributeData
 } jglAttributeData;
 
 
-class jglAttributeBuffer
+class jglBufferAttribute
 {
 	int flag;
 	int attributecnt;
@@ -40,7 +40,7 @@ class jglAttributeBuffer
 	int cnt;
 protected:
 	virtual void initAttributeInfo( jglAttributeBufferAttributeInfo& info, int exponentNum ) = 0;
-	jglAttributeBuffer();
+	jglBufferAttribute();
     void init(int flag);
 
 public:

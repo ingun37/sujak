@@ -2,16 +2,16 @@
 
 #import "jmetal.hpp"
 
-#import "jmtlvertexbuffer.hpp"
-#import "jmtlinstancebuffer.hpp"
-#import "jmtlbuffer.hpp"
+#import "jmtlBufferVertex.hpp"
+#import "jmtlBufferInstance.hpp"
+#import "jmtlBuffer.hpp"
 #import "jmetaltransients.hpp"
 #import "jmetalnontransients.hpp"
 #import "jmetaldefinitions.hpp"
 #import "jallocator.hpp"
-#import "jmtltableshader.hpp"
-#import "jmtltablevertexbuffer.hpp"
-#import "jmtltableinstancebuffer.hpp"
+#import "jmtlTableShader.hpp"
+#import "jmtlTableBufferVertex.hpp"
+#import "jmtlTableBufferInstance.hpp"
 
 using namespace std;
 using namespace sujak;
@@ -29,7 +29,7 @@ void jmetal::loadVertexObjectOnMemory(unsigned int vcnt, simd::float4* positions
 		throw "9123232323233232sdfgxcv";
     if(vbuffers.find(type) == vbuffers.end())
     {
-        jmtlVertexBuffer* b = poolVBuffer::getAvailable(1);
+        jmtlBufferVertex* b = poolVBuffer::getAvailable(1);
         b->init(vtype, device);
         vbuffers[vtype] = b;
     }
@@ -45,7 +45,7 @@ void jmetal::loadInstanceObjectOnMemory(int cnt, matrix_float4x4* trans)
 		
     if(instancebuffers.find(type) == instancebuffers.end())
     {
-        jmtlInstanceBuffer* b = poolInstanceBuffer::getAvailable(1);
+        jmtlBufferInstance* b = poolInstanceBuffer::getAvailable(1);
         b->init(type, device);
         instancebuffers[itype] = b;
     }

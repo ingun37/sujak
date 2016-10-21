@@ -6,10 +6,10 @@
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#import "jmtlinstancebuffer.hpp"
+#import "jmtlBufferInstance.hpp"
 #import "jmetaldefinitions.hpp"
 #import "jconstants.hpp"
-#import "jmtlbuffer.hpp"
+#import "jmtlBuffer.hpp"
 
 using namespace sujak;
 

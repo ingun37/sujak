@@ -10,7 +10,7 @@
 #define jmetalbuffer_h
 
 #import <Metal/Metal.h>
-#include "jglbuffer.hpp"
+#include "jglBuffer.hpp"
 
 class jmtlBuffer : public jglBuffer
 {

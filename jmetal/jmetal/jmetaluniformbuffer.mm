@@ -8,7 +8,7 @@
 
 
 #import "jmetaluniformbuffer.hpp"
-#import "jmtlbuffer.hpp"
+#import "jmtlBuffer.hpp"
 jmtlBuffer buff;
 @implementation jmetaluniformbuffer
 -(id)initWithDevice:(id<MTLDevice>)device

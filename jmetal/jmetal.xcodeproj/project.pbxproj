@@ -9,29 +9,24 @@
 /* Begin PBXBuildFile section */
 		6BA6535F1DABEAF900896D10 /* libjlinear.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6535E1DABEAF900896D10 /* libjlinear.a */; };
 		6BBBDCE71DB12F2C00DF935C /* libjgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBBDCE61DB12F2C00DF935C /* libjgl.a */; };
-		6BE97BD51DB76C8900C1EB26 /* jmtlshader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BD31DB76C8900C1EB26 /* jmtlshader.mm */; };
-		6BE97BD61DB76C8900C1EB26 /* jmtlshader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BD41DB76C8900C1EB26 /* jmtlshader.hpp */; };
-		6BE97BD81DB76CB900C1EB26 /* jglshader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BD71DB76CB900C1EB26 /* jglshader.hpp */; };
-		6BE97BE51DB777CA00C1EB26 /* jmtltableshader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BE31DB777CA00C1EB26 /* jmtltableshader.mm */; };
-		6BE97BE61DB777CA00C1EB26 /* jmtltableshader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BE41DB777CA00C1EB26 /* jmtltableshader.hpp */; };
-		6BE97BE81DB7786A00C1EB26 /* jgltableshader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BE71DB7786A00C1EB26 /* jgltableshader.hpp */; };
-		6BE97BEF1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BED1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm */; };
-		6BE97BF01DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BEE1DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp */; };
-		6BE97BFA1DB7A1D600C1EB26 /* jgltablenontransient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BF91DB7A1D600C1EB26 /* jgltablenontransient.hpp */; };
-		6BE97BFD1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm */; };
-		6BE97BFE1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */; };
-		6BF324461DAF69F000D4671E /* jmtlinstancebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */; };
+		6BE97BD51DB76C8900C1EB26 /* jmtlShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BD31DB76C8900C1EB26 /* jmtlShader.mm */; };
+		6BE97BD61DB76C8900C1EB26 /* jmtlShader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BD41DB76C8900C1EB26 /* jmtlShader.hpp */; };
+		6BE97BE51DB777CA00C1EB26 /* jmtlTableShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BE31DB777CA00C1EB26 /* jmtlTableShader.mm */; };
+		6BE97BE61DB777CA00C1EB26 /* jmtlTableShader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BE41DB777CA00C1EB26 /* jmtlTableShader.hpp */; };
+		6BE97BEF1DB79E5900C1EB26 /* jmtlTableBufferInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BED1DB79E5900C1EB26 /* jmtlTableBufferInstance.mm */; };
+		6BE97BF01DB79E5900C1EB26 /* jmtlTableBufferInstance.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BEE1DB79E5900C1EB26 /* jmtlTableBufferInstance.hpp */; };
+		6BE97BFD1DB7A73E00C1EB26 /* jmtlTableBufferVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BE97BFB1DB7A73E00C1EB26 /* jmtlTableBufferVertex.mm */; };
+		6BE97BFE1DB7A73E00C1EB26 /* jmtlTableBufferVertex.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BE97BFC1DB7A73E00C1EB26 /* jmtlTableBufferVertex.hpp */; };
+		6BF324461DAF69F000D4671E /* jmtlBufferInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF324441DAF69F000D4671E /* jmtlBufferInstance.mm */; };
 		6BF99A0D1DA4CEF200F85839 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F61DA4CEF200F85839 /* jmetal.mm */; };
-		6BF99A0E1DA4CEF200F85839 /* jmtlbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F81DA4CEF200F85839 /* jmtlbuffer.mm */; };
+		6BF99A0E1DA4CEF200F85839 /* jmtlBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999F81DA4CEF200F85839 /* jmtlBuffer.mm */; };
 		6BF99A0F1DA4CEF200F85839 /* jmetalindexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999FC1DA4CEF200F85839 /* jmetalindexbuffer.mm */; };
 		6BF99A101DA4CEF200F85839 /* jmetalnontransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF999FE1DA4CEF200F85839 /* jmetalnontransients.mm */; };
 		6BF99A111DA4CEF200F85839 /* jmetalrendertransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A031DA4CEF200F85839 /* jmetalrendertransients.mm */; };
 		6BF99A131DA4CEF200F85839 /* jmetaltransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A071DA4CEF200F85839 /* jmetaltransients.mm */; };
 		6BF99A141DA4CEF200F85839 /* jmetaluniformbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A091DA4CEF200F85839 /* jmetaluniformbuffer.mm */; };
-		6BF99A151DA4CEF200F85839 /* jmtlvertexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A0B1DA4CEF200F85839 /* jmtlvertexbuffer.mm */; };
+		6BF99A151DA4CEF200F85839 /* jmtlBufferVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A0B1DA4CEF200F85839 /* jmtlBufferVertex.mm */; };
 		6BF99A191DA4CF0800F85839 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF99A181DA4CF0800F85839 /* Metal.framework */; };
-		6BF99A1D1DA4CF2800F85839 /* jconstants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BF99A1B1DA4CF2800F85839 /* jconstants.hpp */; };
-		6BF99A1E1DA4CF2800F85839 /* jdefinitions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6BF99A1C1DA4CF2800F85839 /* jdefinitions.hpp */; };
 		6BF99A241DA4CFD800F85839 /* jmetalshader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A231DA4CFD800F85839 /* jmetalshader.metal */; };
 		6BF99A2C1DA4D0B200F85839 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF99A2B1DA4D0B200F85839 /* QuartzCore.framework */; };
 		6BF99A601DA4D3EB00F85839 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A5F1DA4D3EB00F85839 /* main.m */; };
@@ -43,12 +38,9 @@
 		6BF99A751DA4D49100F85839 /* testview.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6BF99A741DA4D49100F85839 /* testview.mm */; };
 		6BF99A7A1DA4D50800F85839 /* libjmetal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF999E91DA4CED500F85839 /* libjmetal.a */; };
 		6BF99A821DA4D91100F85839 /* jmetalshader.metallib in Resources */ = {isa = PBXBuildFile; fileRef = 6BF99A211DA4CFD800F85839 /* jmetalshader.metallib */; };
-		92A618E11DB2AD4900C136B0 /* jglbuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618DE1DB2AD4900C136B0 /* jglbuffer.hpp */; };
 		92A618E51DB2AD5200C136B0 /* libjgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A618E41DB2AD5200C136B0 /* libjgl.a */; };
-		92A618E71DB3952D00C136B0 /* jallocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618E61DB3952D00C136B0 /* jallocator.hpp */; };
-		92A618E91DB3AC1200C136B0 /* jglattributebuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618E81DB3AC1200C136B0 /* jglattributebuffer.hpp */; };
-		92A618EC1DB3AC2700C136B0 /* jmtlattributebuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92A618EA1DB3AC2700C136B0 /* jmtlattributebuffer.mm */; };
-		92A618ED1DB3AC2700C136B0 /* jmtlattributebuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618EB1DB3AC2700C136B0 /* jmtlattributebuffer.hpp */; };
+		92A618EC1DB3AC2700C136B0 /* jmtlBufferAttribute.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92A618EA1DB3AC2700C136B0 /* jmtlBufferAttribute.mm */; };
+		92A618ED1DB3AC2700C136B0 /* jmtlBufferAttribute.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92A618EB1DB3AC2700C136B0 /* jmtlBufferAttribute.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,24 +83,21 @@
 /* Begin PBXFileReference section */
 		6BA6535E1DABEAF900896D10 /* libjlinear.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjlinear.a; path = "../../Library/Developer/Xcode/DerivedData/metal-hidnnxiiuevhzdgkmfckjmtkkslc/Build/Products/Debug/libjlinear.a"; sourceTree = "<group>"; };
 		6BBBDCE61DB12F2C00DF935C /* libjgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjgl.a; path = ../jgl/build/Debug/libjgl.a; sourceTree = "<group>"; };
-		6BE97BD31DB76C8900C1EB26 /* jmtlshader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlshader.mm; sourceTree = "<group>"; };
-		6BE97BD41DB76C8900C1EB26 /* jmtlshader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlshader.hpp; sourceTree = "<group>"; };
-		6BE97BD71DB76CB900C1EB26 /* jglshader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglshader.hpp; path = ../jgl/jgl/jglshader.hpp; sourceTree = "<group>"; };
-		6BE97BE31DB777CA00C1EB26 /* jmtltableshader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtltableshader.mm; sourceTree = "<group>"; };
-		6BE97BE41DB777CA00C1EB26 /* jmtltableshader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtltableshader.hpp; sourceTree = "<group>"; };
-		6BE97BE71DB7786A00C1EB26 /* jgltableshader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jgltableshader.hpp; path = ../jgl/jgl/jgltableshader.hpp; sourceTree = "<group>"; };
-		6BE97BED1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtltableinstancebuffer.mm; sourceTree = "<group>"; };
-		6BE97BEE1DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtltableinstancebuffer.hpp; sourceTree = "<group>"; };
-		6BE97BF91DB7A1D600C1EB26 /* jgltablenontransient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jgltablenontransient.hpp; path = ../jgl/jgl/jgltablenontransient.hpp; sourceTree = "<group>"; };
-		6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtltablevertexbuffer.mm; sourceTree = "<group>"; };
-		6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtltablevertexbuffer.hpp; sourceTree = "<group>"; };
-		6BF324431DAF69F000D4671E /* jmtlinstancebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlinstancebuffer.hpp; sourceTree = "<group>"; };
-		6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlinstancebuffer.mm; sourceTree = "<group>"; };
+		6BE97BD31DB76C8900C1EB26 /* jmtlShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlShader.mm; sourceTree = "<group>"; };
+		6BE97BD41DB76C8900C1EB26 /* jmtlShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlShader.hpp; sourceTree = "<group>"; };
+		6BE97BE31DB777CA00C1EB26 /* jmtlTableShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlTableShader.mm; sourceTree = "<group>"; };
+		6BE97BE41DB777CA00C1EB26 /* jmtlTableShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlTableShader.hpp; sourceTree = "<group>"; };
+		6BE97BED1DB79E5900C1EB26 /* jmtlTableBufferInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlTableBufferInstance.mm; sourceTree = "<group>"; };
+		6BE97BEE1DB79E5900C1EB26 /* jmtlTableBufferInstance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlTableBufferInstance.hpp; sourceTree = "<group>"; };
+		6BE97BFB1DB7A73E00C1EB26 /* jmtlTableBufferVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlTableBufferVertex.mm; sourceTree = "<group>"; };
+		6BE97BFC1DB7A73E00C1EB26 /* jmtlTableBufferVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlTableBufferVertex.hpp; sourceTree = "<group>"; };
+		6BF324431DAF69F000D4671E /* jmtlBufferInstance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlBufferInstance.hpp; sourceTree = "<group>"; };
+		6BF324441DAF69F000D4671E /* jmtlBufferInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlBufferInstance.mm; sourceTree = "<group>"; };
 		6BF999E91DA4CED500F85839 /* libjmetal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjmetal.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF999F51DA4CEF200F85839 /* jmetal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetal.hpp; sourceTree = "<group>"; };
 		6BF999F61DA4CEF200F85839 /* jmetal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetal.mm; sourceTree = "<group>"; };
-		6BF999F71DA4CEF200F85839 /* jmtlbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlbuffer.hpp; sourceTree = "<group>"; };
-		6BF999F81DA4CEF200F85839 /* jmtlbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlbuffer.mm; sourceTree = "<group>"; };
+		6BF999F71DA4CEF200F85839 /* jmtlBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlBuffer.hpp; sourceTree = "<group>"; };
+		6BF999F81DA4CEF200F85839 /* jmtlBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlBuffer.mm; sourceTree = "<group>"; };
 		6BF999F91DA4CEF200F85839 /* jmetalbufferalign.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalbufferalign.hpp; sourceTree = "<group>"; };
 		6BF999FA1DA4CEF200F85839 /* jmetaldefinitions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaldefinitions.hpp; sourceTree = "<group>"; };
 		6BF999FB1DA4CEF200F85839 /* jmetalindexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalindexbuffer.hpp; sourceTree = "<group>"; };
@@ -124,11 +113,9 @@
 		6BF99A071DA4CEF200F85839 /* jmetaltransients.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaltransients.mm; sourceTree = "<group>"; };
 		6BF99A081DA4CEF200F85839 /* jmetaluniformbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaluniformbuffer.hpp; sourceTree = "<group>"; };
 		6BF99A091DA4CEF200F85839 /* jmetaluniformbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaluniformbuffer.mm; sourceTree = "<group>"; };
-		6BF99A0A1DA4CEF200F85839 /* jmtlvertexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlvertexbuffer.hpp; sourceTree = "<group>"; };
-		6BF99A0B1DA4CEF200F85839 /* jmtlvertexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlvertexbuffer.mm; sourceTree = "<group>"; };
+		6BF99A0A1DA4CEF200F85839 /* jmtlBufferVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlBufferVertex.hpp; sourceTree = "<group>"; };
+		6BF99A0B1DA4CEF200F85839 /* jmtlBufferVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlBufferVertex.mm; sourceTree = "<group>"; };
 		6BF99A181DA4CF0800F85839 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
-		6BF99A1B1DA4CF2800F85839 /* jconstants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jconstants.hpp; path = ../jconstants.hpp; sourceTree = "<group>"; };
-		6BF99A1C1DA4CF2800F85839 /* jdefinitions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jdefinitions.hpp; path = ../jdefinitions.hpp; sourceTree = "<group>"; };
 		6BF99A211DA4CFD800F85839 /* jmetalshader.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = jmetalshader.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF99A231DA4CFD800F85839 /* jmetalshader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = jmetalshader.metal; sourceTree = "<group>"; };
 		6BF99A2B1DA4D0B200F85839 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -144,12 +131,9 @@
 		6BF99A6F1DA4D3EB00F85839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BF99A731DA4D49100F85839 /* testview.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = testview.hpp; sourceTree = "<group>"; };
 		6BF99A741DA4D49100F85839 /* testview.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testview.mm; sourceTree = "<group>"; };
-		92A618DE1DB2AD4900C136B0 /* jglbuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglbuffer.hpp; path = ../jgl/jgl/jglbuffer.hpp; sourceTree = "<group>"; };
 		92A618E41DB2AD5200C136B0 /* libjgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjgl.a; path = "../../Library/Developer/Xcode/DerivedData/metal-hjckeuhunpehffafvkybdubpkvht/Build/Products/Debug/libjgl.a"; sourceTree = "<group>"; };
-		92A618E61DB3952D00C136B0 /* jallocator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jallocator.hpp; path = ../jallocator.hpp; sourceTree = "<group>"; };
-		92A618E81DB3AC1200C136B0 /* jglattributebuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = jglattributebuffer.hpp; path = ../jgl/jgl/jglattributebuffer.hpp; sourceTree = "<group>"; };
-		92A618EA1DB3AC2700C136B0 /* jmtlattributebuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlattributebuffer.mm; sourceTree = "<group>"; };
-		92A618EB1DB3AC2700C136B0 /* jmtlattributebuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlattributebuffer.hpp; sourceTree = "<group>"; };
+		92A618EA1DB3AC2700C136B0 /* jmtlBufferAttribute.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlBufferAttribute.mm; sourceTree = "<group>"; };
+		92A618EB1DB3AC2700C136B0 /* jmtlBufferAttribute.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlBufferAttribute.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,14 +163,6 @@
 		6BF999E01DA4CED500F85839 = {
 			isa = PBXGroup;
 			children = (
-				6BE97BF91DB7A1D600C1EB26 /* jgltablenontransient.hpp */,
-				6BE97BE71DB7786A00C1EB26 /* jgltableshader.hpp */,
-				6BE97BD71DB76CB900C1EB26 /* jglshader.hpp */,
-				92A618E81DB3AC1200C136B0 /* jglattributebuffer.hpp */,
-				92A618E61DB3952D00C136B0 /* jallocator.hpp */,
-				92A618DE1DB2AD4900C136B0 /* jglbuffer.hpp */,
-				6BF99A1B1DA4CF2800F85839 /* jconstants.hpp */,
-				6BF99A1C1DA4CF2800F85839 /* jdefinitions.hpp */,
 				6BF999EB1DA4CED500F85839 /* jmetal */,
 				6BF99A221DA4CFD800F85839 /* jmetalshader */,
 				6BF99A5D1DA4D3EB00F85839 /* jmetaltest */,
@@ -210,22 +186,22 @@
 			children = (
 				6BF999F51DA4CEF200F85839 /* jmetal.hpp */,
 				6BF999F61DA4CEF200F85839 /* jmetal.mm */,
-				6BF999F71DA4CEF200F85839 /* jmtlbuffer.hpp */,
-				6BF999F81DA4CEF200F85839 /* jmtlbuffer.mm */,
-				92A618EA1DB3AC2700C136B0 /* jmtlattributebuffer.mm */,
-				92A618EB1DB3AC2700C136B0 /* jmtlattributebuffer.hpp */,
-				6BF324431DAF69F000D4671E /* jmtlinstancebuffer.hpp */,
-				6BF324441DAF69F000D4671E /* jmtlinstancebuffer.mm */,
-				6BF99A0A1DA4CEF200F85839 /* jmtlvertexbuffer.hpp */,
-				6BF99A0B1DA4CEF200F85839 /* jmtlvertexbuffer.mm */,
-				6BE97BD31DB76C8900C1EB26 /* jmtlshader.mm */,
-				6BE97BD41DB76C8900C1EB26 /* jmtlshader.hpp */,
-				6BE97BE31DB777CA00C1EB26 /* jmtltableshader.mm */,
-				6BE97BE41DB777CA00C1EB26 /* jmtltableshader.hpp */,
-				6BE97BED1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm */,
-				6BE97BEE1DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp */,
-				6BE97BFB1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm */,
-				6BE97BFC1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp */,
+				6BF999F71DA4CEF200F85839 /* jmtlBuffer.hpp */,
+				6BF999F81DA4CEF200F85839 /* jmtlBuffer.mm */,
+				92A618EA1DB3AC2700C136B0 /* jmtlBufferAttribute.mm */,
+				92A618EB1DB3AC2700C136B0 /* jmtlBufferAttribute.hpp */,
+				6BF324431DAF69F000D4671E /* jmtlBufferInstance.hpp */,
+				6BF324441DAF69F000D4671E /* jmtlBufferInstance.mm */,
+				6BF99A0A1DA4CEF200F85839 /* jmtlBufferVertex.hpp */,
+				6BF99A0B1DA4CEF200F85839 /* jmtlBufferVertex.mm */,
+				6BE97BD31DB76C8900C1EB26 /* jmtlShader.mm */,
+				6BE97BD41DB76C8900C1EB26 /* jmtlShader.hpp */,
+				6BE97BE31DB777CA00C1EB26 /* jmtlTableShader.mm */,
+				6BE97BE41DB777CA00C1EB26 /* jmtlTableShader.hpp */,
+				6BE97BED1DB79E5900C1EB26 /* jmtlTableBufferInstance.mm */,
+				6BE97BEE1DB79E5900C1EB26 /* jmtlTableBufferInstance.hpp */,
+				6BE97BFB1DB7A73E00C1EB26 /* jmtlTableBufferVertex.mm */,
+				6BE97BFC1DB7A73E00C1EB26 /* jmtlTableBufferVertex.hpp */,
 				6BF999F91DA4CEF200F85839 /* jmetalbufferalign.hpp */,
 				6BF999FA1DA4CEF200F85839 /* jmetaldefinitions.hpp */,
 				6BF999FB1DA4CEF200F85839 /* jmetalindexbuffer.hpp */,
@@ -298,19 +274,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BE97BFA1DB7A1D600C1EB26 /* jgltablenontransient.hpp in Headers */,
-				6BE97BE81DB7786A00C1EB26 /* jgltableshader.hpp in Headers */,
-				6BE97BD81DB76CB900C1EB26 /* jglshader.hpp in Headers */,
-				92A618E91DB3AC1200C136B0 /* jglattributebuffer.hpp in Headers */,
-				92A618E71DB3952D00C136B0 /* jallocator.hpp in Headers */,
-				92A618E11DB2AD4900C136B0 /* jglbuffer.hpp in Headers */,
-				6BE97BD61DB76C8900C1EB26 /* jmtlshader.hpp in Headers */,
-				6BF99A1D1DA4CF2800F85839 /* jconstants.hpp in Headers */,
-				6BE97BFE1DB7A73E00C1EB26 /* jmtltablevertexbuffer.hpp in Headers */,
-				92A618ED1DB3AC2700C136B0 /* jmtlattributebuffer.hpp in Headers */,
-				6BE97BF01DB79E5900C1EB26 /* jmtltableinstancebuffer.hpp in Headers */,
-				6BF99A1E1DA4CF2800F85839 /* jdefinitions.hpp in Headers */,
-				6BE97BE61DB777CA00C1EB26 /* jmtltableshader.hpp in Headers */,
+				6BE97BD61DB76C8900C1EB26 /* jmtlShader.hpp in Headers */,
+				6BE97BFE1DB7A73E00C1EB26 /* jmtlTableBufferVertex.hpp in Headers */,
+				92A618ED1DB3AC2700C136B0 /* jmtlBufferAttribute.hpp in Headers */,
+				6BE97BF01DB79E5900C1EB26 /* jmtlTableBufferInstance.hpp in Headers */,
+				6BE97BE61DB777CA00C1EB26 /* jmtlTableShader.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,17 +401,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BF99A0E1DA4CEF200F85839 /* jmtlbuffer.mm in Sources */,
-				6BF99A151DA4CEF200F85839 /* jmtlvertexbuffer.mm in Sources */,
-				6BE97BE51DB777CA00C1EB26 /* jmtltableshader.mm in Sources */,
-				6BE97BD51DB76C8900C1EB26 /* jmtlshader.mm in Sources */,
+				6BF99A0E1DA4CEF200F85839 /* jmtlBuffer.mm in Sources */,
+				6BF99A151DA4CEF200F85839 /* jmtlBufferVertex.mm in Sources */,
+				6BE97BE51DB777CA00C1EB26 /* jmtlTableShader.mm in Sources */,
+				6BE97BD51DB76C8900C1EB26 /* jmtlShader.mm in Sources */,
 				6BF99A131DA4CEF200F85839 /* jmetaltransients.mm in Sources */,
 				6BF99A101DA4CEF200F85839 /* jmetalnontransients.mm in Sources */,
-				6BE97BEF1DB79E5900C1EB26 /* jmtltableinstancebuffer.mm in Sources */,
-				6BE97BFD1DB7A73E00C1EB26 /* jmtltablevertexbuffer.mm in Sources */,
+				6BE97BEF1DB79E5900C1EB26 /* jmtlTableBufferInstance.mm in Sources */,
+				6BE97BFD1DB7A73E00C1EB26 /* jmtlTableBufferVertex.mm in Sources */,
 				6BF99A111DA4CEF200F85839 /* jmetalrendertransients.mm in Sources */,
-				92A618EC1DB3AC2700C136B0 /* jmtlattributebuffer.mm in Sources */,
-				6BF324461DAF69F000D4671E /* jmtlinstancebuffer.mm in Sources */,
+				92A618EC1DB3AC2700C136B0 /* jmtlBufferAttribute.mm in Sources */,
+				6BF324461DAF69F000D4671E /* jmtlBufferInstance.mm in Sources */,
 				6BF99A141DA4CEF200F85839 /* jmetaluniformbuffer.mm in Sources */,
 				6BF99A0D1DA4CEF200F85839 /* jmetal.mm in Sources */,
 				6BF99A0F1DA4CEF200F85839 /* jmetalindexbuffer.mm in Sources */,

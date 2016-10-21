@@ -1,15 +1,15 @@
 //
-//  jmtlshader.hpp
+//  jmtlShader.hpp
 //  jmetal
 //
 //  Created by ingun on 19/10/2016.
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#ifndef jmtlshader_hpp
-#define jmtlshader_hpp
+#ifndef jmtlShader_hpp
+#define jmtlShader_hpp
 #import <Metal/Metal.h>
-#include "jglshader.hpp"
+#include "jglShader.hpp"
 class jmtlShader : public jglShader
 {
 	id<MTLRenderPipelineState> pipelinestate;
@@ -21,4 +21,4 @@ public:
 	jmtlShader();
 };
 
-#endif /* jmtlshader_hpp */
+#endif /* jmtlShader_hpp */

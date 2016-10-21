@@ -6,18 +6,18 @@
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#import "jmtlvertexbuffer.hpp"
+#import "jmtlBufferVertex.hpp"
 #import "jmetaldefinitions.hpp"
-#import "jmtlbuffer.hpp"
+#import "jmtlBuffer.hpp"
 
 using namespace sujak;
 
-unsigned int jmtlVertexBuffer::unitSizeOf(int exponentNum)
+unsigned int jmtlBufferVertex::unitSizeOf(int exponentNum)
 {
     JVertexAttribute a = (JVertexAttribute)exponentNum;
     return jmetalconstant_datatype_size(jconstant_attribute_datatype(a));
 }
-unsigned int jmtlVertexBuffer::reserveUnitCnt()
+unsigned int jmtlBufferVertex::reserveUnitCnt()
 {
     //todo vary each flag
     return 64;

@@ -6,7 +6,7 @@
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#include "jglshader.hpp"
+#include "jglShader.hpp"
 
 
 void jglShader::init(sujak::JPipeline p)

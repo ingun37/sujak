@@ -1,13 +1,13 @@
 //
-//  jglbufferindex.cpp
+//  jglBufferindex.cpp
 //  jgl
 //
 //  Created by ingun on 20/10/2016.
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 #include <iostream>
-#include "jglbufferindex.hpp"
-#include "jglbuffer.hpp"
+#include "jglBufferIndex.hpp"
+#include "jglBuffer.hpp"
 //virtual unsigned int unitSize() = 0;
 //virtual jglBuffer* makeIndexBuffer(reservecnt) = 0;
 void jglBufferIndex::init(unsigned int reserveCnt)

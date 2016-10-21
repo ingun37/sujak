@@ -1,13 +1,13 @@
 //
-//  jglbufferindex.hpp
+//  jglBufferIndex.cpp
 //  jgl
 //
 //  Created by ingun on 20/10/2016.
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#ifndef jglbufferindex_hpp
-#define jglbufferindex_hpp
+#ifndef jglBufferindex_hpp
+#define jglBufferindex_hpp
 
 class jglBuffer;
 class jglBufferIndex
@@ -23,4 +23,4 @@ public:
 	void append(unsigned int cnt, void* src, unsigned int &offsetCnt);
 };
 
-#endif /* jglbufferindex_hpp */
+#endif /* jglBufferindex_hpp */

@@ -1,13 +1,13 @@
 //
-//  jglrenderitem.hpp
+//  jglRenderItem.hpp
 //  jgl
 //
 //  Created by ingun on 19/10/2016.
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#ifndef jglrenderitem_hpp
-#define jglrenderitem_hpp
+#ifndef jglRenderItem_hpp
+#define jglRenderItem_hpp
 
 #include "jdefinitions.hpp"
 
@@ -31,4 +31,4 @@ public:
 	jglRenderItem();
 };
 
-#endif /* jglrenderitem_hpp */
+#endif /* jglRenderItem_hpp */

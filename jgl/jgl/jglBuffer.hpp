@@ -1,13 +1,13 @@
 //
-//  jglbuffer.h
+//  jglBuffer.h
 //  jgl
 //
 //  Created by ingun on 15/10/2016.
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 
-#ifndef jglbuffer_h
-#define jglbuffer_h
+#ifndef jglBuffer_h
+#define jglBuffer_h
 
 class jglBuffer
 {
@@ -24,4 +24,4 @@ public:
 	
 };
 
-#endif /* jglbuffer_h */
+#endif /* jglBuffer_h */

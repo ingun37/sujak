@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "jmtlbuffer.hpp"
+#import "jmtlBuffer.hpp"
 
 void* jmtlBuffer::handle()
 {

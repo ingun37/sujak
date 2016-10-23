@@ -4,15 +4,75 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>sujak.xcscheme</key>
+		<key>jcommon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>jeditor.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>jengine.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>jgraphics.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>jlinear.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>jmetal.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6B4800A51D3C689F00F3654E</key>
+		<key>92D453751DBD1488006E14A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D4539E1DBD15B5006E14A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D453DA1DBD1696006E14A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D453FD1DBD1799006E14A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D454201DBD180A006E14A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D454311DBD1E93006E14A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D454781DBD1F69006E14A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D4549E1DBD2005006E14A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

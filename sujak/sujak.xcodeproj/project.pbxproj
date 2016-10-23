@@ -7,25 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B4800D21D3C68E700F3654E /* jbinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B51D3C68E700F3654E /* jbinary.cpp */; };
-		6B4800D41D3C68E700F3654E /* jcore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800B91D3C68E700F3654E /* jcore.cpp */; };
-		6B4800D51D3C68E700F3654E /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800BB1D3C68E700F3654E /* jcurve.cpp */; };
-		6B4800D61D3C68E700F3654E /* jmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800BD1D3C68E700F3654E /* jmath.cpp */; };
-		6B4800D71D3C68E700F3654E /* jnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800BF1D3C68E700F3654E /* jnode.cpp */; };
-		6B4800D81D3C68E700F3654E /* jrenderobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800C11D3C68E700F3654E /* jrenderobject.cpp */; };
-		6B4800D91D3C68E700F3654E /* jrenderprimitivegroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800C31D3C68E700F3654E /* jrenderprimitivegroup.cpp */; };
-		6B4800DA1D3C68E700F3654E /* jrenderstategroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800C51D3C68E700F3654E /* jrenderstategroup.cpp */; };
-		6B4800DB1D3C68E700F3654E /* jrotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800C71D3C68E700F3654E /* jrotation.cpp */; };
-		6B4800DC1D3C68E700F3654E /* jskeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800C91D3C68E700F3654E /* jskeleton.cpp */; };
-		6B4800DD1D3C68E700F3654E /* jskinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800CB1D3C68E700F3654E /* jskinner.cpp */; };
-		6B4800DE1D3C68E700F3654E /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800CD1D3C68E700F3654E /* jtranslation.cpp */; };
-		6B4800E41D3C698000F3654E /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6B4800E21D3C698000F3654E /* jcurvenode.cpp */; };
-		6B78FC671D3C70AE000872EC /* jcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B4800BA1D3C68E700F3654E /* jcore.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B833F421D9A7E2F002EE46F /* jrenderobject.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6B4800C21D3C68E700F3654E /* jrenderobject.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		92D453C91DBD1611006E14A9 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453A91DBD1611006E14A9 /* jmetal.mm */; };
+		92D453CA1DBD1611006E14A9 /* jmetalindexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453AD1DBD1611006E14A9 /* jmetalindexbuffer.mm */; };
+		92D453CB1DBD1611006E14A9 /* jmetalnontransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453AF1DBD1611006E14A9 /* jmetalnontransients.mm */; };
+		92D453CC1DBD1611006E14A9 /* jmetalrendertransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453B41DBD1611006E14A9 /* jmetalrendertransients.mm */; };
+		92D453CD1DBD1611006E14A9 /* jmetaltransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453B61DBD1611006E14A9 /* jmetaltransients.mm */; };
+		92D453CE1DBD1611006E14A9 /* jmetaluniformbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453B81DBD1611006E14A9 /* jmetaluniformbuffer.mm */; };
+		92D453CF1DBD1611006E14A9 /* jmtlBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453BA1DBD1611006E14A9 /* jmtlBuffer.mm */; };
+		92D453D01DBD1611006E14A9 /* jmtlBufferAttribute.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453BC1DBD1611006E14A9 /* jmtlBufferAttribute.mm */; };
+		92D453D11DBD1611006E14A9 /* jmtlBufferInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453BE1DBD1611006E14A9 /* jmtlBufferInstance.mm */; };
+		92D453D21DBD1611006E14A9 /* jmtlBufferVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453C01DBD1611006E14A9 /* jmtlBufferVertex.mm */; };
+		92D453D31DBD1611006E14A9 /* jmtlShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453C21DBD1611006E14A9 /* jmtlShader.mm */; };
+		92D453D41DBD1611006E14A9 /* jmtlTableBufferInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453C41DBD1611006E14A9 /* jmtlTableBufferInstance.mm */; };
+		92D453D51DBD1611006E14A9 /* jmtlTableBufferVertex.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453C61DBD1611006E14A9 /* jmtlTableBufferVertex.mm */; };
+		92D453D61DBD1611006E14A9 /* jmtlTableShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453C81DBD1611006E14A9 /* jmtlTableShader.mm */; };
+		92D454101DBD17B8006E14A9 /* jglBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454031DBD17B8006E14A9 /* jglBuffer.cpp */; };
+		92D454111DBD17B8006E14A9 /* jglBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454041DBD17B8006E14A9 /* jglBuffer.hpp */; };
+		92D454121DBD17B8006E14A9 /* jglBufferAttribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454051DBD17B8006E14A9 /* jglBufferAttribute.cpp */; };
+		92D454131DBD17B8006E14A9 /* jglBufferAttribute.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454061DBD17B8006E14A9 /* jglBufferAttribute.hpp */; };
+		92D454141DBD17B8006E14A9 /* jglBufferIndex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454071DBD17B8006E14A9 /* jglBufferIndex.cpp */; };
+		92D454151DBD17B8006E14A9 /* jglBufferIndex.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454081DBD17B8006E14A9 /* jglBufferIndex.hpp */; };
+		92D454161DBD17B8006E14A9 /* jglRenderItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454091DBD17B8006E14A9 /* jglRenderItem.cpp */; };
+		92D454171DBD17B8006E14A9 /* jglRenderItem.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4540A1DBD17B8006E14A9 /* jglRenderItem.hpp */; };
+		92D454181DBD17B8006E14A9 /* jglShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4540B1DBD17B8006E14A9 /* jglShader.cpp */; };
+		92D454191DBD17B8006E14A9 /* jglShader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4540C1DBD17B8006E14A9 /* jglShader.hpp */; };
+		92D4541A1DBD17B8006E14A9 /* jglTableNonTransient.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4540D1DBD17B8006E14A9 /* jglTableNonTransient.hpp */; };
+		92D4541B1DBD17B8006E14A9 /* jglTableShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4540E1DBD17B8006E14A9 /* jglTableShader.cpp */; };
+		92D4541C1DBD17B8006E14A9 /* jglTableShader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4540F1DBD17B8006E14A9 /* jglTableShader.hpp */; };
+		92D4542A1DBD1843006E14A9 /* jlinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454261DBD1843006E14A9 /* jlinear.cpp */; };
+		92D4542B1DBD1843006E14A9 /* jlinear.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454271DBD1843006E14A9 /* jlinear.hpp */; };
+		92D4542C1DBD1843006E14A9 /* jlinearrow.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D454281DBD1843006E14A9 /* jlinearrow.h */; };
+		92D4542D1DBD1843006E14A9 /* jlinearsystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D454291DBD1843006E14A9 /* jlinearsystem.h */; };
+		92D454561DBD1EA3006E14A9 /* jbinary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454371DBD1EA3006E14A9 /* jbinary.cpp */; };
+		92D454571DBD1EA3006E14A9 /* jbinary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454381DBD1EA3006E14A9 /* jbinary.hpp */; };
+		92D454581DBD1EA3006E14A9 /* jconstants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454391DBD1EA3006E14A9 /* jconstants.hpp */; };
+		92D454591DBD1EA3006E14A9 /* jcore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4543A1DBD1EA3006E14A9 /* jcore.cpp */; };
+		92D4545A1DBD1EA3006E14A9 /* jcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4543B1DBD1EA3006E14A9 /* jcore.hpp */; };
+		92D4545B1DBD1EA3006E14A9 /* jcurve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4543C1DBD1EA3006E14A9 /* jcurve.cpp */; };
+		92D4545C1DBD1EA3006E14A9 /* jcurve.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4543D1DBD1EA3006E14A9 /* jcurve.hpp */; };
+		92D4545D1DBD1EA3006E14A9 /* jcurvenode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4543E1DBD1EA3006E14A9 /* jcurvenode.cpp */; };
+		92D4545E1DBD1EA3006E14A9 /* jcurvenode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4543F1DBD1EA3006E14A9 /* jcurvenode.hpp */; };
+		92D4545F1DBD1EA3006E14A9 /* jgl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454401DBD1EA3006E14A9 /* jgl.hpp */; };
+		92D454601DBD1EA3006E14A9 /* jjoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D454411DBD1EA3006E14A9 /* jjoint.h */; };
+		92D454611DBD1EA3006E14A9 /* jmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454421DBD1EA3006E14A9 /* jmath.cpp */; };
+		92D454621DBD1EA3006E14A9 /* jmath.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454431DBD1EA3006E14A9 /* jmath.hpp */; };
+		92D454631DBD1EA3006E14A9 /* jnode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454441DBD1EA3006E14A9 /* jnode.cpp */; };
+		92D454641DBD1EA3006E14A9 /* jnode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454451DBD1EA3006E14A9 /* jnode.hpp */; };
+		92D454651DBD1EA3006E14A9 /* jos.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D454461DBD1EA3006E14A9 /* jos.h */; };
+		92D454661DBD1EA3006E14A9 /* jrenderobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454471DBD1EA3006E14A9 /* jrenderobject.cpp */; };
+		92D454671DBD1EA3006E14A9 /* jrenderobject.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454481DBD1EA3006E14A9 /* jrenderobject.hpp */; };
+		92D454681DBD1EA3006E14A9 /* jrenderprimitivegroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454491DBD1EA3006E14A9 /* jrenderprimitivegroup.cpp */; };
+		92D454691DBD1EA3006E14A9 /* jrenderprimitivegroup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4544A1DBD1EA3006E14A9 /* jrenderprimitivegroup.hpp */; };
+		92D4546A1DBD1EA3006E14A9 /* jrenderstategroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4544B1DBD1EA3006E14A9 /* jrenderstategroup.cpp */; };
+		92D4546B1DBD1EA3006E14A9 /* jrenderstategroup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4544C1DBD1EA3006E14A9 /* jrenderstategroup.hpp */; };
+		92D4546C1DBD1EA3006E14A9 /* jrotation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4544D1DBD1EA3006E14A9 /* jrotation.cpp */; };
+		92D4546D1DBD1EA3006E14A9 /* jrotation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D4544E1DBD1EA3006E14A9 /* jrotation.hpp */; };
+		92D4546E1DBD1EA3006E14A9 /* jskeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4544F1DBD1EA3006E14A9 /* jskeleton.cpp */; };
+		92D4546F1DBD1EA3006E14A9 /* jskeleton.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454501DBD1EA3006E14A9 /* jskeleton.hpp */; };
+		92D454701DBD1EA3006E14A9 /* jskinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454511DBD1EA3006E14A9 /* jskinner.cpp */; };
+		92D454711DBD1EA3006E14A9 /* jskinner.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454521DBD1EA3006E14A9 /* jskinner.hpp */; };
+		92D454721DBD1EA3006E14A9 /* jtranslation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454531DBD1EA3006E14A9 /* jtranslation.cpp */; };
+		92D454731DBD1EA3006E14A9 /* jtranslation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454541DBD1EA3006E14A9 /* jtranslation.hpp */; };
+		92D454741DBD1EA3006E14A9 /* jvideomemoryaligninfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 92D454551DBD1EA3006E14A9 /* jvideomemoryaligninfo.h */; };
+		92D454921DBD1F93006E14A9 /* jfbxcustomizer_curve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454801DBD1F93006E14A9 /* jfbxcustomizer_curve.cpp */; };
+		92D454931DBD1F93006E14A9 /* jfbxcustomizer_joint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454821DBD1F93006E14A9 /* jfbxcustomizer_joint.cpp */; };
+		92D454941DBD1F93006E14A9 /* jfbxcustomizer_lod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454841DBD1F93006E14A9 /* jfbxcustomizer_lod.cpp */; };
+		92D454951DBD1F93006E14A9 /* jfbxcustomizer_skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454861DBD1F93006E14A9 /* jfbxcustomizer_skin.cpp */; };
+		92D454961DBD1F93006E14A9 /* jfbxcustomizer_vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454881DBD1F93006E14A9 /* jfbxcustomizer_vertex.cpp */; };
+		92D454971DBD1F93006E14A9 /* jfbxcustomizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4548A1DBD1F93006E14A9 /* jfbxcustomizer.cpp */; };
+		92D454981DBD1F93006E14A9 /* jfbxexporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4548C1DBD1F93006E14A9 /* jfbxexporter.cpp */; };
+		92D454991DBD1F93006E14A9 /* jfbxvalidater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4548E1DBD1F93006E14A9 /* jfbxvalidater.cpp */; };
+		92D4549A1DBD1F93006E14A9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454911DBD1F93006E14A9 /* main.cpp */; };
+		92D454A81DBD2015006E14A9 /* jallocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A41DBD2015006E14A9 /* jallocator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		92D454A91DBD2015006E14A9 /* jconstants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A51DBD2015006E14A9 /* jconstants.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		92D454AA1DBD2015006E14A9 /* jdefinitions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A61DBD2015006E14A9 /* jdefinitions.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		92D454AB1DBD2015006E14A9 /* jwritehandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A71DBD2015006E14A9 /* jwritehandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6B4800A41D3C689F00F3654E /* CopyFiles */ = {
+		92D4539D1DBD15B5006E14A9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -34,45 +94,166 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		92D454771DBD1F69006E14A9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6B03843A1D95305F00282402 /* jconstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jconstants.hpp; sourceTree = "<group>"; };
-		6B03843C1D95305F00282402 /* jgl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jgl.hpp; sourceTree = "<group>"; };
-		6B4800A61D3C689F00F3654E /* libsujak.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsujak.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B4800B51D3C68E700F3654E /* jbinary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jbinary.cpp; sourceTree = "<group>"; };
-		6B4800B61D3C68E700F3654E /* jbinary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jbinary.hpp; sourceTree = "<group>"; };
-		6B4800B91D3C68E700F3654E /* jcore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcore.cpp; sourceTree = "<group>"; };
-		6B4800BA1D3C68E700F3654E /* jcore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcore.hpp; sourceTree = "<group>"; };
-		6B4800BB1D3C68E700F3654E /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurve.cpp; sourceTree = "<group>"; };
-		6B4800BC1D3C68E700F3654E /* jcurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurve.hpp; sourceTree = "<group>"; };
-		6B4800BD1D3C68E700F3654E /* jmath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jmath.cpp; sourceTree = "<group>"; };
-		6B4800BE1D3C68E700F3654E /* jmath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmath.hpp; sourceTree = "<group>"; };
-		6B4800BF1D3C68E700F3654E /* jnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnode.cpp; sourceTree = "<group>"; };
-		6B4800C01D3C68E700F3654E /* jnode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jnode.hpp; sourceTree = "<group>"; };
-		6B4800C11D3C68E700F3654E /* jrenderobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderobject.cpp; sourceTree = "<group>"; };
-		6B4800C21D3C68E700F3654E /* jrenderobject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderobject.hpp; sourceTree = "<group>"; };
-		6B4800C31D3C68E700F3654E /* jrenderprimitivegroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderprimitivegroup.cpp; sourceTree = "<group>"; };
-		6B4800C41D3C68E700F3654E /* jrenderprimitivegroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderprimitivegroup.hpp; sourceTree = "<group>"; };
-		6B4800C51D3C68E700F3654E /* jrenderstategroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderstategroup.cpp; sourceTree = "<group>"; };
-		6B4800C61D3C68E700F3654E /* jrenderstategroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderstategroup.hpp; sourceTree = "<group>"; };
-		6B4800C71D3C68E700F3654E /* jrotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrotation.cpp; sourceTree = "<group>"; };
-		6B4800C81D3C68E700F3654E /* jrotation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrotation.hpp; sourceTree = "<group>"; };
-		6B4800C91D3C68E700F3654E /* jskeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskeleton.cpp; sourceTree = "<group>"; };
-		6B4800CA1D3C68E700F3654E /* jskeleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskeleton.hpp; sourceTree = "<group>"; };
-		6B4800CB1D3C68E700F3654E /* jskinner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskinner.cpp; sourceTree = "<group>"; };
-		6B4800CC1D3C68E700F3654E /* jskinner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskinner.hpp; sourceTree = "<group>"; };
-		6B4800CD1D3C68E700F3654E /* jtranslation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jtranslation.cpp; sourceTree = "<group>"; };
-		6B4800CE1D3C68E700F3654E /* jtranslation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jtranslation.hpp; sourceTree = "<group>"; };
-		6B4800E11D3C695E00F3654E /* jjoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjoint.h; sourceTree = "<group>"; };
-		6B4800E21D3C698000F3654E /* jcurvenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurvenode.cpp; sourceTree = "<group>"; };
-		6B4800E31D3C698000F3654E /* jcurvenode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurvenode.hpp; sourceTree = "<group>"; };
-		6B4800E51D3C699400F3654E /* jvideomemoryaligninfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvideomemoryaligninfo.h; sourceTree = "<group>"; };
-		6BAFC2391D3F3B31008158E5 /* jos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jos.h; sourceTree = "<group>"; };
+		92D4539F1DBD15B5006E14A9 /* libjmetal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjmetal.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D453A81DBD1611006E14A9 /* jmetal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetal.hpp; sourceTree = "<group>"; };
+		92D453A91DBD1611006E14A9 /* jmetal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetal.mm; sourceTree = "<group>"; };
+		92D453AA1DBD1611006E14A9 /* jmetalbufferalign.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalbufferalign.hpp; sourceTree = "<group>"; };
+		92D453AB1DBD1611006E14A9 /* jmetaldefinitions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaldefinitions.hpp; sourceTree = "<group>"; };
+		92D453AC1DBD1611006E14A9 /* jmetalindexbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalindexbuffer.hpp; sourceTree = "<group>"; };
+		92D453AD1DBD1611006E14A9 /* jmetalindexbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalindexbuffer.mm; sourceTree = "<group>"; };
+		92D453AE1DBD1611006E14A9 /* jmetalnontransients.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalnontransients.hpp; sourceTree = "<group>"; };
+		92D453AF1DBD1611006E14A9 /* jmetalnontransients.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalnontransients.mm; sourceTree = "<group>"; };
+		92D453B01DBD1611006E14A9 /* jmetalrenderingwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrenderingwork.hpp; sourceTree = "<group>"; };
+		92D453B11DBD1611006E14A9 /* jmetalrenderobj.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrenderobj.hpp; sourceTree = "<group>"; };
+		92D453B21DBD1611006E14A9 /* jmetalrenderstategroups.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrenderstategroups.hpp; sourceTree = "<group>"; };
+		92D453B31DBD1611006E14A9 /* jmetalrendertransients.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetalrendertransients.hpp; sourceTree = "<group>"; };
+		92D453B41DBD1611006E14A9 /* jmetalrendertransients.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetalrendertransients.mm; sourceTree = "<group>"; };
+		92D453B51DBD1611006E14A9 /* jmetaltransients.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaltransients.hpp; sourceTree = "<group>"; };
+		92D453B61DBD1611006E14A9 /* jmetaltransients.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaltransients.mm; sourceTree = "<group>"; };
+		92D453B71DBD1611006E14A9 /* jmetaluniformbuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetaluniformbuffer.hpp; sourceTree = "<group>"; };
+		92D453B81DBD1611006E14A9 /* jmetaluniformbuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetaluniformbuffer.mm; sourceTree = "<group>"; };
+		92D453B91DBD1611006E14A9 /* jmtlBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlBuffer.hpp; sourceTree = "<group>"; };
+		92D453BA1DBD1611006E14A9 /* jmtlBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlBuffer.mm; sourceTree = "<group>"; };
+		92D453BB1DBD1611006E14A9 /* jmtlBufferAttribute.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlBufferAttribute.hpp; sourceTree = "<group>"; };
+		92D453BC1DBD1611006E14A9 /* jmtlBufferAttribute.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlBufferAttribute.mm; sourceTree = "<group>"; };
+		92D453BD1DBD1611006E14A9 /* jmtlBufferInstance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlBufferInstance.hpp; sourceTree = "<group>"; };
+		92D453BE1DBD1611006E14A9 /* jmtlBufferInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlBufferInstance.mm; sourceTree = "<group>"; };
+		92D453BF1DBD1611006E14A9 /* jmtlBufferVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlBufferVertex.hpp; sourceTree = "<group>"; };
+		92D453C01DBD1611006E14A9 /* jmtlBufferVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlBufferVertex.mm; sourceTree = "<group>"; };
+		92D453C11DBD1611006E14A9 /* jmtlShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlShader.hpp; sourceTree = "<group>"; };
+		92D453C21DBD1611006E14A9 /* jmtlShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlShader.mm; sourceTree = "<group>"; };
+		92D453C31DBD1611006E14A9 /* jmtlTableBufferInstance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlTableBufferInstance.hpp; sourceTree = "<group>"; };
+		92D453C41DBD1611006E14A9 /* jmtlTableBufferInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlTableBufferInstance.mm; sourceTree = "<group>"; };
+		92D453C51DBD1611006E14A9 /* jmtlTableBufferVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlTableBufferVertex.hpp; sourceTree = "<group>"; };
+		92D453C61DBD1611006E14A9 /* jmtlTableBufferVertex.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlTableBufferVertex.mm; sourceTree = "<group>"; };
+		92D453C71DBD1611006E14A9 /* jmtlTableShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmtlTableShader.hpp; sourceTree = "<group>"; };
+		92D453C81DBD1611006E14A9 /* jmtlTableShader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmtlTableShader.mm; sourceTree = "<group>"; };
+		92D453FE1DBD1799006E14A9 /* libjgraphics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjgraphics.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D454031DBD17B8006E14A9 /* jglBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglBuffer.cpp; sourceTree = "<group>"; };
+		92D454041DBD17B8006E14A9 /* jglBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglBuffer.hpp; sourceTree = "<group>"; };
+		92D454051DBD17B8006E14A9 /* jglBufferAttribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglBufferAttribute.cpp; sourceTree = "<group>"; };
+		92D454061DBD17B8006E14A9 /* jglBufferAttribute.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglBufferAttribute.hpp; sourceTree = "<group>"; };
+		92D454071DBD17B8006E14A9 /* jglBufferIndex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglBufferIndex.cpp; sourceTree = "<group>"; };
+		92D454081DBD17B8006E14A9 /* jglBufferIndex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglBufferIndex.hpp; sourceTree = "<group>"; };
+		92D454091DBD17B8006E14A9 /* jglRenderItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglRenderItem.cpp; sourceTree = "<group>"; };
+		92D4540A1DBD17B8006E14A9 /* jglRenderItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglRenderItem.hpp; sourceTree = "<group>"; };
+		92D4540B1DBD17B8006E14A9 /* jglShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglShader.cpp; sourceTree = "<group>"; };
+		92D4540C1DBD17B8006E14A9 /* jglShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglShader.hpp; sourceTree = "<group>"; };
+		92D4540D1DBD17B8006E14A9 /* jglTableNonTransient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglTableNonTransient.hpp; sourceTree = "<group>"; };
+		92D4540E1DBD17B8006E14A9 /* jglTableShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglTableShader.cpp; sourceTree = "<group>"; };
+		92D4540F1DBD17B8006E14A9 /* jglTableShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglTableShader.hpp; sourceTree = "<group>"; };
+		92D454211DBD180A006E14A9 /* libjlinear.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjlinear.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D454261DBD1843006E14A9 /* jlinear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jlinear.cpp; sourceTree = "<group>"; };
+		92D454271DBD1843006E14A9 /* jlinear.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jlinear.hpp; sourceTree = "<group>"; };
+		92D454281DBD1843006E14A9 /* jlinearrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jlinearrow.h; sourceTree = "<group>"; };
+		92D454291DBD1843006E14A9 /* jlinearsystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jlinearsystem.h; sourceTree = "<group>"; };
+		92D454321DBD1E93006E14A9 /* libjengine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjengine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D454371DBD1EA3006E14A9 /* jbinary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jbinary.cpp; sourceTree = "<group>"; };
+		92D454381DBD1EA3006E14A9 /* jbinary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jbinary.hpp; sourceTree = "<group>"; };
+		92D454391DBD1EA3006E14A9 /* jconstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jconstants.hpp; sourceTree = "<group>"; };
+		92D4543A1DBD1EA3006E14A9 /* jcore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcore.cpp; sourceTree = "<group>"; };
+		92D4543B1DBD1EA3006E14A9 /* jcore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcore.hpp; sourceTree = "<group>"; };
+		92D4543C1DBD1EA3006E14A9 /* jcurve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurve.cpp; sourceTree = "<group>"; };
+		92D4543D1DBD1EA3006E14A9 /* jcurve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurve.hpp; sourceTree = "<group>"; };
+		92D4543E1DBD1EA3006E14A9 /* jcurvenode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jcurvenode.cpp; sourceTree = "<group>"; };
+		92D4543F1DBD1EA3006E14A9 /* jcurvenode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jcurvenode.hpp; sourceTree = "<group>"; };
+		92D454401DBD1EA3006E14A9 /* jgl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jgl.hpp; sourceTree = "<group>"; };
+		92D454411DBD1EA3006E14A9 /* jjoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjoint.h; sourceTree = "<group>"; };
+		92D454421DBD1EA3006E14A9 /* jmath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jmath.cpp; sourceTree = "<group>"; };
+		92D454431DBD1EA3006E14A9 /* jmath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmath.hpp; sourceTree = "<group>"; };
+		92D454441DBD1EA3006E14A9 /* jnode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnode.cpp; sourceTree = "<group>"; };
+		92D454451DBD1EA3006E14A9 /* jnode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jnode.hpp; sourceTree = "<group>"; };
+		92D454461DBD1EA3006E14A9 /* jos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jos.h; sourceTree = "<group>"; };
+		92D454471DBD1EA3006E14A9 /* jrenderobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderobject.cpp; sourceTree = "<group>"; };
+		92D454481DBD1EA3006E14A9 /* jrenderobject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderobject.hpp; sourceTree = "<group>"; };
+		92D454491DBD1EA3006E14A9 /* jrenderprimitivegroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderprimitivegroup.cpp; sourceTree = "<group>"; };
+		92D4544A1DBD1EA3006E14A9 /* jrenderprimitivegroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderprimitivegroup.hpp; sourceTree = "<group>"; };
+		92D4544B1DBD1EA3006E14A9 /* jrenderstategroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrenderstategroup.cpp; sourceTree = "<group>"; };
+		92D4544C1DBD1EA3006E14A9 /* jrenderstategroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrenderstategroup.hpp; sourceTree = "<group>"; };
+		92D4544D1DBD1EA3006E14A9 /* jrotation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jrotation.cpp; sourceTree = "<group>"; };
+		92D4544E1DBD1EA3006E14A9 /* jrotation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jrotation.hpp; sourceTree = "<group>"; };
+		92D4544F1DBD1EA3006E14A9 /* jskeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskeleton.cpp; sourceTree = "<group>"; };
+		92D454501DBD1EA3006E14A9 /* jskeleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskeleton.hpp; sourceTree = "<group>"; };
+		92D454511DBD1EA3006E14A9 /* jskinner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jskinner.cpp; sourceTree = "<group>"; };
+		92D454521DBD1EA3006E14A9 /* jskinner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jskinner.hpp; sourceTree = "<group>"; };
+		92D454531DBD1EA3006E14A9 /* jtranslation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jtranslation.cpp; sourceTree = "<group>"; };
+		92D454541DBD1EA3006E14A9 /* jtranslation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jtranslation.hpp; sourceTree = "<group>"; };
+		92D454551DBD1EA3006E14A9 /* jvideomemoryaligninfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvideomemoryaligninfo.h; sourceTree = "<group>"; };
+		92D454791DBD1F69006E14A9 /* jeditor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jeditor; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D454801DBD1F93006E14A9 /* jfbxcustomizer_curve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_curve.cpp; sourceTree = "<group>"; };
+		92D454811DBD1F93006E14A9 /* jfbxcustomizer_curve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_curve.hpp; sourceTree = "<group>"; };
+		92D454821DBD1F93006E14A9 /* jfbxcustomizer_joint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_joint.cpp; sourceTree = "<group>"; };
+		92D454831DBD1F93006E14A9 /* jfbxcustomizer_joint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_joint.hpp; sourceTree = "<group>"; };
+		92D454841DBD1F93006E14A9 /* jfbxcustomizer_lod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_lod.cpp; sourceTree = "<group>"; };
+		92D454851DBD1F93006E14A9 /* jfbxcustomizer_lod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_lod.hpp; sourceTree = "<group>"; };
+		92D454861DBD1F93006E14A9 /* jfbxcustomizer_skin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_skin.cpp; sourceTree = "<group>"; };
+		92D454871DBD1F93006E14A9 /* jfbxcustomizer_skin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_skin.hpp; sourceTree = "<group>"; };
+		92D454881DBD1F93006E14A9 /* jfbxcustomizer_vertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer_vertex.cpp; sourceTree = "<group>"; };
+		92D454891DBD1F93006E14A9 /* jfbxcustomizer_vertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer_vertex.hpp; sourceTree = "<group>"; };
+		92D4548A1DBD1F93006E14A9 /* jfbxcustomizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxcustomizer.cpp; sourceTree = "<group>"; };
+		92D4548B1DBD1F93006E14A9 /* jfbxcustomizer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxcustomizer.hpp; sourceTree = "<group>"; };
+		92D4548C1DBD1F93006E14A9 /* jfbxexporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxexporter.cpp; sourceTree = "<group>"; };
+		92D4548D1DBD1F93006E14A9 /* jfbxexporter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxexporter.hpp; sourceTree = "<group>"; };
+		92D4548E1DBD1F93006E14A9 /* jfbxvalidater.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jfbxvalidater.cpp; sourceTree = "<group>"; };
+		92D4548F1DBD1F93006E14A9 /* jfbxvalidater.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jfbxvalidater.hpp; sourceTree = "<group>"; };
+		92D454901DBD1F93006E14A9 /* jvector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jvector.h; sourceTree = "<group>"; };
+		92D454911DBD1F93006E14A9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		92D4549F1DBD2005006E14A9 /* libjcommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjcommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D454A41DBD2015006E14A9 /* jallocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jallocator.hpp; sourceTree = "<group>"; };
+		92D454A51DBD2015006E14A9 /* jconstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jconstants.hpp; sourceTree = "<group>"; };
+		92D454A61DBD2015006E14A9 /* jdefinitions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jdefinitions.hpp; sourceTree = "<group>"; };
+		92D454A71DBD2015006E14A9 /* jwritehandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jwritehandler.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6B4800A31D3C689F00F3654E /* Frameworks */ = {
+		92D4539C1DBD15B5006E14A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D453FB1DBD1799006E14A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D4541E1DBD180A006E14A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D4542F1DBD1E93006E14A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D454761DBD1F69006E14A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D4549C1DBD2005006E14A9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -82,149 +263,503 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6B48009D1D3C689F00F3654E = {
+		92D4536B1DBD142A006E14A9 = {
 			isa = PBXGroup;
 			children = (
-				6B4800B21D3C68E700F3654E /* sujak */,
-				6B4800A71D3C689F00F3654E /* Products */,
+				92D454A31DBD2015006E14A9 /* jcommon */,
+				92D454361DBD1EA3006E14A9 /* jengine */,
+				92D454251DBD1843006E14A9 /* jlinear */,
+				92D454021DBD17B8006E14A9 /* jgraphics */,
+				92D453A01DBD15B5006E14A9 /* jmetal */,
+				92D4547A1DBD1F69006E14A9 /* jeditor */,
+				92D453771DBD1488006E14A9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		6B4800A71D3C689F00F3654E /* Products */ = {
+		92D453771DBD1488006E14A9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B4800A61D3C689F00F3654E /* libsujak.a */,
+				92D4539F1DBD15B5006E14A9 /* libjmetal.a */,
+				92D453FE1DBD1799006E14A9 /* libjgraphics.a */,
+				92D454211DBD180A006E14A9 /* libjlinear.a */,
+				92D454321DBD1E93006E14A9 /* libjengine.a */,
+				92D454791DBD1F69006E14A9 /* jeditor */,
+				92D4549F1DBD2005006E14A9 /* libjcommon.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6B4800B21D3C68E700F3654E /* sujak */ = {
+		92D453A01DBD15B5006E14A9 /* jmetal */ = {
 			isa = PBXGroup;
 			children = (
-				6B4800E51D3C699400F3654E /* jvideomemoryaligninfo.h */,
-				6B4800E21D3C698000F3654E /* jcurvenode.cpp */,
-				6B4800E31D3C698000F3654E /* jcurvenode.hpp */,
-				6B4800E11D3C695E00F3654E /* jjoint.h */,
-				6B4800B51D3C68E700F3654E /* jbinary.cpp */,
-				6B4800B61D3C68E700F3654E /* jbinary.hpp */,
-				6B4800B91D3C68E700F3654E /* jcore.cpp */,
-				6B4800BA1D3C68E700F3654E /* jcore.hpp */,
-				6B4800BB1D3C68E700F3654E /* jcurve.cpp */,
-				6B4800BC1D3C68E700F3654E /* jcurve.hpp */,
-				6B4800BD1D3C68E700F3654E /* jmath.cpp */,
-				6B4800BE1D3C68E700F3654E /* jmath.hpp */,
-				6B4800BF1D3C68E700F3654E /* jnode.cpp */,
-				6B4800C01D3C68E700F3654E /* jnode.hpp */,
-				6B4800C11D3C68E700F3654E /* jrenderobject.cpp */,
-				6B4800C21D3C68E700F3654E /* jrenderobject.hpp */,
-				6B4800C31D3C68E700F3654E /* jrenderprimitivegroup.cpp */,
-				6B4800C41D3C68E700F3654E /* jrenderprimitivegroup.hpp */,
-				6B4800C51D3C68E700F3654E /* jrenderstategroup.cpp */,
-				6B4800C61D3C68E700F3654E /* jrenderstategroup.hpp */,
-				6B4800C71D3C68E700F3654E /* jrotation.cpp */,
-				6B4800C81D3C68E700F3654E /* jrotation.hpp */,
-				6B4800C91D3C68E700F3654E /* jskeleton.cpp */,
-				6B4800CA1D3C68E700F3654E /* jskeleton.hpp */,
-				6B4800CB1D3C68E700F3654E /* jskinner.cpp */,
-				6B4800CC1D3C68E700F3654E /* jskinner.hpp */,
-				6B4800CD1D3C68E700F3654E /* jtranslation.cpp */,
-				6B4800CE1D3C68E700F3654E /* jtranslation.hpp */,
-				6B03843A1D95305F00282402 /* jconstants.hpp */,
-				6B03843C1D95305F00282402 /* jgl.hpp */,
-				6BAFC2391D3F3B31008158E5 /* jos.h */,
+				92D453A81DBD1611006E14A9 /* jmetal.hpp */,
+				92D453A91DBD1611006E14A9 /* jmetal.mm */,
+				92D453AA1DBD1611006E14A9 /* jmetalbufferalign.hpp */,
+				92D453AB1DBD1611006E14A9 /* jmetaldefinitions.hpp */,
+				92D453AC1DBD1611006E14A9 /* jmetalindexbuffer.hpp */,
+				92D453AD1DBD1611006E14A9 /* jmetalindexbuffer.mm */,
+				92D453AE1DBD1611006E14A9 /* jmetalnontransients.hpp */,
+				92D453AF1DBD1611006E14A9 /* jmetalnontransients.mm */,
+				92D453B01DBD1611006E14A9 /* jmetalrenderingwork.hpp */,
+				92D453B11DBD1611006E14A9 /* jmetalrenderobj.hpp */,
+				92D453B21DBD1611006E14A9 /* jmetalrenderstategroups.hpp */,
+				92D453B31DBD1611006E14A9 /* jmetalrendertransients.hpp */,
+				92D453B41DBD1611006E14A9 /* jmetalrendertransients.mm */,
+				92D453B51DBD1611006E14A9 /* jmetaltransients.hpp */,
+				92D453B61DBD1611006E14A9 /* jmetaltransients.mm */,
+				92D453B71DBD1611006E14A9 /* jmetaluniformbuffer.hpp */,
+				92D453B81DBD1611006E14A9 /* jmetaluniformbuffer.mm */,
+				92D453B91DBD1611006E14A9 /* jmtlBuffer.hpp */,
+				92D453BA1DBD1611006E14A9 /* jmtlBuffer.mm */,
+				92D453BB1DBD1611006E14A9 /* jmtlBufferAttribute.hpp */,
+				92D453BC1DBD1611006E14A9 /* jmtlBufferAttribute.mm */,
+				92D453BD1DBD1611006E14A9 /* jmtlBufferInstance.hpp */,
+				92D453BE1DBD1611006E14A9 /* jmtlBufferInstance.mm */,
+				92D453BF1DBD1611006E14A9 /* jmtlBufferVertex.hpp */,
+				92D453C01DBD1611006E14A9 /* jmtlBufferVertex.mm */,
+				92D453C11DBD1611006E14A9 /* jmtlShader.hpp */,
+				92D453C21DBD1611006E14A9 /* jmtlShader.mm */,
+				92D453C31DBD1611006E14A9 /* jmtlTableBufferInstance.hpp */,
+				92D453C41DBD1611006E14A9 /* jmtlTableBufferInstance.mm */,
+				92D453C51DBD1611006E14A9 /* jmtlTableBufferVertex.hpp */,
+				92D453C61DBD1611006E14A9 /* jmtlTableBufferVertex.mm */,
+				92D453C71DBD1611006E14A9 /* jmtlTableShader.hpp */,
+				92D453C81DBD1611006E14A9 /* jmtlTableShader.mm */,
 			);
-			path = sujak;
+			path = jmetal;
+			sourceTree = "<group>";
+		};
+		92D454021DBD17B8006E14A9 /* jgraphics */ = {
+			isa = PBXGroup;
+			children = (
+				92D454031DBD17B8006E14A9 /* jglBuffer.cpp */,
+				92D454041DBD17B8006E14A9 /* jglBuffer.hpp */,
+				92D454051DBD17B8006E14A9 /* jglBufferAttribute.cpp */,
+				92D454061DBD17B8006E14A9 /* jglBufferAttribute.hpp */,
+				92D454071DBD17B8006E14A9 /* jglBufferIndex.cpp */,
+				92D454081DBD17B8006E14A9 /* jglBufferIndex.hpp */,
+				92D454091DBD17B8006E14A9 /* jglRenderItem.cpp */,
+				92D4540A1DBD17B8006E14A9 /* jglRenderItem.hpp */,
+				92D4540B1DBD17B8006E14A9 /* jglShader.cpp */,
+				92D4540C1DBD17B8006E14A9 /* jglShader.hpp */,
+				92D4540D1DBD17B8006E14A9 /* jglTableNonTransient.hpp */,
+				92D4540E1DBD17B8006E14A9 /* jglTableShader.cpp */,
+				92D4540F1DBD17B8006E14A9 /* jglTableShader.hpp */,
+			);
+			path = jgraphics;
+			sourceTree = "<group>";
+		};
+		92D454251DBD1843006E14A9 /* jlinear */ = {
+			isa = PBXGroup;
+			children = (
+				92D454261DBD1843006E14A9 /* jlinear.cpp */,
+				92D454271DBD1843006E14A9 /* jlinear.hpp */,
+				92D454281DBD1843006E14A9 /* jlinearrow.h */,
+				92D454291DBD1843006E14A9 /* jlinearsystem.h */,
+			);
+			path = jlinear;
+			sourceTree = "<group>";
+		};
+		92D454361DBD1EA3006E14A9 /* jengine */ = {
+			isa = PBXGroup;
+			children = (
+				92D454371DBD1EA3006E14A9 /* jbinary.cpp */,
+				92D454381DBD1EA3006E14A9 /* jbinary.hpp */,
+				92D454391DBD1EA3006E14A9 /* jconstants.hpp */,
+				92D4543A1DBD1EA3006E14A9 /* jcore.cpp */,
+				92D4543B1DBD1EA3006E14A9 /* jcore.hpp */,
+				92D4543C1DBD1EA3006E14A9 /* jcurve.cpp */,
+				92D4543D1DBD1EA3006E14A9 /* jcurve.hpp */,
+				92D4543E1DBD1EA3006E14A9 /* jcurvenode.cpp */,
+				92D4543F1DBD1EA3006E14A9 /* jcurvenode.hpp */,
+				92D454401DBD1EA3006E14A9 /* jgl.hpp */,
+				92D454411DBD1EA3006E14A9 /* jjoint.h */,
+				92D454421DBD1EA3006E14A9 /* jmath.cpp */,
+				92D454431DBD1EA3006E14A9 /* jmath.hpp */,
+				92D454441DBD1EA3006E14A9 /* jnode.cpp */,
+				92D454451DBD1EA3006E14A9 /* jnode.hpp */,
+				92D454461DBD1EA3006E14A9 /* jos.h */,
+				92D454471DBD1EA3006E14A9 /* jrenderobject.cpp */,
+				92D454481DBD1EA3006E14A9 /* jrenderobject.hpp */,
+				92D454491DBD1EA3006E14A9 /* jrenderprimitivegroup.cpp */,
+				92D4544A1DBD1EA3006E14A9 /* jrenderprimitivegroup.hpp */,
+				92D4544B1DBD1EA3006E14A9 /* jrenderstategroup.cpp */,
+				92D4544C1DBD1EA3006E14A9 /* jrenderstategroup.hpp */,
+				92D4544D1DBD1EA3006E14A9 /* jrotation.cpp */,
+				92D4544E1DBD1EA3006E14A9 /* jrotation.hpp */,
+				92D4544F1DBD1EA3006E14A9 /* jskeleton.cpp */,
+				92D454501DBD1EA3006E14A9 /* jskeleton.hpp */,
+				92D454511DBD1EA3006E14A9 /* jskinner.cpp */,
+				92D454521DBD1EA3006E14A9 /* jskinner.hpp */,
+				92D454531DBD1EA3006E14A9 /* jtranslation.cpp */,
+				92D454541DBD1EA3006E14A9 /* jtranslation.hpp */,
+				92D454551DBD1EA3006E14A9 /* jvideomemoryaligninfo.h */,
+			);
+			path = jengine;
+			sourceTree = "<group>";
+		};
+		92D4547A1DBD1F69006E14A9 /* jeditor */ = {
+			isa = PBXGroup;
+			children = (
+				92D454801DBD1F93006E14A9 /* jfbxcustomizer_curve.cpp */,
+				92D454811DBD1F93006E14A9 /* jfbxcustomizer_curve.hpp */,
+				92D454821DBD1F93006E14A9 /* jfbxcustomizer_joint.cpp */,
+				92D454831DBD1F93006E14A9 /* jfbxcustomizer_joint.hpp */,
+				92D454841DBD1F93006E14A9 /* jfbxcustomizer_lod.cpp */,
+				92D454851DBD1F93006E14A9 /* jfbxcustomizer_lod.hpp */,
+				92D454861DBD1F93006E14A9 /* jfbxcustomizer_skin.cpp */,
+				92D454871DBD1F93006E14A9 /* jfbxcustomizer_skin.hpp */,
+				92D454881DBD1F93006E14A9 /* jfbxcustomizer_vertex.cpp */,
+				92D454891DBD1F93006E14A9 /* jfbxcustomizer_vertex.hpp */,
+				92D4548A1DBD1F93006E14A9 /* jfbxcustomizer.cpp */,
+				92D4548B1DBD1F93006E14A9 /* jfbxcustomizer.hpp */,
+				92D4548C1DBD1F93006E14A9 /* jfbxexporter.cpp */,
+				92D4548D1DBD1F93006E14A9 /* jfbxexporter.hpp */,
+				92D4548E1DBD1F93006E14A9 /* jfbxvalidater.cpp */,
+				92D4548F1DBD1F93006E14A9 /* jfbxvalidater.hpp */,
+				92D454901DBD1F93006E14A9 /* jvector.h */,
+				92D454911DBD1F93006E14A9 /* main.cpp */,
+			);
+			path = jeditor;
+			sourceTree = "<group>";
+		};
+		92D454A31DBD2015006E14A9 /* jcommon */ = {
+			isa = PBXGroup;
+			children = (
+				92D454A41DBD2015006E14A9 /* jallocator.hpp */,
+				92D454A51DBD2015006E14A9 /* jconstants.hpp */,
+				92D454A61DBD2015006E14A9 /* jdefinitions.hpp */,
+				92D454A71DBD2015006E14A9 /* jwritehandler.hpp */,
+			);
+			path = jcommon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6B78FC651D3C706D000872EC /* Headers */ = {
+		92D453FC1DBD1799006E14A9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B833F421D9A7E2F002EE46F /* jrenderobject.hpp in Headers */,
-				6B78FC671D3C70AE000872EC /* jcore.hpp in Headers */,
+				92D454151DBD17B8006E14A9 /* jglBufferIndex.hpp in Headers */,
+				92D4541C1DBD17B8006E14A9 /* jglTableShader.hpp in Headers */,
+				92D454111DBD17B8006E14A9 /* jglBuffer.hpp in Headers */,
+				92D454131DBD17B8006E14A9 /* jglBufferAttribute.hpp in Headers */,
+				92D454171DBD17B8006E14A9 /* jglRenderItem.hpp in Headers */,
+				92D4541A1DBD17B8006E14A9 /* jglTableNonTransient.hpp in Headers */,
+				92D454191DBD17B8006E14A9 /* jglShader.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D4541F1DBD180A006E14A9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D4542B1DBD1843006E14A9 /* jlinear.hpp in Headers */,
+				92D4542D1DBD1843006E14A9 /* jlinearsystem.h in Headers */,
+				92D4542C1DBD1843006E14A9 /* jlinearrow.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D454301DBD1E93006E14A9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D4545F1DBD1EA3006E14A9 /* jgl.hpp in Headers */,
+				92D454731DBD1EA3006E14A9 /* jtranslation.hpp in Headers */,
+				92D4546D1DBD1EA3006E14A9 /* jrotation.hpp in Headers */,
+				92D4545A1DBD1EA3006E14A9 /* jcore.hpp in Headers */,
+				92D454571DBD1EA3006E14A9 /* jbinary.hpp in Headers */,
+				92D454621DBD1EA3006E14A9 /* jmath.hpp in Headers */,
+				92D454581DBD1EA3006E14A9 /* jconstants.hpp in Headers */,
+				92D454711DBD1EA3006E14A9 /* jskinner.hpp in Headers */,
+				92D454651DBD1EA3006E14A9 /* jos.h in Headers */,
+				92D454671DBD1EA3006E14A9 /* jrenderobject.hpp in Headers */,
+				92D454601DBD1EA3006E14A9 /* jjoint.h in Headers */,
+				92D4546B1DBD1EA3006E14A9 /* jrenderstategroup.hpp in Headers */,
+				92D454641DBD1EA3006E14A9 /* jnode.hpp in Headers */,
+				92D4545C1DBD1EA3006E14A9 /* jcurve.hpp in Headers */,
+				92D4545E1DBD1EA3006E14A9 /* jcurvenode.hpp in Headers */,
+				92D4546F1DBD1EA3006E14A9 /* jskeleton.hpp in Headers */,
+				92D454741DBD1EA3006E14A9 /* jvideomemoryaligninfo.h in Headers */,
+				92D454691DBD1EA3006E14A9 /* jrenderprimitivegroup.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D4549D1DBD2005006E14A9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D454A81DBD2015006E14A9 /* jallocator.hpp in Headers */,
+				92D454A91DBD2015006E14A9 /* jconstants.hpp in Headers */,
+				92D454AA1DBD2015006E14A9 /* jdefinitions.hpp in Headers */,
+				92D454AB1DBD2015006E14A9 /* jwritehandler.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6B4800A51D3C689F00F3654E /* sujak */ = {
+		92D4539E1DBD15B5006E14A9 /* jmetal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B4800AF1D3C689F00F3654E /* Build configuration list for PBXNativeTarget "sujak" */;
+			buildConfigurationList = 92D453A51DBD15B5006E14A9 /* Build configuration list for PBXNativeTarget "jmetal" */;
 			buildPhases = (
-				6B4800A21D3C689F00F3654E /* Sources */,
-				6B4800A31D3C689F00F3654E /* Frameworks */,
-				6B4800A41D3C689F00F3654E /* CopyFiles */,
-				6B78FC651D3C706D000872EC /* Headers */,
+				92D4539B1DBD15B5006E14A9 /* Sources */,
+				92D4539C1DBD15B5006E14A9 /* Frameworks */,
+				92D4539D1DBD15B5006E14A9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = sujak;
-			productName = sujak;
-			productReference = 6B4800A61D3C689F00F3654E /* libsujak.a */;
+			name = jmetal;
+			productName = jmetal;
+			productReference = 92D4539F1DBD15B5006E14A9 /* libjmetal.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		92D453FD1DBD1799006E14A9 /* jgraphics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92D453FF1DBD1799006E14A9 /* Build configuration list for PBXNativeTarget "jgraphics" */;
+			buildPhases = (
+				92D453FA1DBD1799006E14A9 /* Sources */,
+				92D453FB1DBD1799006E14A9 /* Frameworks */,
+				92D453FC1DBD1799006E14A9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jgraphics;
+			productName = jgraphics;
+			productReference = 92D453FE1DBD1799006E14A9 /* libjgraphics.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		92D454201DBD180A006E14A9 /* jlinear */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92D454221DBD180A006E14A9 /* Build configuration list for PBXNativeTarget "jlinear" */;
+			buildPhases = (
+				92D4541D1DBD180A006E14A9 /* Sources */,
+				92D4541E1DBD180A006E14A9 /* Frameworks */,
+				92D4541F1DBD180A006E14A9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jlinear;
+			productName = jlinear;
+			productReference = 92D454211DBD180A006E14A9 /* libjlinear.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		92D454311DBD1E93006E14A9 /* jengine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92D454331DBD1E93006E14A9 /* Build configuration list for PBXNativeTarget "jengine" */;
+			buildPhases = (
+				92D4542E1DBD1E93006E14A9 /* Sources */,
+				92D4542F1DBD1E93006E14A9 /* Frameworks */,
+				92D454301DBD1E93006E14A9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jengine;
+			productName = jengine;
+			productReference = 92D454321DBD1E93006E14A9 /* libjengine.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		92D454781DBD1F69006E14A9 /* jeditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92D4547D1DBD1F69006E14A9 /* Build configuration list for PBXNativeTarget "jeditor" */;
+			buildPhases = (
+				92D454751DBD1F69006E14A9 /* Sources */,
+				92D454761DBD1F69006E14A9 /* Frameworks */,
+				92D454771DBD1F69006E14A9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jeditor;
+			productName = jeditor;
+			productReference = 92D454791DBD1F69006E14A9 /* jeditor */;
+			productType = "com.apple.product-type.tool";
+		};
+		92D4549E1DBD2005006E14A9 /* jcommon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92D454A01DBD2005006E14A9 /* Build configuration list for PBXNativeTarget "jcommon" */;
+			buildPhases = (
+				92D4549B1DBD2005006E14A9 /* Sources */,
+				92D4549C1DBD2005006E14A9 /* Frameworks */,
+				92D4549D1DBD2005006E14A9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jcommon;
+			productName = jcommon;
+			productReference = 92D4549F1DBD2005006E14A9 /* libjcommon.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6B48009E1D3C689F00F3654E /* Project object */ = {
+		92D4536C1DBD142A006E14A9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = loadcomplete;
+				LastUpgradeCheck = 0800;
 				TargetAttributes = {
-					6B4800A51D3C689F00F3654E = {
-						CreatedOnToolsVersion = 7.3;
+					92D4539E1DBD15B5006E14A9 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					92D453FD1DBD1799006E14A9 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					92D454201DBD180A006E14A9 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					92D454311DBD1E93006E14A9 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					92D454781DBD1F69006E14A9 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					92D4549E1DBD2005006E14A9 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 6B4800A11D3C689F00F3654E /* Build configuration list for PBXProject "sujak" */;
+			buildConfigurationList = 92D4536F1DBD142A006E14A9 /* Build configuration list for PBXProject "sujak" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 6B48009D1D3C689F00F3654E;
-			productRefGroup = 6B4800A71D3C689F00F3654E /* Products */;
+			mainGroup = 92D4536B1DBD142A006E14A9;
+			productRefGroup = 92D453771DBD1488006E14A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B4800A51D3C689F00F3654E /* sujak */,
+				92D4539E1DBD15B5006E14A9 /* jmetal */,
+				92D453FD1DBD1799006E14A9 /* jgraphics */,
+				92D454201DBD180A006E14A9 /* jlinear */,
+				92D454311DBD1E93006E14A9 /* jengine */,
+				92D454781DBD1F69006E14A9 /* jeditor */,
+				92D4549E1DBD2005006E14A9 /* jcommon */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6B4800A21D3C689F00F3654E /* Sources */ = {
+		92D4539B1DBD15B5006E14A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B4800D61D3C68E700F3654E /* jmath.cpp in Sources */,
-				6B4800DC1D3C68E700F3654E /* jskeleton.cpp in Sources */,
-				6B4800DA1D3C68E700F3654E /* jrenderstategroup.cpp in Sources */,
-				6B4800E41D3C698000F3654E /* jcurvenode.cpp in Sources */,
-				6B4800DE1D3C68E700F3654E /* jtranslation.cpp in Sources */,
-				6B4800D41D3C68E700F3654E /* jcore.cpp in Sources */,
-				6B4800DD1D3C68E700F3654E /* jskinner.cpp in Sources */,
-				6B4800DB1D3C68E700F3654E /* jrotation.cpp in Sources */,
-				6B4800D81D3C68E700F3654E /* jrenderobject.cpp in Sources */,
-				6B4800D91D3C68E700F3654E /* jrenderprimitivegroup.cpp in Sources */,
-				6B4800D51D3C68E700F3654E /* jcurve.cpp in Sources */,
-				6B4800D21D3C68E700F3654E /* jbinary.cpp in Sources */,
-				6B4800D71D3C68E700F3654E /* jnode.cpp in Sources */,
+				92D453D21DBD1611006E14A9 /* jmtlBufferVertex.mm in Sources */,
+				92D453C91DBD1611006E14A9 /* jmetal.mm in Sources */,
+				92D453CF1DBD1611006E14A9 /* jmtlBuffer.mm in Sources */,
+				92D453D31DBD1611006E14A9 /* jmtlShader.mm in Sources */,
+				92D453CE1DBD1611006E14A9 /* jmetaluniformbuffer.mm in Sources */,
+				92D453D51DBD1611006E14A9 /* jmtlTableBufferVertex.mm in Sources */,
+				92D453D01DBD1611006E14A9 /* jmtlBufferAttribute.mm in Sources */,
+				92D453CC1DBD1611006E14A9 /* jmetalrendertransients.mm in Sources */,
+				92D453D61DBD1611006E14A9 /* jmtlTableShader.mm in Sources */,
+				92D453CD1DBD1611006E14A9 /* jmetaltransients.mm in Sources */,
+				92D453D41DBD1611006E14A9 /* jmtlTableBufferInstance.mm in Sources */,
+				92D453D11DBD1611006E14A9 /* jmtlBufferInstance.mm in Sources */,
+				92D453CB1DBD1611006E14A9 /* jmetalnontransients.mm in Sources */,
+				92D453CA1DBD1611006E14A9 /* jmetalindexbuffer.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D453FA1DBD1799006E14A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D454121DBD17B8006E14A9 /* jglBufferAttribute.cpp in Sources */,
+				92D454101DBD17B8006E14A9 /* jglBuffer.cpp in Sources */,
+				92D454161DBD17B8006E14A9 /* jglRenderItem.cpp in Sources */,
+				92D4541B1DBD17B8006E14A9 /* jglTableShader.cpp in Sources */,
+				92D454141DBD17B8006E14A9 /* jglBufferIndex.cpp in Sources */,
+				92D454181DBD17B8006E14A9 /* jglShader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D4541D1DBD180A006E14A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D4542A1DBD1843006E14A9 /* jlinear.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D4542E1DBD1E93006E14A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D454721DBD1EA3006E14A9 /* jtranslation.cpp in Sources */,
+				92D454631DBD1EA3006E14A9 /* jnode.cpp in Sources */,
+				92D4545D1DBD1EA3006E14A9 /* jcurvenode.cpp in Sources */,
+				92D454681DBD1EA3006E14A9 /* jrenderprimitivegroup.cpp in Sources */,
+				92D454661DBD1EA3006E14A9 /* jrenderobject.cpp in Sources */,
+				92D4546C1DBD1EA3006E14A9 /* jrotation.cpp in Sources */,
+				92D454701DBD1EA3006E14A9 /* jskinner.cpp in Sources */,
+				92D454561DBD1EA3006E14A9 /* jbinary.cpp in Sources */,
+				92D454591DBD1EA3006E14A9 /* jcore.cpp in Sources */,
+				92D454611DBD1EA3006E14A9 /* jmath.cpp in Sources */,
+				92D4545B1DBD1EA3006E14A9 /* jcurve.cpp in Sources */,
+				92D4546A1DBD1EA3006E14A9 /* jrenderstategroup.cpp in Sources */,
+				92D4546E1DBD1EA3006E14A9 /* jskeleton.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D454751DBD1F69006E14A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92D454991DBD1F93006E14A9 /* jfbxvalidater.cpp in Sources */,
+				92D454971DBD1F93006E14A9 /* jfbxcustomizer.cpp in Sources */,
+				92D4549A1DBD1F93006E14A9 /* main.cpp in Sources */,
+				92D454961DBD1F93006E14A9 /* jfbxcustomizer_vertex.cpp in Sources */,
+				92D454921DBD1F93006E14A9 /* jfbxcustomizer_curve.cpp in Sources */,
+				92D454941DBD1F93006E14A9 /* jfbxcustomizer_lod.cpp in Sources */,
+				92D454981DBD1F93006E14A9 /* jfbxexporter.cpp in Sources */,
+				92D454931DBD1F93006E14A9 /* jfbxcustomizer_joint.cpp in Sources */,
+				92D454951DBD1F93006E14A9 /* jfbxcustomizer_skin.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92D4549B1DBD2005006E14A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		6B4800AD1D3C689F00F3654E /* Debug */ = {
+		92D453701DBD142A006E14A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		92D453711DBD142A006E14A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		92D453A61DBD15B5006E14A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -236,10 +771,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -261,14 +799,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		6B4800AE1D3C689F00F3654E /* Release */ = {
+		92D453A71DBD15B5006E14A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,10 +821,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -299,55 +843,530 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		6B4800B01D3C689F00F3654E /* Debug */ = {
+		92D454001DBD1799006E14A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
-		6B4800B11D3C689F00F3654E /* Release */ = {
+		92D454011DBD1799006E14A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		92D454231DBD180A006E14A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		92D454241DBD180A006E14A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		92D454341DBD1E93006E14A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		92D454351DBD1E93006E14A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		92D4547E1DBD1F69006E14A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		92D4547F1DBD1F69006E14A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		92D454A11DBD2005006E14A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		92D454A21DBD2005006E14A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6B4800A11D3C689F00F3654E /* Build configuration list for PBXProject "sujak" */ = {
+		92D4536F1DBD142A006E14A9 /* Build configuration list for PBXProject "sujak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B4800AD1D3C689F00F3654E /* Debug */,
-				6B4800AE1D3C689F00F3654E /* Release */,
+				92D453701DBD142A006E14A9 /* Debug */,
+				92D453711DBD142A006E14A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B4800AF1D3C689F00F3654E /* Build configuration list for PBXNativeTarget "sujak" */ = {
+		92D453A51DBD15B5006E14A9 /* Build configuration list for PBXNativeTarget "jmetal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B4800B01D3C689F00F3654E /* Debug */,
-				6B4800B11D3C689F00F3654E /* Release */,
+				92D453A61DBD15B5006E14A9 /* Debug */,
+				92D453A71DBD15B5006E14A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+		};
+		92D453FF1DBD1799006E14A9 /* Build configuration list for PBXNativeTarget "jgraphics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92D454001DBD1799006E14A9 /* Debug */,
+				92D454011DBD1799006E14A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		92D454221DBD180A006E14A9 /* Build configuration list for PBXNativeTarget "jlinear" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92D454231DBD180A006E14A9 /* Debug */,
+				92D454241DBD180A006E14A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		92D454331DBD1E93006E14A9 /* Build configuration list for PBXNativeTarget "jengine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92D454341DBD1E93006E14A9 /* Debug */,
+				92D454351DBD1E93006E14A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		92D4547D1DBD1F69006E14A9 /* Build configuration list for PBXNativeTarget "jeditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92D4547E1DBD1F69006E14A9 /* Debug */,
+				92D4547F1DBD1F69006E14A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		92D454A01DBD2005006E14A9 /* Build configuration list for PBXNativeTarget "jcommon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92D454A11DBD2005006E14A9 /* Debug */,
+				92D454A21DBD2005006E14A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6B48009E1D3C689F00F3654E /* Project object */;
+	rootObject = 92D4536C1DBD142A006E14A9 /* Project object */;
 }

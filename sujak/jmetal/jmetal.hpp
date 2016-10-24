@@ -8,7 +8,7 @@
 
 #import "jdefinitions.hpp"
 #import "jmetalrendertransients.hpp"
-#include "jglobjvertexdatahandle.hpp"
+
 
 class jmetal
 {
@@ -18,8 +18,7 @@ class jmetal
 	
 	public:
 	id<MTLDevice> device;
-    jglObjVertexDataHandle loadVertexObjectOnMemory(int vtype, unsigned int vcnt);
-    jglObjVertexDataHandle loadInstanceObjectOnMemory(int itype, unsigned int icnt);
+	
 	void draw(void **vdatas, int vtype, unsigned int vcnt, void *idata, unsigned int icnt, id<MTLTexture> ctarget, sujak::JPipeline p, id<MTLDrawable> drawableToPresent);
 	void draw(void** vdatas, int vtype, unsigned int vcnt, void* idata, unsigned int icnt,
 			  id<MTLTexture> ctarget, sujak::JPipeline p, id<MTLDrawable> drawableToPresent,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B39BAD81DBDC8120044F017 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B39BAD71DBDC8120044F017 /* Metal.framework */; };
 		92D453C91DBD1611006E14A9 /* jmetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453A91DBD1611006E14A9 /* jmetal.mm */; };
 		92D453CA1DBD1611006E14A9 /* jmetalindexbuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453AD1DBD1611006E14A9 /* jmetalindexbuffer.mm */; };
 		92D453CB1DBD1611006E14A9 /* jmetalnontransients.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92D453AF1DBD1611006E14A9 /* jmetalnontransients.mm */; };
@@ -84,6 +85,16 @@
 		92D454AB1DBD2015006E14A9 /* jwritehandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A71DBD2015006E14A9 /* jwritehandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6B39BAD91DBDC81D0044F017 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92D4536C1DBD142A006E14A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92D453FD1DBD1799006E14A9;
+			remoteInfo = jgraphics;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		92D4539D1DBD15B5006E14A9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -106,6 +117,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6B39BAD71DBDC8120044F017 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Metal.framework; sourceTree = DEVELOPER_DIR; };
 		92D4539F1DBD15B5006E14A9 /* libjmetal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjmetal.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D453A81DBD1611006E14A9 /* jmetal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jmetal.hpp; sourceTree = "<group>"; };
 		92D453A91DBD1611006E14A9 /* jmetal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = jmetal.mm; sourceTree = "<group>"; };
@@ -222,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B39BAD81DBDC8120044F017 /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +276,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B39BAD61DBDC8110044F017 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B39BAD71DBDC8120044F017 /* Metal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		92D4536B1DBD142A006E14A9 = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +294,7 @@
 				92D453A01DBD15B5006E14A9 /* jmetal */,
 				92D4547A1DBD1F69006E14A9 /* jeditor */,
 				92D453771DBD1488006E14A9 /* Products */,
+				6B39BAD61DBDC8110044F017 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -511,6 +533,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6B39BADA1DBDC81D0044F017 /* PBXTargetDependency */,
 			);
 			name = jmetal;
 			productName = jmetal;
@@ -745,6 +768,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6B39BADA1DBDC81D0044F017 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92D453FD1DBD1799006E14A9 /* jgraphics */;
+			targetProxy = 6B39BAD91DBDC81D0044F017 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		92D453701DBD142A006E14A9 /* Debug */ = {
@@ -1325,6 +1356,7 @@
 				92D453A71DBD15B5006E14A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92D453FF1DBD1799006E14A9 /* Build configuration list for PBXNativeTarget "jgraphics" */ = {
 			isa = XCConfigurationList;
@@ -1333,6 +1365,7 @@
 				92D454011DBD1799006E14A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92D454221DBD180A006E14A9 /* Build configuration list for PBXNativeTarget "jlinear" */ = {
 			isa = XCConfigurationList;
@@ -1341,6 +1374,7 @@
 				92D454241DBD180A006E14A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92D454331DBD1E93006E14A9 /* Build configuration list for PBXNativeTarget "jengine" */ = {
 			isa = XCConfigurationList;
@@ -1349,6 +1383,7 @@
 				92D454351DBD1E93006E14A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92D4547D1DBD1F69006E14A9 /* Build configuration list for PBXNativeTarget "jeditor" */ = {
 			isa = XCConfigurationList;
@@ -1357,6 +1392,7 @@
 				92D4547F1DBD1F69006E14A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92D454A01DBD2005006E14A9 /* Build configuration list for PBXNativeTarget "jcommon" */ = {
 			isa = XCConfigurationList;
@@ -1365,6 +1401,7 @@
 				92D454A21DBD2005006E14A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

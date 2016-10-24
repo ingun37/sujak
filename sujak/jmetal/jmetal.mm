@@ -19,40 +19,6 @@ using namespace sujak;
 
 jmtlBuffer uniformbuffer;
 
-void jmetal::loadVertexObjectOnMemory(unsigned int vcnt, simd::float4* positions, simd::float4* colors)
-{
-	int type = (1 << JVertexAttribute_color) | (1 << JVertexAttribute_position);
-	
-	if(jconstant_attribute_datatype(JVertexAttribute_color) != JDataType_f4)
-		throw "902392903sksdjfksdf";
-	if(jconstant_attribute_datatype(JVertexAttribute_position) != JDataType_f4)
-		throw "9123232323233232sdfgxcv";
-    if(vbuffers.find(type) == vbuffers.end())
-    {
-        jmtlBufferVertex* b = poolVBuffer::getAvailable(1);
-        b->init(vtype, device);
-        vbuffers[vtype] = b;
-    }
-	return vbuffers[type]->writeAndAdvance(vcnt, JVertexAttribute_position, positions, JVertexAttribute_color, colors);
-}
-
-void jmetal::loadInstanceObjectOnMemory(int cnt, matrix_float4x4* trans)
-{
-	int type = (1 << JInstanceAttribute_trans);
-	
-	if(jconstant_attribute_datatype(JInstanceAttribute_trans) != JDataType_f44)
-		throw "ilkiojlkmijlkijlk";
-		
-    if(instancebuffers.find(type) == instancebuffers.end())
-    {
-        jmtlBufferInstance* b = poolInstanceBuffer::getAvailable(1);
-        b->init(type, device);
-        instancebuffers[itype] = b;
-    }
-    
-    return instancebuffers[itype]->writeAndAdvance(cnt, JInstanceAttribute_trans, trans);
-}
-
 void jmetal::init(CAMetalLayer* metallayer, CGSize drawableSize, JUniform initUniform)
 {
     device = MTLCreateSystemDefaultDevice();

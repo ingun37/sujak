@@ -12,14 +12,14 @@
 #include "jconstants.hpp"
 using namespace sujak;
 typedef jallocator<jmtlBufferInstance, 4, jmtlTableBufferInstance> bufferpool;
-jmtlBufferInstance* jmtlTableInstanceBuffer::makeOf(int k)
+jmtlBufferInstance* jmtlTableBufferInstance::makeOf(int k)
 {
 	jmtlBufferInstance* buffer = bufferpool::getAvailable(1);
 	buffer->init(jconstant_attribute_group((JAttributeGroupInstance)k), device);
 	return buffer;
 }
 
-void jmtlTableInstanceBuffer::init(id<MTLDevice> device)
+void jmtlTableBufferInstance::init(id<MTLDevice> device)
 {
 	this->device = device;
 	jglTableNonTransient<jmtlBufferInstance*>::initOrdered(JAttributeGroupInstance_number);

@@ -13,34 +13,34 @@
 
 class jglBuffer;
 
-typedef struct _jglAttributeBufferAttributeInfo
+typedef struct _jglAttributedBufferAttributeInfo
 {
 	unsigned short unitsize;
 	jglBuffer* buffer;
 	
-    _jglAttributeBufferAttributeInfo()
+    _jglAttributedBufferAttributeInfo()
     {
         unitsize = 0;
         buffer = 0;
     }
-} jglAttributeBufferAttributeInfo;
+} jglAttributedBufferAttributeInfo;
 
-typedef struct _jglAttributeData
+typedef struct _jglAttributedBufferData
 {
 	int attribute;
 	const void* src;
-} jglAttributeData;
+} jglAttributedBufferData;
 
 
-class jglBufferAttribute
+class jglAttributedBuffer
 {
 	int flag;
 	int attributecnt;
-	jglAttributeBufferAttributeInfo attributes[JGLATTRIBUTEBUFFER_MAXATT_CNT];
+	jglAttributedBufferAttributeInfo attributes[JGLATTRIBUTEBUFFER_MAXATT_CNT];
 	int cnt;
 protected:
-	virtual void initAttributeInfo( jglAttributeBufferAttributeInfo& info, int exponentNum ) = 0;
-	jglBufferAttribute();
+	virtual void initAttributeInfo( jglAttributedBufferAttributeInfo& info, int exponentNum ) = 0;
+	jglAttributedBuffer();
     void init(int flag);
 
 public:
@@ -48,7 +48,7 @@ public:
 						 int attribute2=0, const void* src2=0,
 						 int attribute3=0, const void* src3=0);
 	
-	void append(unsigned int &offsetCnt, unsigned int unitcnt, int datacnt, const jglAttributeData datas[]);
+	void append(unsigned int &offsetCnt, unsigned int unitcnt, int datacnt, const jglAttributedBufferData datas[]);
 };
 
 

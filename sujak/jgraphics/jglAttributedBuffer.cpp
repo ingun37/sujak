@@ -6,17 +6,17 @@
 //  Copyright © 2016 loadcomplete. All rights reserved.
 //
 #include <iostream>
-#include "jglBufferAttribute.hpp"
+#include "jglAttributedBuffer.hpp"
 #include "jglBuffer.hpp"
 
-jglBufferAttribute::jglBufferAttribute()
+jglAttributedBuffer::jglAttributedBuffer()
 {
 	this->flag = 0;
 	this->attributecnt = 0;
 	this->cnt = 0;
 }
 
-void jglBufferAttribute::init(int flag)
+void jglAttributedBuffer::init(int flag)
 {
     this->flag = flag;
 
@@ -29,11 +29,11 @@ void jglBufferAttribute::init(int flag)
     }
 }
 
-void jglBufferAttribute::append(unsigned int &offsetCnt, unsigned int cnt, int attribute1, const void* src1,
+void jglAttributedBuffer::append(unsigned int &offsetCnt, unsigned int cnt, int attribute1, const void* src1,
 					 int attribute2, const void* src2,
 					 int attribute3, const void* src3)
 {
-	jglAttributeData datas[3];
+	jglAttributedBufferData datas[3];
 	datas[0].attribute = attribute1;
 	datas[0].src  = src1;
 	
@@ -55,7 +55,7 @@ void jglBufferAttribute::append(unsigned int &offsetCnt, unsigned int cnt, int a
 		
 }
 
-void jglBufferAttribute::append(unsigned int &offsetCnt, unsigned int unitcnt, int datacnt, const jglAttributeData datas[])
+void jglAttributedBuffer::append(unsigned int &offsetCnt, unsigned int unitcnt, int datacnt, const jglAttributedBufferData datas[])
 {
 	if(datacnt != attributecnt)
 		throw "9802wr092h934fh2f";
@@ -76,7 +76,7 @@ void jglBufferAttribute::append(unsigned int &offsetCnt, unsigned int unitcnt, i
 	offsetCnt = this->cnt;
 	for(int i=0;i<attributecnt;i++)
 	{
-		jglAttributeBufferAttributeInfo& a = attributes[ datas[i].attribute ];
+		jglAttributedBufferAttributeInfo& a = attributes[ datas[i].attribute ];
 		a.buffer->writeAndAdvance(datas[i].src, a.unitsize * unitcnt);
 	}
 	this->cnt += unitcnt;

@@ -131,6 +131,8 @@ namespace sujak
 	const JPixelFormat jconstant_framebuffer_pixelformat = JPixelFormat_rgba8;
 	const JPixelFormat jconstant_depth_pixelformat = JPixelFormat_F32;
 	const JPixelFormat jconstant_stencil_pixelformat = JPixelFormat_8;
+    
+    const unsigned int jconstant_starting_vertex_reserve_cnt = 256;
 }
 
 #endif

@@ -8,13 +8,14 @@
 
 #ifndef jglPoolBuffer_hpp
 #define jglPoolBuffer_hpp
+#include "jdefinitions.hpp"
 
 class jglBuffer;
 class jglPoolBuffer
 {
 public:
     static jglPoolBuffer* pool;
-    virtual jglBuffer* aInitedBuffer() = 0;
+    virtual jglBuffer* aInitedBuffer(unsigned int reserveSize, sujak::JMemoryOption option) = 0;
 };
 
 #endif /* jglPoolBuffer_hpp */

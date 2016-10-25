@@ -11,7 +11,7 @@
 
 class jgl
 {
-	int loadVertex
+    int loadVertex;
 };
 
 #endif /* jgl_hpp */

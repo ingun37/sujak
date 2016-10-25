@@ -59,28 +59,28 @@ namespace sujak
         JBuffer_number,
     };
 	
-    enum JShaderVert
+    enum JFunctionVertex
     {
-		JShaderVert_color,
-        JShaderVert_light,
-        JShaderVert_ui,
-        JShaderVert_line,
-        JShaderVert_number,
+		JFunctionVertex_color,
+        JFunctionVertex_light,
+        JFunctionVertex_ui,
+        JFunctionVertex_line,
+        JFunctionVertex_number,
     };
     
-    enum JShaderFrag
+    enum JFunctionFragment
     {
-		JShaderFrag_color,
-        JShaderFrag_light,
-        JShaderFrag_ui,
-        JShaderFrag_line,
-        JShaderFrag_number,
+		JFunctionFragment_color,
+        JFunctionFragment_light,
+        JFunctionFragment_ui,
+        JFunctionFragment_line,
+        JFunctionFragment_number,
     };
 	
-	enum JPipeline
+	enum JShader
 	{
-		JPipeline_color,
-		JPipeline_number
+		JShader_color,
+		JShader_number
 	};
 	
     enum JDepthCompare

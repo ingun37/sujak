@@ -52,7 +52,7 @@ void jmetal::updateUniform(JUniform uni)
 	uniformbuffer->writeAndAdvance(&uni, sizeof(JUniform));
 }
 
-void jmetal::draw(void **vdatas, int vtype, unsigned int vcnt, void *idata, unsigned int icnt, id<MTLTexture> ctarget, JPipeline p, id<MTLDrawable> drawableToPresent)
+void jmetal::draw(void **vdatas, int vtype, unsigned int vcnt, void *idata, unsigned int icnt, id<MTLTexture> ctarget, JShader p, id<MTLDrawable> drawableToPresent)
 {
 	draw(vdatas, vtype, vcnt, idata, icnt, ctarget, p, drawableToPresent,
 		 [jmetalnontransients defaultDepthTexWithDevice:device width:[ctarget width] height:[ctarget height] format: jmetalconstant_pixelformat(jconstant_depth_pixelformat) ],
@@ -60,7 +60,7 @@ void jmetal::draw(void **vdatas, int vtype, unsigned int vcnt, void *idata, unsi
 }
 
 void jmetal::draw(int vtype, unsigned int vcnt, void* idata, unsigned int icnt,
-				  id<MTLTexture> ctarget, JPipeline p, id<MTLDrawable> drawableToPresent,
+				  id<MTLTexture> ctarget, JShader p, id<MTLDrawable> drawableToPresent,
 				  id<MTLTexture> dtarget,
 				  id<MTLTexture> starget
 				  )

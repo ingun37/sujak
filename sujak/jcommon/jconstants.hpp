@@ -78,16 +78,7 @@ namespace sujak
 		
 		attnum = cnt;
 	}
-    typedef struct _jtype_pipeline
-    {
-        JShaderVert v;
-        JShaderFrag f;
-        JPixelFormat pf_color;
-        JPixelFormat pf_depth;
-        JPixelFormat pf_stencil;
-        int vertexFlag;
-		int instanceFlag;
-    }jtype_pipeline;
+    
 	
 	const int jconstant_attribute_group_instance_trans = (1 << JAttributeGroupInstance_trans);
 	int jconstant_attribute_group( JAttributeGroupInstance ag)
@@ -109,21 +100,66 @@ namespace sujak
 		}
 	}
 	
-    const jtype_pipeline jconstant_program_color = {
-		.v = JShaderVert_color,
-		.f = JShaderFrag_color,
+    typedef struct _jinfo_vertex_function
+    {
+        JAttributeGroupVertex requiredVertexAttributes;
+        JAttributeGroupInstance requiredInstanceAttributes;
+    } jinfo_vertex_function;
+    
+    const jinfo_vertex_function jconstant_vertex_function_color = {
+        .requiredVertexAttributes = jconstant_attribute_group_vertex_position_color,
+        .requiredInstanceAttributes = jconstant_attribute_group_instance_trans;
+    };
+    
+    const jinfo_vertex_function& jconstant_get_vertex_function_info(JFunctionVertex v)
+    {
+        switch(v)
+        {
+            case JFunctionVertex_color: return jconstant_vertex_function_color;
+            default: throw "29ik34";
+        }
+    }
+    
+    typedef struct _jinfo_frag_function
+    {
+        int nothing;
+    } jinfo_frag_function;
+    
+    const jinfo_frag_function jconstant_frag_function_color = {
+        .nothing = 0,
+    };
+    
+    const jinfo_frag_function& jconstant_get_frag_function_info(JShadeFrag f)
+    {
+        switch(f)
+        {
+            case JFunctionFragment_color: return jconstant_frag_function_color;
+            default: throw "789tuyftghd";
+        }
+    }
+    
+    typedef struct _jinfo_shader
+    {
+        JFunctionVertex v;
+        JFunctionFragment f;
+        JPixelFormat pf_color;
+        JPixelFormat pf_depth;
+        JPixelFormat pf_stencil;
+    }jinfo_shader;
+    
+    const jinfo_shader jconstant_shader_color = {
+		.v = JFunctionVertex_color,
+		.f = JFunctionFragment_color,
 		.pf_color = JPixelFormat_rgba8,
 		.pf_depth=JPixelFormat_F32,
 		.pf_stencil = JPixelFormat_8,
-		.vertexFlag = jconstant_attribute_group_vertex_position_color,
-		.instanceFlag = jconstant_attribute_group_instance_trans,
 	};
 		
-	const jtype_pipeline& jconstant_programs(JPipeline p)
+	const jinfo_shader& jconstant_shaders(JShader p)
 	{
 		switch(p)
 		{
-			case JPipeline_color: return jconstant_program_color;
+			case JShader_color: return jconstant_shader_color;
 			default: throw "ijeif no p";
 		}
 	}

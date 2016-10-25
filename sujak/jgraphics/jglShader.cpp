@@ -9,7 +9,7 @@
 #include "jglShader.hpp"
 
 
-void jglShader::init(sujak::JPipeline p)
+void jglShader::init(sujak::JShader p)
 {
 	this->p = p;
 }

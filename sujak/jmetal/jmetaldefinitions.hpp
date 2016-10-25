@@ -55,20 +55,20 @@ MTLIndexType jmetalconstant_indextype(sujak::JDataType t)
     }
 }
 
-NSString* jmetalconstant_shader_vertex(sujak::JShaderVert s)
+NSString* jmetalconstant_shader_vertex(sujak::JFunctionVertex s)
 {
     switch(s)
     {
-        case sujak::JShaderVert_color: return @"vert_color";
+        case sujak::JFunctionVertex_color: return @"vert_color";
         default: throw "unknonw shadwseifjsiefsef";
     }
 }
 
-NSString* jmetalconstant_shader_fragment(sujak::JShaderFrag s)
+NSString* jmetalconstant_shader_fragment(sujak::JFunctionFragment s)
 {
     switch(s)
     {
-        case sujak::JShaderFrag_color: return @"frag_color";
+        case sujak::JFunctionFragment_color: return @"frag_color";
         default: throw "unknown shei89999999999";
     }
 }

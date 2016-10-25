@@ -24,7 +24,7 @@ class jglRenderItem
 	sujak::JAttributeGroupInstance iag;
 	jglBufferAlign instAlign;
 	jglBufferAlign idxAlign;
-	sujak::JPipeline shader;
+	sujak::JShader shader;
 	
 public:
 

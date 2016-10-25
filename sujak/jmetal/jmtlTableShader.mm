@@ -33,6 +33,6 @@ typedef jallocator<jmtlShader, 4, jmtlTableShader> shaderpool;
 jglShader* jmtlTableShader::makeOf(int key)
 {
 	jmtlShader* shader = shaderpool::getAvailable(1);
-	shader->init((JPipeline)key, device, library);
+	shader->init((JShader)key, device, library);
 	return shader;
 }

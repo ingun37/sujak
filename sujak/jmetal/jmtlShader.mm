@@ -16,10 +16,10 @@ jmtlShader::jmtlShader()
 }
 
 
-void jmtlShader::init(sujak::JPipeline p, id<MTLDevice> device, id<MTLLibrary> library)
+void jmtlShader::init(sujak::JShader p, id<MTLDevice> device, id<MTLLibrary> library)
 {
 	jglShader::init(p);
-	const jtype_pipeline& pipe = jconstant_programs(p);
+	const jinfo_shader& pipe = jconstant_shaders(p);
 	MTLRenderPipelineDescriptor* pipelinedesc = [MTLRenderPipelineDescriptor new];
 	
 	std::vector<NSUInteger> buffidxs;

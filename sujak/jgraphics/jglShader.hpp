@@ -11,9 +11,9 @@
 #include "jconstants.hpp"
 class jglShader
 {
-	sujak::JPipeline p;
+	sujak::JShader p;
 protected:
-	virtual void init(sujak::JPipeline p) = 0;
+	virtual void init(sujak::JShader p) = 0;
 };
 
 #endif /* jglShader_hpp */

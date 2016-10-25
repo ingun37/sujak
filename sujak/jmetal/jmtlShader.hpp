@@ -14,10 +14,10 @@ class jmtlShader : public jglShader
 {
 	id<MTLRenderPipelineState> pipelinestate;
 protected:
-	virtual void init(sujak::JPipeline p) {}
+	virtual void init(sujak::JShader p) {}
 public:
 	
-	void init(sujak::JPipeline p, id<MTLDevice> device, id<MTLLibrary> library);
+	void init(sujak::JShader p, id<MTLDevice> device, id<MTLLibrary> library);
 	jmtlShader();
 };
 

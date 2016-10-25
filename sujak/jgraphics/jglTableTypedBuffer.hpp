@@ -16,7 +16,8 @@ class jglTableTypedBuffer : jglTableNonTransientArray<jglTypedBuffer*>
 protected:
 	void init();
 	virtual jglTypedBuffer* makeOf(unsigned int k);
-	virtual unsigned int attributeNum() = 0;
+    
+    virtual unsigned int typeSizeOf() = 0;
 	
 public:
 	

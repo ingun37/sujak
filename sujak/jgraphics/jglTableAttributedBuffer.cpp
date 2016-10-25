@@ -20,5 +20,5 @@ jglAttributedBuffer* jglTableAttributedBuffer::makeOf(int attributeGroupIdx)
 
 void jglTableAttributedBuffer::init()
 {
-	jglTableNonTransient<jglAttributedBuffer*>::initOrdered(attributeGroupNumber());
+	jglTableNonTransientMap<jglAttributedBuffer*>::initOrdered(attributeGroupNumber());
 }

@@ -8,9 +8,9 @@
 
 #ifndef jglTableAttributedBuffer_hpp
 #define jglTableAttributedBuffer_hpp
-#include "jglTableNonTransient.hpp"
+#include "jglTableNonTransientMap.hpp"
 class jglAttributedBuffer;
-class jglTableAttributedBuffer : public jglTableNonTransient<jglAttributedBuffer*>
+class jglTableAttributedBuffer : public jglTableNonTransientMap<jglAttributedBuffer*>
 {
 	int flag;
 protected:

@@ -9,9 +9,9 @@
 #ifndef jmtlBufferInstancetable_hpp
 #define jmtlBufferInstancetable_hpp
 #import <Metal/Metal.h>
-#include "jglTableNonTransient.hpp"
+#include "jglTableNonTransientMap.hpp"
 class jmtlBufferInstance;
-class jmtlTableBufferInstance : public jglTableNonTransient<jmtlBufferInstance*>
+class jmtlTableBufferInstance : public jglTableNonTransientMap<jmtlBufferInstance*>
 {
 	id<MTLDevice> device;
 public:

@@ -11,7 +11,7 @@
 #include <map>
 
 template <typename T>
-class jglTableNonTransient
+class jglTableNonTransientMap
 {
 	bool inited;
 	std::map<int, T> m;
@@ -30,7 +30,7 @@ protected:
 		inited = true;
 	}
 public:
-	jglTableNonTransient()
+	jglTableNonTransientMap()
 	{
 		inited = false;
 	}

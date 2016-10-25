@@ -23,5 +23,5 @@ jmtlBufferVertex* jglTableBufferVertex::makeOf(int k)
 void jglTableBufferVertex::init(id<MTLDevice> device)
 {
 	this->device = device;
-	jglTableNonTransient<jmtlBufferVertex*>::initOrdered( JAttributeGroupVertex_number );
+	jglTableNonTransientMap<jmtlBufferVertex*>::initOrdered( JAttributeGroupVertex_number );
 }

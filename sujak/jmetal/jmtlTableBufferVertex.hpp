@@ -10,10 +10,10 @@
 #define jmtltablebuffervertex_hpp
 
 #import <Metal/Metal.h>
-#include "jglTableNonTransient.hpp"
+#include "jglTableNonTransientMap.hpp"
 
 class jmtlBufferVertex;
-class jglTableBufferVertex : jglTableNonTransient<jmtlBufferVertex*>
+class jglTableBufferVertex : jglTableNonTransientMap<jmtlBufferVertex*>
 {
 	id<MTLDevice> device;
 	virtual jmtlBufferVertex* makeOf(int k);

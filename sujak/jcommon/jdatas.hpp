@@ -111,11 +111,11 @@ namespace sujak
         .requiredInstanceAttributes = jconstant_attribute_group_instance_trans;
     };
     
-    const jinfo_vertex_function& jconstant_get_vertex_function_info(JFunctionVertex v)
+    const jinfo_vertex_function& jconstant_get_vertex_function_info(JVertexFunction v)
     {
         switch(v)
         {
-            case JFunctionVertex_color: return jconstant_vertex_function_color;
+            case JVertexFunction_color: return jconstant_vertex_function_color;
             default: throw "29ik34";
         }
     }
@@ -133,23 +133,23 @@ namespace sujak
     {
         switch(f)
         {
-            case JFunctionFragment_color: return jconstant_frag_function_color;
+            case JFragmentFunction_color: return jconstant_frag_function_color;
             default: throw "789tuyftghd";
         }
     }
     
     typedef struct _jinfo_shader
     {
-        JFunctionVertex v;
-        JFunctionFragment f;
+        JVertexFunction v;
+        JFragmentFunction f;
         
         JPixelFormat pf_depth;
         JPixelFormat pf_stencil;
     }jinfo_shader;
     
     const jinfo_shader jconstant_shader_color = {
-		.v = JFunctionVertex_color,
-		.f = JFunctionFragment_color,
+		.v = JVertexFunction_color,
+		.f = JFragmentFunction_color,
 		.pf_color = JPixelFormat_rgba8,
 		.pf_depth=JPixelFormat_F32,
 		.pf_stencil = JPixelFormat_8,

@@ -13,8 +13,12 @@ class jglShader
 {
 	sujak::JPixelFormat pixelformat_depth;
     sujak::JPixelFormat pixelformat_stencil;
+	
+	sujak::JVertexFunction vert;
+	sujak::JFragmentFunction frag;
 protected:
-	virtual void init(sujak::JShader p) = 0;
+	jglShader(){}
+	void init(sujak::JShader p);
 };
 
 #endif /* jglShader_hpp */

@@ -15,6 +15,8 @@ class jglTableAttributeBufferInstance : jglTableAttributeBuffer
 {
 protected:
     virtual unsigned int attributeNum();
+    virtual unsigned int ofTypeSize(int attribute) = 0;
+    virtual unsigned int ofReservedCnt(int attribute) = 0;
 };
 
 #endif /* jglTableAttributeBufferInstance_hpp */

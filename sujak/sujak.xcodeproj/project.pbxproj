@@ -89,13 +89,17 @@
 		92D454991DBD1F93006E14A9 /* jfbxvalidater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D4548E1DBD1F93006E14A9 /* jfbxvalidater.cpp */; };
 		92D4549A1DBD1F93006E14A9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D454911DBD1F93006E14A9 /* main.cpp */; };
 		92D454A81DBD2015006E14A9 /* jallocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A41DBD2015006E14A9 /* jallocator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		92D454A91DBD2015006E14A9 /* jconstants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A51DBD2015006E14A9 /* jconstants.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		92D454A91DBD2015006E14A9 /* jdatas.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A51DBD2015006E14A9 /* jdatas.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92D454AA1DBD2015006E14A9 /* jdefinitions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A61DBD2015006E14A9 /* jdefinitions.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92D454AB1DBD2015006E14A9 /* jwritehandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D454A71DBD2015006E14A9 /* jwritehandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		92D6008D1DBFAB8000FDB717 /* jglTableAttributeBufferVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D6008B1DBFAB7F00FDB717 /* jglTableAttributeBufferVertex.cpp */; };
 		92D6008E1DBFAB8000FDB717 /* jglTableAttributeBufferVertex.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D6008C1DBFAB8000FDB717 /* jglTableAttributeBufferVertex.hpp */; };
 		92D600911DBFACB900FDB717 /* jglTableAttributeBufferInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D6008F1DBFACB900FDB717 /* jglTableAttributeBufferInstance.cpp */; };
 		92D600921DBFACB900FDB717 /* jglTableAttributeBufferInstance.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D600901DBFACB900FDB717 /* jglTableAttributeBufferInstance.hpp */; };
+		92D600951DC1024E00FDB717 /* jglFunctionVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D600931DC1024E00FDB717 /* jglFunctionVertex.cpp */; };
+		92D600961DC1024E00FDB717 /* jglFunctionVertex.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D600941DC1024E00FDB717 /* jglFunctionVertex.hpp */; };
+		92D600991DC4BD7700FDB717 /* jglTypedBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92D600971DC4BD7700FDB717 /* jglTypedBuffer.cpp */; };
+		92D6009A1DC4BD7700FDB717 /* jglTypedBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 92D600981DC4BD7700FDB717 /* jglTypedBuffer.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,13 +250,17 @@
 		92D454911DBD1F93006E14A9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		92D4549F1DBD2005006E14A9 /* libjcommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libjcommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D454A41DBD2015006E14A9 /* jallocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jallocator.hpp; sourceTree = "<group>"; };
-		92D454A51DBD2015006E14A9 /* jconstants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jconstants.hpp; sourceTree = "<group>"; };
+		92D454A51DBD2015006E14A9 /* jdatas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jdatas.hpp; sourceTree = "<group>"; };
 		92D454A61DBD2015006E14A9 /* jdefinitions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jdefinitions.hpp; sourceTree = "<group>"; };
 		92D454A71DBD2015006E14A9 /* jwritehandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jwritehandler.hpp; sourceTree = "<group>"; };
 		92D6008B1DBFAB7F00FDB717 /* jglTableAttributeBufferVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglTableAttributeBufferVertex.cpp; sourceTree = "<group>"; };
 		92D6008C1DBFAB8000FDB717 /* jglTableAttributeBufferVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglTableAttributeBufferVertex.hpp; sourceTree = "<group>"; };
 		92D6008F1DBFACB900FDB717 /* jglTableAttributeBufferInstance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglTableAttributeBufferInstance.cpp; sourceTree = "<group>"; };
 		92D600901DBFACB900FDB717 /* jglTableAttributeBufferInstance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglTableAttributeBufferInstance.hpp; sourceTree = "<group>"; };
+		92D600931DC1024E00FDB717 /* jglFunctionVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglFunctionVertex.cpp; sourceTree = "<group>"; };
+		92D600941DC1024E00FDB717 /* jglFunctionVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglFunctionVertex.hpp; sourceTree = "<group>"; };
+		92D600971DC4BD7700FDB717 /* jglTypedBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jglTypedBuffer.cpp; sourceTree = "<group>"; };
+		92D600981DC4BD7700FDB717 /* jglTypedBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jglTypedBuffer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +396,8 @@
 				929CB2F31DBF95670039EA72 /* jglPoolBuffer.hpp */,
 				92D4540D1DBD17B8006E14A9 /* jglTableNonTransientMap.hpp */,
 				6BD13FC21DBF5EDE008A39FA /* jglTableNonTransientArray.hpp */,
+				92D600971DC4BD7700FDB717 /* jglTypedBuffer.cpp */,
+				92D600981DC4BD7700FDB717 /* jglTypedBuffer.hpp */,
 				6BD13FC51DBF5FD7008A39FA /* jglTableAttributeBuffer.cpp */,
 				6BD13FC61DBF5FD7008A39FA /* jglTableAttributeBuffer.hpp */,
 				92D6008B1DBFAB7F00FDB717 /* jglTableAttributeBufferVertex.cpp */,
@@ -400,6 +410,8 @@
 				92D454081DBD17B8006E14A9 /* jglBufferIndex.hpp */,
 				92D454091DBD17B8006E14A9 /* jglRenderItem.cpp */,
 				92D4540A1DBD17B8006E14A9 /* jglRenderItem.hpp */,
+				92D600931DC1024E00FDB717 /* jglFunctionVertex.cpp */,
+				92D600941DC1024E00FDB717 /* jglFunctionVertex.hpp */,
 				92D4540B1DBD17B8006E14A9 /* jglShader.cpp */,
 				92D4540C1DBD17B8006E14A9 /* jglShader.hpp */,
 				92D4540E1DBD17B8006E14A9 /* jglTableShader.cpp */,
@@ -488,7 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				92D454A41DBD2015006E14A9 /* jallocator.hpp */,
-				92D454A51DBD2015006E14A9 /* jconstants.hpp */,
+				92D454A51DBD2015006E14A9 /* jdatas.hpp */,
 				92D454A61DBD2015006E14A9 /* jdefinitions.hpp */,
 				92D454A71DBD2015006E14A9 /* jwritehandler.hpp */,
 			);
@@ -504,8 +516,10 @@
 			files = (
 				92D454151DBD17B8006E14A9 /* jglBufferIndex.hpp in Headers */,
 				6BD13FC41DBF5EDE008A39FA /* jglTableNonTransientArray.hpp in Headers */,
+				92D600961DC1024E00FDB717 /* jglFunctionVertex.hpp in Headers */,
 				6BD13FC81DBF5FD7008A39FA /* jglTableAttributeBuffer.hpp in Headers */,
 				92D600921DBFACB900FDB717 /* jglTableAttributeBufferInstance.hpp in Headers */,
+				92D6009A1DC4BD7700FDB717 /* jglTypedBuffer.hpp in Headers */,
 				92D6008E1DBFAB8000FDB717 /* jglTableAttributeBufferVertex.hpp in Headers */,
 				92D4541C1DBD17B8006E14A9 /* jglTableShader.hpp in Headers */,
 				92D454111DBD17B8006E14A9 /* jglBuffer.hpp in Headers */,
@@ -559,7 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D454A81DBD2015006E14A9 /* jallocator.hpp in Headers */,
-				92D454A91DBD2015006E14A9 /* jconstants.hpp in Headers */,
+				92D454A91DBD2015006E14A9 /* jdatas.hpp in Headers */,
 				92D454AA1DBD2015006E14A9 /* jdefinitions.hpp in Headers */,
 				92D454AB1DBD2015006E14A9 /* jwritehandler.hpp in Headers */,
 			);
@@ -755,10 +769,12 @@
 			files = (
 				6B39BAE11DBDE5BE0044F017 /* jglResidentObject.cpp in Sources */,
 				929CB2F41DBF95670039EA72 /* jglPoolBuffer.cpp in Sources */,
+				92D600991DC4BD7700FDB717 /* jglTypedBuffer.cpp in Sources */,
 				92D454121DBD17B8006E14A9 /* jglAttributedBuffer.cpp in Sources */,
 				92D454101DBD17B8006E14A9 /* jglBuffer.cpp in Sources */,
 				6B39BAED1DBE0ECD0044F017 /* jgl.cpp in Sources */,
 				92D454161DBD17B8006E14A9 /* jglRenderItem.cpp in Sources */,
+				92D600951DC1024E00FDB717 /* jglFunctionVertex.cpp in Sources */,
 				92D4541B1DBD17B8006E14A9 /* jglTableShader.cpp in Sources */,
 				92D454141DBD17B8006E14A9 /* jglBufferIndex.cpp in Sources */,
 				92D600911DBFACB900FDB717 /* jglTableAttributeBufferInstance.cpp in Sources */,

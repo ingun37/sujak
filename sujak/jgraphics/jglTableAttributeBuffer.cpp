@@ -5,21 +5,19 @@
 //  Created by ingun on 25/10/2016.
 //
 //
-#include "jconstants.hpp"
+#include "jallocator.hpp"
 #include "jglTableAttributeBuffer.hpp"
-#include "jglPoolBuffer.hpp"
-
+#include "jglTypedBuffer.hpp"
 using namespace sujak;
 
 void jglTableAttributeBuffer::init()
 {
 	jglTableNonTransientArray::init( attributeNum() );
 }
-
-jglTypedBuffer jglTableAttributeBuffer::makeOf(unsigned int k)
+typedef jallocator<jglTypedBuffer, 16, jglTableAttributeBuffer> poolTypedBuffer;
+jglTypedBuffer* jglTableAttributeBuffer::makeOf(unsigned int k)
 {
-    jglTypedBuffer r;
-    r.typeSize = typeSizeOf(k);
-    r.buffer = jglPoolBuffer::pool->aInitedBuffer( jconstant_starting_vertex_reserve_cnt * r.typeSize , JMemoryOption_managed_cpuwrite );
-    return r;
+    jglTypedBuffer *tb = poolTypedBuffer::getAvailable(1);
+    tb->init(ofTypeSize(k), ofReservedCnt(k));
+    return tb;
 }

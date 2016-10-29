@@ -8,10 +8,11 @@
 
 #ifndef jglShader_hpp
 #define jglShader_hpp
-#include "jconstants.hpp"
+#include "jdefinitions.hpp"
 class jglShader
 {
-	sujak::JShader p;
+	sujak::JPixelFormat pixelformat_depth;
+    sujak::JPixelFormat pixelformat_stencil;
 protected:
 	virtual void init(sujak::JShader p) = 0;
 };

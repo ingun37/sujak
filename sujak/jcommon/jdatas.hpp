@@ -122,11 +122,11 @@ namespace sujak
     
     typedef struct _jinfo_frag_function
     {
-        int nothing;
+        JPixelFormat pf_color;
     } jinfo_frag_function;
     
     const jinfo_frag_function jconstant_frag_function_color = {
-        .nothing = 0,
+        .pf_color = JPixelFormat_rgbaf32,
     };
     
     const jinfo_frag_function& jconstant_get_frag_function_info(JShadeFrag f)
@@ -142,7 +142,7 @@ namespace sujak
     {
         JFunctionVertex v;
         JFunctionFragment f;
-        JPixelFormat pf_color;
+        
         JPixelFormat pf_depth;
         JPixelFormat pf_stencil;
     }jinfo_shader;

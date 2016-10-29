@@ -5,7 +5,7 @@
 //  Created by Ingun Jon on 26/10/2016.
 //
 //
-#include "jconstants.hpp"
+#include "jdefinitions.hpp"
 #include "jglTableAttributeBufferVertex.hpp"
 using namespace sujak;
 unsigned int jglTableAttributeBufferVertex::attributeNum()

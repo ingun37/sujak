@@ -10,22 +10,16 @@
 #define jglTableAttributeBuffer_hpp
 
 #include "jglTableNonTransientArray.hpp"
-class jglBuffer;
 
-typedef struct _jglTypedBuffer
-{
-    jglBuffer* buffer;
-    unsigned int typeSize;
-}jglTypedBuffer;
-
-class jglTableAttributeBuffer : jglTableNonTransientArray<jglTypedBuffer>
+class jglTypedBuffer;
+class jglTableAttributeBuffer : jglTableNonTransientArray<jglTypedBuffer*>
 {
 protected:
 	void init();
-	virtual jglTypedBuffer makeOf(unsigned int k);
+	virtual jglTypedBuffer* makeOf(unsigned int k);
     virtual unsigned int attributeNum() = 0;
-    virtual unsigned int typeSizeOf(int attribute) = 0;
-	
+    virtual unsigned int ofTypeSize(int attribute) = 0;
+    virtual unsigned int ofReservedCnt(int attribute) = 0;
 public:
 	
 };

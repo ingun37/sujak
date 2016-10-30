@@ -7,10 +7,10 @@
 //
 #include "jdefinitions.hpp"
 #include "jglTypedBuffer.hpp"
-#include "jglPoolBuffer.hpp"
+#include "jglPool.hpp"
 void jglTypedBuffer::init(unsigned int typeSize, unsigned int reservedCnt)
 {
     this->typeSize = typeSize;
     this->reservedCnt = reservedCnt;
-    buffer = jglPoolBuffer::pool->aInitedBuffer(reservedCnt * typeSize, sujak::JMemoryOption_managed_cpuwrite);
+    buffer = jglPool::pool->aInitedBuffer(reservedCnt * typeSize, sujak::JMemoryOption_managed_cpuwrite);
 }

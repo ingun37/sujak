@@ -11,11 +11,13 @@
 #include "jdefinitions.hpp"
 
 class jglBuffer;
-class jglPoolBuffer
+class jglTexture;
+class jglPool
 {
 public:
-    static jglPoolBuffer* pool;
+    static jglPool* pool;
     virtual jglBuffer* aInitedBuffer(unsigned int reserveSize, sujak::JMemoryOption option) = 0;
+	virtual jglTexture* aInitedTexture(unsigned int width, unsigned int height, sujak::JPixelFormat f) = 0;
 };
 
 #endif /* jglPoolBuffer_hpp */

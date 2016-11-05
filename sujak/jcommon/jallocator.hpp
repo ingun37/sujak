@@ -13,54 +13,47 @@
 #include <stdlib.h>
 namespace sujak
 {
-    template <typename T, unsigned long I, typename O>
+    template <typename T, unsigned long I>
     class jallocator
     {
-		static O *nothing;
-        static T objs[I];
-        static unsigned long cnt;
+        T objs[I];
+        unsigned long cnt;
     public:
-        
-        static T* getAvailable(unsigned long len);
-        static T* getStart();
-        static T* getAt(unsigned long i);
-        static unsigned long getCnt();
+        jallocator()
+		{
+			cnt = 0;
+		}
+        T* getAvailable(unsigned long len);
+        T* getStart();
+        T* getAt(unsigned long i);
+        unsigned long getCnt();
     };
     
-    
-    template <typename T, unsigned long I, typename O>
-    unsigned long jallocator<T,I,O>::cnt = 0;
-    
-    template <typename T, unsigned long I, typename O>
-    T jallocator<T,I,O>::objs[];
-    
-    template<typename T, unsigned long I, typename O>
-    T* jallocator<T, I,O>::getAvailable(unsigned long len)
+    template<typename T, unsigned long I>
+    T* jallocator<T, I>::getAvailable(unsigned long len)
     {
+		if(cnt + len >= I)
+			throw "jallocaatatttoror iriii i i i";
+
         T* obj = &objs[cnt];
         cnt += len;
-        if(cnt > I)
-        {
-            puts("jallocator err");
-            exit(1);
-        }
         return obj;
     }
     
-    template<typename T, unsigned long I, typename O>
-    T* jallocator<T,I,O>::getStart()
+    template<typename T, unsigned long I>
+    T* jallocator<T,I>::getStart()
     {
         return objs;
     }
     
-    template<typename T, unsigned long I, typename O>
-    T* jallocator<T,I,O>::getAt(unsigned long i)
+    template<typename T, unsigned long I>
+    T* jallocator<T,I>::getAt(unsigned long i)
     {
         return &objs[i];
     }
     
-    template <typename T, unsigned long I, typename O>
-    unsigned long jallocator<T,I,O>::getCnt()
+    template <typename T, unsigned long I>
+    unsigned long jallocator<T,I>::getCnt()
     {
         return cnt;
     }

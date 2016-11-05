@@ -14,10 +14,10 @@ void jglTableAttributeBuffer::init()
 {
 	jglTableNonTransientArray::init( attributeNum() );
 }
-typedef jallocator<jglTypedBuffer, 16, jglTableAttributeBuffer> poolTypedBuffer;
+jallocator<jglTypedBuffer, 16> pool;
 jglTypedBuffer* jglTableAttributeBuffer::makeOf(unsigned int k)
 {
-    jglTypedBuffer *tb = poolTypedBuffer::getAvailable(1);
+    jglTypedBuffer *tb = pool.getAvailable(1);
     tb->init(ofTypeSize(k), ofReservedCnt(k));
     return tb;
 }

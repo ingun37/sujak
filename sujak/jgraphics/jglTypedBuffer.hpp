@@ -20,6 +20,7 @@ class jglTypedBuffer
 public:
     
     void init(unsigned int typeSize, unsigned int reservedCnt);
+	unsigned int append(const void* src, unsigned int cnt);//returns offset in unit
 };
 
 

@@ -11,10 +11,9 @@
 
 class jglResidentObject
 {
-	int key;
+	int attribute;
 	unsigned int offset;
-	unsigned int len;
-	int bufferKey;
+	unsigned int cnt;
 };
 
 #endif /* jglResidentObject_hpp */

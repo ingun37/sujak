@@ -28,7 +28,7 @@ void jglBuffer::init(unsigned int reserve)
 	reservedSize = reserve;
 }
 
-void jglBuffer::writeAndAdvance(const void *src, unsigned int len)
+unsigned int jglBuffer::writeAndAdvance(const void *src, unsigned int len)
 {
 	if(((unsigned int)-1) - this->pointer < len)
 		throw "exceeee1";
@@ -38,4 +38,5 @@ void jglBuffer::writeAndAdvance(const void *src, unsigned int len)
 		throw "exceeeeeeeee";
 	memcpy(handleAtPointer(), src, len);
 	this->pointer += len;
+	return this->pointer - len;
 }

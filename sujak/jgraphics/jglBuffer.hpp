@@ -19,7 +19,7 @@ protected:
     jglBuffer();
 public:
     void* handleAtPointer();
-	void writeAndAdvance(const void* src, unsigned int len);
+	unsigned int writeAndAdvance(const void* src, unsigned int len);//return offset in bytes
 	void reset();
 	
 };
